@@ -13,7 +13,8 @@ var gulp         = require('gulp'),
 gulp.task('browser-sync', ['styles', 'scripts', 'jade', 'images'], function() {
 		browserSync.init({
 				server: {
-						baseDir: "./"
+						baseDir: "./",
+                    directory: true
 				},
 				notify: false
 		});
