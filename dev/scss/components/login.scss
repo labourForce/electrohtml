@@ -1,0 +1,130 @@
+.account {
+
+
+  &__wrapper {
+    display: flex;
+    margin-bottom: 110px;
+    @media #{$md-max} {
+      flex-direction: column;
+      align-items: center;
+    }
+    @media #{$sxs-max} {
+    }
+  }
+
+  &__title {
+    font-size: em(18);
+    color: $black;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    @media #{$sxs-max} {
+      margin: 35px 0;
+      font-size: em(16);
+    }
+  }
+  &__list {
+    li {
+      line-height: 30px;
+      display: block;
+      font-size: em(14);
+      &::before {
+        content: '\f00c';
+        font-family: FontAwesome;
+        font-size: em(14);
+        color: #5bb300;
+        margin-right: em(16);
+      }
+    }
+  }
+
+  &__sign-in {
+    width: 50%;
+    padding-right: em(85);
+    position: relative;
+    @media #{$md-max} {
+      padding-right: 0;
+      width: 90%;
+      margin-bottom: 80px;
+    }
+    @media #{$sxs-max} {
+      width: 100%;
+    }
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      background-color: #dddddd;
+      z-index: 1;
+      @media #{$md-max} {
+        height: 1px;
+        width: 100%;
+        bottom: -40px;
+        left: 0;
+        top: initial;
+      }
+    }
+    &::before {
+      content: 'or';
+      font-style: italic;
+      position: absolute;
+      left: calc(100% - 25px);
+      background-color: #fff;
+      display: flex;
+      width: 50px;
+      height: 50px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      border: 1px solid #dddddd;
+      z-index: 2;
+      top: calc(50% - 50px);
+      font-size: em(14);
+      @media #{$md-max} {
+        top: initial;
+        bottom: -65px;
+        left: calc(50% - 25px);
+      }
+    }
+    &-text {
+      font-size: em(14);
+      color: #747474;
+      margin-bottom: 42px;
+    }
+    &-button {
+      margin-top: 24px;
+    }
+    &-remember {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+
+      label span {
+        font-family: $regular;
+      }
+      a {
+        font-size: em(14);
+        color: $black;
+        &:hover,&:active,&:link {
+          text-decoration: none;
+          color: $black;
+        }
+      }
+    }
+  }
+
+  &__create-new {
+    width: 50%;
+    padding-left: em(85);
+    @media #{$md-max} {
+      padding-left: 0;
+      width: 90%;
+    }
+    @media #{$sxs-max} {
+      width: 100%;
+    }
+  }
+}

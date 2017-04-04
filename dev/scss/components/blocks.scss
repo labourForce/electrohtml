@@ -1,0 +1,101 @@
+.offer-tabs {
+  &__container {
+
+  }
+  &__header {
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 10px;
+  }
+
+}
+
+.tab-pane.active.offer-tab__item {
+  display: flex;
+  flex-wrap: wrap;
+  & > li {
+    width: 33.33333%;
+    list-style-type: none;
+    @media #{$md-max} {
+      width: 50%;
+    }
+    @media #{$sxs-max} {
+      width: 100%;
+    }
+    & .shop-item__descr {
+      margin: 0;
+    }
+    & .shop-item__footer {
+      border:none;
+    }
+    & .shop-item__hidden {
+      border-bottom: 1px solid #dddddd;
+      margin-top: 14px;
+    }
+  }
+}
+
+// offer big
+.offer-big {
+  width: 100%;
+  &__container {
+    width: 100%;
+  }
+  & .slick-dots {
+    left: 50%;
+    bottom: -40px;
+  }
+  &__item {
+    display: flex;
+    & .shop-item__descr {
+      margin-bottom: 0;
+    }
+    & .slick-list {
+      padding-left: 5px;
+      margin-right: 1px;
+    }
+    & li {
+      list-style-type: none;
+    }
+  }
+  &__tab-header {
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 30px;
+    li.active a {
+      background-color: transparent;
+    }
+  }
+  & .offer-tabs__container {
+    margin-bottom: 100px;
+  }
+  &__item-double {
+    padding-bottom: 4px;
+    .shop-item {
+      background-color: #fff;
+      margin-bottom: 8px;
+      margin-right: 8px;
+    }
+  }
+  &__item-single {
+    .shop-item {
+      background-color: #fff;
+      margin-right: 8px;
+    }
+    & .shop-item__descr {
+      margin-bottom: 85px;
+
+
+    }
+  }
+  & .shop-item__footer {
+    padding-bottom: 0;
+    border: none;
+  }
+}
+
+
+// Grey Back
+
+.grey-section {
+  background-color: #f9f9f9;
+  padding-top: 60px;
+}

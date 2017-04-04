@@ -1,0 +1,37 @@
+mixin form-element(element, text, type, row, placeholder, fontWeight)
+
+    - var type = type || "text";
+    - var text = text || "Text" ;
+    - var row = row || 1;
+    - var placeholder = placeholder  || "";
+
+    if element == 'input'
+        .form-element__wrapper
+            label.form-element__label
+                if fontWeight == false
+                    span.form-element__name=text
+                if fontWeight == 'bold'
+                    span.form-element__name.bold--text=text
+                - for(var i = 0; i<row; i++){
+                    input(type=type, placeholder=placeholder).form-element__input
+                - }
+
+    if element == 'textarea'
+        .form-element__wrapper
+            label.form-element__label
+                span.form-element__name=text
+                - for(var i = 0; i<row; i++){
+                    textarea.form-element__textarea
+                - }
+
+    if element == 'checkbox'
+        .form-element__wrapper
+            label.form-element__label.checkbox-label
+                input(type='checkbox').form-element__hidden-checkbox
+                .form-element__checkbox
+                    include ../../../img/svg/checked.svg
+                span.form-element__name=text
+
+
+mixin form-button(text)
+    button.form-button=text

@@ -1,0 +1,123 @@
+include ../mixins/_simple-miniatures
+
+mixin category-filter(withFilter)
+    .category-filter
+        ul.category-filter__wrapper
+            li.category-filter__item
+                a(class="category-filter__link", data-toggle="collapse" href="#CategoryMainList" aria-expanded="true" aria-controls="CategoryMainList") Show All Categories
+                ul(id="CategoryMainList",  class="category-filter__underWrap collapse in")
+                    li.category-filter__underItem
+                        a(href="#", class="category-filter__underLink-active")
+                            | Laptops & Computers
+                            span.category-filter__counterItem 2079
+                        ul.category-filter__subWrap
+                            li.category-filter__subItem
+                                a(class="category-filter__subLink", data-toggle="collapse" href="#CategoryOne" aria-expanded="true" aria-controls="CategoryOne")
+                                    | Laptops
+                                    span.category-filter__counterItem 800
+                                ul(id="CategoryOne", class="collapse in")
+                                    li
+                                        a(href="#") 11.6 "
+                                        span.category-filter__counterItem 345
+                                    li
+                                        a(href="#") 11.6 "
+                                        span.category-filter__counterItem 345
+                                    li
+                                        a(href="#") 11.6 "
+                                        span.category-filter__counterItem 345
+                                    li
+                                        a(href="#") 11.6 "
+                                        span.category-filter__counterItem 345
+                                    li
+                                        a(href="#") 11.6 "
+                                        span.category-filter__counterItem 345
+                    li.category-filter__underItem
+                        a(href="#", class="category-filter__underLink")
+                            | Laptops & Computers
+                            span.category-filter__counterItem 3222
+                    li.category-filter__underItem
+                        a(href="#", class="category-filter__underLink")
+                            | Laptops & Computers
+                            span.category-filter__counterItem 4333
+                    li.category-filter__underItem
+                        a(href="#", class="category-filter__underLink")
+                            | Laptops & Computers
+                            span.category-filter__counterItem 5555
+    if(withFilter)
+        .products__filter
+            +category-title("Filters", "small")
+            .filter-block
+                .filter-block__title
+                    | Price
+                div(class="js-filter-block")
+                .filter-range__price
+                    | Price:
+                    span.filter-range__from $1
+                    | -
+                    span.filter-range__to $2899
+            .filter-block
+                .filter-block__title
+                    | Brands
+                .filter-checkbox__wrapper
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    .filter-block__showmore
+                     span + Show more
+            .filter-block
+                .filter-block__title
+                    | Products
+                .filter-checkbox__wrapper
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    label.filter-checkbox__label
+                        input(type="checkbox")
+                        span.filter-checkbox__square
+                        span.filter-checkbox__text Samsung
+                        span(class="category-filter__counterItem") 3222
+                    .filter-block__showmore
+                        span + Show more
+            .filter-buttoms__wrapper
+                button(type="submit").filter-buttoms__filter Filter
+                button(type="reset").filter-buttoms__reset Reset
+

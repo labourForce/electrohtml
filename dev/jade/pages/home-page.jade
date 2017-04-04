@@ -1,0 +1,217 @@
+include ../components/banner/media-banner
+include ../components/mixins/_full-element
+include ../components/mixins/_simple-miniatures
+include ../components/category-filter/category-filter
+doctype html
+html(lang='ru', class="no-js")
+
+	head
+		meta(charset='utf-8')
+
+		title Electro.
+		meta(name='description', content='')
+
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+		meta(property='og:image', content='path/to/image.jpg')
+		
+		link(rel='shortcut icon', href='img/favicon/favicon.ico', type='image/x-icon')
+		link(rel='apple-touch-icon', href='img/favicon/apple-touch-icon.png')
+		link(rel='apple-touch-icon', sizes='72x72', href='img/favicon/apple-touch-icon-72x72.png')
+		link(rel='apple-touch-icon', sizes='114x114', href='img/favicon/apple-touch-icon-114x114.png')
+	
+
+		
+		// Header CSS (First Sections of Website: paste after release from _header.min.css here)
+		style 
+
+		// Load CSS & WebFonts Main Function
+		script !function(e){"use strict";function t(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function n(t,n){return e.localStorage&&localStorage[t+"_content"]&&localStorage[t+"_file"]===n}function a(t,a){if(e.localStorage&&e.XMLHttpRequest)n(t,a)?o(localStorage[t+"_content"]):l(t,a);else{var s=r.createElement("link");s.href=a,s.id=t,s.rel="stylesheet",s.type="text/css",r.getElementsByTagName("head")[0].appendChild(s),r.cookie=t}}function l(e,t){var n=new XMLHttpRequest;n.open("GET",t,!0),n.onreadystatechange=function(){4===n.readyState&&200===n.status&&(o(n.responseText),localStorage[e+"_content"]=n.responseText,localStorage[e+"_file"]=t)},n.send()}function o(e){var t=r.createElement("style");t.setAttribute("type","text/css"),r.getElementsByTagName("head")[0].appendChild(t),t.styleSheet?t.styleSheet.cssText=e:t.innerHTML=e}var r=e.document;e.loadCSS=function(e,t,n){var a,l=r.createElement("link");if(t)a=t;else{var o;o=r.querySelectorAll?r.querySelectorAll("style,link[rel=stylesheet],script"):(r.body||r.getElementsByTagName("head")[0]).childNodes,a=o[o.length-1]}var s=r.styleSheets;l.rel="stylesheet",l.href=e,l.media="only x",a.parentNode.insertBefore(l,t?a:a.nextSibling);var c=function(e){for(var t=l.href,n=s.length;n--;)if(s[n].href===t)return e();setTimeout(function(){c(e)})};return l.onloadcssdefined=c,c(function(){l.media=n||"all"}),l},e.loadLocalStorageCSS=function(l,o){n(l,o)||r.cookie.indexOf(l)>-1?a(l,o):t(e,"load",function(){a(l,o)})}}(this);
+		link(rel='stylesheet', href='css/main.min.css')
+
+	body
+		include ../components/header/header
+		include ../components/jumbo/jumbo
+		main
+			section.media-section
+				.container
+					.row
+						.col-lg-4.col-md-4.col-xs-12
+							+media-banner("media-1.jpg")
+						.col-lg-4.col-md-4.col-xs-12
+							+media-banner("media-2.jpg")
+						.col-lg-4.col-md-4.col-xs-12
+							+media-banner("media-3.jpg")
+			section.offer-section
+				.container
+					.row
+						.col-lg-4.col-md-4
+							include ../components/special-offer/special-offer
+						.col-lg-8.col-md-8
+							.offer-tabs
+								.offer-tabs__header.single-product__tabs-navigation
+									ul.nav.nav-tabs(role='tablist')
+										li.active
+											a(href='#Accesories', aria-controls='Accesories', role='tab', data-toggle='tab') Accesories
+										li
+											a(href='#Description', aria-controls='Description', role='tab', data-toggle='tab') Description
+										li
+											a(href='#Specification', aria-controls='Specification', role='tab', data-toggle='tab') Specification
+								.offer-tabs__container.tab-content
+									#Accesories.tab-pane.active.offer-tab__item(role='tabpanel')
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+									#Description.tab-pane.offer-tab__item(role='tabpanel')
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+									#Specification.tab-pane.offer-tab__item(role='tabpanel')
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+		section.grey-section.items-row
+			.container
+				.row
+					.offer-big
+						.offer-big__tab-header.single-product__tabs-navigation
+							ul.nav.nav-tabs(role='tablist')
+								li.active
+									a(href='#Best', aria-controls='Accesories', role='tab', data-toggle='tab') Best Deals
+								li
+									a(href='#TV', aria-controls='TV', role='tab', data-toggle='tab') TV
+								li
+									a(href='#Cameras', aria-controls='Cameras', role='tab', data-toggle='tab') Cameras
+								li
+									a(href='#Audio', aria-controls='Audio', role='tab', data-toggle='tab') Audio
+								li
+									a(href='#Cell', aria-controls='Cell', role='tab', data-toggle='tab') Cell
+						.offer-tabs__container.tab-content
+								#Best.tab-pane.active.offer-big__item(role='tabpanel')
+									.offer-big__item-double
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+									.offer-big__item-single
+										+shop-element(true,true,'563x521',false,false,false,true,false,true,false)
+									.offer-big__item-double
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+									.offer-big__item-double
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+									.offer-big__item-single
+										+shop-element(true,true,'563x521',false,false,false,true,false,true,false)
+									.offer-big__item-double
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+									.offer-big__item-double
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+									.offer-big__item-single
+										+shop-element(true,true,'563x521',false,false,false,true,false,true,false)
+									.offer-big__item-double
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+										+shop-element(true,true,'250x232',false,false,false,true,false,true,false)
+								#TV.tab-pane.active.offer-big__item(role='tabpanel')
+
+								#Cameras.tab-pane.active.offer-big__item(role='tabpanel')
+
+								#Audio.tab-pane.active.offer-big__item(role='tabpanel')
+
+								#Cell.tab-pane.active.offer-big__item(role='tabpanel')
+		section.best
+			.container
+				.row
+					+category-title("Bestsellers","big")
+					.items-row
+						.bestsellersDouble
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+		.items-row
+			.container
+				.row
+					.col-xs-12
+						include ../components/banner/banner
+		section.best
+			.container
+				.row
+					+category-title("Recently Viewed","big")
+					.items-row
+						#BestsellersMain
+							.carousel-item
+								+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+							.carousel-item
+								+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+							.carousel-item
+								+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+							.carousel-item
+								+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+							.carousel-item
+								+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+							.carousel-item
+								+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+							.carousel-item
+								+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+							.carousel-item
+								+shop-element(true,true,'250x232',false,false,false,true,false,true,true)
+
+
+
+
+		.items-row
+			.container
+				.row
+					.col-lg-12
+						include ../components/brand-carousel/brand-carousel
+		.items-row
+			.container
+				.row
+					.col-lg-4.col-md-4
+						+category-title("Featured Products","small")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+					.col-lg-4.col-md-4
+						+category-title("Onsale Products","small")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+					.col-lg-4.col-md-4
+						+category-title("Top Rated Products","small")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 2, "right")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 4, "right")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+
+
+
+		include ../components/footer/footer
+		
+		// Support old browsers
+		<!--[if lt IE 9]>
+		<script src="libs/html5shiv/es5-shim.min.js"></script>
+		<script src="libs/html5shiv/html5shiv.min.js"></script>
+		<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+		<script src="libs/respond/respond.min.js"></script>
+		<![endif]-->
+		
+		// Load Scripts
+		include ../components/scripts/scripts

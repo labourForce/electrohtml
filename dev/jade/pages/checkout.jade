@@ -1,0 +1,140 @@
+include ../components/mixins/_simple-miniatures
+include ../components/category-filter/category-filter
+include ../components/form/form
+doctype html
+html(lang='ru', class="no-js")
+
+    head
+        meta(charset='utf-8')
+
+        title Electro.
+        meta(name='description', content='')
+
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        meta(property='og:image', content='path/to/image.jpg')
+
+        link(rel='shortcut icon', href='img/favicon/favicon.ico', type='image/x-icon')
+        link(rel='apple-touch-icon', href='img/favicon/apple-touch-icon.png')
+        link(rel='apple-touch-icon', sizes='72x72', href='img/favicon/apple-touch-icon-72x72.png')
+        link(rel='apple-touch-icon', sizes='114x114', href='img/favicon/apple-touch-icon-114x114.png')
+
+
+
+        // Header CSS (First Sections of Website: paste after release from _header.min.css here)
+        style
+
+
+        link(rel='stylesheet', href='css/main.min.css')
+
+    body
+        include ../components/header/header
+        .container
+            include ../components/breadcrumbs/breadcrumbs
+            .row
+                .col-lg-12.col-md-12
+                    .checkout
+                        +category-title("Billing Address","big")
+                        form(action="", method="POST")
+                            .form-block
+                                .row
+                                    .col-lg-6.col-md-6
+                                        .row
+                                            .col-lg-6.col-md-6
+                                                +form-element('input', 'First name *', false, false, false, 'bold')
+                                            .col-lg-6.col-md-6
+                                                +form-element('input', 'Lastname*', false, false, false, 'bold')
+                                            .col-lg-12.col-md-12
+                                                +form-element('input', 'Company Name', false, false, false, 'bold')
+                                            .col-lg-6.col-md-6
+                                                +form-element('input', 'Email Address*', 'email', false, false,  'bold')
+                                            .col-lg-6.col-md-6
+                                                +form-element('input', 'Phone Number*', 'tel', false, false, 'bold')
+                                            .col-lg-12.col-md-12
+                                                +form-element('input', 'Country', false, false, false, 'bold')
+                                            .col-lg-12.col-md-12
+                                                +form-element('input', 'Address', false, 2, false, 'bold')
+                                            .col-lg-6.col-md-6
+                                                +form-element('input', 'Post code / Zip*', false, false, false, 'bold')
+                                            .col-lg-6.col-md-6
+                                                +form-element('input', 'Town / City*', false, false, false, 'bold')
+                                    .col-lg-6.col-md-6
+                                        .row
+                                            .col-lg-12.col-md-12
+                                                +form-element('textarea', 'Town / City*', false, false, false, 'bold')
+                                            .col-lg-12.col-md-12
+                                                +form-element('checkbox', 'Create an account?', false, false, false, 'bold')
+                            .form-block
+                                +category-title("Shipping Details","big")
+                                .row
+                                    .col-lg-12.col-md-12
+                                        +form-element('checkbox', 'Ship to Different Address?')
+                            .form-block
+                                +category-title("Your Order","big")
+                                    .order-table
+                                        .order-table__item
+                                            .order-table__quantity x 1
+                                            .order-table__name
+                                                h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                small COMPANY BRAND 2
+                                            .order-table__cost $2 340,00
+                                        .order-table__item
+                                             .order-table__quantity x 1
+                                             .order-table__name
+                                                 h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                 small COMPANY BRAND 2
+                                             .order-table__cost $2 340,00
+                                        .order-table__item
+                                            .order-table__quantity x 1
+                                            .order-table__name
+                                                h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                small COMPANY BRAND 2
+                                             .order-table__cost $2 340,00
+                                .col-lg-12.col-md-12
+                                    .order-total
+                                        .order-total__wrapper
+                                            .order-total__list
+                                                .order-total__item
+                                                    .order-total__name
+                                                        span Cart Subtotal
+                                                    .order-total__result
+                                                        span $2 434.00
+                                            .order-total__footer
+
+
+            .items-row
+                .row
+                    .col-lg-12
+                        include ../components/brand-carousel/brand-carousel
+            .items-row
+                .row
+                    .col-lg-4.col-md-4
+                        +category-title("Featured Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                    .col-lg-4.col-md-4
+                        +category-title("Onsale Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                    .col-lg-4.col-md-4
+                        +category-title("Top Rated Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 2, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 4, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+        include ../components/footer/footer
+
+        // Support old browsers
+        <!--[if lt IE 9]>
+        <script src="libs/html5shiv/es5-shim.min.js"></script>
+        <script src="libs/html5shiv/html5shiv.min.js"></script>
+        <script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+        <script src="libs/respond/respond.min.js"></script>
+        <![endif]-->
+
+        // Load Scripts
+        include ../components/scripts/scripts

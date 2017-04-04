@@ -1,0 +1,282 @@
+include ../components/mixins/_simple-miniatures
+include ../components/category-filter/category-filter
+include ../components/mixins/_full-element
+include ../components/form/form
+doctype html
+html(lang='ru', class="no-js")
+
+	head
+		meta(charset='utf-8')
+
+		title Electro.
+		meta(name='description', content='')
+
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+		meta(property='og:image', content='path/to/image.jpg')
+		
+		link(rel='shortcut icon', href='img/favicon/favicon.ico', type='image/x-icon')
+		link(rel='apple-touch-icon', href='img/favicon/apple-touch-icon.png')
+		link(rel='apple-touch-icon', sizes='72x72', href='img/favicon/apple-touch-icon-72x72.png')
+		link(rel='apple-touch-icon', sizes='114x114', href='img/favicon/apple-touch-icon-114x114.png')
+	
+
+		
+		// Header CSS (First Sections of Website: paste after release from _header.min.css here)
+		style 
+
+		// Load CSS & WebFonts Main Function
+		script !function(e){"use strict";function t(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function n(t,n){return e.localStorage&&localStorage[t+"_content"]&&localStorage[t+"_file"]===n}function a(t,a){if(e.localStorage&&e.XMLHttpRequest)n(t,a)?o(localStorage[t+"_content"]):l(t,a);else{var s=r.createElement("link");s.href=a,s.id=t,s.rel="stylesheet",s.type="text/css",r.getElementsByTagName("head")[0].appendChild(s),r.cookie=t}}function l(e,t){var n=new XMLHttpRequest;n.open("GET",t,!0),n.onreadystatechange=function(){4===n.readyState&&200===n.status&&(o(n.responseText),localStorage[e+"_content"]=n.responseText,localStorage[e+"_file"]=t)},n.send()}function o(e){var t=r.createElement("style");t.setAttribute("type","text/css"),r.getElementsByTagName("head")[0].appendChild(t),t.styleSheet?t.styleSheet.cssText=e:t.innerHTML=e}var r=e.document;e.loadCSS=function(e,t,n){var a,l=r.createElement("link");if(t)a=t;else{var o;o=r.querySelectorAll?r.querySelectorAll("style,link[rel=stylesheet],script"):(r.body||r.getElementsByTagName("head")[0]).childNodes,a=o[o.length-1]}var s=r.styleSheets;l.rel="stylesheet",l.href=e,l.media="only x",a.parentNode.insertBefore(l,t?a:a.nextSibling);var c=function(e){for(var t=l.href,n=s.length;n--;)if(s[n].href===t)return e();setTimeout(function(){c(e)})};return l.onloadcssdefined=c,c(function(){l.media=n||"all"}),l},e.loadLocalStorageCSS=function(l,o){n(l,o)||r.cookie.indexOf(l)>-1?a(l,o):t(e,"load",function(){a(l,o)})}}(this);
+		link(rel='stylesheet', href='css/main.min.css')
+
+	body
+		include ../components/header/header
+		.container
+			include ../components/breadcrumbs/breadcrumbs
+			.row
+				.col-lg-3.col-md-3
+					aside
+						+category-filter()
+						.banner-img
+							a(href="#")
+								img(src="img/ad-banner2.jpg", alt="Image")
+						+category-title("Latest Product","small")
+						.items-row
+							#LatestProductCarousel
+								.carousel-item
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+								.carousel-item
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+								.carousel-item
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+				.col-lg-9.col-md-9
+					.single-product__wrapper
+						.single-product
+							.single-product__img
+								.single-product__carousel
+									.single-product__carousel-item
+										img(src="img/Ultrabooks-600x600.jpg", alt="product")
+									.single-product__carousel-item
+										img(src="img/Laptop-600x600.jpg", alt="product")
+									.single-product__carousel-item
+										img(src="img/Laptop2-600x600.jpg", alt="product")
+									.single-product__carousel-item
+										img(src="img/Laptop3-600x600.jpg", alt="product")
+									.single-product__carousel-item
+										img(src="img/Laptop-600x600.jpg", alt="product")
+									.single-product__carousel-item
+										img(src="img/Laptop2-600x600.jpg", alt="product")
+								.single-product__gallery
+									.single-product__gallery-item
+										img(src="img/Ultrabooks-600x600.jpg", alt="product")
+									.single-product__gallery-item
+										img(src="img/Laptop-600x600.jpg", alt="product")
+									.single-product__gallery-item
+										img(src="img/Laptop2-600x600.jpg", alt="product")
+									.single-product__gallery-item
+										img(src="img/Laptop3-600x600.jpg", alt="product")
+									.single-product__gallery-item
+										img(src="img/Laptop-600x600.jpg", alt="product")
+									.single-product__gallery-item
+										img(src="img/Laptop2-600x600.jpg", alt="product")
+							.single-product__descr
+								.single-product__tag
+									a(href="#") Smartphones
+								.single-product__title
+									h2 Ultra Wireless S50 Headphones S50 with Bluetooth
+								.single-product__rating
+									img(src="img/svg/star.svg", alt="star")
+									img(src="img/svg/star.svg", alt="star")
+									img(src="img/svg/star.svg", alt="star")
+									img(src="img/svg/star-empty.svg", alt="star")
+									span.category-filter__counterItem 3
+								.single-product__avialabity
+									a(href="#")
+										img(src="img/yoko.png", aly="Brand")
+									span Avialabity:
+									span.single-product__stage In stock
+								.single-product__action
+									.shop-item__add
+										include ../../../img/svg/compare.svg
+										span Add to Compare
+									.shop-item__add
+										include ../../../img/svg/wishlist.svg
+										span Add to Wishlist
+								.single-product__detail
+									ul.shop-item__details
+										li 4.5 inch HD Screen
+										li 1.4 GHz Quad Core™ Processor
+										li 3GB Ram
+										li Android 4.4 KitKat OS
+									.single-product__text
+										p Nullam mollis vel ipsum sit amet fringilla. Suspendisse mattis tortor a dui euismod finibus ac eget metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+								.single-product__price
+									.single-product__price-new $1 215,00
+									.single-product__price-old $2 229,00
+								.single-product__quantity
+									.single-product__quantity-add-wrapper
+										span Quantity:
+										.single-product__quantity-add
+											.single-product__quantity-counter
+												input(type="text", value="1")
+											.single-product__quantity-switcher
+												button.single-product__quantity-plus +
+												button.single-product__quantity-minus -
+									.single-product__quantity-cart
+										button
+											include ../../../img/svg/Add-to-cart.svg
+											span Add to Cart
+						.single-product__tabs
+							.single-product__tabs-navigation
+								ul.nav.nav-tabs(role='tablist')
+									li.active
+										a(href='#Accesories', aria-controls='Accesories', role='tab', data-toggle='tab') Accesories
+									li
+										a(href='#Description', aria-controls='Description', role='tab', data-toggle='tab') Description
+									li
+										a(href='#Specification', aria-controls='Specification', role='tab', data-toggle='tab') Specification
+									li
+										a(href='#Reviews', aria-controls='Reviews', role='tab', data-toggle='tab') Reviews
+
+							.single-product__tabs-content.tab-content
+									#Accesories.tab-pane.active(role='tabpanel')
+										.single-product__accesories
+											ul.single-product__accesories-list
+												+shop-element(true, true, '191x177', false, false, false, true)
+												+shop-element(true, true, '191x177', false, false, false, true)
+												+shop-element(true, true, '191x177', false, false, false, true)
+											.single-product__accesories-total
+												.single-product__price-old $2 229,00
+												.single-product__accesories-new $1 424,00
+												.single-product__accesories-text
+													span For all Three items
+												+form-button('Add all to Cart')
+										.single-product__accesories-checkboxes
+											.form-element__wrapper
+												label.form-element__label.checkbox-label
+													input(type='checkbox', disabled).form-element__hidden-checkbox
+													.form-element__checkbox
+														include ../../../img/svg/checked.svg
+													span.form-element__name
+														strong This product:&nbsp;
+														span Ultra Wireless S50 Headphones S50 with Bluetooth  -&nbsp;
+														span.form-element__checkbox-price $1 215,00
+											.form-element__wrapper
+												label.form-element__label.checkbox-label
+													input(type='checkbox').form-element__hidden-checkbox
+													.form-element__checkbox
+														include ../../../img/svg/checked.svg
+													span.form-element__name
+														a(href="#") Uniwersal Headphones Case in Black&nbsp
+														span -&nbsp;
+														span.form-element__checkbox-price $1 215,00
+											.form-element__wrapper
+												label.form-element__label.checkbox-label
+													input(type='checkbox').form-element__hidden-checkbox
+													.form-element__checkbox
+														include ../../../img/svg/checked.svg
+													span.form-element__name
+														a(href="#") Headphones USB Wires&nbsp
+														span -&nbsp;
+														span.form-element__checkbox-price $1 215,00
+
+
+									#Description.tab-pane(role='tabpanel')
+										.row
+											.col-lg-12
+												.single-product__tabs-block
+													h3 Perfectly Done
+													p Praesent ornare, ex a interdum consectetur, lectus diam sodales elit, vitae egestas est enim ornare nisl. Nullam in lectus nec sem semper viverra. In lobortis egestas massa. Nam nec massa nisi. Suspendisse potenti. Quisque suscipit vulputate dui quis volutpat. Ut id elit facilisis, feugiat est in, tempus lacus. Ut ultrices dictum metus, a ultricies ex vulputate ac. Ut id cursus tellus, non tempor quam. Morbi porta diam nisi, id finibus nunc tincidunt eu.
+										.row
+											.col-lg-6
+												h3 Wireless
+												p Fusce vitae nibh mi. Integer posuere, libero et ullamcorper facilisis, enim eros tincidunt orci, eget vestibulum sapien nisi ut leo. Cras finibus vel est ut mollis. Donec luctus condimentum ante et euismod.
+										.row
+											.col-lg-6
+												h3 Wireless
+												p Integer bibendum aliquet ipsum, in ultrices enim sodales sed. Quisque ut urna vitae lacus laoreet malesuada eu at massa. Pellentesque nibh augue, pellentesque nec dictum vel, pretium a arcu. Duis eu urna suscipit, lobortis elit quis, ullamcorper massa.
+										.single-product__tabs-meta
+
+									#Specification.tab-pane(role='tabpanel')
+										h3 Technical Specs
+										ul
+											li.single-product__specification-item
+												.single-product__specification-name Brand
+												.single-product__specification-descr Apple
+											li.single-product__specification-item
+												.single-product__specification-name Item Height
+												.single-product__specification-descr 18 Millimeters
+											li.single-product__specification-item
+												.single-product__specification-name Item Width
+												.single-product__specification-descr 31.4 Centimeters
+											li.single-product__specification-item
+												.single-product__specification-name Screen Size
+												.single-product__specification-descr 13 Inches
+											li.single-product__specification-item
+												.single-product__specification-name Item Weight
+												.single-product__specification-descr 1.6 Kg
+											li.single-product__specification-item
+												.single-product__specification-name Product Dimensions
+												.single-product__specification-descr 21.9 x 31.4 x 1.8 cm
+											li.single-product__specification-item
+												.single-product__specification-name Item model number
+												.single-product__specification-descr MF841HN/A
+											li.single-product__specification-item
+												.single-product__specification-name Processor Brand
+												.single-product__specification-descr MF841HN/A
+											li.single-product__specification-item
+												.single-product__specification-name Processor Type
+												.single-product__specification-descr Core i5
+											li.single-product__specification-item
+												.single-product__specification-name Processor Speed
+												.single-product__specification-descr 2.9 GHz
+									#Reviews.tab-pane(role='tabpanel') ...
+
+			.items-row
+				.row
+					.col-lg-12
+						include ../components/brand-carousel/brand-carousel
+			.items-row
+				.row
+					.col-lg-4.col-md-4
+						+category-title("Featured Products","small")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+					.col-lg-4.col-md-4
+						+category-title("Onsale Products","small")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+					.col-lg-4.col-md-4
+						+category-title("Top Rated Products","small")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 2, "right")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 4, "right")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+		include ../components/footer/footer
+		
+		// Support old browsers
+		<!--[if lt IE 9]>
+		<script src="libs/html5shiv/es5-shim.min.js"></script>
+		<script src="libs/html5shiv/html5shiv.min.js"></script>
+		<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+		<script src="libs/respond/respond.min.js"></script>
+		<![endif]-->
+		
+		// Load Scripts
+		include ../components/scripts/scripts

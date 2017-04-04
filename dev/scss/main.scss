@@ -1,0 +1,12 @@
+@import "base/*";
+@import "vendor/*";
+@import "components/*";
+
+body {
+  font-family: $regular;
+  color: $black;
+}
+
+strong {
+    font-family: $bold;
+}

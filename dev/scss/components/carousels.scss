@@ -1,0 +1,31 @@
+.title-carousel {
+
+  &__rightButton {
+    position: absolute;
+    top: -67px;
+    right: 0;
+    color: rgb(174, 174, 174);
+    height: 11px;
+    cursor: pointer;
+    font-size: em(14);
+    transition: .25s all linear;
+    &:hover {
+      color: $black;
+    }
+  }
+  &__leftButton {
+    position: absolute;
+    top: -67px;
+    right: 20px;
+    color: rgb(174, 174, 174);
+    height: 11px;
+    cursor: pointer;
+    font-size: em(14);
+    transition: .25s all linear;
+    &:hover {
+      color: $black;
+    }
+  }
+
+}
+

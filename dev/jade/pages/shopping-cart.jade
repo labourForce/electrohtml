@@ -1,0 +1,138 @@
+include ../components/mixins/_simple-miniatures
+include ../components/category-filter/category-filter
+doctype html
+html(lang='ru', class="no-js")
+
+    head
+        meta(charset='utf-8')
+
+        title Electro.
+        meta(name='description', content='')
+
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        meta(property='og:image', content='path/to/image.jpg')
+
+        link(rel='shortcut icon', href='img/favicon/favicon.ico', type='image/x-icon')
+        link(rel='apple-touch-icon', href='img/favicon/apple-touch-icon.png')
+        link(rel='apple-touch-icon', sizes='72x72', href='img/favicon/apple-touch-icon-72x72.png')
+        link(rel='apple-touch-icon', sizes='114x114', href='img/favicon/apple-touch-icon-114x114.png')
+
+
+
+        // Header CSS (First Sections of Website: paste after release from _header.min.css here)
+        style
+
+
+        link(rel='stylesheet', href='css/main.min.css')
+
+    body
+        include ../components/header/header
+        .container
+            include ../components/breadcrumbs/breadcrumbs
+            .row
+                .col-lg-12.col-md-12
+                    .shopping-cart
+                            header
+                                .shopping-cart__title Shopping Cart Summary
+                            form(action="#", method="POST")
+                                .shopping-cart__table
+                                    .shopping-cart__table-head
+                                        .shopping-cart__table-row
+                                            .shopping-cart__head-close
+                                            .shopping-cart__head-thumbnail
+                                            .shopping-cart__head-product Product
+                                            .shopping-cart__head-price Price
+                                            .shopping-cart__head-quantity Quantity
+                                            .shopping-cart__head-total Total
+                                    .shopping-cart__table-body
+                                        .shopping-cart__table-row
+                                            .shopping-cart__table-close
+                                                include ../../img/svg/cancel.svg
+                                            .shopping-cart__table-thumbnail
+                                                a(href="#")
+                                                    img(src="img/Laptop-600x600.jpg", alt="Picture")
+                                            div(data-title="Product:").shopping-cart__table-product
+                                                a(href="#")
+                                                    h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                    p COMPANY BRAND
+                                            div(data-title="Price:").shopping-cart__table-price $1,999.00
+                                            div(data-title="Quantity:").shopping-cart__table-quantity
+                                                .single-product__quantity-add
+                                                    .single-product__quantity-counter
+                                                        input(type="text", value="1")
+                                                    .single-product__quantity-switcher
+                                                        button.single-product__quantity-plus +
+                                                        button.single-product__quantity-minus -
+                                            div(data-title="Total:").shopping-cart__table-total $1,999.00
+                                        .shopping-cart__table-row
+                                            .shopping-cart__table-close
+                                                include ../../img/svg/cancel.svg
+                                            .shopping-cart__table-thumbnail
+                                                a(href="#")
+                                                    img(src="img/Laptop-600x600.jpg", alt="Picture")
+                                            div(data-title="Product:").shopping-cart__table-product
+                                                a(href="#")
+                                                    h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                    p COMPANY BRAND
+                                            div(data-title="Price:").shopping-cart__table-price $1,999.00
+                                            div(data-title="Quantity:").shopping-cart__table-quantity
+                                                .single-product__quantity-add
+                                                    .single-product__quantity-counter
+                                                        input(type="text", value="1")
+                                                    .single-product__quantity-switcher
+                                                        button.single-product__quantity-plus +
+                                                        button.single-product__quantity-minus -
+                                            div(data-title="Total:").shopping-cart__table-total $1,999.00
+                                .shopping-cart__order-info
+                                     p Free Delivery
+                                     p Total
+                                        span.shopping-cart__order-total $ 770
+                                        | TTC
+                                .shopping-cart__buttons-wrap
+                                    .shopping-cart__buttons-row
+                                        .shopping-cart__buttons-coupon
+                                            input(type="text", placeholder="Coupon Code")
+                                            button Apply Coupon
+                                    .shopping-cart__buttons-row
+                                        button.shopping-cart__update Update Cart
+                                        button.shopping-cart__checkout Proceed to Checkout
+
+
+
+            .items-row
+                .row
+                    .col-lg-12
+                        include ../components/brand-carousel/brand-carousel
+            .items-row
+                .row
+                    .col-lg-4.col-md-4
+                        +category-title("Featured Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                    .col-lg-4.col-md-4
+                        +category-title("Onsale Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                    .col-lg-4.col-md-4
+                        +category-title("Top Rated Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 2, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 4, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+        include ../components/footer/footer
+
+        // Support old browsers
+        <!--[if lt IE 9]>
+        <script src="libs/html5shiv/es5-shim.min.js"></script>
+        <script src="libs/html5shiv/html5shiv.min.js"></script>
+        <script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+        <script src="libs/respond/respond.min.js"></script>
+        <![endif]-->
+
+        // Load Scripts
+        include ../components/scripts/scripts

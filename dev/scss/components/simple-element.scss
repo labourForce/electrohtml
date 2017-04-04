@@ -1,0 +1,147 @@
+/*
+  defaultSmall
+  columnBig
+*/
+.items-row {
+  margin-bottom: 100px;
+}
+.simple-element {
+
+  a {
+    color: inherit;
+    &:hover,&:link,&:active {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  &__rating {
+    margin-top: 2px;
+  }
+
+  &__oldPrice {
+    display: inline;
+    font-size: em(12);
+    color: #8f8f8f;
+    font-family: $regular;
+    text-decoration: line-through;
+    padding-left: em(5);
+  }
+  &__priceNumber {
+    position: relative;
+    & span {
+      font-family: $regular;
+      &.bold-text {
+        font-family: $bold;
+      }
+    }
+
+  }
+  &__cart {
+    &::after {
+      display: block;
+      content: "\61";
+      font-family: font-electro;
+      color: #fff;
+      cursor: pointer;
+      padding: 12px;
+      background-color: #e6e6e6;
+      border-radius: 50%;
+      font-size: em(18);
+      transition: .25s all linear;
+    }
+  }
+
+
+  &.defaultSmall {
+    padding: 12px 0;
+  }
+  &__wrap {
+    display: flex;
+    &.defaultSmall {
+      display: flex;
+    }
+    &.columnBig {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 15px;
+      margin-bottom: 75px;
+
+    }
+
+  }
+  &__tag {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    a {
+      color: #878787;
+      font-size: em(12);
+    }
+  }
+  &__background {
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      @media #{$md-max} {
+        margin: 0 auto;
+      }
+    }
+  }
+  &__text {
+    padding-left: 16px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    flex-grow: 1;
+    &.defaultSmall {
+      padding-left: 16px;
+      padding-top: 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &.columnBig {
+        h5 {
+          font-size: em(18);
+          color: $black;
+          padding-top: 25px;
+          text-align: center;
+        }
+    }
+    h5 {
+      font-size: em(15);
+      color: rgb(51, 62, 72);
+      line-height: 1.286;
+      &.blue-text {
+        color: #0062bd;
+        font-family: $bold;
+      }
+    }
+  }
+  &__price {
+    font-size: em(15);
+    font-family: $bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+
+// Hover
+.simple-element {
+  cursor: pointer;
+  &:hover &__cart{
+    &::after {
+      background-color: $main-theme-color;
+    }
+  }
+}
+
+.bestsellersDouble {
+  .slick-dots {
+    bottom: -50px;
+    left: 44%;
+  }
+}

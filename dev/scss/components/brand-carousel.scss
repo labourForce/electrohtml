@@ -1,0 +1,49 @@
+.brand-carousel {
+  margin: 23px 0;
+
+  &__wrapper {
+    padding: 13px 0;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+  }
+  &__leftButton {
+    color: #aeaeae;
+    cursor: pointer;
+    transition: .2s all linear;
+    position: absolute;
+    top: calc(50% - 8px);
+    left: 0;
+    z-index: 3000;
+    &:hover {
+      color: $black;
+    }
+  }
+  &__rightButton {
+    color: #aeaeae;
+    cursor: pointer;
+    transition: .2s all linear;
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 0;
+    z-index: 3000;
+    &:hover {
+      color: $black;
+    }
+  }
+  &__item {
+    opacity: .3;
+    cursor: pointer;
+    transition: .2s all linear;
+    & img {
+      display: block;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+      outline: none;
+      max-height: 50px;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

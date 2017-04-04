@@ -1,0 +1,60 @@
+// Font-size + function
+$browser-context: 16; // Default
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}rem;
+}
+
+// Colors
+$main-theme-color: #fed700;
+$white: #fff;
+$black: rgb(51, 62, 72);
+$grey: rgb(234, 234, 234);
+$dark-blue: rgb(52,63,73);
+$dark-blue-font: rgb(0, 98, 189);
+$bl-bg-grey: rgb(245, 245, 245);
+$price-red: rgb(238, 0, 0);
+$slide-bg-grey: rgb(238, 238, 238);
+$date-bg-color: rgb(230, 230, 230);
+$light-grey: rgb(221, 221, 221);
+$dark-grey-font: rgb(135, 135, 135);
+$light-grey-font: rgb(132, 132, 132);
+$link-grey-font: rgb(123, 129, 134);
+
+
+
+// Fonts
+$regular: "OpenSansRegular";
+$bold: "OpenSansBold";
+$light: "OpenSansLight";
+
+$extrabold: "OpenSansExtraBold";
+$semibold: "OpenSansSemiBold";
+
+// Media (use @media #{$xs-min}})
+$xs-min: "only screen and (min-width:none)";
+$xs-max: "only screen and (max-width:320px)";
+
+$sxs-min: "only screen and (min-width:none)";
+$sxs-max: "only screen and (max-width:480px)";
+
+$sm-min: "only screen and (min-width:768px)";
+$sm-max: "only screen and (max-width:768px)";
+$sm-md: "only screen (min-width: 768px) and (max-width:991px)";
+
+$md-min: "only screen and (min-width:992px)";
+$md-max: "only screen and (max-width:992px)";
+$md-lg: "only screen (min-width: 992px) and (max-width:1170px)";
+
+$lg-min: "only screen and (min-width:1200px)";
+$lg-max: "only screen and (max-width:1200px)";
+
+$extrabold: "OpenSansExtraBold";
+$semibold: "OpenSansSemiBold";
+
+@mixin slider-container-height {
+    height: 700px;
+}
+@mixin slider-container-width {
+    width: 100%;
+}

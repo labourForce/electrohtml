@@ -1,0 +1,87 @@
+include item-default
+include card-bl
+include category-search
+include category-search_centered
+include tab-list
+
+main
+    section
+        .container
+
+                +card-bl
+
+                .col-lg-4
+                    include special-offer-bl
+
+                .col-lg-8
+                        +tab-list(['Featured','On Sale','Top Rated'], 0)
+
+                        .col-lg-4
+                            .row
+                                +item-default
+
+                         .col-lg-4
+                            .row
+                                +item-default
+
+                        .col-lg-4
+                            .row
+                                +item-default
+
+                         .col-lg-4
+                            .row
+                                +item-default
+
+                        .col-lg-4
+                            .row
+                                +item-default
+
+                         .col-lg-4
+                            .row
+                                +item-default
+    section
+        .container
+                +tab-list(['Best Deals','TV & Video ','Cameras','Audio','Cell Phones','GPS & Navi','Computers','Portable Audio','Accesoriess'], 0)
+
+                    .item-slider-lrg-2row
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+                        +item-default
+    section
+        .container
+            .titled-layout
+                .titled-layout__header
+                    .titled-layout__header__title
+                        h2 Bestsellers
+
+                    .titled-layout__header__tabs
+                        ul
+                            li(class="active")
+                                a(href="#") Top 20
+                            li
+                                a(href="#") Phones & Tablets
+                            li
+                                a(href="#") Laptops & Computers
+                            li
+                                a(href="#") Video Cameras
+                .titled-layout__body
+                    +item-default
+                    +item-default
+                    +item-default
+                    +item-default
+                    +item-default
+                    +item-default
+                    +item-default
+                    +item-default

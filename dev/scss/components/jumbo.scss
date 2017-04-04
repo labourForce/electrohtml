@@ -1,0 +1,111 @@
+.jumbo {
+  &-carousel {
+
+  }
+
+  &-content {
+    padding-top: 74px;
+    padding-left: em(65);
+
+    &__title {
+      font-size: em(56);
+      color: $black;
+      text-transform: uppercase;
+      font-family: $light;
+      line-height: em(47);
+      @media #{$sm-max} {
+        font-size: em(33);
+      }
+    }
+    &__subtitle {
+      padding: 27px 0;
+      text-transform: uppercase;
+      font-size: em(13);
+      font-family: $extrabold;
+      @media #{$sm-max} {
+        padding: 13px 0;
+      }
+    }
+    &__price {
+      span {
+        font-size: em(12);
+        text-transform: uppercase;
+        color: $black;
+      }
+    }
+    &__number {
+      font-size: em(48);
+      font-family: $bold;
+      &::before {
+        content: '$';
+        display: inline-block;
+        font-family: $bold;
+        font-size: em(32);
+        height: 100%;
+        vertical-align: top;
+      }
+      span {
+        display: inline-block;
+        vertical-align: top;
+        font-size: em(32);
+        font-family: $bold;
+      }
+    }
+  }
+
+  &-slide {
+    height: 485px;
+    background-color: $grey;
+    font-family: $bold;
+    @media #{$md-max} {
+      height: 404px;
+    }
+    @media #{$sm-max} {
+      height: 360px;
+    }
+
+  }
+}
+.slick-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 34%;
+  @media #{$sm-max} {
+    position: relative;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+  }
+  li {
+    display: inline-block;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    transition: .25s all linear;
+    cursor: pointer;
+    margin-right: 14px;
+    background-color: #bcbcbc;
+    &.slick-active{
+      width: 30px;
+      background-color: $main-theme-color;
+      border-radius: 8px;
+      button{
+        width: 30px;
+        border-radius: 8px;
+        background-color: $main-theme-color;
+      }
+    }
+    button{
+      border: none;
+      outline: none;
+      border-radius: 50%;
+      display: block;
+      font-size: 0;
+      width: 8px;
+      height: 8px;
+      background-color: transparent;
+
+    }
+  }
+}
+

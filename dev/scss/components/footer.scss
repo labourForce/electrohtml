@@ -1,0 +1,245 @@
+.footer-main {
+  padding-top: 55px;
+  padding-bottom: 80px;
+  background-color: #f8f8f8;
+}
+
+// Footer Logo
+.footer-logo {
+  margin-bottom: 36px;
+  @media #{$md-max}{
+    text-align: center;
+  }
+}
+
+// Contact Us
+.call-us {
+  display: flex;
+  margin-bottom: em(42);
+  &__title{
+    font-size: em(13);
+    font-weight: 100;
+    line-height: em(20);
+    color: rgb(51, 62, 72);
+    display: block;
+  }
+  &__number {
+    color: rgb(51, 62, 72);
+    display: block;
+    font-size: em(22);
+  }
+  &__text {
+    margin-left: em(20);
+  }
+  &__img {
+    svg {
+      fill: $main-theme-color;
+    }
+  }
+}
+
+.contact-us {
+
+  color: rgb(51, 62, 72);
+  font-size: em(14);
+  margin-bottom: 44px;
+  &__title {
+    font-weight: 700;
+  }
+  address {
+    font-size: em(14);
+    color: rgb(51, 62, 72);
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+// Social
+.footer-social {
+  &__wrapper {
+    display: flex;
+    @media #{$md-max}{
+      margin-bottom: 40px;
+    }
+    @media #{$lg-max}{
+      margin-bottom: 40px;
+    }
+  }
+  &__item {
+    margin-right: em(28);
+    @media #{$md-max}{
+      margin-right: em(22);
+    }
+    & a svg path {
+      fill: #7c7c7c!important;
+      transition: .25s all linear;
+      &:hover {
+        fill: $black!important;
+      }
+    }
+  }
+}
+
+// Footer Nav
+.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  @media #{$md-max}{
+    flex-direction: column;
+  }
+  &__column {
+
+  }
+  &__wrapper {
+    @media #{$md-max}{
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  &__title {
+    padding-bottom: 45px;
+    font-size: 16px;
+    color: $black;
+    font-weight: 700;
+    @media #{$md-max}{
+      text-align: center;
+      padding-bottom: 20px;
+    }
+  }
+  &__link {
+    color: $black;
+    font-size: em(14);
+    padding-bottom: 20px;
+    display: block;
+    &:hover,&:active,&:link {
+      text-decoration: none;
+      color: $black;
+    }
+  }
+}
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  &-name {
+
+  }
+  &-cart {
+
+  }
+}
+.footer__bottom-wrap {
+  padding: 30px 0;
+  background-color: #eaeaea;
+  color: $black;
+  font-size: em(14);
+
+}
+.footer__bottom-name {
+  & a {
+    color: $black;
+    font-family: $bold;
+    display: inline-block;
+    padding: 0 4px;
+    &:hover,&:active,&:link {
+      text-decoration: none;
+      color: $black;
+    }
+  }
+}
+
+// Sign Up
+.sign-up {
+  background-color: $main-theme-color;
+  padding: 20px 0;
+  &__title {
+    display: flex;
+    align-items: center;
+    color: rgb(51, 62, 72);
+    height: 50px;
+    @media #{$lg-max}{
+      justify-content: center;
+      padding-bottom: 15px;
+    }
+    @media #{$md-max} {
+      flex-direction: column;
+    }
+    svg {
+      display: inline-block;
+      margin-right: em(22);
+      fill: rgb(51, 62, 72);
+    }
+    span {
+      font-size: 22px;
+      @media #{$sm-max} {
+        font-size: 18px;
+        display: block;
+        margin-top: 15px;
+      }
+    }
+  }
+  &__innertext {
+    margin-left: em(40);
+    position: relative;
+    top: 3px;
+    @media #{$md-max} {
+      margin: 10px 0;
+    }
+    strong {
+      font-family: $bold;
+      padding-left: 4px;
+    }
+  }
+}
+.cls-1 {
+  fill: inherit!important;
+}
+.sign-up {
+  height: 91px;
+  @media #{$lg-max}{
+    height: auto;
+  }
+  @media #{$md-max} {
+    height: auto;
+  }
+}
+.sign-up__searchWrap {
+  display: table;
+  @media #{$lg-max}{
+    display: flex;
+    justify-content: center;
+  }
+  @media #{$sm-max} {
+    margin-top: 15px;
+  }
+}
+.sign-up__search {
+  display: table-cell;
+  padding: 1.04em 2em;
+  background-color: #fff;
+  border: 0;
+  outline: none;
+  border-top-left-radius: 22px;
+  border-bottom-left-radius: 22px;
+  font-size: em(15);
+  @media #{$sm-max} {
+    padding: 1.04em 1em;
+  }
+}
+.sign-up__searchButton {
+  display: table-cell;
+  background-color: #333e48;
+  color: #fff;
+  border: none;
+  border-top-right-radius: 22px;
+  border-bottom-right-radius: 22px;
+  height: 52px;
+  font-size: em(14);
+  padding: 19px 33px 20px;
+  @media #{$md-max} {
+    padding: 20px;
+  }
+  @media #{$sm-max} {
+    padding: 10px;
+  }
+
+}

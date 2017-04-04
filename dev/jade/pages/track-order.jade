@@ -1,0 +1,87 @@
+include ../components/mixins/_simple-miniatures
+include ../components/category-filter/category-filter
+include ../components/form/form
+doctype html
+html(lang='ru', class="no-js")
+
+    head
+        meta(charset='utf-8')
+
+        title Electro.
+        meta(name='description', content='')
+
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        meta(property='og:image', content='path/to/image.jpg')
+
+        link(rel='shortcut icon', href='img/favicon/favicon.ico', type='image/x-icon')
+        link(rel='apple-touch-icon', href='img/favicon/apple-touch-icon.png')
+        link(rel='apple-touch-icon', sizes='72x72', href='img/favicon/apple-touch-icon-72x72.png')
+        link(rel='apple-touch-icon', sizes='114x114', href='img/favicon/apple-touch-icon-114x114.png')
+
+
+
+        // Header CSS (First Sections of Website: paste after release from _header.min.css here)
+        style
+
+
+        link(rel='stylesheet', href='css/main.min.css')
+
+    body
+        include ../components/header/header
+        .container
+            include ../components/breadcrumbs/breadcrumbs
+            .row
+                .col-xs-12
+                    .entry-wrapper
+                        header.entry-header
+                            h1.entry-title Track Your Order
+                            p.entry-subtitle To track your order please enter your Order ID in the box below and press the "Track" button. This was given to you on your receipt and in the confirmation email you should have received.
+                        form(action="#", method="GET")
+                            .row
+                                .col-lg-6.col-md-6.col-xs-12
+                                    +form-element('input', 'Order ID', false, false, 'Found in your order confirmation email', 'bold')
+                                .col-lg-6.col-md-6.col-xs-12
+                                    +form-element('input', 'Billing Email', false, false, 'Email you used during checkout', 'bold')
+                                .col-xs-12
+                                    +form-button('Track')
+
+
+
+
+            .items-row
+                .row
+                    .col-lg-12
+                        include ../components/brand-carousel/brand-carousel
+            .items-row
+                .row
+                    .col-lg-4.col-md-4
+                        +category-title("Featured Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                    .col-lg-4.col-md-4
+                        +category-title("Onsale Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                    .col-lg-4.col-md-4
+                        +category-title("Top Rated Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 2, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 4, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+        include ../components/footer/footer
+
+        // Support old browsers
+        <!--[if lt IE 9]>
+        <script src="libs/html5shiv/es5-shim.min.js"></script>
+        <script src="libs/html5shiv/html5shiv.min.js"></script>
+        <script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+        <script src="libs/respond/respond.min.js"></script>
+        <![endif]-->
+
+        // Load Scripts
+        include ../components/scripts/scripts

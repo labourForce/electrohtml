@@ -1,0 +1,16 @@
+// Variables
+- var src = ['img/3docean.png', 'img/audiojungle.png', 'img/themeforest.png', 'img/3docean.png', 'img/audiojungle.png', 'img/themeforest.png', 'img/3docean.png', 'img/audiojungle.png', 'img/themeforest.png'];
+- var alt = 'Brand Image';
+
+// Mixin render all images
+mixin brand-carousel(source, alt)
+    .brand-carousel__wrapper
+        for name in src
+            .brand-carousel__item
+                img(src=name, alt=alt)
+
+// Wrap Section
+.brand-carousel
+    .container
+        .row
+            +brand-carousel(src, alt)

@@ -1,0 +1,66 @@
+include ../mixins/_full-element
+.shop
+    .shop-header
+        .shop-header__title
+            h2 Smartphones Shop
+        .shop-header__result
+            | Showing
+            span 20
+            | of
+            span 127
+            | results
+    .shop-bar
+        .shop-bar__view
+            button(data-change-grid = "grid view").shop-bar__grid-change
+                i(class="fa fa-th")
+            button(data-change-grid = "grid view extended").shop-bar__grid-change.active-button
+                i(class="fa fa-align-justify")
+            button(data-change-grid = "list view").shop-bar__grid-change
+                i(class="fa fa-list")
+            button(data-change-grid = "list view small").shop-bar__grid-change
+                i(class="fa fa-th-list")
+        .shop-bar__filter
+            select
+                option Popularity
+                option Top New
+            select
+                option Show 20
+                option Show 50
+                option Show 100
+        .shop-bar__pagination
+            span.shop-bar__pagination-from 1
+            | of
+            span.shop-bar__pagination-to 18
+    ul(data-shop-grid = 'true').shop-container
+        +shop-element(true,true,'250x232',true,true,true,true,true,true,true)
+        +shop-element(true,true,'250x232',true,true,true,true,true,true,true)
+        +shop-element(true,true,'250x232',true,true,true,true,true,true,true)
+        +shop-element(true,true,'250x232',true,true,true,true,true,true,true)
+        +shop-element(true,true,'250x232',true,true,true,true,true,true,true)
+        +shop-element(true,true,'250x232',true,true,true,true,true,true,true)
+        +shop-element(true,true,'250x232',true,true,true,true,true,true,true)
+        +shop-element(true,true,'250x232',true,true,true,true,true,true,true)
+        +shop-element(true,true,'250x232',true,true,true,true,true,true,true)
+    .shop-footer.items-row
+        .shop-footer__show
+            .shop-bar__filter
+                select
+                    option Show 20
+                    option Show 50
+            .shop-header__result
+                | Showing
+                span 20
+                | of
+                span 127
+                | results
+        .shop-footer__pagination
+            button.active-button 1
+            button 2
+            button 3
+            span ...
+            button 18
+
+
+
+
+

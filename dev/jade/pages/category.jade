@@ -1,0 +1,144 @@
+include ../components/mixins/_simple-miniatures
+include ../components/category-filter/category-filter
+doctype html
+html(lang='ru', class="no-js")
+
+	head
+		meta(charset='utf-8')
+
+		title Electro.
+		meta(name='description', content='')
+
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+		meta(property='og:image', content='path/to/image.jpg')
+		
+		link(rel='shortcut icon', href='img/favicon/favicon.ico', type='image/x-icon')
+		link(rel='apple-touch-icon', href='img/favicon/apple-touch-icon.png')
+		link(rel='apple-touch-icon', sizes='72x72', href='img/favicon/apple-touch-icon-72x72.png')
+		link(rel='apple-touch-icon', sizes='114x114', href='img/favicon/apple-touch-icon-114x114.png')
+	
+
+		
+		// Header CSS (First Sections of Website: paste after release from _header.min.css here)
+		style 
+
+		// Load CSS & WebFonts Main Function
+		script !function(e){"use strict";function t(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function n(t,n){return e.localStorage&&localStorage[t+"_content"]&&localStorage[t+"_file"]===n}function a(t,a){if(e.localStorage&&e.XMLHttpRequest)n(t,a)?o(localStorage[t+"_content"]):l(t,a);else{var s=r.createElement("link");s.href=a,s.id=t,s.rel="stylesheet",s.type="text/css",r.getElementsByTagName("head")[0].appendChild(s),r.cookie=t}}function l(e,t){var n=new XMLHttpRequest;n.open("GET",t,!0),n.onreadystatechange=function(){4===n.readyState&&200===n.status&&(o(n.responseText),localStorage[e+"_content"]=n.responseText,localStorage[e+"_file"]=t)},n.send()}function o(e){var t=r.createElement("style");t.setAttribute("type","text/css"),r.getElementsByTagName("head")[0].appendChild(t),t.styleSheet?t.styleSheet.cssText=e:t.innerHTML=e}var r=e.document;e.loadCSS=function(e,t,n){var a,l=r.createElement("link");if(t)a=t;else{var o;o=r.querySelectorAll?r.querySelectorAll("style,link[rel=stylesheet],script"):(r.body||r.getElementsByTagName("head")[0]).childNodes,a=o[o.length-1]}var s=r.styleSheets;l.rel="stylesheet",l.href=e,l.media="only x",a.parentNode.insertBefore(l,t?a:a.nextSibling);var c=function(e){for(var t=l.href,n=s.length;n--;)if(s[n].href===t)return e();setTimeout(function(){c(e)})};return l.onloadcssdefined=c,c(function(){l.media=n||"all"}),l},e.loadLocalStorageCSS=function(l,o){n(l,o)||r.cookie.indexOf(l)>-1?a(l,o):t(e,"load",function(){a(l,o)})}}(this);
+		link(rel='stylesheet', href='css/main.min.css')
+
+	body
+		include ../components/header/header
+		.container
+			include ../components/breadcrumbs/breadcrumbs
+			.row
+				.col-lg-3.col-md-3
+					aside
+						+category-filter()
+						.banner-img
+							a(href="#")
+								img(src="img/ad-banner2.jpg", alt="Image")
+						+category-title("Latest Product","small")
+						.items-row
+							#LatestProductCarousel
+								.carousel-item
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+								.carousel-item
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+								.carousel-item
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+									+element_list("defaultSmall", '100x93', true, false, false, false, false, false, 'bold')
+				.col-lg-9.col-md-9
+					+category-title("Laptops & Computers Categories","big")
+					.items-row
+						.row
+							.col-lg-4.col-md-6
+								+element_list("columnBig", '270x240')
+							.col-lg-4.col-md-6
+								+element_list("columnBig", '270x240')
+							.col-lg-4.col-md-6
+								+element_list("columnBig", '270x240')
+							.col-lg-4.col-md-6
+								+element_list("columnBig", '270x240')
+							.col-lg-4.col-md-6
+								+element_list("columnBig", '270x240')
+							.col-lg-4.col-md-6
+								+element_list("columnBig", '270x240')
+					+category-title("Bestsellers","big")
+					.items-row
+						#Bestsellers
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+
+					+category-title("People Buying in this Category","big")
+					.items-row
+						#PeopleBuyingCategory
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+							.carousel-item
+								+element_list("defaultSmall", '181x168', true, "Laptops", "blue", true)
+			.items-row
+				.row
+					.col-lg-12
+						include ../components/brand-carousel/brand-carousel
+			.items-row
+				.row
+					.col-lg-4.col-md-4
+						+category-title("Featured Products","small")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+					.col-lg-4.col-md-4
+						+category-title("Onsale Products","small")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+						+element_list("defaultSmall", '75x75', true, false, "blue")
+					.col-lg-4.col-md-4
+						+category-title("Top Rated Products","small")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 2, "right")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 4, "right")
+						+element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+		include ../components/footer/footer
+		
+		// Support old browsers
+		<!--[if lt IE 9]>
+		<script src="libs/html5shiv/es5-shim.min.js"></script>
+		<script src="libs/html5shiv/html5shiv.min.js"></script>
+		<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+		<script src="libs/respond/respond.min.js"></script>
+		<![endif]-->
+		
+		// Load Scripts
+		include ../components/scripts/scripts

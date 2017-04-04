@@ -1,0 +1,142 @@
+include ../components/mixins/_simple-miniatures
+include ../components/category-filter/category-filter
+include ../components/form/form
+doctype html
+html(lang='ru', class="no-js")
+
+    head
+        meta(charset='utf-8')
+
+        title Electro.
+        meta(name='description', content='')
+
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        meta(property='og:image', content='path/to/image.jpg')
+
+        link(rel='shortcut icon', href='img/favicon/favicon.ico', type='image/x-icon')
+        link(rel='apple-touch-icon', href='img/favicon/apple-touch-icon.png')
+        link(rel='apple-touch-icon', sizes='72x72', href='img/favicon/apple-touch-icon-72x72.png')
+        link(rel='apple-touch-icon', sizes='114x114', href='img/favicon/apple-touch-icon-114x114.png')
+
+
+
+        // Header CSS (First Sections of Website: paste after release from _header.min.css here)
+        style
+
+
+        link(rel='stylesheet', href='css/main.min.css')
+
+    body
+        include ../components/header/header
+        .container
+            include ../components/breadcrumbs/breadcrumbs
+            .row
+                .col-xs-12
+                    header.entry-header
+                        h1.entry-title Frequently Asked Questions
+                        p.entry-subtitle This Agreement was last modified on 18th february 2016
+                    .faq
+                        .faq-title Shipping Information
+                        .row
+                            .col-lg-6.col-md-6.col-xs-12
+                                .faq-text-block
+                                    h3.faq-title-little What Shipping Methods Are Available?
+                                    p.faq-subtitle In egestas, libero vitae scelerisque tristique, turpis augue faucibus dolor, at aliquet ligula massa at justo. Donec viverra tortor quis tortor pretium, in pretium risus finibus. Integer viverra pretium auctor. Aliquam eget convallis eros, varius sagittis nulla. Suspendisse potenti. Aenean consequat ex sit amet metus
+                            .col-lg-6.col-md-6.col-xs-12
+                                .faq-text-block
+                                    h3.faq-title-little How Long Will it Take To Get My Package?
+                                    p.faq-subtitle Vivamus sed feugiat mi. Sed non accumsan diam, id maximus sem. Nam hendrerit a erat venenatis tincidunt. Mauris bibendum turpis mauris, vitae dignissim odio posuere viverra. Donec condimentum ac ligula a imperdiet.
+                            .col-lg-6.col-md-6.col-xs-12
+                                .faq-text-block
+                                    h3.faq-title-little What Shipping Methods Are Available?
+                                    p.faq-subtitle In egestas, libero vitae scelerisque tristique, turpis augue faucibus dolor, at aliquet ligula massa at justo. Donec viverra tortor quis tortor pretium, in pretium risus finibus. Integer viverra pretium auctor. Aliquam eget convallis eros, varius sagittis nulla. Suspendisse potenti. Aenean consequat ex sit amet metus
+                            .col-lg-6.col-md-6.col-xs-12
+                                .faq-text-block
+                                    h3.faq-title-little How Long Will it Take To Get My Package?
+                                    p.faq-subtitle Vivamus sed feugiat mi. Sed non accumsan diam, id maximus
+                    header.entry-header
+                        h1.entry-title FAQ Second Version
+                        p.entry-subtitle This Agreement was last modified on 18 February 2016
+                    .faq-tabs
+                        .faq-tabs__panel
+                            .faq-tabs__wrapper
+                                #headingOne.panel-heading(role='tab')
+                                    h4.panel-title
+                                        a(role='button', data-toggle='collapse', class='collapsed', data-parent='#accordion', href='#collapseOne', aria-expanded='false', aria-controls='collapseOne')
+                                            | What Shipping Methods are Available?
+                                #collapseOne.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingOne')
+                                    .panel-body
+                                        | In egestas, libero vitae scelerisque tristique, turpis augue faucibus dolor, at aliquet ligula massa at justo. Donec viverra tortor quis tortor pretium, in pretium risus finibus. Integer viverra pretium auctor. Aliquam eget convallis eros, varius sagittis nulla. Suspendisse potenti. Aenean consequat ex sit amet metus ultrices tristique. Nam ac nunc augue. Suspendisse finibus in dolor eget volutpat.
+                            .faq-tabs__wrapper
+                                #headingTwo.panel-heading(role='tab')
+                                    h4.panel-title
+                                        a(role='button', data-toggle='collapse', class='collapsed', data-parent='#accordion', href='#collapseTwo', aria-expanded='false', aria-controls='collapseTwo')
+                                            | What Shipping Methods are Available?
+                                #collapseTwo.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingTwo')
+                                    .panel-body
+                                        | In egestas, libero vitae scelerisque tristique, turpis augue faucibus dolor, at aliquet ligula massa at justo. Donec viverra tortor quis tortor pretium, in pretium risus finibus. Integer viverra pretium auctor. Aliquam eget conval
+                            .faq-tabs__wrapper
+                                #headingThree.panel-heading(role='tab')
+                                    h4.panel-title
+                                        a(role='button', data-toggle='collapse', class='collapsed', data-parent='#accordion', href='#collapseThree', aria-expanded='false', aria-controls='collapseThree')
+                                            | What Shipping Methods are Available?
+                                #collapseThree.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingThree')
+                                    .panel-body
+                                        | In egestas, libero vitae scelerisque tristique, turpis augue faucibus dolor, at aliquet ligula massa at justo. Donec viverra tortor quis tortor pretium, in pretium risus finibus. Integer viverra pretium auctor. Aliquam eget conval
+                            .faq-tabs__wrapper
+                                #headingFour.panel-heading(role='tab')
+                                    h4.panel-title
+                                        a(role='button', data-toggle='collapse', class='collapsed', data-parent='#accordion', href='#collapseFour', aria-expanded='false', aria-controls='collapseFour')
+                                            | What Shipping Methods are Available?
+                                #collapseFour.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingFour')
+                                    .panel-body
+                                        | In egestas, libero vitae scelerisque tristique, turpis augue faucibus dolor, at aliquet ligula massa at justo. Donec viverra tortor quis tortor pretium, in pretium risus finibus. Integer viverra pretium auctor. Aliquam eget conval
+                            .faq-tabs__wrapper
+                                #headingFive.panel-heading(role='tab')
+                                    h4.panel-title
+                                        a(role='button', data-toggle='collapse', class='collapsed', data-parent='#accordion', href='#collapseFive', aria-expanded='false', aria-controls='collapseFive')
+                                            | What Shipping Methods are Available?
+                                #collapseFive.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingFive')
+                                    .panel-body
+                                        | In egestas, libero vitae scelerisque tristique, turpis augue faucibus dolor, at aliquet ligula massa at justo. Donec viverra tortor quis tortor pretium, in pretium risus finibus. Integer viverra pretium auctor. Aliquam eget conval
+
+
+
+
+            .items-row
+                .row
+                    .col-lg-12
+                        include ../components/brand-carousel/brand-carousel
+            .items-row
+                .row
+                    .col-lg-4.col-md-4
+                        +category-title("Featured Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                    .col-lg-4.col-md-4
+                        +category-title("Onsale Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                        +element_list("defaultSmall", '75x75', true, false, "blue")
+                    .col-lg-4.col-md-4
+                        +category-title("Top Rated Products","small")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 2, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 4, "right")
+                        +element_list("defaultSmall", '75x75', true, false, "blue", false, 5, "right")
+        include ../components/footer/footer
+
+        // Support old browsers
+        <!--[if lt IE 9]>
+        <script src="libs/html5shiv/es5-shim.min.js"></script>
+        <script src="libs/html5shiv/html5shiv.min.js"></script>
+        <script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+        <script src="libs/respond/respond.min.js"></script>
+        <![endif]-->
+
+        // Load Scripts
+        include ../components/scripts/scripts

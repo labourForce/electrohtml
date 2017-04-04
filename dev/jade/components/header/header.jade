@@ -1,0 +1,82 @@
+
+header
+    .header__top
+        .container
+            .row
+                .header__top-left
+                    include header-contacts
+                .header__top-right
+                    ul.header__info
+                        li.header__info-list
+                            a(href="#")
+                                .header__info-item
+                                    include ../../../img/svg/marker-little.svg
+                                    | Store Locator
+                        li.header__info-list
+                            a(href="#")
+                                .header__info-item
+                                    include ../../../img/svg/track-order-little.svg
+                                    | Track Your Order
+                        li.header__info-list
+                            .header-changeMoney
+                                select(id="changeMoneyHeader")
+                                    option(value="Dollar" data-content='<i class="fa fa-usd" aria-hidden="true"></i> Dollar')
+                                    option(value="Euro", data-content='<i class="fa fa-eur" aria-hidden="true"></i> Euro')
+                        li.header__info-list
+                            a(href="#")
+                                .header__info-item
+                                    include ../../../img/svg/user-little.svg
+                                    | Register <span class="grey__letter">or</span> Sign in
+    .header__middle
+        .container
+            .row
+                .header__middle-wrapper
+                    .header__logo
+                        a(href="#", class="header__logo-link")
+                            include ../../../img/svg/logo.svg
+                    include header-search
+                    include header-navbar
+
+    .header__bottom
+        .container
+            .row
+                .col-lg-3
+                    ul.header__menuList
+                        li.header__menuList-title.toggle-menu-bar
+                            span
+                                include ../../../img/svg/category-list.svg
+                                | All Departments
+                        li.header__menuList-item
+                            a(href="#", class="header__menuList-link bold-link") Value of the Day
+                        li.header__menuList-item
+                            a(href="#", class="header__menuList-link bold-link") Top 100 Offers
+                        li.header__menuList-item
+                            a(href="#", class="header__menuList-link bold-link") New Arrivals
+                        li.header__menuList-item.header__menuList-underList
+                            a(href="#", class="header__menuList-link") Laptops & Computers
+                            ul.header-dropmenu
+                                li.
+                        li.header__menuList-item.header__menuList-underList
+                            a(href="#", class="header__menuList-link") Cameras & Photography
+                        li.header__menuList-item.header__menuList-underList
+                            a(href="#", class="header__menuList-link") Smart Phones & Tablets
+                        li.header__menuList-item.header__menuList-underList
+                            a(href="#", class="header__menuList-link") Video Games & Consoles
+                        li.header__menuList-item.header__menuList-underList
+                            a(href="#", class="header__menuList-link") TV & Audio
+
+                .col-lg-9
+                    nav.header__nav
+                        ul.header__nav-wrapper
+                            li.header__nav-item
+                                a(href="#").header__nav-link_active SuperDeals
+                            li.header__nav-item
+                                a(href="#").header__nav-link Featured Brands
+                            li.header__nav-item
+                                a(href="#").header__nav-link Trending Styles
+                            li.header__nav-item
+                                a(href="#").header__nav-link Gift Cards
+                            li.header__nav-item
+                                a(href="#").header__nav-link Blog
+
+                         a(href="#").header-special-link Free Shipping on Orders $50+

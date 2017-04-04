@@ -1,0 +1,17 @@
+
+
+.header-search
+    form(action="#", method="GET")
+        .header-search__wrapper
+            .header-search__input
+                input(type="search", placeholder="Search for products")
+            .header-search__select
+                .header-search__selectButton
+                    select#header-search
+                        option(value="1") All Categories
+                        option(value="2") Select 2
+                        option(value="2") Select 3
+            .header-search__button
+                button
+                    include ../../../img/svg/search.svg
+

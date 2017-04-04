@@ -1,0 +1,63 @@
+mixin shop-element(tag, title, imgSize, rating, details, code, price, oldPrice, basket, hidden, cart, aviability)
+
+
+    li(class="shop-item")
+        div(class="shop-item__header")
+            if tag
+                a(href="#", class="shop-item__tag") Smartphones
+            if title
+                a(href="#", class="shop-item__title")
+                    h3 Smartphone 6S 32GB LTE
+        div(class="shop-item__image")
+            img(src="img/#{imgSize}.png", alt="item")
+        div(class="shop-item__descr")
+            div(class="shop-item__header-hidden")
+                if tag
+                    a(href="#", class="shop-item__tag") Smartphones
+                if title
+                    a(href="#", class="shop-item__title")
+                        h3 Smartphone 6S 32GB LTE
+            if details
+                ul.shop-item__details.hidden--ul
+                    li 4.5 inch HD Screen
+            if rating
+                .shop-item__rating
+                    img(src="img/svg/star.svg", alt="Rating")
+                    img(src="img/svg/star.svg", alt="Rating")
+                    img(src="img/svg/star.svg", alt="Rating")
+                    span.category-filter__counterItem 3
+            if details
+                ul.shop-item__details
+                    li 4.5 inch HD Screen
+                    li 1.4 GHz Quad Core™ Processor
+                    li 3GB Ram
+                    li Android 4.4 KitKat OS
+        div(class="shop-item__footer")
+            if code
+                .shop-item__code SKU: 5487FB8/13
+            if aviability
+                .single-product__avialabity
+                    span Aviability
+                    span.single-product__stage In stock
+
+            .shop-item__price
+                if price
+                    .shop-item__cost
+                        .shop-item__cost-current $1 999,00
+                        if oldPrice
+                            .shop-item__cost-old $2 220,00
+                if basket
+                    .shop-item__basket
+            if cart
+                .shop-item__readmore-wrap
+                    button.shopping-cart__update
+                        include ../../../img/svg/Add-to-cart.svg
+                        | Add to Cart
+            if hidden
+                div(class="shop-item__hidden")
+                    .shop-item__add
+                        include ../../../img/svg/compare.svg
+                        span Add to Compare
+                    .shop-item__add
+                        include ../../../img/svg/wishlist.svg
+                        span Add to Wishlist

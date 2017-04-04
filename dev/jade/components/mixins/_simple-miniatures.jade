@@ -1,0 +1,59 @@
+
+// Modificators = {defaultSmall, columnBig}
+//-
+mixin element_list(modificator, imgSize, price, tagCategory, titleColor, basket, rating, oldPrice, priceWeight)
+
+    - var modificator = modificator || "";
+    - var title = title || 'Ribka Lorem';
+    - var tagCategory =  tagCategory || false;
+    - var titleColor = titleColor || false;
+    - function randomInteger(min, max) {var rand = min - 0.5 + Math.random() * (max - min + 1); rand = Math.round(rand); return "$" + String(rand) + ".00";}
+
+    div(class="simple-element #{modificator}")
+            div(class="simple-element__wrap #{modificator}")
+                .simple-element__img
+                    if imgSize
+                        .simple-element__background
+                            img(src="img/#{imgSize}.png")
+                div(class="simple-element__text #{modificator}")
+                    .simple-element__header
+                        if tagCategory
+                            .simple-element__tag
+                                a(href="#")=tagCategory
+                        if titleColor == 'blue'
+                            h5.blue-text=title
+                        else
+                            h5=title
+                        if rating && rating < 6
+                            .simple-element__rating
+                                - for (var i = 1; i <= rating; i++) {
+                                    img(src="img/svg/star.svg")
+                                - }
+                    .simple-element__footer
+                        .simple-element__price
+                            if price
+                                .simple-element__priceNumber
+                                    if priceWeight == 'bold'
+                                        span.bold-text #{randomInteger(1,10000)}
+                                    else
+                                        span #{randomInteger(1,10000)}
+                                     if oldPrice == "top"
+                                        .simple-element__oldPrice 222$
+                                     if oldPrice == "right"
+                                         .simple-element__oldPrice 222$
+                            if basket
+                                .simple-element__cart
+
+
+
+
+mixin category-title(text, size)
+
+    if size == "small"
+        .main-title__wrapper
+            h3.main-title__text.title--small=text
+            hr
+    if size == "big"
+        .main-title__wrapper
+            h3.main-title__text.title--big=text
+            hr

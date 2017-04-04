@@ -1,0 +1,110 @@
+
+// Entry
+.entry-wrapper {
+  width: 83.33333333333%;
+  margin: 0 auto;
+  margin-bottom: 127px;
+  .entry-title {
+    margin-bottom: 15px;
+  }
+  .entry-subtitle {
+    line-height: 24px;
+  }
+}
+.entry-header {
+  padding-top: 38px;
+  margin-bottom: 70px;
+  text-align: center;
+}
+.entry-title {
+  font-size: em(40);
+  color: #434343;
+  @media #{$sxs-max} {
+    font-size: em(25);
+    line-height: 28px;
+  }
+}
+.entry-subtitle {
+  font-size: em(13);
+  color: #9f9f9f;
+  padding-top: 7px;
+}
+
+.faq {
+  &-tabs__wrapper:not(:last-child) {
+    border-bottom: 1px solid #dadada;
+  }
+
+  & > .row {
+    display: flex;
+    float: none;
+    flex-wrap: wrap;
+    & > [class*="col-"]{
+
+    }
+  }
+  &-title {
+    font-size: 25px;
+    color: #434343;
+    text-align: left;
+    padding-bottom: .88em;
+    border-bottom: 1px solid #dadada;
+    margin-bottom: 1.6em;
+    margin-top: 1em;
+    @media #{$sxs-max} {
+      font-size: em(20);
+    }
+  }
+  &-title-little {
+    font-size: em(16);
+    line-height: 40px;
+    font-weight: 700;
+    color: #434343;
+    margin-bottom: 1.25em;
+    @media #{$sxs-max} {
+      line-height: 22px;
+    }
+  }
+  &-text-block {
+    margin-bottom: 90px;
+    @media #{$sxs-max} {
+      margin-bottom: 45px;
+    }
+  }
+  &-subtitle {
+    color: #747474;
+    font-size: em(14);
+    line-height: 24px;
+  }
+  &-tabs {
+    &__panel {
+
+      & .panel-collapse {
+        .panel-body {
+          color: #747474;
+          font-size: em(14);
+          padding: 0;
+          padding-bottom: 30px;
+          line-height: 24px;
+        }
+      }
+      & .panel-heading {
+        padding: 30px 0;
+
+        h4 {
+          color: #434343;
+          font-size: em(25);
+          @media #{$sxs-max} {
+            font-size: em(18);
+            line-height: 24px;
+          }
+          a:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+  }
+}
+
