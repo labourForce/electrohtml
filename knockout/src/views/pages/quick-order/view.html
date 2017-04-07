@@ -1,0 +1,152 @@
+<div class="wl-appcontent landing">
+	<div class="wrapper clearfix">
+		<div class="wrapper--inner hidden-xs">
+
+	<!-- ko foreach: headContent -->
+	<!-- ko component: {
+        name: $data['@type'],
+        params: {
+            state: $parent.state,
+            contentItem: $data
+        }
+    } -->
+	<!-- /ko -->
+	<!-- /ko -->
+
+			<div class="wl-breadcrumbs-category wl-breadcrumbs wl-resizabletext clearfix hidden-xs">
+				<!-- bct start -->
+				<ol class="clearfix">
+					<li>
+						<a class="node" href="/">
+							<span class="txt">Home</span>
+						</a>
+					</li>
+					<li>
+						<span class="node">Catalog Quick Order</span>
+					</li>
+				</ol>
+				<!-- bct end -->
+			</div>
+		</div>
+		<div class="wrapper--inner">
+			<main id="main" class="clearfix" role="main" data-message-level="general">
+				<div class="alert alert-success" data-bind="visible: successMessage() && successMessage().length > 0">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+					<span data-bind="html: successMessage"></span>
+				</div>
+				<div class="alert alert-warning" data-bind="visible: warningMessage() && warningMessage().length > 0">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+					<span data-bind="html: warningMessage"></span>
+				</div>
+				<div class="alert alert-danger" data-bind="visible: errorMessage() && errorMessage().length > 0">
+					<i class="fa fa-info-circle" aria-hidden="true"></i>
+					<span data-bind="html: errorMessage"></span>
+				</div>
+				<div class="row quickorder-form">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+						<h1>Catalog Quick Order</h1>
+						<div class="row quickorder-top-actions">
+							<div class="col-md-6 col-sm-5">
+								<a class="btn btn-lg btn-link btn-nopadding" href="javascript:void(0);" data-bind="click: showModal">How to Use Catalog Quick Order</a>
+							</div>
+							<div class="col-md-6 col-sm-7 text-right">
+								<a href="#" class="btn btn-lg btn-success" data-bind="click: addMultipleToCart">Add Items to Cart</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<table class="table table-responsive quickorder-table">
+									<thead>
+									<tr>
+										<th>Item Number</th>
+										<th>Quantity</th>
+										<th>Add Free AutoDelivery <br> <a href="#">What is Autodelivery?</a></th>
+									</tr>
+									</thead>
+									<tbody data-bind="foreach: quickOrderItems">
+										<tr>
+											<td>
+												<span class="caption">Item Number</span>
+												<input type="text" class="form-control" placeholder="" maxlength="10"
+													   data-bind="textInput: itemNumber,
+																  event: {blur: $parent.checkNumberOfItem},
+																  attr: {'class': errorMessage()!='' ? 'form-control wl-textbox-email wl-textbox wl-error' : 'form-control'}">
+												</input>
+												<span data-bind="html: errorMessage" class="wl-error">Please enter a valid number.</span>
+											</td>
+											<td>
+												<span class="caption">Quantity</span>
+												<select name="" id="" class="form-control" data-bind="attr:{disabled: quantityDisplayNames().length <= 0},
+																									  options: quantityDisplayNames(),
+																									  value: quantity,
+																									  optionsText: function(item) {
+																										return item.mainQuantity + (item.discountedQuantity > 0 ? ' + ' + item.discountedQuantity : '');
+																									  },
+																									  optionsValue: function(item) {
+																										return item.mainQuantity + item.discountedQuantity;
+																									  },
+																									  selectedOptions: selected,
+																									  event:{ change: $parent.saveOption}">
+												</select>
+											</td>
+											<td class="text-center">
+												<!-- <span class="caption">Add Free AutoDelivery</span> -->
+												<div class="checkbox">
+													<label for="addFreeAD">
+														<input id="addFreeAD" type="checkbox" data-bind="enable: autoDeliveryAvailable,
+																						  checked: autoDeliveryChecked,
+																						  click: $parent.processAutoDelivery">
+														<!--<%&#45;&#45;<input type="checkbox" data-bind="attr:{disabled: !autoDeliveryAvailable || (autoDeliveryAvailable && quantityDisplayNames().length <= 0)},&#45;&#45;%>-->
+																						  <!--<%&#45;&#45;checked: autoDeliveryChecked,&#45;&#45;%>-->
+																						  <!--<%&#45;&#45;click: $parent.processAutoDelivery">&#45;&#45;%>-->
+														<span class="visible-sm visible-xs">Add Free Autodelivery</span>
+													</label>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<button class="wl-button addMoreRowsAction" data-bind="click: addRow">Add More Rows</button>
+								<div class="service-form">
+									<span><strong>Service Code</strong> (optional)</span>
+									<div class="row">
+										<div class="col-md-6">
+											<input data-bind="value: serviceCode" type="text" class="form-control input-lg">
+										</div>
+										<div class="col-md-6 text-right">
+											<button class="btn btn-lg btn-success" data-bind="click: addMultipleToCart">Add Items to Cart</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--<%&#45;&#45;<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">&#45;&#45;%>-->
+						<!--<%&#45;&#45;<a href="/authentication" class="signup-image" data-bind="click: gotoView" data-id="authentication">&#45;&#45;%>-->
+							<!--<%&#45;&#45;<img alt="Quickorder Healthy Directions Logo" src="assets/images/layout/quick_order.gif">&#45;&#45;%>-->
+						<!--<%&#45;&#45;</a>&#45;&#45;%>-->
+					<!--<%&#45;&#45;</div>&#45;&#45;%>-->
+				</div>
+
+				<!-- ko foreach: bottomContent -->
+				<!-- ko component: {
+					name: $data['@type'],
+					params: {
+						state: $parent.state,
+						contentItem: $data
+					}
+				} -->
+				<!-- /ko -->
+				<!-- /ko -->
+
+			</main>
+		</div>
+
+	</div>
+	<a class="sr- only screenreaderonly" href="#navaccessibility">Top of Page</a>
+</div>
+
+
+<div id="howToUseQuickOrderModal" class="clearfix dialog hidden">
+	<dsp:valueof value="QUICKORDER_HOW_TO_ADD_ITEMS" converter="bccToMessage" converterattributes="bccKey=QUICKORDER_HOW_TO_ADD_ITEMS" valueishtml="true" />
+</div>

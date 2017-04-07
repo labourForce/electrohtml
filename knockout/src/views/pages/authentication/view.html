@@ -1,0 +1,179 @@
+<div class="wl-appcontent">
+    <div class="wrapper clearfix">
+
+        <div class="wrapper--inner">
+            <div class="wl-breadcrumbs-userprofile wl-breadcrumbs wl-resizabletext clearfix" data-source="v-userprofile-breadcrumbs">
+                <!-- bct start -->
+                <ol class="clearfix">
+                    <li>
+                        <a class="node" href="/"> <span class="txt">Home</span>
+                        </a>
+                        <span class="ico"></span>
+                    </li>
+                    <li>
+                        <a class="node" href="#"> <span class="txt">My Account</span>
+                        </a>
+                        <span class="ico"></span>
+                    </li>
+                    <li>
+                        <span class="node">Login</span>
+                    </li>
+                </ol>
+                <!-- bct end -->
+            </div>
+        </div>
+
+        <div class="wrapper--inner">
+            <main id="main" class="wl-appmain clearfix" role="main" data-message-level="general">
+                <div class="wl-logintemplate clearfix" data-source="v-login-formstemplate">
+                    <h1>
+                        Sign In or Create An Account
+                        <span class="hidden-xs">with Healthy Directions</span>
+                    </h1>
+                    <p class="hidden-xs">
+                        <strong>Creating an account is free! When you create an account you will be able to:</strong>
+                    </p>
+                    <ul class="hidden-xs">
+                        <li>Enjoy faster checkout</li>
+                        <li>Manage your AutoDelivery shipments so you never run out or get overstocked</li>
+                        <li>View your order history for quick, hassle-free ordering</li>
+                        <li>Create your own personal address book so shipping to multiple addresses is a snap</li>
+                    </ul>
+                    <div class="wl-grid-2col">
+                        <div class="col col-1of2">
+                            <div class="wl-loginform clearfix" data-source="v-login-form">
+                                <div class="wl-message-error wl-message" data-bind="visible: loginErrors().length > 0, foreach: loginErrors">
+                                    <p data-bind="html: localizedMessage"></p>
+                                </div>
+                                <h2 class="wl-fontsize-20">Sign In</h2>
+                                <form class="checkout-form clearfix" action="https://www.healthydirections.com/index.cfm" method="post">
+                                    <div class="clearfix">
+                                        <p style="color: #797979; font-size: 0.94em; font-style: italic;">
+                                            <dsp:valueof value="REQUIRED_FIELD" converter="bccToMessage" converterattributes="bccKey=REQUIRED_FIELD" valueishtml="true" />
+                                        </p>
+                                    </div>
+                                    <div class="wl-loginfields clearfix" data-source="v-login-fields">
+                                        <div class="wl-properties clearfix">
+                                            <div class="wl-property clearfix">
+                                                <label for="vLogin-fields-email-1" class="name">
+                                                    <span class="text">Email Address*</span>
+                                                </label>
+                                                <div class="wl-value">
+                                                    <input data-bind="value: authenticationModel.login, css: errorCSS('login'), valueUpdate: 'input', executeOnEnter: dologin" type="text" class="wl-textbox-email wl-textbox" id="vLogin-fields-email-1"
+                                                           name="emailAddress" maxlength="40" />
+                                                    <span data-bind="html: errorMessage('login')" class="wl-error"></span>
+                                                </div>
+                                            </div>
+                                            <div class="wl-property clearfix">
+                                                <label for="vLogin-fields-password-1" class="name">
+                                                    <span class="text">Password*</span>
+                                                </label>
+                                                <div class="wl-value">
+                                                    <input data-bind="value: authenticationModel.loginPassword, css: errorCSS('loginPassword'), valueUpdate: 'input', executeOnEnter: dologin" type="password" class="wl-textbox-password wl-textbox"
+                                                           id="vLogin-fields-password-1" name="password" autocomplete="off" maxlength="35" />
+                                                    <span data-bind="html: errorMessage('loginPassword')" class="wl-error"></span>
+                                                </div>
+                                            </div>
+                                            <div class="wl-property-checkbox wl-property clearfix">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" data-bind="checked: authenticationModel.autoLogin, valueUpdate: 'input', executeOnEnter: dologin">
+                                                        <strong>Remember me</strong>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wl-action clearfix">
+                                        <button data-bind="click:dologin" type="button" class="wl-button">Sign In</button>
+                                        <button data-bind="click:facebook" class="wl-button facebook-login">Sign in with Facebook</button>
+                                        <div>
+                                            <a href="/forgot-password" data-bind="click:gotoView" data-id="forgot-password">I Forgot My Password</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col col-1of2">
+                            <div class="wl-accountform clearfix" data-source="v-account-form">
+                                <div class="wl-message-error wl-message" data-bind="visible: registrationErrors().length > 0, foreach: registrationErrors">
+                                    <p data-bind="text: localizedMessage"></p>
+                                </div>
+                                <h2 class="wl-fontsize-20">Create An Account</h2>
+                                <div class="clearfix">
+                                    <p style="color: #797979; font-size: 0.94em; font-style: italic;">
+                                        <dsp:valueof value="REQUIRED_FIELD" converter="bccToMessage" converterattributes="bccKey=REQUIRED_FIELD" valueishtml="true" />
+                                    </p>
+                                </div>
+                                <div class="wl-accountfields clearfix" data-source="v-account-fields">
+                                    <div class="wl-properties clearfix">
+                                        <div class="wl-property clearfix">
+                                            <div class="wl-grid-2col">
+                                                <div class="col col-1of2">
+                                                    <label for="vAccount-fields-name-first" class="name">
+                                                        <span class="text">First Name*</span>
+                                                    </label>
+                                                    <div class="wl-value">
+                                                        <input data-bind="value: authenticationModel.firstName, css: errorCSS('firstName')" type="text" class="wl-textbox-text wl-textbox"
+                                                               id="vAccount-fields-name-first" name="firstName" value="" maxlength="40" autocomplete="fname"/>
+                                                        <span data-bind="html: errorMessage('firstName')" class="wl-error"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-1of2">
+                                                    <label for="vAccount-fields-name-last" class="name">
+                                                        <span class="text">Last Name*</span>
+                                                    </label>
+                                                    <div class="wl-value">
+                                                        <input data-bind="value: authenticationModel.lastName, css: errorCSS('lastName')" type="text" class="wl-textbox-text wl-textbox"
+                                                               id="vAccount-fields-name-last" name="lastName" value="" maxlength="40" autocomplete="lname"/>
+                                                        <span data-bind="html: errorMessage('lastName')" class="wl-error"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wl-property clearfix">
+                                            <label for="vAccount-fields-email-1" class="name">
+                                                <span class="text">Email Address*</span>
+                                            </label>
+                                            <div class="wl-value">
+                                                <input data-bind="value: authenticationModel.email, css: errorCSS('email')" type="text" class="wl-textbox-email wl-textbox" id="vAccount-fields-email-1"
+                                                       name="emailAddress" value="" maxlength="40" autocomplete="email"/>
+                                                <span data-bind="html: errorMessage('email')" class="wl-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="wl-property clearfix">
+                                            <label for="vAccount-fields-password-1" class="name">
+                                                <span class="text">Password*</span>
+                                            </label>
+                                            <div class="wl-value">
+                                                <input data-bind="value: authenticationModel.password, css: errorCSS('password')" type="password" class="wl-textbox-password wl-textbox"
+                                                       id="vAccount-fields-password-1" name="password" value="" autocomplete="off" maxlength="35" />
+                                                <span data-bind="html: errorMessage('password')" class="wl-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="wl-property clearfix">
+                                            <label for="vAccount-fields-confirmpassword-1" class="name">
+                                                <span class="text">Confirm Password*</span>
+                                            </label>
+                                            <div class="wl-value">
+                                                <input data-bind="value: authenticationModel.confirmPassword, css: errorCSS('confirmPassword')" type="password" class="wl-textbox-password wl-textbox"
+                                                       id="vAccount-fields-confirmpassword-1" name="confirmPassword" value="" data-rule-equalTo='#vAccount-fields-password-1' autocomplete="off"
+                                                       maxlength="35" />
+                                                <span data-bind="html: errorMessage('confirmPassword')" class="wl-error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wl-action clearfix">
+                                <button data-bind="click:processRegisterForm" type="button" class="wl-button" name="accountFormSubmit_noPreload">Create Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </div>
+    <a class="screenreaderonly" href="#navaccessibility">Top of Page</a>
+</div>

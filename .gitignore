@@ -1,3 +1,6 @@
 /node_modules/
 /.idea/
 
+
+/knockout/node_modules/
+/knockout/bower_components/

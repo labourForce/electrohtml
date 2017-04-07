@@ -1,0 +1,30 @@
+{
+  "name": "knockout-es6",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "Aleksandr Simonok <simonok.sasha@mail.ru>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "knockout": "^3.4.1",
+    "crossroads": "^0.12.2",
+    "js-signals": "signals#^1.0.0",
+    "hasher": "^1.2.0",
+    "flexslider": "^2.6.3",
+    "modernizr": "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js",
+    "slick-carousel": "^1.6.0",
+    "bootstrap-select": "^1.12.2",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {}
+}
