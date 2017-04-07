@@ -14,7 +14,7 @@ mixin element_list(modificator, imgSize, price, tagCategory, titleColor, basket,
                 .simple-element__img
                     if imgSize
                         .simple-element__background
-                            img(src="img/#{imgSize}.png")
+                            img(src="/img/#{imgSize}.png")
                 div(class="simple-element__text #{modificator}")
                     .simple-element__header
                         if tagCategory
@@ -27,7 +27,7 @@ mixin element_list(modificator, imgSize, price, tagCategory, titleColor, basket,
                         if rating && rating < 6
                             .simple-element__rating
                                 - for (var i = 1; i <= rating; i++) {
-                                    img(src="img/svg/star.svg")
+                                    img(src="/img/svg/star.svg")
                                 - }
                     .simple-element__footer
                         .simple-element__price

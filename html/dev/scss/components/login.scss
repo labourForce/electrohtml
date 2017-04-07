@@ -101,7 +101,7 @@
       display: flex;
       justify-content: space-between;
       position: relative;
-
+      align-items: center;
       label span {
         font-family: $regular;
       }
@@ -127,4 +127,34 @@
       width: 100%;
     }
   }
+}
+
+.form__validation-state {
+  border-left: 8px solid rgba(0,0,0,.15);
+  color: #fff;
+  font-size: 14px;
+  height: 0;
+  transition: .3s all linear;
+  opacity: 0;
+  &.error {
+    background-color: #d9534f;
+    opacity: 1;
+    height: auto;
+    padding: 22px 8px;
+    margin-bottom: 36px;
+    padding-left: 22px;
+  }
+  &.success {
+    background-color: #4fd95e;
+    opacity: 1;
+    height: auto;
+    padding: 22px 8px;
+    margin-bottom: 36px;
+    padding-left: 22px;
+  }
+  span {
+    display: inline-block;
+    margin-left: 4px;
+  }
+
 }

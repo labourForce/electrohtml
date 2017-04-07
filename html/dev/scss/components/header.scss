@@ -167,6 +167,7 @@
 .header__middle {
   padding-top: 36px;
   padding-bottom: 25px;
+  height: 130px;
   @media #{$md-max} {
     padding: 0;
   }
@@ -423,9 +424,10 @@
   border-bottom-right-radius: 10px;
   @media #{$lg-max} {
     position: relative;
+
   }
   @media #{$md-max} {
-
+    margin-top: 170px;
   }
   &-title {
     border-top-right-radius: 9px;

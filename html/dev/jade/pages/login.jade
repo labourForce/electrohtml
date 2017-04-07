@@ -33,6 +33,10 @@ html(lang='ru', class="no-js")
             include ../components/breadcrumbs/breadcrumbs
             .row
                 .col-xs-12
+                    .form__validation-state
+                        p
+                            strong Error:
+                            span Username is required.
                     .account__wrapper
                         .account__sign-in
                             form(action="#", method="POST")
