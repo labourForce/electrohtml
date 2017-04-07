@@ -56,6 +56,12 @@
     padding: 0 17px;
     margin-bottom: 17px;
     font-size: em(14);
+    &.error {
+      border: 1px solid #d9534f;
+    }
+    &.success {
+      border: 1px solid #4fd95e;
+    }
     &:focus {
       outline: none;
       border: 1px solid #66afe9;
