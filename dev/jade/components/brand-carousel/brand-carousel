@@ -1,0 +1,5 @@
+section.brand-carousel
+    .container
+        .row
+            .brand-carousel__wrapper
+                .brand-carousel__item 1

@@ -158,3 +158,73 @@
   }
 
 }
+
+.account__sign-steps {
+  display: flex;
+  font-size: 13px;
+  justify-content: flex-end;
+  padding-right: 20px;
+  margin-bottom: 10px;
+  color: #747474;
+  &-current {
+    font-weight: bold;
+    font-size: 12px;
+    &::after {
+      content: '/';
+      font-size: 13px;
+      padding-right: 2px;
+      font-weight: 300;
+    }
+  }
+  &-last {
+  }
+}
+
+.form__step-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: -10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  &-prev, &-next {
+    color: #747474;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    text-decoration: underline;
+    transition: .3s all linear;
+  }
+  &-next {
+    text-decoration: none;
+    &.disabled {
+      opacity: .7;
+    }
+    &.hidden-b {
+      opacity: 0;
+    }
+    &.visible-b {
+      opacity: 1;
+    }
+  }
+  &-prev {
+    &.hidden-b {
+      opacity: 0;;
+    }
+    &.visible-b {
+      opacity: 1;
+    }
+  }
+  &-current {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.form__steps-container {
+  display: none;
+  &.current {
+    display: block;
+  }
+}

@@ -204,3 +204,45 @@
   border-radius: 21px;
   min-width: 130px;
 }
+
+.form__steps-container.success label {
+  display: block;
+  position: relative;
+  &::after {
+    content: '\f00c';
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    right: 18px;
+    top: 32%;
+    color: #5bb300;
+    transition: .25s all linear
+  }
+  & input {
+    border-color: #5bb300;
+    transition: .25s all linear
+  }
+}
+
+.form__steps-container.error label {
+  display: block;
+  position: relative;
+  &::after {
+    content: "\f06a";
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    right: 18px;
+    top: 32%;
+    color: #d9534f;
+    transition: .25s all linear
+  }
+  & input {
+    border-color: #d9534f;
+    transition: .25s all linear
+  }
+}
+.form-button.disabled {
+  opacity: .7;
+}
+

@@ -132,18 +132,152 @@ export default class HomepageVM{
 
     }
 
-    accountSubmit(data, event){
-        event.preventDefault();
+    accountStepValidation(data, event){
+        var element = $(event.target);
+       this.stepValidate(element);
+    }
 
-        let accountData = {
-            username: this.accountModel().username()
-        };
+    stepValidate(element){
+        var el = element,
+            parentEl = el.parent().parent().parent(),
+            dataValidate = el.data('validate'),
+            innerText = el.val();
 
-        this.formValidate(event);
+        if(dataValidate === 'email'){
+           let emailValidatePattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(emailValidatePattern.test(innerText)) {
+                parentEl.removeClass('error');
+                parentEl.addClass('success');
 
-        let jsonData = ko.toJSON(accountData);
+                $('.form__step-navigation-next').removeClass('hidden-b');
+                $('.form__step-navigation-next').addClass('visible-b');
+
+            } else {
+                parentEl.removeClass('success');
+                parentEl.addClass('error');
+
+                $('.form__step-navigation-next').addClass('hidden-b');
+                $('.form__step-navigation-next').removeClass('visible-b');
+            }
+        }
+        if(dataValidate === 'password'){
+            let passwordValidatePattern = /^[a-z0-9]+.{6,}$/i;
+
+            if(passwordValidatePattern.test(innerText)) {
+
+                parentEl.removeClass('error');
+                parentEl.addClass('success');
+
+                $('.form__step-navigation-next').removeClass('hidden-b');
+                $('.form__step-navigation-next').addClass('visible-b');
+            } else {
+                parentEl.removeClass('success');
+                parentEl.addClass('error');
+
+                $('.form__step-navigation-next').addClass('hidden-b');
+                $('.form__step-navigation-next').removeClass('visible-b');
+            }
+        }
 
     }
+    nextStep(element){
+        let block = $('.form__steps').find('.current'),
+            currentNumber = $('.account__sign-steps-current'),
+            blockData = block.data('step');
+
+           if ( blockData == 1 && block.hasClass('success') ){
+
+               block.removeClass('current');
+
+              let newBlock = $('.form__steps').find('[data-step="2"]');
+
+               newBlock.addClass('current');
+
+               $('.form__step-navigation-prev').removeClass('hidden-b');
+               $('.form__step-navigation-prev').addClass('visible-b');
+
+               if( !newBlock.hasClass('success') ){
+                   $('.form__step-navigation-next').addClass('hidden-b');
+                   $('.form__step-navigation-next').removeClass('visible-b');
+               }
+
+               currentNumber.text('2');
+
+           }
+
+        if ( blockData == 2 && block.hasClass('success') ){
+
+            block.removeClass('current');
+
+            let newBlock = $('.form__steps').find('[data-step="3"]');
+
+            newBlock.addClass('current');
+
+            $('.form__step-navigation-prev').removeClass('hidden-b');
+            $('.form__step-navigation-prev').addClass('visible-b');
+
+            $('.form__step-navigation-next').addClass('hidden-b');
+            $('.form__step-navigation-next').removeClass('visible-b');
+
+            currentNumber.text('3');
+
+        }
+
+
+
+    }
+    prevStep(){
+        let block = $('.form__steps').find('.current'),
+            currentNumber = $('.account__sign-steps-current'),
+            blockData = block.data('step');
+
+        if(blockData == 2) {
+            let newBlock = $('.form__steps').find('[data-step="1"]');
+            block.removeClass('current');
+            newBlock.addClass('current');
+
+            $('.form__step-navigation-prev').addClass('hidden-b');
+            $('.form__step-navigation-prev').removeClass('visible-b');
+
+            $('.form__step-navigation-next').addClass('visible-b');
+            $('.form__step-navigation-next').removeClass('hidden-b');
+
+            currentNumber.text('1');
+        }
+
+        if(blockData == 3) {
+            let newBlock = $('.form__steps').find('[data-step="2"]');
+            block.removeClass('current');
+            newBlock.addClass('current');
+
+            $('.form__step-navigation-next').addClass('visible-b');
+            $('.form__step-navigation-next').removeClass('hidden-b');
+
+            currentNumber.text('2');
+        }
+    }
+    confirmPassword(data, event){
+        let original = $('[data-validate="password"]').val(),
+            parentEl = $(event.target).parent().parent().parent(),
+            confirmElementValue = $(event.target).val();
+
+       if (original === confirmElementValue) {
+           parentEl.removeClass('error');
+           parentEl.addClass('success');
+
+
+           $('[data-validate="registration-button"]').removeClass('disabled');
+           $('[data-validate="registration-button"]').attr('disabled', false);
+       } else {
+           parentEl.removeClass('success');
+           parentEl.addClass('error');
+
+           $('[data-validate="registration-button"]').addClass('disabled');
+           $('[data-validate="registration-button"]').attr('disabled', true);
+       }
+
+    }
+
 
 
 
