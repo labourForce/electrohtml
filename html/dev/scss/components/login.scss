@@ -203,17 +203,35 @@
     }
     &.hidden-b {
       opacity: 0;
+      visibility: hidden;
     }
     &.visible-b {
       opacity: 1;
+      visibility: visible;
     }
   }
   &-prev {
+    display: flex;
+    align-items: center;
+    &:hover {
+      & svg {
+        fill: #df3737;
+      }
+    }
+    & svg {
+      width: 13px;
+      height: auto;
+      fill: #333e48;
+      margin-right: 5px;
+      transition: .3s all linear;
+    }
     &.hidden-b {
-      opacity: 0;;
+      opacity: 0;
+      visibility: hidden;
     }
     &.visible-b {
       opacity: 1;
+      visibility: visible;
     }
   }
   &-current {
@@ -226,5 +244,28 @@
   display: none;
   &.current {
     display: block;
+  }
+}
+
+.form__step-navigation {
+  position: relative;
+  &-register {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #000;
+    font-weight: bold;
+    background-color: #fed700;
+    padding: 15px 20px;
+    border-radius: 27px;
+    border: none;
+    outline: none;
+    &.disabled {
+      opacity: .6;
+
+    }
+    &.hidden-b {
+      visibility: hidden;
+    }
   }
 }

@@ -219,6 +219,8 @@ export default class HomepageVM{
             $('.form__step-navigation-next').addClass('hidden-b');
             $('.form__step-navigation-next').removeClass('visible-b');
 
+            $('.form__step-navigation-register').removeClass('hidden-b');
+
             currentNumber.text('3');
 
         }
@@ -254,6 +256,8 @@ export default class HomepageVM{
             $('.form__step-navigation-next').removeClass('hidden-b');
 
             currentNumber.text('2');
+
+            $('.form__step-navigation-register').addClass('hidden-b');
         }
     }
     confirmPassword(data, event){
@@ -266,14 +270,16 @@ export default class HomepageVM{
            parentEl.addClass('success');
 
 
-           $('[data-validate="registration-button"]').removeClass('disabled');
-           $('[data-validate="registration-button"]').attr('disabled', false);
+           $('.form__step-navigation-register').removeClass('disabled');
+           $('.form__step-navigation-register').attr('disabled', false);
+
+
        } else {
            parentEl.removeClass('success');
            parentEl.addClass('error');
 
-           $('[data-validate="registration-button"]').addClass('disabled');
-           $('[data-validate="registration-button"]').attr('disabled', true);
+           $('.form__step-navigation-register').addClass('disabled');
+           $('.form__step-navigation-register').attr('disabled', true);
        }
 
     }

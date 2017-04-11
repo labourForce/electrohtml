@@ -63,9 +63,12 @@ html(lang='ru', class="no-js")
                                 div(data-step="3").form__steps-container
                                     +form-element('input', 'Email Address', 'email', false, "Confirm Password")
                             .form__step-navigation
-                                button.form__step-navigation-prev prev
+                                button.form__step-navigation-prev
+                                    include ../../img/reply.svg
+                                    span prev
                                 button.form__step-navigation-next next
-                            +form-button('Register')
+                                button(href="#", class="form__step-navigation-register disabled", disabled) Register
+                            //+form-button('Register')
                             h5.account__title Sign up today and you will be able to:
                             ul.account__list
                                 li Speed your way through the checkout
