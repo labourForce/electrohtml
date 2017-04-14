@@ -1,9 +1,9 @@
 var config = require('./base.js');
 
-// config.proxy = [{
-//     context: ['/rest/**'],
-//     target: "http://local.hd.com:8080",
-//     secure: false
-// }];
+config.proxy = [{
+    context: ['/rest/**'],
+    target: "http://192.168.1.207:8181",
+    secure: false
+}];
 
 module.exports = config;

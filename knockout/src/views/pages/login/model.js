@@ -42,60 +42,106 @@ setTimeout(function(){
     });
 }, 0);
 
-export default class HomepageVM{
+export default class LoginVM{
     constructor(state){
+
+        var self = this;
+
 		this.state = state;
+
 
 		this.loginModel = ko.observable({
 		    username: ko.observable(),
             password: ko.observable(),
             remember: ko.observable(false)
         });
+
 		this.accountModel = ko.observable({
-		    username: ko.observable()
+		    email: ko.observable(),
+		    password: ko.observable()
         });
 
 
     }
 
+    confirmPassword(data, event){
+
+         let original = $('[data-validate="password"]').val(),
+             parentEl = $(event.target).parent().parent().parent(),
+             confirmElementValue = $(event.target).val();
+
+        if (original === confirmElementValue) {
+            parentEl.removeClass('error');
+            parentEl.addClass('success');
+
+
+            $('.form__step-navigation-register').removeClass('disabled');
+            $('.form__step-navigation-register').attr('disabled', false);
+
+
+        } else {
+            parentEl.removeClass('success');
+            parentEl.addClass('error');
+
+            $('.form__step-navigation-register').addClass('disabled');
+            $('.form__step-navigation-register').attr('disabled', true);
+        }
+
+    }
+
+
     formValidate(event){
         let form = $(event.target),
             elements = form.find('input[required], select[required]'),
-            errorWrapper = $('.form__validation-state'),
-            errorText = errorWrapper.find('span'),
-            errorType = errorWrapper.find('strong'),
-            text = /^[a-z0-9]+$/i;
+            mail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            password =  /^[a-z0-9]+.{6,}$/i;
+
 
 
         elements.removeClass('error');
         elements.removeClass('success');
-
-        errorWrapper.removeClass('error');
-        errorWrapper.removeClass('success');
 
         elements.each(function(index, el){
             let type = $(el).attr('type'),
                 element = $(el),
                 val = $(el).val();
 
-            if(type === 'text' || type === 'password'){
+            if(type === "email"){
 
-                if ( val.length > 0 && val != undefined && val != null){
+                if(mail.test(val)){
+                    element.addClass('success');
+                } else {
+                    element.addClass('error');
+                }
+
+            }
+            if(type === "password"){
+                if(password.test(val)){
                     element.addClass('success');
                 } else {
                     element.addClass('error');
                 }
             }
+
+
+
         });
 
-        if(this.setErrorMessage(elements)){
+        if (this.setErrorMessage(elements)){
             errorWrapper.addClass('error');
             errorType.text('Error: ');
-            errorText.text('Not valid.');
+            errorText.text('Not Valid Fields');
+            return false;
+
+
         } else {
-            errorWrapper.addClass('success');
-            errorType.text('Success. ');
-            errorText.text('');
+
+            elements.each(function(index, el){
+                let element = $(el);
+                element.removeClass('success');
+                element.val('');
+            });
+            return true;
         }
 
     }
@@ -119,16 +165,42 @@ export default class HomepageVM{
         event.preventDefault();
 
         let signInData = {
-            username: this.loginModel().username(),
+            email: this.loginModel().username(),
             password: this.loginModel().password(),
             remember: this.loginModel().remember()
         };
 
-        this.formValidate(event);
-
-
         let jsonData = ko.toJSON(signInData);
 
+       if( this.formValidate(event) ) {
+           $.ajax({
+               url: '/rest/account/singIn',
+               contentType: 'application/json',
+               type: 'post',
+               data: jsonData ,
+               success: function(response){
+
+                   let data = JSON.parse(response),
+                      errorWrapper = $('.form__validation-state'),
+                      errorText = errorWrapper.find('span'),
+                      errorType = errorWrapper.find('strong');
+
+                    if(!data.hasError){
+
+                        errorWrapper.removeClass('error');
+                        errorWrapper.addClass('success');
+                        errorType.text('Success.');
+                    } else {
+
+                        errorWrapper.removeClass('success');
+                        errorWrapper.addClass('error');
+                        errorType.text('Error.');
+                    }
+
+
+               }
+           });
+       }
 
     }
 
@@ -137,31 +209,53 @@ export default class HomepageVM{
        this.stepValidate(element);
     }
 
+
     stepValidate(element){
         var el = element,
             parentEl = el.parent().parent().parent(),
             dataValidate = el.data('validate'),
-            innerText = el.val();
+            innerText = el.val(),
+            dataJSON = ko.toJSON({
+                email: innerText
+            });
 
         if(dataValidate === 'email'){
            let emailValidatePattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
             if(emailValidatePattern.test(innerText)) {
-                parentEl.removeClass('error');
-                parentEl.addClass('success');
 
-                $('.form__step-navigation-next').removeClass('hidden-b');
-                $('.form__step-navigation-next').addClass('visible-b');
+                $.ajax({
+                    url: '/rest/account/checkEmail',
+                    contentType: 'application/json',
+                    type: 'post',
+                    data: dataJSON ,
+                    success: function(response){
+                        let data = JSON.parse(response);
+                        if(!data.hasError){
 
-            } else {
-                parentEl.removeClass('success');
-                parentEl.addClass('error');
+                            parentEl.removeClass('error');
+                            parentEl.addClass('success');
 
-                $('.form__step-navigation-next').addClass('hidden-b');
-                $('.form__step-navigation-next').removeClass('visible-b');
+                            $('.form__step-navigation-next').removeClass('hidden-b');
+                            $('.form__step-navigation-next').addClass('visible-b');
+
+                        } else {
+                                parentEl.removeClass('success');
+                                parentEl.addClass('error');
+
+                                $('.form__step-navigation-next').addClass('hidden-b');
+                                $('.form__step-navigation-next').removeClass('visible-b');
+
+                        }
+                    }
+                });
+
             }
+
         }
         if(dataValidate === 'password'){
             let passwordValidatePattern = /^[a-z0-9]+.{6,}$/i;
+
 
             if(passwordValidatePattern.test(innerText)) {
 
@@ -209,9 +303,19 @@ export default class HomepageVM{
 
             block.removeClass('current');
 
-            let newBlock = $('.form__steps').find('[data-step="3"]');
+            let newBlock = $('.form__steps').find('[data-step="3"]'),
+                newBlockInput = newBlock.find('input');
 
+            if(newBlockInput.val() != ''){
+
+                if(this.accountModel().password() != newBlockInput.val()){
+                    newBlock.removeClass('success');
+                    newBlock.addClass('error');
+                }
+            }
             newBlock.addClass('current');
+
+
 
             $('.form__step-navigation-prev').removeClass('hidden-b');
             $('.form__step-navigation-prev').addClass('visible-b');
@@ -248,6 +352,7 @@ export default class HomepageVM{
         }
 
         if(blockData == 3) {
+
             let newBlock = $('.form__steps').find('[data-step="2"]');
             block.removeClass('current');
             newBlock.addClass('current');
@@ -260,29 +365,27 @@ export default class HomepageVM{
             $('.form__step-navigation-register').addClass('hidden-b');
         }
     }
-    confirmPassword(data, event){
-        let original = $('[data-validate="password"]').val(),
-            parentEl = $(event.target).parent().parent().parent(),
-            confirmElementValue = $(event.target).val();
 
-       if (original === confirmElementValue) {
-           parentEl.removeClass('error');
-           parentEl.addClass('success');
+    submitNewAccount(data, event){
 
 
-           $('.form__step-navigation-register').removeClass('disabled');
-           $('.form__step-navigation-register').attr('disabled', false);
+        let dataJSON = ko.toJSON(data.accountModel());
+
+        $.ajax({
+            url: '/rest/account/register',
+            contentType: 'application/json',
+            type: 'post',
+            data: dataJSON ,
+            success: function(response){
+                console.log(response);
+            }
+        });
 
 
-       } else {
-           parentEl.removeClass('success');
-           parentEl.addClass('error');
-
-           $('.form__step-navigation-register').addClass('disabled');
-           $('.form__step-navigation-register').attr('disabled', true);
-       }
 
     }
+
+
 
 
 

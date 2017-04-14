@@ -1,327 +1,87 @@
-<div class="wl-appcontent">
-	<div class="wrapper clearfix">
-		<div class="wrapper--inner">
-			<main id="main" class="clearfix" role="main">
-				<h1>hello world</h1>
-				<!-- ko foreach: headContent -->
-					<!-- ko component: {
-						name: $data['@type'],
-						params: {
-							state: $parent.state,
-							contentItem: $data
-						}
-					} -->
-					<!-- /ko -->
-				<!-- /ko -->
-
-				<!-- ko ifnot: order.commerceItems().length -->
-
-					<!-- ko foreach: middleContent -->
-						<!-- ko component: {
-							name: $data['@type'],
-							params: {
-								state: $parent.state,
-								contentItem: $data
-							}
-						} -->
-						<!-- /ko -->
-					<!-- /ko -->
-
-					<div class="clearfix align-right">
-						<a class="wl-button" data-bind="attr: {'href': continueShoppingLink()}">Continue Shopping</a>
-					</div>
-
-				<!-- /ko -->
-
-				<div id="incentiveModal" class="clearfix dialog" title="">
-					<div data-bind="html: incentiveHtml()"></div>
-					<div class="dialog-footer">
-						<ul class="list-inline">
-							<li><button class="btn btn-success" data-bind="click: function() {applyIncentive(); closeIncentiveModal();}">Apply</button></li>
-							<li><button class="btn btn-link closeIncentiveModal" data-bind="click: function() {closeIncentiveModal();};">Cancel</button></li>
-						</ul>
-					</div>
-				</div>
-				<div class="flyout-form" id="incentiveFlyoutForm" data-bind="initCloseFlyout : ''">
-					<div class="flyout-form-container">
-						<button class="close-flyout closeThisFlyoutAction" data-bind="click: function() {memorizeIncentive(true)}">
-							<span class="sr-only">Close Flyout Form</span><i class="fa fa-times-circle-o" aria-hidden="true"></i>
-						</button>
-						<div class="dynamic-form">
-							<div data-bind="html: incentiveHtml()"></div>
-							<div class="dynamic-form-footer">
-								<button class="btn btn-success closeThisFlyoutAction" data-bind="click: function() {applyIncentive();}">Apply</button>
-								<button class="btn btn-link closeThisFlyoutAction" data-bind="click: function() {memorizeIncentive(true)}">Cancel</button>
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="shopping-cart">
+					<header>
+						<div class="shopping-cart__title">Shopping Cart Summary</div>
+					</header>
+					<form action="#" method="POST">
+						<div class="shopping-cart__table">
+							<div class="shopping-cart__table-head">
+								<div class="shopping-cart__table-row">
+									<div class="shopping-cart__head-close"></div>
+									<div class="shopping-cart__head-thumbnail"></div>
+									<div class="shopping-cart__head-product">Product</div>
+									<div class="shopping-cart__head-price">Price</div>
+									<div class="shopping-cart__head-quantity">Quantity</div>
+									<div class="shopping-cart__head-total">Total</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="flyout-form-overlay"></div>
-
-				<!-- ko if: order.commerceItems().length -->
-				<div class="row">
-					<div class="col-sm-8">
-						<div class="alert alert-success" data-bind="visible: addedToCartMessage() != null && addedToCartMessage().length > 0">
-							<i class="fa fa-info-circle" aria-hidden="true"></i>
-							<span data-bind="html: addedToCartMessage"></span>
-						</div>
-						<div class="alert alert-success" data-bind="visible: orderMergeMessages().length > 0, foreach: { data: orderMergeMessages, afterRender: mergeMessagesShown }">
-							<p data-bind="html: $data"></p>
-						</div>
-						<div class="account-section-title">
-							<h1 class="account-section-title">Shopping Cart</h1>
-							<button data-bind="click: removeAllFromOrder" class="wl-button pull-right btn-nopadding wl-button-link">Remove All Items</button>
-						</div>
-
-						<div data-bind="foreach: order.commerceItems.slice(0).reverse()" class="product-line-items">
-
-							<!--Product Item START-->
-							<div class="product-line-item clearfix">
-								<div class="wl-product-info">
-									<div class="wl-product clearfix">
-										<div class="image">
-											<!-- ko if: $data.product.displayLinkInCart -->
-												<!-- ko if: $data.gwp() && $data.product.downloadableContent -->
-													<a data-bind="attr:{href: $data.product.downloadableContent}" target="_blank">
-														<img data-bind="attr:{ src: $data.product.thumbnailImage(), 'alt': $data.product.displayName}" onerror="imgErrorProduct(this);">
-													</a>
-												<!-- /ko -->
-												<!-- ko ifnot: $data.gwp() && $data.product.downloadableContent -->
-													<a data-bind="click: $parent.gotoView, attr:{ 'data-id': $data.product.pdpLink(), href: $data.product.seoUrl}">
-														<img data-bind="attr:{ src: $data.product.thumbnailImage(), 'alt': $data.product.displayName}" onerror="imgErrorProduct(this);">
-													</a>
-												<!-- /ko -->
-											<!-- /ko -->
-											<!-- ko ifnot: $data.product.displayLinkInCart -->
-												<img data-bind="attr:{ src: $data.product.thumbnailImage(), 'alt': $data.product.displayName}" onerror="imgErrorProduct(this);">
-											<!-- /ko -->
-											<div class="wl-actions">
-
-												<p class="wl-action wl-action-remove">
-													<a data-bind="click: function (data) { $parent.removeItem($data.repositoryId(), data) }" href="#">Remove</a>
-												</p>
-
-											</div>
-										</div>
-
-										<div class="info">
-											<h3 class="name">
-												<!-- ko if: $data.product.displayLinkInCart -->
-													<!-- ko if: $data.gwp() && $data.product.downloadableContent -->
-														<a data-bind="text: $data.product.displayName, attr:{ href: $data.product.downloadableContent}" target="_blank"></a>
-													<!-- /ko -->
-													<!-- ko ifnot: $data.gwp() && $data.product.downloadableContent -->
-														<a data-bind="text: $data.product.displayName, click: $parent.gotoView, attr:{ 'data-id': $data.product.pdpLink(), href: $data.product.seoUrl}"></a>
-													<!-- /ko -->
-												<!-- /ko -->
-												<!-- ko ifnot: $data.product.displayLinkInCart -->
-													<div data-bind="text: $data.product.displayName"></div>
-												<!-- /ko -->
-											</h3>
-											<ul>
-												<li data-bind="text: $data.product.displayItemNumber" class="fsid"></li>
-												<!-- ko if: $data.product.available -->
-												<li class="skustatus"> In Stock </li>
-												<!-- /ko -->
-											</ul>
-										</div>
+							<div class="shopping-cart__table-body" data-bind="foreach: products">
+								<div class="shopping-cart__table-row">
+									<div class="shopping-cart__table-close">
+										<span data-bind="click: $parent.removeItem">
+											<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
+												<path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"></path>
+											</svg>
+										</span>
 									</div>
-
-									<table class="wl-table wl-table--line-items">
-										<thead>
-										<tr>
-											<th class="money">Price</th>
-											<th class="numeric text-center">Qty</th>
-											<th class="money">Total</th>
-										</tr>
-										</thead>
-										<tbody>
-										<tr>
-											<td class="col-price">
-												<p class="wl-prices clearfix">
-													<!-- ko if: isDiscountedPrice() -->
-														<del class="price-original price">
-															<strong>Was:</strong>
-															<span data-bind="text: $parent.fixPrice($data.priceForOne())"></span>
-														</del>
-
-														<span class="price-sale price">
-															<strong>Now:</strong>
-															<span data-bind="text: $parent.fixPrice($data.listPrice())"></span>
-														</span>
-													<!-- /ko -->
-
-													<!-- ko ifnot: isDiscountedPrice() -->
-														<span class="price-sale price">
-															<span data-bind="text: $parent.fixPrice($data.listPrice())"></span>
-														</span>
-													<!-- /ko -->
-												</p>
-											</td>
-											<td class="col-quantity">
-												<div class="wl-value">
-														<select id="cartQuantityOptions" name="quantity" title="Quantity" class="form-submit" data-bind="
-															options: qtyOptionsDisplay,
-															optionsText: function(item) {
-																return item.mainQuantity + (item.discountedQuantity > 0 ? ' + ' + item.discountedQuantity : '');
-															},
-															optionsValue: function(item) {
-																return item.mainQuantity + item.discountedQuantity;
-															},
-															selectedOptions: selected,
-															value: quantity,
-															event:{ change: $parent.changeQuantity.bind($data)}">
-														</select>
-												</div>
-											</td>
-											<!-- ko if: itemIsFree() -->
-												<td class="col-total">
-													<span class="price">Free</span>
-												</td>
-											<!-- /ko -->
-
-											<!-- ko ifnot: itemIsFree() -->
-												<td class="col-total">
-													<span data-bind="text: $parent.fixPrice($data.rawTotalPrice())" class="price"></span>
-												</td>
-											<!-- /ko -->
-										</tr>
-										</tbody>
-									</table>
-								</div>
-
-
-								<!-- ko if: $data.showUpgradeToAD() -->
-								<div class="wl-product-desc">
-									<div class="ad-upgrade">
-										<p class="description">Add AutoDelivery to get FREE SHIPPING today! <a href="#">More</a></p>
-										<a data-bind="click: $parent.upgradeAutoDelivery.bind($data)" class="wl-button-primary">Upgrade with AutoDelivery</a>
-									</div>
-								</div>
-								<!-- /ko -->
-
-								<!-- ko if: $data.autoDelivery-->
-								<div class="wl-product-desc">
-									<div class="ad-upgrade">
-										<p class="description">With AutoDelivery, lock-in today's low price
-											and receive FREE shipping on today's order and
-											ALL future AutoDelivery shipments. You are
-											authorizing your credit card to be charged
-											the price listed each time your order ships.
-											Shipment frequency is based upon the month(s)
-											supply ordered. By placing your order on
-											AutoDelivery you are agreeing to these terms.
-											Change or cancel your AutoDelivery shipments
-											at any time by calling Customer Service at
-											1-800-665-9737.</p>
-										<a data-bind="click: $parent.removeAutoDelivery.bind($data)"  class="wl-button-secondary">
-											Remove AutoDelivery FREE Shipping and<br>Extra Savings
+									<div class="shopping-cart__table-thumbnail"><a href="#"><img src="/images/Laptop-600x600.jpg" alt="Picture"></a></div>
+									<div data-title="Product:" class="shopping-cart__table-product">
+										<a href="#">
+											<h5 data-bind="text: title"></h5>
+											<p data-bind="text: brand"></p>
 										</a>
 									</div>
+									<div data-title="Price:" class="shopping-cart__table-price" data-bind="text: '$' + price"></div>
+									<div data-title="Quantity:" class="shopping-cart__table-quantity">
+										<div class="single-product__quantity-add">
+											<div class="single-product__quantity-counter">
+												<input type="text" value="1" data-bind=" value: quantity ">
+											</div>
+											<div class="single-product__quantity-switcher">
+												<button class="single-product__quantity-plus" data-bind="click: $parent.quantityPlus">+</button>
+												<button class="single-product__quantity-minus">-</button>
+											</div>
+										</div>
+									</div>
+									<div data-title="Total:" class="shopping-cart__table-total">$1,999.00</div>
 								</div>
-								<!-- /ko -->
-
-								<!-- ko if: $data.discountedQuantity() > 0 -->
-									<!-- ko component: {
-										name: 'orderFreeProducts',
-										params: {
-											state: $parent.state,
-											isConfirmation: false,
-											commerceItem: $data,
-											discountedQuantity: $data.discountedQuantity(),
-											isCart: true
-										}
-									} -->
-									<!-- /ko -->
-								<!-- /ko -->
-
-							</div>
-							<!--Product Item END-->
-
-						</div>
-
-					</div>
-					<div class="col-sm-4">
-
-						<div class="checkout-block">
-							<a data-bind="click: gotoView, visible: commerceItemsAmount() > 0" data-id="checkout" href="/checkout" class="wl-button btn-block">Proceed to <br>Secure Checkout</a>
-							<div class="checkout-block-out" data-bind="visible: showPayPalButton()">
-								<a data-bind="click: proceedToPayPal" href="#" class="btn-checkout">
-									<img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" alt="PayPal Checkout">
-								</a>
 							</div>
 						</div>
+						<!-- ko if: products().length == 0 -->
+						<div class="shopping-cart__empty">
+							<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								  width="142.916px" height="142.916px" viewBox="0 0 142.916 142.916" style="enable-background:new 0 0 142.916 142.916;"
+								  xml:space="preserve">
+								  <path d="M32.901,114.799l-12.015,16.507c-2.375,3.265-1.656,7.835,1.608,10.21c1.301,0.945,2.807,1.4,4.295,1.4
+									 c2.261,0,4.487-1.043,5.917-3.006l12.11-16.638c7.951,4.239,17.019,6.651,26.644,6.651c31.342,0,56.84-25.499,56.84-56.842
+									 c0-15.979-6.636-30.427-17.283-40.764l15.074-20.709c2.375-3.265,1.655-7.834-1.607-10.21c-3.273-2.377-7.84-1.651-10.209,1.608
+									 L99.313,23.562c-8.241-4.655-17.739-7.323-27.856-7.323c-31.343,0-56.842,25.499-56.842,56.841
+									 C14.615,89.557,21.665,104.409,32.901,114.799z M113.682,73.08c0,23.284-18.94,42.226-42.226,42.226
+									 c-6.407,0-12.461-1.477-17.905-4.039l48.729-66.951C109.331,51.864,113.682,61.964,113.682,73.08z M71.457,30.856
+									 c6.901,0,13.403,1.698,19.159,4.646l-49.043,67.381c-7.623-7.643-12.344-18.181-12.344-29.801
+									 C29.232,49.798,48.173,30.856,71.457,30.856z"/>
+							   </svg>
+							<h3>Your shopping cart is empty. Please add products</h3>
+						</div>
+						<!-- /ko  -->
+						<!-- ko if: products().length > 0 -->
+						<div class="shopping-cart__order-info">
+							<p>Free Delivery</p>
+							<p>Total<span class="shopping-cart__order-total">$ 770</span>TTC</p>
+						</div>
 
-						<%--TODO--%>
-						<%--<div class="checkout-block-warning">
-							<p>You have applied but do not qualify for these promotions. They will not be used if you check out now.</p>
-							<div class="promocode">
-								<span class="glyphicon glyphicon-remove-sign cursor-pointer" aria-hidden="true"></span>
-								<em>SUMMER2017</em> –$15 off $200
+						<div class="shopping-cart__buttons-wrap right-item">
+							<div class="shopping-cart__buttons-row">
+								<button class="shopping-cart__checkout" data-bind="enable: productEnableButton">Proceed to Checkout</button>
 							</div>
-						</div>--%>
-
-						<!-- ko component: {
-								name: 'orderSummary',
-								params: {
-									state: state,
-									order: order,
-									showCouponSectionTop: true
-								}
-							} -->
+						</div>
 						<!-- /ko -->
-
-						<div class="checkout-block">
-							<a data-bind="click: gotoView, visible: commerceItemsAmount() > 0" data-id="checkout" href="/checkout" class="wl-button btn-block">Proceed to <br>Secure Checkout</a>
-							<div class="checkout-block-out">
-								<a data-bind="click: proceedToPayPal, visible: showPayPalButton()" href="#" class="btn-checkout" >
-									<img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-medium.png" alt="PayPal Checkout">
-								</a>
-							</div>
-						</div>
-					</div>
+					</form>
 				</div>
-
-
-				<!-- /ko -->
-
-
-
-				<br>
-				<br>
-
-				<!-- ko component: {
-						name: 'insertableCollection',
-						params: {
-							state: state,
-							contentCollection: '/content/Web/ShoppingCart/Spotlights',
-							ruleLimit: 7,
-							page: 'cart',
-							leadProdId: order.firstProdId
-						}
-					} -->
-				<!-- /ko -->
-
-
-				<!-- ko foreach: bottomContent -->
-				<!-- ko component: {
-					name: $data['@type'],
-					params: {
-						state: $parent.state,
-						contentItem: $data
-					}
-				} -->
-				<!-- /ko -->
-				<!-- /ko -->
-
-
-
-
-
-			</main>
+			</div>
 		</div>
 	</div>
-
-	<a class="screenreaderonly" href="#navaccessibility">Top of Page</a>
-
-</div>
+</main>

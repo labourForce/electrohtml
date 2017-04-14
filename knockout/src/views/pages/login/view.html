@@ -30,7 +30,7 @@
 						<p class="account__sign-in-text">Welcome back! Sign in to Your Account</p>
 						<div class="form-element__wrapper">
 							<label class="form-element__label">
-								<input data-bind="value: username" type="text" placeholder="User Name or Email Address*" class="form-element__input" minlength="3" required/>
+								<input data-bind="value: username" type="email" placeholder="Email Address*" class="form-element__input" minlength="3" required/>
 							</label>
 						</div>
 						<div class="form-element__wrapper">
@@ -68,17 +68,17 @@
 							<div class="account__sign-steps-last">3</div>
 						</div>
 						<div class="form__steps">
-							<div data-step="1" class="form__steps-container current">
+							<div data-step="1" class="form__steps-container current" data-bind="with: accountModel">
 								<div class="form-element__wrapper">
 									<label class="form-element__label">
-										<input type="text" placeholder="Email Address" class="form-element__input"  data-validate="email"/>
+										<input type="text" placeholder="Email Address" class="form-element__input" data-bind="value: email"  data-validate="email"/>
 									</label>
 								</div>
 							</div>
-							<div data-step="2" class="form__steps-container">
+							<div data-step="2" class="form__steps-container" data-bind="with: accountModel" >
 								<div class="form-element__wrapper">
 									<label class="form-element__label">
-										<input type="password" placeholder="Password" class="form-element__input" data-validate="password"/>
+										<input type="password" placeholder="Password" class="form-element__input" data-validate="password" data-bind="value: password"/>
 									</label>
 								</div>
 							</div>
@@ -97,7 +97,7 @@
 									<span>prev</span>
 								</button>
 								<button class="form__step-navigation-next hidden-b" data-bind="event: {'click': nextStep}">next</button>
-								<button href="#" disabled="" class="form__step-navigation-register disabled hidden-b">Register</button>
+								<button href="#" disabled="" data-bind="click: submitNewAccount" class="form__step-navigation-register disabled hidden-b">Register</button>
 							</div>
 						</div>
 
@@ -112,282 +112,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="items-row">
-		<div class="row">
-			<div class="col-lg-12">
-				<!-- Variables-->
-				<!-- Mixin render all images-->
-				<!-- Wrap Section-->
-				<div class="brand-carousel">
-					<div class="container">
-						<div class="row">
-							<div class="brand-carousel__wrapper">
-								<div class="brand-carousel__item"><img src="/images/3docean.png" alt="Brand Image"></div>
-								<div class="brand-carousel__item"><img src="/images/audiojungle.png" alt="Brand Image"></div>
-								<div class="brand-carousel__item"><img src="/images/themeforest.png" alt="Brand Image"></div>
-								<div class="brand-carousel__item"><img src="/images/3docean.png" alt="Brand Image"></div>
-								<div class="brand-carousel__item"><img src="/images/audiojungle.png" alt="Brand Image"></div>
-								<div class="brand-carousel__item"><img src="/images/themeforest.png" alt="Brand Image"></div>
-								<div class="brand-carousel__item"><img src="/images/3docean.png" alt="Brand Image"></div>
-								<div class="brand-carousel__item"><img src="/images/audiojungle.png" alt="Brand Image"></div>
-								<div class="brand-carousel__item"><img src="/images/themeforest.png" alt="Brand Image"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="items-row">
-		<div class="row">
-			<div class="col-lg-4 col-md-4">
-				<div class="main-title__wrapper">
-					<h3 class="main-title__text title--small">Featured Products</h3>
-					<hr/>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$348.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$346.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$9367.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$8619.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4">
-				<div class="main-title__wrapper">
-					<h3 class="main-title__text title--small">Onsale Products</h3>
-					<hr/>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$353.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$1007.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$1774.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$1341.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4">
-				<div class="main-title__wrapper">
-					<h3 class="main-title__text title--small">Top Rated Products</h3>
-					<hr/>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-								<div class="simple-element__rating"><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/>
-								</div>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$83.00</span>
-										<div class="simple-element__oldPrice">222$</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-								<div class="simple-element__rating"><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/>
-								</div>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$5673.00</span>
-										<div class="simple-element__oldPrice">222$</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-								<div class="simple-element__rating"><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/>
-								</div>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$8617.00</span>
-										<div class="simple-element__oldPrice">222$</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="simple-element defaultSmall">
-					<div class="simple-element__wrap defaultSmall">
-						<div class="simple-element__img">
-							<div class="simple-element__background"><img src="/images/75x75.png"/></div>
-						</div>
-						<div class="simple-element__text defaultSmall">
-							<div class="simple-element__header">
-								<h5 class="blue-text">Ribka Lorem</h5>
-								<div class="simple-element__rating"><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/><img src="/images/svg/star.svg"/>
-								</div>
-							</div>
-							<div class="simple-element__footer">
-								<div class="simple-element__price">
-									<div class="simple-element__priceNumber"><span>$3674.00</span>
-										<div class="simple-element__oldPrice">222$</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 </div>
 <div class="sign-up">
 	<div class="container">
