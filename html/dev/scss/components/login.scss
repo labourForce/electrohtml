@@ -269,3 +269,38 @@
     }
   }
 }
+
+.form__step-server__response {
+  display: flex;
+  align-items: center;
+  transition: .25s all linear;
+  display: none;
+  margin-top: 45px;
+  padding: 15px 20px;
+  &-img svg {
+    width: 30px;
+    height: auto;
+    fill: #fff;
+  }
+  &-img {
+
+  }
+  & ul li {
+    display: flex;
+  }
+  &-text {
+    font-size: 16px;
+    font-family: "OpenSansBold";
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+  &.error {
+    background-color: #df3737;
+
+  }
+  &.success {
+    background-color: #5bb300;
+
+  }
+}

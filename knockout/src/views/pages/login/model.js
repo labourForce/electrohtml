@@ -49,7 +49,7 @@ export default class LoginVM{
 
 		this.state = state;
 
-
+        this.messageRegistrationSuccess = ko.observable(false);
 		this.loginModel = ko.observable({
 		    username: ko.observable(),
             password: ko.observable(),
@@ -188,8 +188,12 @@ export default class LoginVM{
                     if(!data.hasError){
 
                         errorWrapper.removeClass('error');
+
                         errorWrapper.addClass('success');
                         errorType.text('Success.');
+                        setTimeout(function(){
+                            errorWrapper.removeClass('success');
+                        },2000);
                     } else {
 
                         errorWrapper.removeClass('success');
@@ -378,6 +382,38 @@ export default class LoginVM{
             data: dataJSON ,
             success: function(response){
                 console.log(response);
+                let block = $('.form__steps').find('[data-step]'),
+                    first = $('.form__steps').find('[data-step="1"]'),
+                    currentNumber = $('.account__sign-steps-current'),
+                    errorBlock = $('.form__step-server__response'),
+                    text = block.find('input');
+                block.removeClass('success');
+                block.removeClass('current');
+                first.addClass('current');
+                text.val('');
+
+                $('.form__step-navigation-register').removeClass('visible-b');
+                $('.form__step-navigation-register').addClass('hidden-b');
+
+                $('.form__step-navigation-prev').addClass('hidden-b');
+                $('.form__step-navigation-prev').removeClass('visible-b');
+
+                $('.form__step-navigation-next').addClass('hidden-b');
+                $('.form__step-navigation-next').removeClass('visible-b');
+
+                currentNumber.text('1');
+
+                errorBlock.addClass('success');
+                errorBlock.find('.form__step-server__response-text').text('Success');
+                errorBlock.fadeIn();
+
+                setTimeout(function(){
+                    errorBlock.fadeOut();
+
+                },4000);
+
+
+
             }
         });
 

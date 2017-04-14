@@ -68,7 +68,15 @@ html(lang='ru', class="no-js")
                                     span prev
                                 button.form__step-navigation-next next
                                 button(href="#", class="form__step-navigation-register disabled", disabled) Register
-                            //+form-button('Register')
+
+                            .form__step-server__response
+                                ul
+                                    li
+                                        .form__step-server__response-img
+                                            include ../../img/svg/bug-fixing.svg
+                                        .form__step-server__response-text
+                                            span Sorry! The server does not respond.
+
                             h5.account__title Sign up today and you will be able to:
                             ul.account__list
                                 li Speed your way through the checkout
