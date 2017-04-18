@@ -34,12 +34,13 @@ public class DatabaseConfig {
     @Bean
     public HikariDataSource dataSource(){
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setDataSourceClassName("com.mysql.jdbc.jdbc2.optional.MysqlDataSource");
-        dataSource.addDataSourceProperty("databaseName", "user_accounts");
-        dataSource.addDataSourceProperty("portNumber", "3306");
-        dataSource.addDataSourceProperty("serverName", "localhost");
-        dataSource.addDataSourceProperty("user", "root");
-        dataSource.addDataSourceProperty("password", "root");
+        dataSource.setDataSourceClassName("org.postgresql.ds.PGSimpleDataSource");
+
+        dataSource.addDataSourceProperty("databaseName", "postgres");
+        dataSource.addDataSourceProperty("portNumber", "5555");
+        dataSource.addDataSourceProperty("serverName", "127.0.0.1");
+        dataSource.addDataSourceProperty("user", "postgres");
+        dataSource.addDataSourceProperty("password", "postgres");
         return dataSource;
     }
 
@@ -59,9 +60,9 @@ public class DatabaseConfig {
                 User.class);
 
         Properties properties = new Properties();
-        properties.put("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
+        properties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQL94Dialect");
         //properties.put("hibernate.current_session_context_class","thread");
-        properties.put("hibernate.hbm2ddl.auto","update");
+//        properties.put("hibernate.hbm2ddl.auto","update");
         properties.put("hibernate.show_sql","true");
 
         localSessionFactoryBean.setHibernateProperties(properties);
