@@ -37,7 +37,7 @@ public class DatabaseConfig {
         dataSource.setDataSourceClassName("org.postgresql.ds.PGSimpleDataSource");
 
         dataSource.addDataSourceProperty("databaseName", "postgres");
-        dataSource.addDataSourceProperty("portNumber", "5555");
+        dataSource.addDataSourceProperty("portNumber", "5432");
         dataSource.addDataSourceProperty("serverName", "127.0.0.1");
         dataSource.addDataSourceProperty("user", "postgres");
         dataSource.addDataSourceProperty("password", "postgres");
