@@ -8,7 +8,7 @@ import javax.persistence.*;
  * @version 1.0
  */
 @Entity
-@Table(name = "AppUser")
+@Table(name = "electro.appuser")
 public class User {
 
     @Id
