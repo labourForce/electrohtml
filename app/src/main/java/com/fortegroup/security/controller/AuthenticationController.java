@@ -65,7 +65,9 @@ public class AuthenticationController {
 
 
             // Return the token
-            response.addCookie(new Cookie("token",token));
+            Cookie cookie = new Cookie("token",token);
+            cookie.setHttpOnly(true);
+            response.addCookie(cookie);
             return ResponseEntity.ok(MessageFactory.getMessage("All succes",false));
         }catch (BadCredentialsException e){
             return ResponseEntity.ok(MessageFactory.getMessage("Incorrect email or password",true));
@@ -76,12 +78,13 @@ public class AuthenticationController {
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public ResponseEntity<?> registerRequest(@RequestBody User user){
         try {
+            if(userService.loadUserByUsername(user.getUsername()) != null)
+                return ResponseEntity.ok(MessageFactory.getMessage("This user exist",true));
             User registeredUser = userService.saveUser(user);
 
             return ResponseEntity.ok(MessageFactory.getMessage("User successfully registered",false));
         }catch (Throwable e){
             return ResponseEntity.ok(MessageFactory.getMessage("Something wrong",true));
-
         }
     }
 
@@ -107,8 +110,11 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/logout",method = RequestMethod.POST)
-    public ResponseEntity<?> logout(@RequestBody String token){
-        return null;
+    public ResponseEntity<?> logout(@RequestBody String token,HttpServletResponse response){
+        Cookie cookie = new Cookie("token","");
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
+        return ResponseEntity.ok(MessageFactory.getMessage("User successfully logout",false));
     }
 
 }
