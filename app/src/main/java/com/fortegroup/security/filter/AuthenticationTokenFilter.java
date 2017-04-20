@@ -29,6 +29,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -59,7 +60,16 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        String authToken = httpRequest.getHeader(Constant.tokenHeader);
+        Cookie[] cookies = httpRequest.getCookies();
+        Cookie cookieWithToken = null;
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("token")){
+                cookieWithToken = cookie;
+            }
+        }
+        if(cookieWithToken == null)
+            chain.doFilter(request, response);
+        String authToken = cookieWithToken.getValue();
         String username = this.tokenUtils.getUsernameFromToken(authToken);
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

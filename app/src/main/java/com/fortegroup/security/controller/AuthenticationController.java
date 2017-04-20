@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Controller for some operations with Accounts
  * it include methods for register User,Sing in User , Refresh Token and logout
@@ -44,7 +47,7 @@ public class AuthenticationController {
     private UserService userService;
 
     @RequestMapping(value = "/signIn",method = RequestMethod.POST)
-    public ResponseEntity<?> authenticationRequest(@RequestBody AuthenticationRequest authenticationRequest)
+    public ResponseEntity<?> authenticationRequest(@RequestBody AuthenticationRequest authenticationRequest, HttpServletResponse response)
             throws AuthenticationException {
         try {
 
@@ -62,6 +65,7 @@ public class AuthenticationController {
 
 
             // Return the token
+            response.addCookie(new Cookie("token",token));
             return ResponseEntity.ok(MessageFactory.getMessage("All succes",false,token));
         }catch (BadCredentialsException e){
             return ResponseEntity.ok(MessageFactory.getMessage("Incorrect email or password",true,null));
