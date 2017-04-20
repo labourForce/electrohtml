@@ -66,9 +66,9 @@ public class AuthenticationController {
 
             // Return the token
             response.addCookie(new Cookie("token",token));
-            return ResponseEntity.ok(MessageFactory.getMessage("All succes",false,token));
+            return ResponseEntity.ok(MessageFactory.getMessage("All succes",false));
         }catch (BadCredentialsException e){
-            return ResponseEntity.ok(MessageFactory.getMessage("Incorrect email or password",true,null));
+            return ResponseEntity.ok(MessageFactory.getMessage("Incorrect email or password",true));
         }
     }
 
@@ -78,9 +78,9 @@ public class AuthenticationController {
         try {
             User registeredUser = userService.saveUser(user);
 
-            return ResponseEntity.ok(MessageFactory.getMessage("User successfully registered",false,null));
+            return ResponseEntity.ok(MessageFactory.getMessage("User successfully registered",false));
         }catch (Throwable e){
-            return ResponseEntity.ok(MessageFactory.getMessage("Something wrong",true,null));
+            return ResponseEntity.ok(MessageFactory.getMessage("Something wrong",true));
 
         }
     }
@@ -92,17 +92,17 @@ public class AuthenticationController {
             Message msg;
             if(daoUser != null){
                 msg = MessageFactory.getMessage
-                        ("This is email exist",true,null);
+                        ("This is email exist",true);
             }else {
                 msg = MessageFactory.getMessage
-                        ("This email not exist",false,null);
+                        ("This email not exist",false);
             }
             return ResponseEntity.ok(msg);
 
         }
         else
             return ResponseEntity.ok(MessageFactory.getMessage
-                    ("Email must be not null",true,null));
+                    ("Email must be not null",true));
 
     }
 
