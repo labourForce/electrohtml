@@ -66,8 +66,7 @@ public class DatabaseConfig {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource((DataSource) appContext.getBean("dataSource"));
 
-        localSessionFactoryBean.setAnnotatedClasses(User.class, BaseSKU.class);
-        localSessionFactoryBean.setAnnotatedClasses(Product.class);
+        localSessionFactoryBean.setPackagesToScan("com.fortegroup.model");
         Properties properties = new Properties();
         properties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQL94Dialect");
         //properties.put("hibernate.current_session_context_class","thread");
