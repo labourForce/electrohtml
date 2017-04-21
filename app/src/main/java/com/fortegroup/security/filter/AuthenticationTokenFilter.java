@@ -60,16 +60,18 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
+        Cookie current = new Cookie("token","");
         Cookie[] cookies = httpRequest.getCookies();
-        Cookie cookieWithToken = null;
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals("token")){
-                cookieWithToken = cookie;
+        if(cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    current = cookie;
+                }
+
             }
         }
-        if(cookieWithToken == null)
-            chain.doFilter(request, response);
-        String authToken = cookieWithToken.getValue();
+
+        String authToken = httpRequest.getHeader(Constant.tokenHeader);
         String username = this.tokenUtils.getUsernameFromToken(authToken);
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -78,14 +80,12 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
-
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
 
         chain.doFilter(request, response);
     }
-
     public String authenticationRequest(String token) {
 
         String username = this.tokenUtils.getUsernameFromToken(token);

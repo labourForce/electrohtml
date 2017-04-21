@@ -3,6 +3,7 @@ package com.fortegroup.config;
 import com.fortegroup.dao.UserDao;
 import com.fortegroup.dao.implementation.UserDaoImpl;
 import com.fortegroup.model.User;
+import com.fortegroup.security.utill.Validator;
 import com.fortegroup.service.UserService;
 import com.fortegroup.service.UserServiceImpl;
 import com.zaxxer.hikari.HikariDataSource;
@@ -78,4 +79,5 @@ public class DatabaseConfig {
     public UserDao userDao(){
         return new UserDaoImpl();
     }
+
 }

@@ -5,6 +5,7 @@ import com.fortegroup.security.TokenUtils;
 import com.fortegroup.security.model.AuthenticationRequest;
 import com.fortegroup.security.model.Message;
 import com.fortegroup.security.utill.MessageFactory;
+import com.fortegroup.security.utill.Validator;
 import com.fortegroup.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -77,6 +78,9 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public ResponseEntity<?> registerRequest(@RequestBody User user){
+        if(!Validator.validateEmail(user.getUsername())||!Validator.validatePassword(user.getPassword())){
+            return  ResponseEntity.ok(MessageFactory.getMessage("Your fields not valid",true));
+        }
         try {
             if(userService.loadUserByUsername(user.getUsername()) != null)
                 return ResponseEntity.ok(MessageFactory.getMessage("This user exist",true));
@@ -109,8 +113,8 @@ public class AuthenticationController {
 
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.POST)
-    public ResponseEntity<?> logout(@RequestBody String token,HttpServletResponse response){
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public ResponseEntity<?> logout(HttpServletResponse response){
         Cookie cookie = new Cookie("token","");
         cookie.setHttpOnly(true);
         response.addCookie(cookie);

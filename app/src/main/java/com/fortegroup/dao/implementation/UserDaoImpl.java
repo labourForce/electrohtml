@@ -22,6 +22,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public User loadUserByUsername(String username) {
+
         User user = (User) sessionFactory.getCurrentSession()
                 .createCriteria(User.class)
                 .add(Restrictions.eq("username", username))
