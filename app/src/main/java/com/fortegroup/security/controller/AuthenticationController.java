@@ -5,6 +5,7 @@ import com.fortegroup.security.TokenUtils;
 import com.fortegroup.security.model.AuthenticationRequest;
 import com.fortegroup.security.model.Message;
 import com.fortegroup.security.utill.MessageFactory;
+import com.fortegroup.security.utill.Validator;
 import com.fortegroup.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Controller for some operations with Accounts
@@ -44,7 +48,7 @@ public class AuthenticationController {
     private UserService userService;
 
     @RequestMapping(value = "/signIn",method = RequestMethod.POST)
-    public ResponseEntity<?> authenticationRequest(@RequestBody AuthenticationRequest authenticationRequest)
+    public ResponseEntity<?> authenticationRequest(@RequestBody AuthenticationRequest authenticationRequest, HttpServletResponse response)
             throws AuthenticationException {
         try {
 
@@ -62,22 +66,29 @@ public class AuthenticationController {
 
 
             // Return the token
-            return ResponseEntity.ok(MessageFactory.getMessage("All succes",false,token));
+            Cookie cookie = new Cookie("token",token);
+            cookie.setHttpOnly(true);
+            response.addCookie(cookie);
+            return ResponseEntity.ok(MessageFactory.getMessage("All succes",false));
         }catch (BadCredentialsException e){
-            return ResponseEntity.ok(MessageFactory.getMessage("Incorrect email or password",true,null));
+            return ResponseEntity.ok(MessageFactory.getMessage("Incorrect email or password",true));
         }
     }
 
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public ResponseEntity<?> registerRequest(@RequestBody User user){
+        if(!Validator.validateEmail(user.getUsername())||!Validator.validatePassword(user.getPassword())){
+            return  ResponseEntity.ok(MessageFactory.getMessage("Your fields not valid",true));
+        }
         try {
+            if(userService.loadUserByUsername(user.getUsername()) != null)
+                return ResponseEntity.ok(MessageFactory.getMessage("This user exist",true));
             User registeredUser = userService.saveUser(user);
 
-            return ResponseEntity.ok(MessageFactory.getMessage("User successfully registered",false,null));
+            return ResponseEntity.ok(MessageFactory.getMessage("User successfully registered",false));
         }catch (Throwable e){
-            return ResponseEntity.ok(MessageFactory.getMessage("Something wrong",true,null));
-
+            return ResponseEntity.ok(MessageFactory.getMessage("Something wrong",true));
         }
     }
 
@@ -88,23 +99,26 @@ public class AuthenticationController {
             Message msg;
             if(daoUser != null){
                 msg = MessageFactory.getMessage
-                        ("This is email exist",true,null);
+                        ("This is email exist",true);
             }else {
                 msg = MessageFactory.getMessage
-                        ("This email not exist",false,null);
+                        ("This email not exist",false);
             }
             return ResponseEntity.ok(msg);
 
         }
         else
             return ResponseEntity.ok(MessageFactory.getMessage
-                    ("Email must be not null",true,null));
+                    ("Email must be not null",true));
 
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.POST)
-    public ResponseEntity<?> logout(@RequestBody String token){
-        return null;
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public ResponseEntity<?> logout(HttpServletResponse response){
+        Cookie cookie = new Cookie("token","");
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
+        return ResponseEntity.ok(MessageFactory.getMessage("User successfully logout",false));
     }
 
 }

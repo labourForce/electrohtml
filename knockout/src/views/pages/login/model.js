@@ -50,6 +50,7 @@ export default class LoginVM{
 		this.state = state;
 
         this.messageRegistrationSuccess = ko.observable(false);
+
 		this.loginModel = ko.observable({
 		    username: ko.observable(),
             password: ko.observable(),
@@ -57,7 +58,7 @@ export default class LoginVM{
         });
 
 		this.accountModel = ko.observable({
-		    email: ko.observable(),
+		    username: ko.observable(),
 		    password: ko.observable()
         });
 
@@ -165,7 +166,7 @@ export default class LoginVM{
         event.preventDefault();
 
         let signInData = {
-            email: this.loginModel().username(),
+            username: this.loginModel().username(),
             password: this.loginModel().password(),
             remember: this.loginModel().remember()
         };
@@ -174,18 +175,19 @@ export default class LoginVM{
 
        if( this.formValidate(event) ) {
            $.ajax({
-               url: '/rest/account/singIn',
+               url: '/rest/account/signIn',
                contentType: 'application/json',
                type: 'post',
                data: jsonData ,
                success: function(response){
+                   console.log(response);
 
-                   let data = JSON.parse(response),
+                   let data = response,
                       errorWrapper = $('.form__validation-state'),
                       errorText = errorWrapper.find('span'),
                       errorType = errorWrapper.find('strong');
 
-                    if(!data.hasError){
+                    if(!data.error){
 
                         errorWrapper.removeClass('error');
 
@@ -220,7 +222,7 @@ export default class LoginVM{
             dataValidate = el.data('validate'),
             innerText = el.val(),
             dataJSON = ko.toJSON({
-                email: innerText
+                username: innerText
             });
 
         if(dataValidate === 'email'){
@@ -234,8 +236,9 @@ export default class LoginVM{
                     type: 'post',
                     data: dataJSON ,
                     success: function(response){
-                        let data = JSON.parse(response);
-                        if(!data.hasError){
+                        console.log(response);
+                        let data = response;
+                        if(!data.error){
 
                             parentEl.removeClass('error');
                             parentEl.addClass('success');
@@ -373,13 +376,19 @@ export default class LoginVM{
     submitNewAccount(data, event){
 
 
-        let dataJSON = ko.toJSON(data.accountModel());
+        let dataJSON = data.accountModel(),
+            newJSON = ko.toJSON({
+                username: dataJSON.username(),
+                password: dataJSON.password()
+            });
+
+
 
         $.ajax({
             url: '/rest/account/register',
             contentType: 'application/json',
             type: 'post',
-            data: dataJSON ,
+            data: newJSON ,
             success: function(response){
                 console.log(response);
                 let block = $('.form__steps').find('[data-step]'),

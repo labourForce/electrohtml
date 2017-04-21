@@ -29,6 +29,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -59,6 +60,17 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
+        Cookie current = new Cookie("token","");
+        Cookie[] cookies = httpRequest.getCookies();
+        if(cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    current = cookie;
+                }
+
+            }
+        }
+
         String authToken = httpRequest.getHeader(Constant.tokenHeader);
         String username = this.tokenUtils.getUsernameFromToken(authToken);
 
@@ -68,14 +80,12 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
-
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
 
         chain.doFilter(request, response);
     }
-
     public String authenticationRequest(String token) {
 
         String username = this.tokenUtils.getUsernameFromToken(token);
