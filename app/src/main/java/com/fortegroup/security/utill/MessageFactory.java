@@ -10,7 +10,7 @@ public final class MessageFactory {
     private MessageFactory() {
     }
 
-    public static Message getMessage(String pMessage,boolean pIsError){
-        return new Message(pIsError,pMessage);
+    public static Message getMessage(String pMessage,boolean pIsError,String pToken){
+        return new Message(pIsError,pMessage,pToken);
     }
 }
