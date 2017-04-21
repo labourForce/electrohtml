@@ -20,6 +20,8 @@
         <hikari.version>2.4.6</hikari.version>
         <postgresql-jdbc-version>9.4.1212</postgresql-jdbc-version>
         <junit.version>4.11</junit.version>
+        <spring-data-elasticsearch.version>2.1.1.RELEASE</spring-data-elasticsearch.version>
+        <elasticsearch.version>1.7.3</elasticsearch.version>
     </properties>
     <build>
         <plugins>
@@ -79,7 +81,6 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -147,6 +148,16 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+            <version>${spring-data-elasticsearch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>${elasticsearch.version}</version>
         </dependency>
 
     </dependencies>
