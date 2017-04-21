@@ -1,10 +1,15 @@
 package com.fortegroup.config;
 
+import com.fortegroup.dao.ProductDetailDao;
 import com.fortegroup.dao.UserDao;
+import com.fortegroup.dao.implementation.ProductDetailDaoImpl;
 import com.fortegroup.dao.implementation.UserDaoImpl;
+import com.fortegroup.model.Product;
 import com.fortegroup.model.User;
+import com.fortegroup.service.ProductDetailService;
 import com.fortegroup.service.UserService;
 import com.fortegroup.service.UserServiceImpl;
+import com.fortegroup.service.implementation.ProductDetailServiceImpl;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -58,6 +63,7 @@ public class DatabaseConfig {
         localSessionFactoryBean.setDataSource((DataSource) appContext.getBean("dataSource"));
         localSessionFactoryBean.setAnnotatedClasses(
                 User.class);
+        localSessionFactoryBean.setAnnotatedClasses(Product.class);
 
         Properties properties = new Properties();
         properties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQL94Dialect");
@@ -78,4 +84,10 @@ public class DatabaseConfig {
     public UserDao userDao(){
         return new UserDaoImpl();
     }
+
+    @Bean
+    public ProductDetailService appProductDetailService(){return new ProductDetailServiceImpl();}
+
+    @Bean
+    public ProductDetailDao productDetailDao(){return new ProductDetailDaoImpl();}
 }
