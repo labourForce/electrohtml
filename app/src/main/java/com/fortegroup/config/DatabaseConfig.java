@@ -2,6 +2,8 @@ package com.fortegroup.config;
 
 import com.fortegroup.dao.UserDao;
 import com.fortegroup.dao.implementation.UserDaoImpl;
+import com.fortegroup.elasticsearch.service.ProductsService;
+import com.fortegroup.elasticsearch.service.ProductsServiceImpl;
 import com.fortegroup.model.User;
 import com.fortegroup.service.UserService;
 import com.fortegroup.service.UserServiceImpl;
@@ -38,7 +40,8 @@ public class DatabaseConfig {
 
         dataSource.addDataSourceProperty("databaseName", "postgres");
         dataSource.addDataSourceProperty("portNumber", "5432");
-        dataSource.addDataSourceProperty("serverName", "127.0.0.1");
+        dataSource.addDataSourceProperty("serverName", "localhost");
+//        dataSource.addDataSourceProperty("serverName","192.168.1.207");
         dataSource.addDataSourceProperty("user", "postgres");
         dataSource.addDataSourceProperty("password", "postgres");
         return dataSource;
@@ -77,5 +80,10 @@ public class DatabaseConfig {
     @Bean
     public UserDao userDao(){
         return new UserDaoImpl();
+    }
+
+    @Bean
+    public ProductsService productsService(){
+        return new ProductsServiceImpl();
     }
 }
