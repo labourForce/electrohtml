@@ -1,9 +1,13 @@
 #!/bin/bash
-cd /home/usr/Documents/electrohtml
-git pull origin dev
-echo "pull from repo"
+cd /home/usr/Documents/
+rm -rf electrohtml
+echo "delete previously cloned repo"
+git clone https://bitbucket.org/MarthusMarthus/electrohtml.git
+cd electrohtml
+git checkout dev
+echo "clone from repo"
 cp -rf knockout/dist/assets app/src/main/webapp
-echo "asserts is copied"
+echo "folder asserts is copied"
 cd app
 mvn package
 echo "build project with maven"
