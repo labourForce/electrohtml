@@ -11,7 +11,11 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 /**
+<<<<<<< HEAD
  * Created by PC on 21.04.2017.
+=======
+ * Created by PC on 19.04.2017.
+>>>>>>> af2f4485bc749f02524bd5db4fa8d8d354347bd5
  */
 public class StringJsonUserType implements UserType {
     @Override
@@ -41,7 +45,7 @@ public class StringJsonUserType implements UserType {
     }
 
     @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner) throws HibernateException, SQLException, SQLException {
+    public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner) throws HibernateException, SQLException {
         if(rs.getString(names[0]) == null){
             return null;
         }

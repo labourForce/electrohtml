@@ -1,61 +1,41 @@
 package com.fortegroup.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.fortegroup.model.BaseSKU;
 import com.fortegroup.model.Product;
 import com.fortegroup.service.ProductDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-/**
- * Created by PC on 21.04.2017.
- */
 @RestController
 @RequestMapping(value = "/rest/product")
 public class ProductDetailController {
     @Autowired
     private ProductDetailService productDetailService;
 
-    @RequestMapping(value = "/getProduct", method = RequestMethod.POST)
-    public ResponseEntity<?> getDetails(@RequestBody String id) {
-        ObjectMapper objectMapper= new ObjectMapper();
-        Product pr = null;
-        try {
-            pr = objectMapper.readValue(id,Product.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Product product = productDetailService.getProductById(pr.getId());
+    @RequestMapping(value = "/getProduct", params = "id", method = RequestMethod.GET)
+    public ResponseEntity<?> getDetails(@RequestParam("id") long id) {
+        Product product = productDetailService.getProductById(id);
         return ResponseEntity.ok(product);
     }
 
-//    @RequestMapping(value = "/getAdditionalInfo", method = RequestMethod.POST)
-//    public ResponseEntity<?> getAdditionalInfo(@RequestBody String productId) {
-//        ObjectMapper objectMapper= new ObjectMapper();
-//        Product pr = null;
-//        try {
-//            pr = objectMapper.readValue(productId,Product.class);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        List<BaseSKU> SKUs = productDetailService.getBaseSKUsByProductId(pr.getId());
-//        return ResponseEntity.ok(SKUs);
-//    }
-//    @RequestMapping(value = "/getBaseSKU", method = RequestMethod.POST)
-//    public ResponseEntity<?> getBaseSKU(@RequestBody String productId) {
-//        ObjectMapper objectMapper= new ObjectMapper();
-//        BaseSKU bs = null;
-//        try {
-//            bs = objectMapper.readValue(productId,BaseSKU.class);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        BaseSKU baseSKU = productDetailService.getBaseSKUByProductId(bs.getProductId());
-//        return ResponseEntity.ok(baseSKU);
-//    }
+    @RequestMapping(value = "/getAdditionalInfo", params = "id", method = RequestMethod.GET)
+    public ResponseEntity<?> getAdditionalInfo(@RequestParam("id") long productId) {
+        List<BaseSKU> SKUs = productDetailService.getBaseSKUsByProductId(productId);
+        return ResponseEntity.ok(SKUs);
+    }
+
+    @RequestMapping(value = "/getBaseSKU", params = "id", method = RequestMethod.GET)
+    public ResponseEntity<?> getBaseSKU(@RequestParam("id") long productId) {
+        BaseSKU baseSKU = productDetailService.getBaseSKUByProductId(productId);
+        return ResponseEntity.ok(baseSKU);
+    }
+
 }

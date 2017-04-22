@@ -1,12 +1,14 @@
 package com.fortegroup.dao;
 
+import com.fortegroup.model.BaseSKU;
 import com.fortegroup.model.Product;
 
-/**
- * Created by PC on 21.04.2017.
- */
+import java.util.List;
+
 public interface ProductDetailDao {
+
     Product getProductById(long id);
-//    BaseSKU getBaseSKUByProductId(long id);
-//    List<BaseSKU> getBaseSKUsByProductId(long id);
+    BaseSKU getBaseSKUByProductId(long id);
+    List<BaseSKU> getBaseSKUsByProductId(long id);
+
 }

@@ -13,12 +13,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductsServiceImpl implements ProductsService {
-    private final ProductsRepository productsRepository;
 
     @Autowired
-    public ProductsServiceImpl(ProductsRepository productsRepository) {
-        this.productsRepository = productsRepository;
-    }
+    private ProductsRepository productsRepository;
+
+//    @Autowired
+//    public ProductsServiceImpl(ProductsRepository productsRepository) {
+//        this.productsRepository = productsRepository;
+//    }
 
     @Override
     public Page<Products> findById(String id, Pageable pageable) {

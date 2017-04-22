@@ -1,5 +1,6 @@
 package com.fortegroup.model;
 
+
 import com.fortegroup.dao.implementation.JSONType.StringJsonUserType;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -8,9 +9,9 @@ import org.hibernate.annotations.TypeDefs;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "electro.product")
+@Table(name = "electro.variable_sku")
 @TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
-public class Product {
+public class VariableSKU {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +20,6 @@ public class Product {
     private String name;
     @Column(name = "display_name", nullable = false)
     private String displayName;
-    @Column(name = "rating", nullable = false)
-    private int rating;
     @Column(name = "availability", nullable = false)
     private boolean availability;
     @Column(name = "display_flag", nullable = false)
@@ -34,38 +33,28 @@ public class Product {
     @Column(name = "techline", nullable = false)
     @Type(type = "StringJsonObject")
     private String techline;
-    @Column(name = "on_sale", nullable = false)
-    private boolean onSale;
-    @Column(name = "upsale", nullable = false)
-    private boolean upSale;
     @Column(name = "list_price", nullable = false)
     private double listPrice;
     @Column(name = "sale_price", nullable = false)
     private double salePrice;
-    @Column(name = "image", nullable = false)
-    private String image;
-    @Column(name = "root_category_id", nullable = false)
-    private int rootCategoryId;
+    @Column(name = "conf_option_id", nullable = false)
+    private int confOptionId;
 
-    public Product() {
+    public VariableSKU() {
     }
 
-    public Product(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, String image, int rootCategoryId) {
+    public VariableSKU(String name, String displayName, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, double listPrice, double salePrice, int confOptionId) {
         this.name = name;
         this.displayName = displayName;
-        this.rating = rating;
         this.availability = availability;
         this.displayFlag = displayFlag;
         this.longDescription = longDescription;
         this.shortDescription = shortDescription;
         this.brand = brand;
         this.techline = techline;
-        this.onSale = onSale;
-        this.upSale = upSale;
         this.listPrice = listPrice;
         this.salePrice = salePrice;
-        this.image = image;
-        this.rootCategoryId = rootCategoryId;
+        this.confOptionId = confOptionId;
     }
 
     public Long getId() {
@@ -90,14 +79,6 @@ public class Product {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     public boolean isAvailability() {
@@ -148,22 +129,6 @@ public class Product {
         this.techline = techline;
     }
 
-    public boolean isOnSale() {
-        return onSale;
-    }
-
-    public void setOnSale(boolean onSale) {
-        this.onSale = onSale;
-    }
-
-    public boolean isUpSale() {
-        return upSale;
-    }
-
-    public void setUpSale(boolean upSale) {
-        this.upSale = upSale;
-    }
-
     public double getListPrice() {
         return listPrice;
     }
@@ -180,19 +145,11 @@ public class Product {
         this.salePrice = salePrice;
     }
 
-    public String getImage() {
-        return image;
+    public int getConfOptionId() {
+        return confOptionId;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public int getRootCategoryId() {
-        return rootCategoryId;
-    }
-
-    public void setRootCategoryId(int rootCategoryId) {
-        this.rootCategoryId = rootCategoryId;
+    public void setConfOptionId(int confOptionId) {
+        this.confOptionId = confOptionId;
     }
 }

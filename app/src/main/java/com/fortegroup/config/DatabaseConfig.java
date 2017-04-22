@@ -4,6 +4,10 @@ import com.fortegroup.dao.ProductDetailDao;
 import com.fortegroup.dao.UserDao;
 import com.fortegroup.dao.implementation.ProductDetailDaoImpl;
 import com.fortegroup.dao.implementation.UserDaoImpl;
+
+import com.fortegroup.elasticsearch.service.ProductsService;
+import com.fortegroup.elasticsearch.service.ProductsServiceImpl;
+import com.fortegroup.model.BaseSKU;
 import com.fortegroup.model.Product;
 import com.fortegroup.model.User;
 import com.fortegroup.service.ProductDetailService;
@@ -43,7 +47,8 @@ public class DatabaseConfig {
 
         dataSource.addDataSourceProperty("databaseName", "postgres");
         dataSource.addDataSourceProperty("portNumber", "5432");
-        dataSource.addDataSourceProperty("serverName", "127.0.0.1");
+        dataSource.addDataSourceProperty("serverName", "localhost");
+//        dataSource.addDataSourceProperty("serverName","192.168.1.207");
         dataSource.addDataSourceProperty("user", "postgres");
         dataSource.addDataSourceProperty("password", "postgres");
         return dataSource;
@@ -61,10 +66,7 @@ public class DatabaseConfig {
     public LocalSessionFactoryBean hibernate5SessionFactoryBean(){
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource((DataSource) appContext.getBean("dataSource"));
-        localSessionFactoryBean.setAnnotatedClasses(
-                User.class);
-        localSessionFactoryBean.setAnnotatedClasses(Product.class);
-
+        localSessionFactoryBean.setPackagesToScan("com.fortegroup.model");
         Properties properties = new Properties();
         properties.put("hibernate.dialect","org.hibernate.dialect.PostgreSQL94Dialect");
         //properties.put("hibernate.current_session_context_class","thread");
@@ -86,8 +88,14 @@ public class DatabaseConfig {
     }
 
     @Bean
+    public ProductsService productsService(){
+        return new ProductsServiceImpl();
+    }
+
+    @Bean
     public ProductDetailService appProductDetailService(){return new ProductDetailServiceImpl();}
 
     @Bean
     public ProductDetailDao productDetailDao(){return new ProductDetailDaoImpl();}
+
 }

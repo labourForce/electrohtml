@@ -8,9 +8,9 @@ import org.hibernate.annotations.TypeDefs;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "electro.product")
+@Table(name = "electro.base_sku")
 @TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
-public class Product {
+public class BaseSKU {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,15 +42,17 @@ public class Product {
     private double listPrice;
     @Column(name = "sale_price", nullable = false)
     private double salePrice;
+    @Column(name = "quantity", nullable = false)
+    private int quantity;
     @Column(name = "image", nullable = false)
     private String image;
-    @Column(name = "root_category_id", nullable = false)
-    private int rootCategoryId;
+    @Column(name = "product_id", nullable = false)
+    private int productId;
 
-    public Product() {
+    public BaseSKU() {
     }
 
-    public Product(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, String image, int rootCategoryId) {
+    public BaseSKU(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, int quantity, String image, int productId) {
         this.name = name;
         this.displayName = displayName;
         this.rating = rating;
@@ -64,8 +66,9 @@ public class Product {
         this.upSale = upSale;
         this.listPrice = listPrice;
         this.salePrice = salePrice;
+        this.quantity = quantity;
         this.image = image;
-        this.rootCategoryId = rootCategoryId;
+        this.productId = productId;
     }
 
     public Long getId() {
@@ -180,6 +183,14 @@ public class Product {
         this.salePrice = salePrice;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public String getImage() {
         return image;
     }
@@ -188,11 +199,11 @@ public class Product {
         this.image = image;
     }
 
-    public int getRootCategoryId() {
-        return rootCategoryId;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setRootCategoryId(int rootCategoryId) {
-        this.rootCategoryId = rootCategoryId;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 }

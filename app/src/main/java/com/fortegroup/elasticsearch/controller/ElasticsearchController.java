@@ -1,24 +1,31 @@
 package com.fortegroup.elasticsearch.controller;
 
-import com.fortegroup.config.WebInit;
-import com.fortegroup.elasticsearch.config.ElasticSearchConfig;
-import com.fortegroup.elasticsearch.repository.ProductsRepository;
+import com.fortegroup.elasticsearch.model.Products;
+import com.fortegroup.elasticsearch.model.SearchRequest;
+import com.fortegroup.elasticsearch.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Eugene Pankov
  */
 
-@Configuration
+@RestController
+@RequestMapping("/rest/search/")
 public class ElasticsearchController {
+
+    @Autowired
+    private ProductsService productsService;
+
+    @RequestMapping("ById")
+    public ResponseEntity<?> getProductsById(@RequestBody SearchRequest request){
+        Page<Products> products = productsService.findById(request.getId(),new PageRequest(0,10));
+        return ResponseEntity.ok(products.getContent());
+    }
 
 }
