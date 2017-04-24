@@ -1,7 +1,8 @@
-package com.fortegroup.service;
+package com.fortegroup.service.implementation;
 
 import com.fortegroup.dao.UserDao;
 import com.fortegroup.model.User;
+import com.fortegroup.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

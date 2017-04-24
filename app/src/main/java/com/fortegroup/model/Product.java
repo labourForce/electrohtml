@@ -6,51 +6,53 @@ import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "electro.product")
 @TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
-public class Product {
+public class Product implements java.io.Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name", nullable = false)
+
     private String name;
-    @Column(name = "display_name", nullable = false)
+
     private String displayName;
-    @Column(name = "rating", nullable = false)
+
     private int rating;
-    @Column(name = "availability", nullable = false)
+
     private boolean availability;
-    @Column(name = "display_flag", nullable = false)
+
     private boolean displayFlag;
-    @Column(name = "long_description", nullable = false)
+
     private String longDescription;
-    @Column(name = "short_description", nullable = false)
+
     private String shortDescription;
-    @Column(name = "brand", nullable = false)
+
     private String brand;
-    @Column(name = "techline", nullable = false)
-    @Type(type = "StringJsonObject")
+
     private String techline;
-    @Column(name = "on_sale", nullable = false)
+
     private boolean onSale;
-    @Column(name = "upsale", nullable = false)
+
     private boolean upSale;
-    @Column(name = "list_price", nullable = false)
+
     private double listPrice;
-    @Column(name = "sale_price", nullable = false)
+
     private double salePrice;
-    @Column(name = "image", nullable = false)
+
     private String image;
-    @Column(name = "root_category_id", nullable = false)
+
     private int rootCategoryId;
+
+    private Set<BaseSKU> baseSKUs = new HashSet<>(
+            0);
 
     public Product() {
     }
 
-    public Product(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, String image, int rootCategoryId) {
+    public Product(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, String image, int rootCategoryId, Set<BaseSKU> baseSKUs) {
         this.name = name;
         this.displayName = displayName;
         this.rating = rating;
@@ -66,8 +68,12 @@ public class Product {
         this.salePrice = salePrice;
         this.image = image;
         this.rootCategoryId = rootCategoryId;
+        this.baseSKUs = baseSKUs;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     public Long getId() {
         return id;
     }
@@ -76,6 +82,7 @@ public class Product {
         this.id = id;
     }
 
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -84,6 +91,7 @@ public class Product {
         this.name = name;
     }
 
+    @Column(name = "display_name", nullable = false)
     public String getDisplayName() {
         return displayName;
     }
@@ -92,6 +100,7 @@ public class Product {
         this.displayName = displayName;
     }
 
+    @Column(name = "rating", nullable = false)
     public int getRating() {
         return rating;
     }
@@ -100,6 +109,7 @@ public class Product {
         this.rating = rating;
     }
 
+    @Column(name = "availability", nullable = false)
     public boolean isAvailability() {
         return availability;
     }
@@ -108,6 +118,7 @@ public class Product {
         this.availability = availability;
     }
 
+    @Column(name = "display_flag", nullable = false)
     public boolean isDisplayFlag() {
         return displayFlag;
     }
@@ -116,6 +127,7 @@ public class Product {
         this.displayFlag = displayFlag;
     }
 
+    @Column(name = "long_description", nullable = false)
     public String getLongDescription() {
         return longDescription;
     }
@@ -124,6 +136,7 @@ public class Product {
         this.longDescription = longDescription;
     }
 
+    @Column(name = "short_description", nullable = false)
     public String getShortDescription() {
         return shortDescription;
     }
@@ -132,6 +145,7 @@ public class Product {
         this.shortDescription = shortDescription;
     }
 
+    @Column(name = "brand", nullable = false)
     public String getBrand() {
         return brand;
     }
@@ -140,6 +154,8 @@ public class Product {
         this.brand = brand;
     }
 
+    @Column(name = "techline", nullable = false)
+    @Type(type = "StringJsonObject")
     public String getTechline() {
         return techline;
     }
@@ -148,6 +164,7 @@ public class Product {
         this.techline = techline;
     }
 
+    @Column(name = "on_sale", nullable = false)
     public boolean isOnSale() {
         return onSale;
     }
@@ -156,6 +173,7 @@ public class Product {
         this.onSale = onSale;
     }
 
+    @Column(name = "upsale", nullable = false)
     public boolean isUpSale() {
         return upSale;
     }
@@ -164,6 +182,7 @@ public class Product {
         this.upSale = upSale;
     }
 
+    @Column(name = "list_price", nullable = false)
     public double getListPrice() {
         return listPrice;
     }
@@ -172,6 +191,7 @@ public class Product {
         this.listPrice = listPrice;
     }
 
+    @Column(name = "sale_price", nullable = false)
     public double getSalePrice() {
         return salePrice;
     }
@@ -180,6 +200,7 @@ public class Product {
         this.salePrice = salePrice;
     }
 
+    @Column(name = "image", nullable = false)
     public String getImage() {
         return image;
     }
@@ -188,11 +209,21 @@ public class Product {
         this.image = image;
     }
 
+    @Column(name = "root_category_id", nullable = false)
     public int getRootCategoryId() {
         return rootCategoryId;
     }
 
     public void setRootCategoryId(int rootCategoryId) {
         this.rootCategoryId = rootCategoryId;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+    public Set<BaseSKU> getBaseSKUs() {
+        return this.baseSKUs;
+    }
+
+    public void setBaseSKUs(Set<BaseSKU> baseSKUs) {
+        this.baseSKUs = baseSKUs;
     }
 }

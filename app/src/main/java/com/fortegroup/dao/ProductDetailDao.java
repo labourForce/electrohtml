@@ -8,7 +8,5 @@ import java.util.List;
 public interface ProductDetailDao {
 
     Product getProductById(long id);
-    BaseSKU getBaseSKUByProductId(long id);
-    List<BaseSKU> getBaseSKUsByProductId(long id);
 
 }

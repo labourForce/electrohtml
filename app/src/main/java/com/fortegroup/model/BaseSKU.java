@@ -1,5 +1,6 @@
 package com.fortegroup.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fortegroup.dao.implementation.JSONType.StringJsonUserType;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -10,49 +11,48 @@ import javax.persistence.*;
 @Entity
 @Table(name = "electro.base_sku")
 @TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
-public class BaseSKU {
+public class BaseSKU implements java.io.Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name", nullable = false)
+
     private String name;
-    @Column(name = "display_name", nullable = false)
+
     private String displayName;
-    @Column(name = "rating", nullable = false)
+
     private int rating;
-    @Column(name = "availability", nullable = false)
+
     private boolean availability;
-    @Column(name = "display_flag", nullable = false)
+
     private boolean displayFlag;
-    @Column(name = "long_description", nullable = false)
+
     private String longDescription;
-    @Column(name = "short_description", nullable = false)
+
     private String shortDescription;
-    @Column(name = "brand", nullable = false)
+
     private String brand;
-    @Column(name = "techline", nullable = false)
-    @Type(type = "StringJsonObject")
+
     private String techline;
-    @Column(name = "on_sale", nullable = false)
+
     private boolean onSale;
-    @Column(name = "upsale", nullable = false)
+
     private boolean upSale;
-    @Column(name = "list_price", nullable = false)
+
     private double listPrice;
-    @Column(name = "sale_price", nullable = false)
+
     private double salePrice;
-    @Column(name = "quantity", nullable = false)
+
     private int quantity;
-    @Column(name = "image", nullable = false)
+
     private String image;
-    @Column(name = "product_id", nullable = false)
+
     private int productId;
+
+    private Product product;
 
     public BaseSKU() {
     }
 
-    public BaseSKU(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, int quantity, String image, int productId) {
+    public BaseSKU(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, int quantity, String image, int productId, Product product) {
         this.name = name;
         this.displayName = displayName;
         this.rating = rating;
@@ -69,8 +69,13 @@ public class BaseSKU {
         this.quantity = quantity;
         this.image = image;
         this.productId = productId;
+        this.product = product;
+
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     public Long getId() {
         return id;
     }
@@ -79,6 +84,7 @@ public class BaseSKU {
         this.id = id;
     }
 
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -87,6 +93,7 @@ public class BaseSKU {
         this.name = name;
     }
 
+    @Column(name = "display_name", nullable = false)
     public String getDisplayName() {
         return displayName;
     }
@@ -95,6 +102,7 @@ public class BaseSKU {
         this.displayName = displayName;
     }
 
+    @Column(name = "rating", nullable = false)
     public int getRating() {
         return rating;
     }
@@ -103,6 +111,7 @@ public class BaseSKU {
         this.rating = rating;
     }
 
+    @Column(name = "availability", nullable = false)
     public boolean isAvailability() {
         return availability;
     }
@@ -111,6 +120,7 @@ public class BaseSKU {
         this.availability = availability;
     }
 
+    @Column(name = "display_flag", nullable = false)
     public boolean isDisplayFlag() {
         return displayFlag;
     }
@@ -119,6 +129,7 @@ public class BaseSKU {
         this.displayFlag = displayFlag;
     }
 
+    @Column(name = "long_description", nullable = false)
     public String getLongDescription() {
         return longDescription;
     }
@@ -127,6 +138,7 @@ public class BaseSKU {
         this.longDescription = longDescription;
     }
 
+    @Column(name = "short_description", nullable = false)
     public String getShortDescription() {
         return shortDescription;
     }
@@ -135,6 +147,7 @@ public class BaseSKU {
         this.shortDescription = shortDescription;
     }
 
+    @Column(name = "brand", nullable = false)
     public String getBrand() {
         return brand;
     }
@@ -143,6 +156,8 @@ public class BaseSKU {
         this.brand = brand;
     }
 
+    @Column(name = "techline", nullable = false)
+    @Type(type = "StringJsonObject")
     public String getTechline() {
         return techline;
     }
@@ -151,6 +166,7 @@ public class BaseSKU {
         this.techline = techline;
     }
 
+    @Column(name = "on_sale", nullable = false)
     public boolean isOnSale() {
         return onSale;
     }
@@ -159,6 +175,7 @@ public class BaseSKU {
         this.onSale = onSale;
     }
 
+    @Column(name = "upsale", nullable = false)
     public boolean isUpSale() {
         return upSale;
     }
@@ -167,6 +184,7 @@ public class BaseSKU {
         this.upSale = upSale;
     }
 
+    @Column(name = "list_price", nullable = false)
     public double getListPrice() {
         return listPrice;
     }
@@ -175,6 +193,7 @@ public class BaseSKU {
         this.listPrice = listPrice;
     }
 
+    @Column(name = "sale_price", nullable = false)
     public double getSalePrice() {
         return salePrice;
     }
@@ -183,6 +202,7 @@ public class BaseSKU {
         this.salePrice = salePrice;
     }
 
+    @Column(name = "quantity", nullable = false)
     public int getQuantity() {
         return quantity;
     }
@@ -191,6 +211,7 @@ public class BaseSKU {
         this.quantity = quantity;
     }
 
+    @Column(name = "image", nullable = false)
     public String getImage() {
         return image;
     }
@@ -199,11 +220,31 @@ public class BaseSKU {
         this.image = image;
     }
 
+    @Column(name = "product_id", nullable = false, insertable = false, updatable = false)
     public int getProductId() {
         return productId;
     }
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    @JsonIgnore
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseSKU{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

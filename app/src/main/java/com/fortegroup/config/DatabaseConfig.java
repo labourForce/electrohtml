@@ -7,12 +7,9 @@ import com.fortegroup.dao.implementation.UserDaoImpl;
 
 import com.fortegroup.elasticsearch.service.ProductsService;
 import com.fortegroup.elasticsearch.service.ProductsServiceImpl;
-import com.fortegroup.model.BaseSKU;
-import com.fortegroup.model.Product;
-import com.fortegroup.model.User;
 import com.fortegroup.service.ProductDetailService;
 import com.fortegroup.service.UserService;
-import com.fortegroup.service.UserServiceImpl;
+import com.fortegroup.service.implementation.UserServiceImpl;
 import com.fortegroup.service.implementation.ProductDetailServiceImpl;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;

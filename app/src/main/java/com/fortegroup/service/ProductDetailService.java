@@ -10,7 +10,5 @@ import java.util.List;
  */
 public interface ProductDetailService {
     Product getProductById(long id);
-    BaseSKU getBaseSKUByProductId(long productId);
-    List<BaseSKU> getBaseSKUsByProductId(long productId);
 
 }
