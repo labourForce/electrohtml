@@ -19,7 +19,6 @@ public class ProductDetailController {
     @RequestMapping(value = "/getProduct", params = "id", method = RequestMethod.GET)
     public ResponseEntity<?> getDetails(@RequestParam("id") long id) {
         Product product = productDetailService.getProductById(id);
-        System.out.println(product.getBaseSKUs());
         product.setBaseSKUs(null);
         return ResponseEntity.ok(product);
     }
