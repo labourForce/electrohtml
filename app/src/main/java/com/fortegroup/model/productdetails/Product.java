@@ -16,39 +16,22 @@ import java.util.Set;
 public class Product implements java.io.Serializable {
 
     private Long id;
-
     private String name;
-
     private String displayName;
-
     private int rating;
-
     private boolean availability;
-
     private boolean displayFlag;
-
     private String longDescription;
-
     private String shortDescription;
-
     private String brand;
-
     private String techline;
-
     private boolean onSale;
-
     private boolean upSale;
-
     private double listPrice;
-
     private double salePrice;
-
     private String image;
-
     private int rootCategoryId;
-
-    private Set<BaseSKU> baseSKUs = new HashSet<>(
-            0);
+    private Set<BaseSKU> baseSKUs = new HashSet<>(0);
 
     public Product() {
     }

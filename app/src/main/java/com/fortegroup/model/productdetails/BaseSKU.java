@@ -14,39 +14,22 @@ import javax.persistence.*;
 public class BaseSKU implements java.io.Serializable {
 
     private Long id;
-
     private String name;
-
     private String displayName;
-
     private int rating;
-
     private boolean availability;
-
     private boolean displayFlag;
-
     private String longDescription;
-
     private String shortDescription;
-
     private String brand;
-
     private String techline;
-
     private boolean onSale;
-
     private boolean upSale;
-
     private double listPrice;
-
     private double salePrice;
-
     private int quantity;
-
     private String image;
-
     private int productId;
-
     private Product product;
 
     public BaseSKU() {
