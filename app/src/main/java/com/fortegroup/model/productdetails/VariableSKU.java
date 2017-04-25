@@ -1,6 +1,7 @@
 package com.fortegroup.model.productdetails;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fortegroup.dao.productdetails.StringJsonUserType;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
@@ -13,37 +14,24 @@ import javax.persistence.*;
 @TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
 public class VariableSKU {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "display_name", nullable = false)
     private String displayName;
-    @Column(name = "availability", nullable = false)
     private boolean availability;
-    @Column(name = "display_flag", nullable = false)
     private boolean displayFlag;
-    @Column(name = "long_description", nullable = false)
     private String longDescription;
-    @Column(name = "short_description", nullable = false)
     private String shortDescription;
-    @Column(name = "brand", nullable = false)
     private String brand;
-    @Column(name = "techline", nullable = false)
-    @Type(type = "StringJsonObject")
     private String techline;
-    @Column(name = "list_price", nullable = false)
     private double listPrice;
-    @Column(name = "sale_price", nullable = false)
     private double salePrice;
-    @Column(name = "conf_option_id", nullable = false)
     private int confOptionId;
+    private ConfOption confOption;
 
     public VariableSKU() {
     }
 
-    public VariableSKU(String name, String displayName, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, double listPrice, double salePrice, int confOptionId) {
+    public VariableSKU(String name, String displayName, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, double listPrice, double salePrice, int confOptionId, ConfOption confOption) {
         this.name = name;
         this.displayName = displayName;
         this.availability = availability;
@@ -55,8 +43,11 @@ public class VariableSKU {
         this.listPrice = listPrice;
         this.salePrice = salePrice;
         this.confOptionId = confOptionId;
+        this.confOption = confOption;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -65,6 +56,7 @@ public class VariableSKU {
         this.id = id;
     }
 
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -73,6 +65,7 @@ public class VariableSKU {
         this.name = name;
     }
 
+    @Column(name = "display_name", nullable = false)
     public String getDisplayName() {
         return displayName;
     }
@@ -81,6 +74,7 @@ public class VariableSKU {
         this.displayName = displayName;
     }
 
+    @Column(name = "availability", nullable = false)
     public boolean isAvailability() {
         return availability;
     }
@@ -89,6 +83,7 @@ public class VariableSKU {
         this.availability = availability;
     }
 
+    @Column(name = "display_flag", nullable = false)
     public boolean isDisplayFlag() {
         return displayFlag;
     }
@@ -97,6 +92,7 @@ public class VariableSKU {
         this.displayFlag = displayFlag;
     }
 
+    @Column(name = "long_description", nullable = false)
     public String getLongDescription() {
         return longDescription;
     }
@@ -105,6 +101,7 @@ public class VariableSKU {
         this.longDescription = longDescription;
     }
 
+    @Column(name = "short_description", nullable = false)
     public String getShortDescription() {
         return shortDescription;
     }
@@ -113,6 +110,7 @@ public class VariableSKU {
         this.shortDescription = shortDescription;
     }
 
+    @Column(name = "brand", nullable = false)
     public String getBrand() {
         return brand;
     }
@@ -121,6 +119,8 @@ public class VariableSKU {
         this.brand = brand;
     }
 
+    @Column(name = "techline", nullable = false)
+    @Type(type = "StringJsonObject")
     public String getTechline() {
         return techline;
     }
@@ -129,6 +129,7 @@ public class VariableSKU {
         this.techline = techline;
     }
 
+    @Column(name = "list_price", nullable = false)
     public double getListPrice() {
         return listPrice;
     }
@@ -137,6 +138,7 @@ public class VariableSKU {
         this.listPrice = listPrice;
     }
 
+    @Column(name = "sale_price", nullable = false)
     public double getSalePrice() {
         return salePrice;
     }
@@ -145,11 +147,23 @@ public class VariableSKU {
         this.salePrice = salePrice;
     }
 
+    @Column(name = "conf_option_id", nullable = false)
     public int getConfOptionId() {
         return confOptionId;
     }
 
     public void setConfOptionId(int confOptionId) {
         this.confOptionId = confOptionId;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "conf_option_id", nullable = false, updatable = false, insertable = false)
+    @JsonIgnore
+    public ConfOption getConfOption() {
+        return confOption;
+    }
+
+    public void setConfOption(ConfOption confOption) {
+        this.confOption = confOption;
     }
 }

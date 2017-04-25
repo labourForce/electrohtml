@@ -7,6 +7,8 @@ import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "electro.base_sku")
@@ -32,10 +34,12 @@ public class BaseSKU implements java.io.Serializable {
     private int productId;
     private Product product;
 
+    private Set<VariableSKU> variableSKUs = new HashSet<VariableSKU>(0);
+
     public BaseSKU() {
     }
 
-    public BaseSKU(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, int quantity, String image, int productId, Product product) {
+    public BaseSKU(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, int quantity, String image, int productId, Product product, Set<VariableSKU> variableSKUs) {
         this.name = name;
         this.displayName = displayName;
         this.rating = rating;
@@ -53,6 +57,7 @@ public class BaseSKU implements java.io.Serializable {
         this.image = image;
         this.productId = productId;
         this.product = product;
+        this.variableSKUs = variableSKUs;
 
     }
 
@@ -221,6 +226,19 @@ public class BaseSKU implements java.io.Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "electro.conf_properties", joinColumns = {
+            @JoinColumn(name = "base_sku_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "conf_option_id",
+                    nullable = false, updatable = false) })
+    public Set<VariableSKU> getVariableSKUs() {
+        return variableSKUs;
+    }
+
+    public void setVariableSKUs(Set<VariableSKU> variableSKUs) {
+        this.variableSKUs = variableSKUs;
     }
 
     @Override
