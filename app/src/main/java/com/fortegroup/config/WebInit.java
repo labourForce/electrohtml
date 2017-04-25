@@ -1,6 +1,6 @@
 package com.fortegroup.config;
 
-import com.fortegroup.security.filter.AuthenticationTokenFilter;
+import com.fortegroup.filters.AuthenticationTokenFilter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
