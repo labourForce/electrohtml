@@ -18,8 +18,8 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 @Configuration("mainBean")
-@EnableElasticsearchRepositories(basePackages = "com.fortegroup.elasticsearch.repository")
-@ComponentScan(basePackages = { "com.fortegroup.elasticsearch.service" })
+@EnableElasticsearchRepositories(basePackages = "com.fortegroup.dao.search")
+@ComponentScan(basePackages = { "com.fortegroup.service.search" })
 public class ElasticSearchConfig {
 
 //    @Value("${elasticsearch.home:/usr/local/Cellar/elasticsearch/2.3.2}")

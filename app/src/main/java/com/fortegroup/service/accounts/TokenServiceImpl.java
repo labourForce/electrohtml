@@ -13,16 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class TokenServiceImpl implements TokenService {
 
-    @Autowired
-    private TokenDao tokenDao;
 
     @Override
     public String getToken(Token token) {
-        return tokenDao.getToken(token);
+        return null;
     }
 
     @Override
     public void saveToken(Token token) {
-        tokenDao.saveToken(token);
+
     }
 }
