@@ -3,18 +3,20 @@ package com.fortegroup.elasticsearch.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import java.util.Arrays;
+
 /**
  * @author Eugene Pankov
  */
 
 
-@Document(indexName = "postgres", type = "test")
+@Document(indexName = "postgres", type = "products")
 public class Products {
     @Id
     private String product_id;
     private String display_name;
     private String long_description;
-    private String path;
+    private String[] path;
 
     public Products() {
     }
@@ -43,11 +45,11 @@ public class Products {
         this.long_description = long_description;
     }
 
-    public String getPath() {
+    public String[] getPath() {
         return path;
     }
 
-    public void setPath(String path) {
+    public void setPath(String[] path) {
         this.path = path;
     }
 
@@ -57,7 +59,7 @@ public class Products {
                 "product_id='" + product_id + '\'' +
                 ", display_name='" + display_name + '\'' +
                 ", long_description='" + long_description + '\'' +
-                ", path='" + path + '\'' +
+                ", path=" + Arrays.toString(path) +
                 '}';
     }
 }

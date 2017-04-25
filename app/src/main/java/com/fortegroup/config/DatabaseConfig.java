@@ -88,11 +88,6 @@ public class DatabaseConfig {
     }
 
     @Bean
-    public ProductsService productsService(){
-        return new ProductsServiceImpl();
-    }
-
-    @Bean
     public ProductDetailService appProductDetailService(){return new ProductDetailServiceImpl();}
 
     @Bean

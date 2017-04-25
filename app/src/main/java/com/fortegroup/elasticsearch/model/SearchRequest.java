@@ -4,33 +4,23 @@ package com.fortegroup.elasticsearch.model;
  * @author Alexey Burov
  */
 public class SearchRequest {
-    private String id;
-    private String keyword;
+    private String searchKey;
     private String category;
 
-    public SearchRequest(String id, String keyword, String category) {
-        this.id = id;
-        this.keyword = keyword;
+    public SearchRequest(String searchKey, String category) {
+        this.searchKey = searchKey;
         this.category = category;
     }
 
     public SearchRequest() {
     }
 
-    public String getId() {
-        return id;
+    public String getSearchKey() {
+        return searchKey;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getKeyword() {
-        return keyword;
-    }
-
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
+    public void setSearchKey(String searchKey) {
+        this.searchKey = searchKey;
     }
 
     public String getCategory() {

@@ -16,14 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Controller
 public class HomeController {
-
-
     @RequestMapping(value = "/*",method = RequestMethod.GET)
     public String home() {
         return "index";
     }
-
-
 }
 
 
