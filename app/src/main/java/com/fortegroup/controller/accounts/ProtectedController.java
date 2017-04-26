@@ -1,0 +1,24 @@
+package com.fortegroup.controller.accounts;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Protected controller for our project i write some code for Admin here
+ * @author Alexey Burov
+ * @version 1.0
+ */
+@RestController
+@RequestMapping("/rest/account/protected")
+public class ProtectedController {
+
+    @RequestMapping(method = RequestMethod.GET)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    public ResponseEntity<?> getDaHoney() {
+        return ResponseEntity.ok("{\"success\":true}");
+    }
+
+}

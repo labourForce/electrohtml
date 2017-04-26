@@ -15,8 +15,8 @@ export class Router {
 		self.init = false;
 		self.hash = '';
 
-		self.notify = function() {
-			console.log('go!');
+		self.notify = function(n, query, seoUrl) {
+			process(n, query, seoUrl, pushState);
 		};
 
 		self.replace = function(n, query, seoUrl){
@@ -125,7 +125,7 @@ export class Router {
 			}
 		});
 		crossroads.addRoute('', function() {
-
+			console.log(1);
             self.app.currentState(new State( 'homepage', self.app));
 		});
 
