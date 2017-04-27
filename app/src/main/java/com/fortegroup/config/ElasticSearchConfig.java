@@ -16,42 +16,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
-@Configuration("mainBean")
+@Configuration
+@EnableSpringDataWebSupport
 @EnableElasticsearchRepositories(basePackages = "com.fortegroup.dao.search")
 @ComponentScan(basePackages = { "com.fortegroup.service.search" })
 public class ElasticSearchConfig {
 
-//    @Value("${elasticsearch.home:/usr/local/Cellar/elasticsearch/2.3.2}")
-//    private String elasticsearchHome;
-
     private static Logger logger = LoggerFactory.getLogger(ElasticSearchConfig.class);
-
-    /*@Bean
-    public Client client() {
-        try {
-            final Path tmpDir = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "elasticsearch_data");
-            logger.debug(tmpDir.toAbsolutePath().toString());
-
-            // @formatter:off
-            //this need to be reviewed
-            final Settings.Builder elasticsearchSettings =
-                    ImmutableSettings.settingsBuilder().put("http.enabled", "false")
-                            .put("path.data", tmpDir.toAbsolutePath().toString())
-                            .put("path.home", elasticsearchHome);
-
-            return new NodeBuilder()
-                    .local(true)
-                    .settings(elasticsearchSettings)
-                    .node()
-                    .client();
-
-            // @formatter:on
-        } catch (final IOException ioex) {
-            logger.error("Cannot create temp dir", ioex);
-            throw new RuntimeException();
-        }
-    }*/
 
     @Bean
     public Client client() {
@@ -65,31 +38,5 @@ public class ElasticSearchConfig {
         return new ElasticsearchTemplate(client());
     }
 
-    /*@Autowired
-    private ProductsRepository repository;
-
-    @Autowired
-    private ElasticsearchOperations template;
-
-    public static void main(String[] args) {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
-        try {
-            ctx.register(ElasticSearchConfig.class);
-            ctx.refresh();
-            ElasticSearchConfig s = (ElasticSearchConfig) ctx.getBean("mainBean");
-            System.out.println("Here are results: ");
-            s.findCategoryById("10");
-        } finally {
-            ctx.close();
-        }
-
-
-    }
-
-    public void findCategoryById(String id) {
-        Page<Products> productById = repository.findCustomById(id, new PageRequest(0, 10));
-//        System.out.println(productById);
-        productById.forEach((product) -> System.out.println(product.toString()));
-    }*/
 
 }

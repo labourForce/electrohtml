@@ -25,6 +25,16 @@ public interface ProductsRepository extends ElasticsearchRepository<Products, St
     @Query("{\"filtered\": {\"query\": {\"match\": {\"long_description\": \"?0\"}}, " +
             "\"filter\": {\"terms\": {\"path\": [\"?1\"]}}}}")
     Page<Products> customFindByLongDescription(String description, String category, Pageable pageable);
+
+
+    @Query("{\"match\": {\"product_id\": \"?0\"}}")
+    Page<Products> customFindByIdAllCategories(String id, Pageable pageable);
+
+    @Query("{\"wildcard\": {\"display_name\": \"*?0*\"}}")
+    Page<Products> customFindByDisplayNameAllCategories(String id, Pageable pageable);
+
+    @Query("{\"match\": {\"long_description\": \"?0\"}}")
+    Page<Products> customFindByLongDescriptionAllCategories(String id, Pageable pageable);
 }
 
 
