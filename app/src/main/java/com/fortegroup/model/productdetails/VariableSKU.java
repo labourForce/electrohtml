@@ -156,8 +156,8 @@ public class VariableSKU {
         this.confOptionId = confOptionId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "conf_option_id", nullable = false, updatable = false, insertable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
     @JsonIgnore
     public ConfOption getConfOption() {
         return confOption;
