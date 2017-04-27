@@ -6,8 +6,8 @@ import java.util.List;
  * Created by ux501 on 27.04.2017.
  */
 public class SearchResult {
-    int pageCount;
-    List<Products> products;
+    private int pageCount;
+    private List<Products> products;
 
     public SearchResult(int pageCount, List<Products> products) {
         this.pageCount = pageCount;
