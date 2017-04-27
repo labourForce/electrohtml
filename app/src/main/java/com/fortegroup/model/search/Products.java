@@ -13,10 +13,16 @@ import java.util.Arrays;
 @Document(indexName = "postgres", type = "products")
 public class Products {
     @Id
+    private String id;
     private String product_id;
     private String display_name;
+    private String short_description;
     private String long_description;
+    private String list_price;
+    private String sale_price;
+    private String image;
     private String[] path;
+
 
     public Products() {
     }
@@ -53,12 +59,48 @@ public class Products {
         this.path = path;
     }
 
+    public String getShort_description() {
+        return short_description;
+    }
+
+    public void setShort_description(String short_description) {
+        this.short_description = short_description;
+    }
+
+    public String getList_price() {
+        return list_price;
+    }
+
+    public void setList_price(String list_price) {
+        this.list_price = list_price;
+    }
+
+    public String getSale_price() {
+        return sale_price;
+    }
+
+    public void setSale_price(String sale_price) {
+        this.sale_price = sale_price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "Products{" +
                 "product_id='" + product_id + '\'' +
                 ", display_name='" + display_name + '\'' +
+                ", short_description='" + short_description + '\'' +
                 ", long_description='" + long_description + '\'' +
+                ", list_price='" + list_price + '\'' +
+                ", sale_price='" + sale_price + '\'' +
+                ", image='" + image + '\'' +
                 ", path=" + Arrays.toString(path) +
                 '}';
     }
