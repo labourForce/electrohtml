@@ -16,18 +16,26 @@ public class ProductDetailController {
     @Autowired
     private ProductDetailService productDetailService;
 
-    @RequestMapping(value = "/getProduct", params = "id", method = RequestMethod.GET)
-    public ResponseEntity<?> getDetails(@RequestParam("id") long id) {
-        Product product = productDetailService.getProductById(id);
-        product.setBaseSKUs(null);
-        return ResponseEntity.ok(product);
+    @RequestMapping(value = "/getProduct/{id:[\\d]+}", method = RequestMethod.GET)
+    public ResponseEntity<?> getDetails(@PathVariable long id) {
+        try {
+            Product product = productDetailService.getProductById(id);
+            product.setBaseSKUs(null);
+            return ResponseEntity.ok(product);
+        }catch(NullPointerException e){
+        }
+        return ResponseEntity.badRequest().header("NetworkError: 400 Bad Request - http://192.168.1.207:8181/rest/product/getProduct/" + id).body("400 Bad Request");
     }
 
-    @RequestMapping(value = "/getAdditionalInfo", params = "id", method = RequestMethod.GET)
-    public ResponseEntity<?> getAdditionalInfo(@RequestParam("id") long productId) {
-        Product product = productDetailService.getProductById(productId);
-        Set<BaseSKU> SKUs = product.getBaseSKUs();
-        return new ResponseEntity<>(SKUs, HttpStatus.OK);
+    @RequestMapping(value = "/getAdditionalInfo/{id:[\\d]+}", method = RequestMethod.GET)
+    public ResponseEntity<?> getAdditionalInfo(@PathVariable long id) {
+        try {
+            Product product = productDetailService.getProductById(id);
+            Set<BaseSKU> SKUs = product.getBaseSKUs();
+            return new ResponseEntity<>(SKUs, HttpStatus.OK);
+        }catch(NullPointerException e){
+        }
+        return ResponseEntity.badRequest().header("NetworkError: 400 Bad Request - http://192.168.1.207:8181/rest/product/getProduct/" + id).body("400 Bad Request");
     }
 
 }
