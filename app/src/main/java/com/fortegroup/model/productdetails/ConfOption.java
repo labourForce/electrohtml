@@ -1,39 +1,34 @@
 package com.fortegroup.model.productdetails;
 
-import com.fortegroup.dao.productdetails.StringJsonUserType;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Table(name = "electro.conf_options")
-@TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
+@Table(name = "electro.conf_option")
 public class ConfOption {
 
     private Long id;
-    private String name;
-    private int confSKUId;
+    private String optionName;
+    private Long propertyId;
 
-    private Set<BaseSKU> baseSKUs = new HashSet<>(0);
-    private Set<VariableSKU> variableSKUs = new HashSet<VariableSKU>(0);
+    private ConfProperty confProperty;
+    private VariableSKU variableSKU;
 
     public ConfOption() {
-
     }
 
-    public ConfOption(Long id, String name, int confSKUId, Set<BaseSKU> baseSKUs, Set<VariableSKU> variableSKUs) {
+    public ConfOption(Long id, String optionName, Long propertyId, ConfProperty confProperty, VariableSKU variableSKU) {
         this.id = id;
-        this.name = name;
-        this.confSKUId = confSKUId;
-        this.baseSKUs = baseSKUs;
-        this.variableSKUs = variableSKUs;
+        this.optionName = optionName;
+        this.propertyId = propertyId;
+        this.confProperty = confProperty;
+        this.variableSKU = variableSKU;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     public Long getId() {
         return id;
     }
@@ -42,39 +37,41 @@ public class ConfOption {
         this.id = id;
     }
 
-    @Column(name = "name", nullable = false)
-    public String getName() {
-        return name;
+    @Column(name = "option_name", nullable = false)
+    public String getOptionName() {
+        return optionName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOptionName(String optionName) {
+        this.optionName = optionName;
     }
 
-    @Column(name = "conf_sku_id", nullable = false)
-    public int getConfSKUId() {
-        return confSKUId;
+    @Column(name = "property_id", nullable = false, insertable = false, updatable = false)
+    public Long getPropertyId() {
+        return propertyId;
     }
 
-    public void setConfSKUId(int confSKUId) {
-        this.confSKUId = confSKUId;
+    public void setPropertyId(Long propertyId) {
+        this.propertyId = propertyId;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "variableSKUs")
-    public Set<BaseSKU> getBaseSKUs() {
-        return baseSKUs;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "property_id", nullable = false)
+    @JsonIgnore
+    public ConfProperty getConfProperty() {
+        return confProperty;
     }
 
-    public void setBaseSKUs(Set<BaseSKU> baseSKUs) {
-        this.baseSKUs = baseSKUs;
+    public void setConfProperty(ConfProperty confProperty) {
+        this.confProperty = confProperty;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "confOption")
-    public Set<VariableSKU> getVariableSKUs() {
-        return variableSKUs;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "confOption", cascade = CascadeType.ALL)
+    public VariableSKU getVariableSKU() {
+        return variableSKU;
     }
 
-    public void setVariableSKUs(Set<VariableSKU> variableSKUs) {
-        this.variableSKUs = variableSKUs;
+    public void setVariableSKU(VariableSKU variableSKU) {
+        this.variableSKU = variableSKU;
     }
 }

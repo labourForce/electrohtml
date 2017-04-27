@@ -1,18 +1,11 @@
 package com.fortegroup.model.productdetails;
 
-import com.fortegroup.dao.productdetails.StringJsonUserType;
-import com.fortegroup.model.productdetails.BaseSKU;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "electro.product")
-@TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
 public class Product implements java.io.Serializable {
 
     private Long id;
@@ -139,7 +132,6 @@ public class Product implements java.io.Serializable {
     }
 
     @Column(name = "techline", nullable = false)
-    @Type(type = "StringJsonObject")
     public String getTechline() {
         return techline;
     }

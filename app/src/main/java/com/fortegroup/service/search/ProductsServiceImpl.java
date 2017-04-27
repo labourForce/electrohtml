@@ -19,17 +19,30 @@ public class ProductsServiceImpl implements ProductsService {
     private ProductsRepository productsRepository;
 
     @Override
-    public Page<Products> findById(String id, String category, Pageable pageable) {
-        return productsRepository.customFindById(id, category, pageable);
-    }
+    public Page<Products> findByCategory(String searchTerm, String category, Pageable pageable) {
+        Page<Products> products;
+        if (!category.isEmpty()) {
+            products = productsRepository.customFindById(searchTerm, category, pageable);
 
-    @Override
-    public Page<Products> findByDisplayName(String name, String category, Pageable pageable) {
-        return productsRepository.customFindByDisplayName(name, category , pageable);
-    }
+            if (products.getContent().isEmpty()) {
+                products = productsRepository.customFindByDisplayName(searchTerm, category, pageable);
 
-    @Override
-    public Page<Products> findByLongDescription(String description, String category, Pageable pageable) {
-        return productsRepository.customFindByLongDescription(description, category, pageable);
+                if (products.getContent().isEmpty()) {
+                    products = productsRepository.customFindByLongDescription(searchTerm, category, pageable);
+                }
+            }
+        } else {
+            products = productsRepository.customFindByIdAllCategories(searchTerm, pageable);
+
+            if (products.getContent().isEmpty()) {
+                products = productsRepository.customFindByDisplayNameAllCategories(searchTerm, pageable);
+
+                if (products.getContent().isEmpty()) {
+                    products = productsRepository.customFindByLongDescriptionAllCategories(searchTerm, pageable);
+                }
+            }
+        }
+
+        return products;
     }
 }

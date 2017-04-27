@@ -1,16 +1,15 @@
 package com.fortegroup.controller.search;
 
 import com.fortegroup.model.search.Products;
-import com.fortegroup.model.search.SearchRequest;
 import com.fortegroup.service.search.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author Eugene Pankov
@@ -23,25 +22,10 @@ public class ElasticsearchController {
     @Autowired
     private ProductsService productsService;
 
-    @RequestMapping(value = "/category", method = RequestMethod.POST)
-    public ResponseEntity<?> getProductsById(@RequestBody SearchRequest request){
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
+    public List<Products> findByCategory(@RequestParam("searchTerm") String searchTerm,
+                                         @RequestParam("category") String category, Pageable pageRequest) {
 
-        String searchKey = request.getSearchKey().toLowerCase();
-        String category = request.getCategory();
-
-        Page<Products> products = productsService.findById(searchKey, category, new PageRequest(0, 10));
-
-        if (products.getContent().isEmpty()) {
-            products = productsService.findByDisplayName(searchKey, category, new PageRequest(0, 10));
-
-            if (products.getContent().isEmpty()) {
-                products = productsService.findByLongDescription(searchKey, category, new PageRequest(0, 10));
-            }
-        }
-
-        return ResponseEntity.ok(products.getContent());
+        return productsService.findByCategory(searchTerm, category, pageRequest).getContent();
     }
-
-
-
 }

@@ -1,10 +1,6 @@
 package com.fortegroup.model.productdetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fortegroup.dao.productdetails.StringJsonUserType;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -12,7 +8,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "electro.base_sku")
-@TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
 public class BaseSKU implements java.io.Serializable {
 
     private Long id;
@@ -34,12 +29,12 @@ public class BaseSKU implements java.io.Serializable {
     private int productId;
     private Product product;
 
-    private Set<VariableSKU> variableSKUs = new HashSet<VariableSKU>(0);
+    private Set<ConfProperty> confProperties = new HashSet<>(0);
 
     public BaseSKU() {
     }
 
-    public BaseSKU(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, int quantity, String image, int productId, Product product, Set<VariableSKU> variableSKUs) {
+    public BaseSKU(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, int quantity, String image, int productId, Product product, Set<ConfProperty> confProperties) {
         this.name = name;
         this.displayName = displayName;
         this.rating = rating;
@@ -57,7 +52,7 @@ public class BaseSKU implements java.io.Serializable {
         this.image = image;
         this.productId = productId;
         this.product = product;
-        this.variableSKUs = variableSKUs;
+        this.confProperties = confProperties;
 
     }
 
@@ -145,7 +140,6 @@ public class BaseSKU implements java.io.Serializable {
     }
 
     @Column(name = "techline", nullable = false)
-    @Type(type = "StringJsonObject")
     public String getTechline() {
         return techline;
     }
@@ -228,24 +222,14 @@ public class BaseSKU implements java.io.Serializable {
         this.product = product;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "electro.conf_properties", joinColumns = {
-            @JoinColumn(name = "base_sku_id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "conf_option_id",
-                    nullable = false, updatable = false) })
-    public Set<VariableSKU> getVariableSKUs() {
-        return variableSKUs;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "baseSKU")
+
+    public Set<ConfProperty> getConfProperties() {
+        return confProperties;
     }
 
-    public void setVariableSKUs(Set<VariableSKU> variableSKUs) {
-        this.variableSKUs = variableSKUs;
+    public void setConfProperties(Set<ConfProperty> confProperties) {
+        this.confProperties = confProperties;
     }
 
-    @Override
-    public String toString() {
-        return "BaseSKU{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

@@ -2,16 +2,11 @@ package com.fortegroup.model.productdetails;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fortegroup.dao.productdetails.StringJsonUserType;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "electro.variable_sku")
-@TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
 public class VariableSKU {
 
     private Long id;
@@ -120,7 +115,6 @@ public class VariableSKU {
     }
 
     @Column(name = "techline", nullable = false)
-    @Type(type = "StringJsonObject")
     public String getTechline() {
         return techline;
     }
@@ -156,8 +150,8 @@ public class VariableSKU {
         this.confOptionId = confOptionId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "conf_option_id", nullable = false, updatable = false, insertable = false)
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
     @JsonIgnore
     public ConfOption getConfOption() {
         return confOption;
