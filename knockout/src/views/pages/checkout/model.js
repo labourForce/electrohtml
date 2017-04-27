@@ -1,5 +1,6 @@
 import ko from 'knockout';
 import $ from 'jquery';
+import { sendRequest } from '../../../scripts/utils/common';
 
 
 
@@ -177,7 +178,7 @@ export default class LoginVM{
         let jsonData = ko.toJSON(signInData);
         console.log(jsonData);
         if( this.formValidate(event) ) {
-            $.ajax({
+            sendRequest({
                 url: '/rest/account/signIn',
                 contentType: 'application/json',
                 type: 'post',
