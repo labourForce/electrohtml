@@ -582,67 +582,149 @@ All Departments</span></li>
               <div class="shopping-cart__title">Shopping Cart Summary</div>
             </header>
             <form action="#" method="POST">
-              <div class="shopping-cart__table">
-                <div class="shopping-cart__table-head">
-                  <div class="shopping-cart__table-row">
-                    <div class="shopping-cart__head-close"></div>
-                    <div class="shopping-cart__head-thumbnail"></div>
-                    <div class="shopping-cart__head-product">Product</div>
-                    <div class="shopping-cart__head-price">Price</div>
-                    <div class="shopping-cart__head-quantity">Quantity</div>
-                    <div class="shopping-cart__head-total">Total</div>
-                  </div>
+              <!--.shopping-cart__table-->
+              <!--    .shopping-cart__table-head-->
+              <!--        .shopping-cart__table-row-->
+              <!--            .shopping-cart__head-close-->
+              <!--            .shopping-cart__head-thumbnail-->
+              <!--            .shopping-cart__head-product Product-->
+              <!--            .shopping-cart__head-price Price-->
+              <!--            .shopping-cart__head-quantity Quantity-->
+              <!--            .shopping-cart__head-total Total-->
+              <!--    .shopping-cart__table-body-->
+              <!--            .shopping-cart__table-item-wrap-->
+              <!--                .shopping-cart__table-row-->
+              <!--                    .shopping-cart__table-close-->
+              <!--                        include ../../img/svg/cancel.svg-->
+              <!--                    .shopping-cart__table-thumbnail-->
+              <!--                        a(href="#")-->
+              <!--                            img(src="img/Laptop-600x600.jpg", alt="Picture")-->
+              <!--                    div(data-title="Product:").shopping-cart__table-product-->
+              <!--                        a(href="#")-->
+              <!--                            h5 Nerocool EN52377 Dead Silence Gaming Cube Case-->
+              <!--                        .under-shopping-cart__table-->
+              <!--                    div(data-title="Price:").shopping-cart__table-price $1,999.00-->
+              <!--                    div(data-title="Quantity:").shopping-cart__table-quantity-->
+              <!--                        .single-product__quantity-add-->
+              <!--                            .single-product__quantity-counter-->
+              <!--                                input(type="text", value="1")-->
+              <!--                            .single-product__quantity-switcher-->
+              <!--                                button.single-product__quantity-plus +-->
+              <!--                                button.single-product__quantity-minus --->
+              <!--                    div(data-title="Total:").shopping-cart__table-total $1,999.00-->
+              <div class="cart">
+                <div class="cart-row">
+                  <div class="cart-header__close"></div>
+                  <div class="cart-header__thumbnail"></div>
+                  <div class="cart-header__product">Product</div>
+                  <div class="cart-header__price">Price</div>
+                  <div class="cart-header__quantity">Quantity</div>
+                  <div class="cart-header__total"> Total</div>
                 </div>
-                <div class="shopping-cart__table-body">
-                  <div class="shopping-cart__table-row">
-                    <div class="shopping-cart__table-close">
+                <div class="cart-body">
+                  <div class="cart-body__item__wrapper">
+                    <div class="cart-body__item">
+                      <div class="cart-body__close">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
   <path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"/>
 </svg>
 
-                    </div>
-                    <div class="shopping-cart__table-thumbnail"><a href="#"><img src="img/Laptop-600x600.jpg" alt="Picture"></a></div>
-                    <div data-title="Product:" class="shopping-cart__table-product"><a href="#">
-                        <h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5>
-                        <p>COMPANY BRAND</p></a></div>
-                    <div data-title="Price:" class="shopping-cart__table-price">$1,999.00</div>
-                    <div data-title="Quantity:" class="shopping-cart__table-quantity">
-                      <div class="single-product__quantity-add">
-                        <div class="single-product__quantity-counter">
-                          <input type="text" value="1">
-                        </div>
-                        <div class="single-product__quantity-switcher">
-                          <button class="single-product__quantity-plus">+</button>
-                          <button class="single-product__quantity-minus">-</button>
+                      </div>
+                      <div class="cart-body__thumbnail"><img src="img/Laptop-600x600.jpg" alt="Picture"></div>
+                      <div class="cart-body__product"><a href="#">
+                          <h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5></a></div>
+                      <div data-title="Price:" class="cart-body__price"><span class="cart-body__hidden-text">Price:</span> $1,999.00</div>
+                      <div class="cart-body__quantity">
+                        <div class="single-product__quantity-add">
+                          <div class="single-product__quantity-counter">
+                            <input type="text" value="1">
+                          </div>
+                          <div class="single-product__quantity-switcher">
+                            <button class="single-product__quantity-plus">+</button>
+                            <button class="single-product__quantity-minus">-</button>
+                          </div>
                         </div>
                       </div>
+                      <div data-title="Total:" class="cart-body__total"><span class="cart-body__hidden-text">Total:</span>$1,999.00</div>
                     </div>
-                    <div data-title="Total:" class="shopping-cart__table-total">$1,999.00</div>
+                    <div class="cart-body__variable">
+                      <div class="cart-body__variable-item">
+                        <div class="cart-body__variable-close">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
+  <path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"/>
+</svg>
+
+                        </div>
+                        <div class="cart-body__variable-thumbnail"><img src="img/Laptop-600x600.jpg" alt="Picture"></div>
+                        <div class="cart-body__variable-product"><a href="#">
+                            <h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5></a></div>
+                        <div class="cart-body__variable-price">$1.90</div>
+                      </div>
+                      <div class="cart-body__variable-item">
+                        <div class="cart-body__variable-close">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
+  <path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"/>
+</svg>
+
+                        </div>
+                        <div class="cart-body__variable-thumbnail"><img src="img/Laptop-600x600.jpg" alt="Picture"></div>
+                        <div class="cart-body__variable-product"><a href="#">
+                            <h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5></a></div>
+                        <div class="cart-body__variable-price">$1.90</div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="shopping-cart__table-row">
-                    <div class="shopping-cart__table-close">
+                  <div class="cart-body__item__wrapper">
+                    <div class="cart-body__item">
+                      <div class="cart-body__close">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
   <path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"/>
 </svg>
 
-                    </div>
-                    <div class="shopping-cart__table-thumbnail"><a href="#"><img src="img/Laptop-600x600.jpg" alt="Picture"></a></div>
-                    <div data-title="Product:" class="shopping-cart__table-product"><a href="#">
-                        <h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5>
-                        <p>COMPANY BRAND</p></a></div>
-                    <div data-title="Price:" class="shopping-cart__table-price">$1,999.00</div>
-                    <div data-title="Quantity:" class="shopping-cart__table-quantity">
-                      <div class="single-product__quantity-add">
-                        <div class="single-product__quantity-counter">
-                          <input type="text" value="1">
-                        </div>
-                        <div class="single-product__quantity-switcher">
-                          <button class="single-product__quantity-plus">+</button>
-                          <button class="single-product__quantity-minus">-</button>
+                      </div>
+                      <div class="cart-body__thumbnail"><img src="img/Laptop-600x600.jpg" alt="Picture"></div>
+                      <div class="cart-body__product"><a href="#">
+                          <h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5></a></div>
+                      <div data-title="Price:" class="cart-body__price"><span class="cart-body__hidden-text">Price:</span> $1,999.00</div>
+                      <div class="cart-body__quantity">
+                        <div class="single-product__quantity-add">
+                          <div class="single-product__quantity-counter">
+                            <input type="text" value="1">
+                          </div>
+                          <div class="single-product__quantity-switcher">
+                            <button class="single-product__quantity-plus">+</button>
+                            <button class="single-product__quantity-minus">-</button>
+                          </div>
                         </div>
                       </div>
+                      <div data-title="Total:" class="cart-body__total"><span class="cart-body__hidden-text">Total:</span>$1,999.00</div>
                     </div>
-                    <div data-title="Total:" class="shopping-cart__table-total">$1,999.00</div>
+                    <div class="cart-body__variable">
+                      <div class="cart-body__variable-item">
+                        <div class="cart-body__variable-close">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
+  <path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"/>
+</svg>
+
+                        </div>
+                        <div class="cart-body__variable-thumbnail"><img src="img/Laptop-600x600.jpg" alt="Picture"></div>
+                        <div class="cart-body__variable-product"><a href="#">
+                            <h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5></a></div>
+                        <div class="cart-body__variable-price">$1.90</div>
+                      </div>
+                      <div class="cart-body__variable-item">
+                        <div class="cart-body__variable-close">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
+  <path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"/>
+</svg>
+
+                        </div>
+                        <div class="cart-body__variable-thumbnail"><img src="img/Laptop-600x600.jpg" alt="Picture"></div>
+                        <div class="cart-body__variable-product"><a href="#">
+                            <h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5></a></div>
+                        <div class="cart-body__variable-price">$1.90</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -725,7 +807,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$298.00</span>
+                      <div class="simple-element__priceNumber"><span>$8074.00</span>
                       </div>
                     </div>
                   </div>
@@ -743,7 +825,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$4784.00</span>
+                      <div class="simple-element__priceNumber"><span>$6396.00</span>
                       </div>
                     </div>
                   </div>
@@ -761,7 +843,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$5662.00</span>
+                      <div class="simple-element__priceNumber"><span>$9066.00</span>
                       </div>
                     </div>
                   </div>
@@ -779,7 +861,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$5594.00</span>
+                      <div class="simple-element__priceNumber"><span>$9897.00</span>
                       </div>
                     </div>
                   </div>
@@ -803,7 +885,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$1841.00</span>
+                      <div class="simple-element__priceNumber"><span>$2014.00</span>
                       </div>
                     </div>
                   </div>
@@ -821,7 +903,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$8293.00</span>
+                      <div class="simple-element__priceNumber"><span>$555.00</span>
                       </div>
                     </div>
                   </div>
@@ -839,7 +921,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$6568.00</span>
+                      <div class="simple-element__priceNumber"><span>$6188.00</span>
                       </div>
                     </div>
                   </div>
@@ -857,7 +939,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$3180.00</span>
+                      <div class="simple-element__priceNumber"><span>$2913.00</span>
                       </div>
                     </div>
                   </div>
@@ -883,7 +965,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$8711.00</span>
+                      <div class="simple-element__priceNumber"><span>$5253.00</span>
                         <div class="simple-element__oldPrice">222$</div>
                       </div>
                     </div>
@@ -904,7 +986,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$7143.00</span>
+                      <div class="simple-element__priceNumber"><span>$9843.00</span>
                         <div class="simple-element__oldPrice">222$</div>
                       </div>
                     </div>
@@ -925,7 +1007,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$3797.00</span>
+                      <div class="simple-element__priceNumber"><span>$2757.00</span>
                         <div class="simple-element__oldPrice">222$</div>
                       </div>
                     </div>
@@ -946,7 +1028,7 @@ All Departments</span></li>
                   </div>
                   <div class="simple-element__footer">
                     <div class="simple-element__price">
-                      <div class="simple-element__priceNumber"><span>$1761.00</span>
+                      <div class="simple-element__priceNumber"><span>$877.00</span>
                         <div class="simple-element__oldPrice">222$</div>
                       </div>
                     </div>

@@ -36,54 +36,130 @@ html(lang='ru', class="no-js")
                             header
                                 .shopping-cart__title Shopping Cart Summary
                             form(action="#", method="POST")
-                                .shopping-cart__table
-                                    .shopping-cart__table-head
-                                        .shopping-cart__table-row
-                                            .shopping-cart__head-close
-                                            .shopping-cart__head-thumbnail
-                                            .shopping-cart__head-product Product
-                                            .shopping-cart__head-price Price
-                                            .shopping-cart__head-quantity Quantity
-                                            .shopping-cart__head-total Total
-                                    .shopping-cart__table-body
-                                        .shopping-cart__table-row
-                                            .shopping-cart__table-close
-                                                include ../../img/svg/cancel.svg
-                                            .shopping-cart__table-thumbnail
-                                                a(href="#")
+                                //.shopping-cart__table
+                                //    .shopping-cart__table-head
+                                //        .shopping-cart__table-row
+                                //            .shopping-cart__head-close
+                                //            .shopping-cart__head-thumbnail
+                                //            .shopping-cart__head-product Product
+                                //            .shopping-cart__head-price Price
+                                //            .shopping-cart__head-quantity Quantity
+                                //            .shopping-cart__head-total Total
+                                //    .shopping-cart__table-body
+                                //            .shopping-cart__table-item-wrap
+                                //                .shopping-cart__table-row
+                                //                    .shopping-cart__table-close
+                                //                        include ../../img/svg/cancel.svg
+                                //                    .shopping-cart__table-thumbnail
+                                //                        a(href="#")
+                                //                            img(src="img/Laptop-600x600.jpg", alt="Picture")
+                                //                    div(data-title="Product:").shopping-cart__table-product
+                                //                        a(href="#")
+                                //                            h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                //                        .under-shopping-cart__table
+                                //                    div(data-title="Price:").shopping-cart__table-price $1,999.00
+                                //                    div(data-title="Quantity:").shopping-cart__table-quantity
+                                //                        .single-product__quantity-add
+                                //                            .single-product__quantity-counter
+                                //                                input(type="text", value="1")
+                                //                            .single-product__quantity-switcher
+                                //                                button.single-product__quantity-plus +
+                                //                                button.single-product__quantity-minus -
+                                //                    div(data-title="Total:").shopping-cart__table-total $1,999.00
+                                .cart
+                                    .cart-row
+                                        .cart-header__close
+                                        .cart-header__thumbnail
+                                        .cart-header__product Product
+                                        .cart-header__price Price
+                                        .cart-header__quantity Quantity
+                                        .cart-header__total  Total
+                                    .cart-body
+                                        .cart-body__item__wrapper
+                                            .cart-body__item
+                                                .cart-body__close
+                                                    include ../../img/svg/cancel.svg
+                                                .cart-body__thumbnail
                                                     img(src="img/Laptop-600x600.jpg", alt="Picture")
-                                            div(data-title="Product:").shopping-cart__table-product
-                                                a(href="#")
-                                                    h5 Nerocool EN52377 Dead Silence Gaming Cube Case
-                                                    p COMPANY BRAND
-                                            div(data-title="Price:").shopping-cart__table-price $1,999.00
-                                            div(data-title="Quantity:").shopping-cart__table-quantity
-                                                .single-product__quantity-add
-                                                    .single-product__quantity-counter
-                                                        input(type="text", value="1")
-                                                    .single-product__quantity-switcher
-                                                        button.single-product__quantity-plus +
-                                                        button.single-product__quantity-minus -
-                                            div(data-title="Total:").shopping-cart__table-total $1,999.00
-                                        .shopping-cart__table-row
-                                            .shopping-cart__table-close
-                                                include ../../img/svg/cancel.svg
-                                            .shopping-cart__table-thumbnail
-                                                a(href="#")
+                                                .cart-body__product
+                                                    a(href="#")
+                                                        h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                .cart-body__price(data-title="Price:")
+                                                   span.cart-body__hidden-text Price:
+                                                   |  $1,999.00
+                                                .cart-body__quantity
+                                                    .single-product__quantity-add
+                                                        .single-product__quantity-counter
+                                                            input(type="text", value="1")
+                                                        .single-product__quantity-switcher
+                                                            button.single-product__quantity-plus +
+                                                            button.single-product__quantity-minus -
+                                                .cart-body__total(data-title="Total:")
+                                                  span.cart-body__hidden-text Total:
+                                                  | $1,999.00
+                                            .cart-body__variable
+                                                .cart-body__variable-item
+                                                    .cart-body__variable-close
+                                                        include ../../img/svg/cancel.svg
+                                                    .cart-body__variable-thumbnail
+                                                        img(src="img/Laptop-600x600.jpg", alt="Picture")
+                                                    .cart-body__variable-product
+                                                        a(href="#")
+                                                            h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                    .cart-body__variable-price $1.90
+                                                .cart-body__variable-item
+                                                    .cart-body__variable-close
+                                                        include ../../img/svg/cancel.svg
+                                                    .cart-body__variable-thumbnail
+                                                        img(src="img/Laptop-600x600.jpg", alt="Picture")
+                                                    .cart-body__variable-product
+                                                        a(href="#")
+                                                            h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                    .cart-body__variable-price $1.90
+                                        .cart-body__item__wrapper
+                                            .cart-body__item
+                                                .cart-body__close
+                                                    include ../../img/svg/cancel.svg
+                                                .cart-body__thumbnail
                                                     img(src="img/Laptop-600x600.jpg", alt="Picture")
-                                            div(data-title="Product:").shopping-cart__table-product
-                                                a(href="#")
-                                                    h5 Nerocool EN52377 Dead Silence Gaming Cube Case
-                                                    p COMPANY BRAND
-                                            div(data-title="Price:").shopping-cart__table-price $1,999.00
-                                            div(data-title="Quantity:").shopping-cart__table-quantity
-                                                .single-product__quantity-add
-                                                    .single-product__quantity-counter
-                                                        input(type="text", value="1")
-                                                    .single-product__quantity-switcher
-                                                        button.single-product__quantity-plus +
-                                                        button.single-product__quantity-minus -
-                                            div(data-title="Total:").shopping-cart__table-total $1,999.00
+                                                .cart-body__product
+                                                    a(href="#")
+                                                        h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                .cart-body__price(data-title="Price:")
+                                                    span.cart-body__hidden-text Price:
+                                                    |  $1,999.00
+                                                .cart-body__quantity
+                                                    .single-product__quantity-add
+                                                        .single-product__quantity-counter
+                                                            input(type="text", value="1")
+                                                        .single-product__quantity-switcher
+                                                            button.single-product__quantity-plus +
+                                                            button.single-product__quantity-minus -
+                                                .cart-body__total(data-title="Total:")
+                                                    span.cart-body__hidden-text Total:
+                                                    | $1,999.00
+                                            .cart-body__variable
+                                                .cart-body__variable-item
+                                                    .cart-body__variable-close
+                                                        include ../../img/svg/cancel.svg
+                                                    .cart-body__variable-thumbnail
+                                                        img(src="img/Laptop-600x600.jpg", alt="Picture")
+                                                    .cart-body__variable-product
+                                                        a(href="#")
+                                                            h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                    .cart-body__variable-price $1.90
+                                                .cart-body__variable-item
+                                                    .cart-body__variable-close
+                                                        include ../../img/svg/cancel.svg
+                                                    .cart-body__variable-thumbnail
+                                                        img(src="img/Laptop-600x600.jpg", alt="Picture")
+                                                    .cart-body__variable-product
+                                                        a(href="#")
+                                                            h5 Nerocool EN52377 Dead Silence Gaming Cube Case
+                                                    .cart-body__variable-price $1.90
+
+
+
                                 .shopping-cart__empty
                                     include ../../img/empty.svg
                                     h3 Your shopping cart is empty. Please add products

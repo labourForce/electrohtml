@@ -7,6 +7,8 @@ import 'selectpicker';
 export default class HeaderVM{
     constructor(state){
         this.state = state;
+
+
         // this.contentItem = ko.observable();
         console.log(this.state);
         setTimeout(function(){
@@ -38,4 +40,5 @@ export default class HeaderVM{
 
         }, 0);
     }
+
 }

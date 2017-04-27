@@ -15,8 +15,8 @@ export class Router {
 		self.init = false;
 		self.hash = '';
 
-		self.notify = function(n, query, seoUrl) {
-			process(n, query, seoUrl, pushState);
+		self.notify = function() {
+
 		};
 
 		self.replace = function(n, query, seoUrl){

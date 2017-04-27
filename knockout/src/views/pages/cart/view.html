@@ -7,78 +7,143 @@
 						<div class="shopping-cart__title">Shopping Cart Summary</div>
 					</header>
 					<form action="#" method="POST">
-						<div class="shopping-cart__table">
-							<div class="shopping-cart__table-head">
-								<div class="shopping-cart__table-row">
-									<div class="shopping-cart__head-close"></div>
-									<div class="shopping-cart__head-thumbnail"></div>
-									<div class="shopping-cart__head-product">Product</div>
-									<div class="shopping-cart__head-price">Price</div>
-									<div class="shopping-cart__head-quantity">Quantity</div>
-									<div class="shopping-cart__head-total">Total</div>
-								</div>
+						<!--<div class="shopping-cart__table">-->
+						<!--<div class="shopping-cart__table-head">-->
+						<!--<div class="shopping-cart__table-row">-->
+						<!--<div class="shopping-cart__head-close"></div>-->
+						<!--<div class="shopping-cart__head-thumbnail"></div>-->
+						<!--<div class="shopping-cart__head-product">Product</div>-->
+						<!--<div class="shopping-cart__head-price">Price</div>-->
+						<!--<div class="shopping-cart__head-quantity">Quantity</div>-->
+						<!--<div class="shopping-cart__head-total">Total</div>-->
+						<!--</div>-->
+						<!--</div>-->
+						<!--<div class="shopping-cart__table-body">-->
+						<!--&lt;!&ndash; ko foreach: products() &ndash;&gt;-->
+						<!--<div class="shopping-cart__table-row">-->
+						<!--<div class="shopping-cart__table-close">-->
+						<!--<span data-bind="click: $parent.deleteField">-->
+						<!--<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">-->
+						<!--<path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"></path>-->
+						<!--</svg>-->
+						<!--</span>-->
+						<!--</div>-->
+						<!--<div class="shopping-cart__table-thumbnail"><a href="#"><img src="/images/Laptop-600x600.jpg" alt="Picture"></a></div>-->
+						<!--<div data-title="Product:" class="shopping-cart__table-product">-->
+						<!--<a href="#">-->
+						<!--<h5 data-bind="text: nestedSKUs.displayName"></h5>-->
+						<!--</a>-->
+						<!--</div>-->
+						<!--<div data-title="Price:" class="shopping-cart__table-price" data-bind="text:  '$' + nestedSKUs.salePrice"></div>-->
+						<!--<div data-title="Quantity:" class="shopping-cart__table-quantity"  >-->
+						<!--<div class="single-product__quantity-add">-->
+						<!--<div class="single-product__quantity-counter">-->
+						<!--<input type="text" value="1" data-bind="value:  nestedSKUs.quantity" >-->
+						<!--</div>-->
+						<!--<div class="single-product__quantity-switcher">-->
+						<!--<button class="single-product__quantity-plus" data-bind="click: $parent.quantityPlus">+</button>-->
+						<!--<button class="single-product__quantity-minus" data-bind="click: $parent.quantityMinus">-</button>-->
+						<!--</div>-->
+						<!--</div>-->
+						<!--</div>-->
+						<!--<div data-title="Total:" class="shopping-cart__table-total" data-bind="text: '$' + totalPrice">$1,999.00</div>-->
+						<!--</div>-->
+						<!--&lt;!&ndash; /ko &ndash;&gt;-->
+						<!--</div>-->
+						<!--</div>-->
+						<div class="cart">
+							<div class="cart-row">
+								<div class="cart-header__close"></div>
+								<div class="cart-header__thumbnail"></div>
+								<div class="cart-header__product">Product</div>
+								<div class="cart-header__price">Price</div>
+								<div class="cart-header__quantity">Quantity</div>
+								<div class="cart-header__total"> Total</div>
 							</div>
-							<div class="shopping-cart__table-body" data-bind="foreach: products">
-								<div class="shopping-cart__table-row">
-									<div class="shopping-cart__table-close">
-										<span data-bind="click: $parent.removeItem">
-											<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
-												<path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"></path>
+							<div class="cart-body">
+								<!-- ko foreach: products -->
+								<div class="cart-body__item__wrapper">
+									<div class="cart-body__item">
+										<div class="cart-body__close">
+											<svg data-bind="click: $parent.deleteField" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
+												<path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"/>
 											</svg>
-										</span>
-									</div>
-									<div class="shopping-cart__table-thumbnail"><a href="#"><img src="/images/Laptop-600x600.jpg" alt="Picture"></a></div>
-									<div data-title="Product:" class="shopping-cart__table-product">
-										<a href="#">
-											<h5 data-bind="text: title"></h5>
-											<p data-bind="text: brand"></p>
-										</a>
-									</div>
-									<div data-title="Price:" class="shopping-cart__table-price" data-bind="text: '$' + price"></div>
-									<div data-title="Quantity:" class="shopping-cart__table-quantity">
-										<div class="single-product__quantity-add">
-											<div class="single-product__quantity-counter">
-												<input type="text" value="1" data-bind=" value: quantity ">
-											</div>
-											<div class="single-product__quantity-switcher">
-												<button class="single-product__quantity-plus" data-bind="click: $parent.quantityPlus">+</button>
-												<button class="single-product__quantity-minus">-</button>
+										</div>
+										<div class="cart-body__thumbnail"><img data-bind="attr: { src: nestedSKUs.featuredImage, alt: nestedSKUs.displayName }" alt="Picture"></div>
+										<div class="cart-body__product">
+											<a href="#" data-bind=" attr {href: productLink} ">
+												<h5 data-bind="text: nestedSKUs.displayName">Nerocool EN52377 Dead Silence Gaming Cube Case</h5>
+											</a>
+										</div>
+										<div data-title="Price:" class="cart-body__price">
+											<span class="cart-body__hidden-text">Price:</span>
+											<span data-bind="text: '$' + nestedSKUs.salePrice">$1,999.00<</span>
+										</div>
+										<div class="cart-body__quantity">
+											<div class="single-product__quantity-add">
+												<div class="single-product__quantity-counter">
+													<input type="text" value="1" data-bind="value: nestedSKUs.quantity">
+												</div>
+												<div class="single-product__quantity-switcher">
+													<button class="single-product__quantity-plus" data-bind="click: $parent.quantityPlus">+</button>
+													<button class="single-product__quantity-minus" data-bind="click: $parent.quantityMinus">-</button>
+												</div>
 											</div>
 										</div>
+										<div data-title="Total:" class="cart-body__total"><span class="cart-body__hidden-text">Total:</span>
+											<span data-bind="text: '$' + totalPrice">$1,999.00</span>
+										</div>
 									</div>
-									<div data-title="Total:" class="shopping-cart__table-total">$1,999.00</div>
+									<!-- ko if: nestedSKUs.nestedVariableSKUs.length > 0  -->
+									<div class="cart-body__variable">
+										<!-- ko foreach: nestedSKUs.nestedVariableSKUs -->
+										<div class="cart-body__variable-item">
+											<div class="cart-body__variable-close">
+												<svg data-bind="click: $parents[1].deleteField"  version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.9 21.9" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 21.9 21.9">
+													<path d="M14.1,11.3c-0.2-0.2-0.2-0.5,0-0.7l7.5-7.5c0.2-0.2,0.3-0.5,0.3-0.7s-0.1-0.5-0.3-0.7l-1.4-1.4C20,0.1,19.7,0,19.5,0  c-0.3,0-0.5,0.1-0.7,0.3l-7.5,7.5c-0.2,0.2-0.5,0.2-0.7,0L3.1,0.3C2.9,0.1,2.6,0,2.4,0S1.9,0.1,1.7,0.3L0.3,1.7C0.1,1.9,0,2.2,0,2.4  s0.1,0.5,0.3,0.7l7.5,7.5c0.2,0.2,0.2,0.5,0,0.7l-7.5,7.5C0.1,19,0,19.3,0,19.5s0.1,0.5,0.3,0.7l1.4,1.4c0.2,0.2,0.5,0.3,0.7,0.3  s0.5-0.1,0.7-0.3l7.5-7.5c0.2-0.2,0.5-0.2,0.7,0l7.5,7.5c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l1.4-1.4c0.2-0.2,0.3-0.5,0.3-0.7  s-0.1-0.5-0.3-0.7L14.1,11.3z"/>
+												</svg>
+											</div>
+											<div class="cart-body__variable-thumbnail"><img data-bind="attr: { src: featuredImage, alt: displayName }" alt="Picture"></div>
+											<div class="cart-body__variable-product">
+												<a href="#">
+													<h5 data-bind="text: displayName">Nerocool EN52377 Dead Silence Gaming Cube Case</h5>
+												</a>
+											</div>
+											<div class="cart-body__variable-price" data-bind="text: '$' + salePrice">$1.90</div>
+										</div>
+										<!-- /ko -->
+									</div>
+									<!-- /ko -->
 								</div>
+								<!-- /ko -->
 							</div>
 						</div>
 						<!-- ko if: products().length == 0 -->
 						<div class="shopping-cart__empty">
 							<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-								  width="142.916px" height="142.916px" viewBox="0 0 142.916 142.916" style="enable-background:new 0 0 142.916 142.916;"
-								  xml:space="preserve">
-								  <path d="M32.901,114.799l-12.015,16.507c-2.375,3.265-1.656,7.835,1.608,10.21c1.301,0.945,2.807,1.4,4.295,1.4
-									 c2.261,0,4.487-1.043,5.917-3.006l12.11-16.638c7.951,4.239,17.019,6.651,26.644,6.651c31.342,0,56.84-25.499,56.84-56.842
-									 c0-15.979-6.636-30.427-17.283-40.764l15.074-20.709c2.375-3.265,1.655-7.834-1.607-10.21c-3.273-2.377-7.84-1.651-10.209,1.608
-									 L99.313,23.562c-8.241-4.655-17.739-7.323-27.856-7.323c-31.343,0-56.842,25.499-56.842,56.841
-									 C14.615,89.557,21.665,104.409,32.901,114.799z M113.682,73.08c0,23.284-18.94,42.226-42.226,42.226
-									 c-6.407,0-12.461-1.477-17.905-4.039l48.729-66.951C109.331,51.864,113.682,61.964,113.682,73.08z M71.457,30.856
-									 c6.901,0,13.403,1.698,19.159,4.646l-49.043,67.381c-7.623-7.643-12.344-18.181-12.344-29.801
-									 C29.232,49.798,48.173,30.856,71.457,30.856z"/>
-							   </svg>
+                        width="142.916px" height="142.916px" viewBox="0 0 142.916 142.916" style="enable-background:new 0 0 142.916 142.916;"
+                        xml:space="preserve">
+                        <path d="M32.901,114.799l-12.015,16.507c-2.375,3.265-1.656,7.835,1.608,10.21c1.301,0.945,2.807,1.4,4.295,1.4
+                           c2.261,0,4.487-1.043,5.917-3.006l12.11-16.638c7.951,4.239,17.019,6.651,26.644,6.651c31.342,0,56.84-25.499,56.84-56.842
+                           c0-15.979-6.636-30.427-17.283-40.764l15.074-20.709c2.375-3.265,1.655-7.834-1.607-10.21c-3.273-2.377-7.84-1.651-10.209,1.608
+                           L99.313,23.562c-8.241-4.655-17.739-7.323-27.856-7.323c-31.343,0-56.842,25.499-56.842,56.841
+                           C14.615,89.557,21.665,104.409,32.901,114.799z M113.682,73.08c0,23.284-18.94,42.226-42.226,42.226
+                           c-6.407,0-12.461-1.477-17.905-4.039l48.729-66.951C109.331,51.864,113.682,61.964,113.682,73.08z M71.457,30.856
+                           c6.901,0,13.403,1.698,19.159,4.646l-49.043,67.381c-7.623-7.643-12.344-18.181-12.344-29.801
+                           C29.232,49.798,48.173,30.856,71.457,30.856z"/>
+                     </svg>
 							<h3>Your shopping cart is empty. Please add products</h3>
 						</div>
-						<!-- /ko  -->
-						<!-- ko if: products().length > 0 -->
+						<!-- /ko -->
 						<div class="shopping-cart__order-info">
 							<p>Free Delivery</p>
-							<p>Total<span class="shopping-cart__order-total">$ 770</span>TTC</p>
+							<p>Total<span class="shopping-cart__order-total" data-bind="text: totalPrice">$ 770</span>TTC</p>
 						</div>
-
 						<div class="shopping-cart__buttons-wrap right-item">
 							<div class="shopping-cart__buttons-row">
-								<button class="shopping-cart__checkout" data-bind="enable: productEnableButton">Proceed to Checkout</button>
+								<button class="shopping-cart__checkout" >Proceed to Checkout</button>
 							</div>
 						</div>
-						<!-- /ko -->
 					</form>
 				</div>
 			</div>
