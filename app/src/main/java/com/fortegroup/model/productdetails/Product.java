@@ -1,7 +1,6 @@
 package com.fortegroup.model.productdetails;
 
 import com.fortegroup.dao.productdetails.StringJsonUserType;
-import com.fortegroup.model.productdetails.BaseSKU;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
