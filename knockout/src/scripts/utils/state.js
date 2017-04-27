@@ -4,6 +4,7 @@ import header from '../../views/layouts/header/index';
 
 import login from '../../views/pages/login/index';
 import pdp from '../../views/pages/pdp/index';
+import checkout from '../../views/pages/checkout/index';
 import homepage from '../../views/pages/homepage/index';
 import cart from '../../views/pages/cart/index';
 import footer from '../../views/layouts/footer/index';
@@ -61,7 +62,8 @@ let stateList = {
     login: login,
     homepage: homepage,
     cart: cart,
-    pdp: pdp
+    pdp: pdp,
+    checkout: checkout
 };
 
 // let componentList = {

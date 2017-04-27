@@ -1,0 +1,76 @@
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="breadcrumbs">
+					<nav>
+						<ul class="breadcrumbs__wrap">
+							<li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Home</a></li>
+							<li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link-active">Laptops &amp; Computers</a></li>
+							<li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Laptops &amp; Computers Categories</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form__validation-state">
+					<p>
+						<strong>Error :</strong>
+						<span></span>
+					</p>
+				</div>
+				<div class="account__wrapper">
+					<div class="account__sign-in">
+						<form data-bind="event: {submit: handleSubmit}, with: loginModel" id="AccountSignIn" novalidate="">
+							<div class="main-title__wrapper">
+								<h3 class="main-title__text title--small">Sign In</h3>
+								<hr>
+							</div>
+							<p class="account__sign-in-text">Welcome back! Sign in to Your Account</p>
+							<div class="form-element__wrapper">
+								<label class="form-element__label">
+									<input data-bind="value: username" type="email" placeholder="Email Address*" class="form-element__input" minlength="3" required="">
+								</label>
+							</div>
+							<div class="form-element__wrapper">
+								<label class="form-element__label">
+									<input type="password" data-bind="value: password" placeholder="Password*" class="form-element__input" size="30" minlength="6" required="">
+								</label>
+							</div>
+							<div class="account__sign-in-remember">
+								<div class="form-element__wrapper">
+									<label class="form-element__label checkbox-label">
+										<input type="checkbox" class="form-element__hidden-checkbox" data-bind="checked: remember">
+										<div class="form-element__checkbox">
+											<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 26 26">
+												<path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"></path>
+											</svg>
+
+										</div><span class="form-element__name">Remember Me</span>
+									</label>
+								</div><a href="#">Forgotten Password?</a>
+							</div>
+							<div class="account__sign-in-button">
+								<button class="form-button" type="submit">Login</button>
+							</div>
+						</form>
+					</div>
+					<div class="account__create-new">
+						<div class="main-title__wrapper">
+							<h3 class="main-title__text title--small">Proceed as anonymous</h3>
+							<hr>
+						</div>
+						<form style="display: flex; justify-content: center; height: 100%;">
+
+							<div class="account__sign-in-button" style="margin-top: 100px;">
+								<button class="form-button" type="submit">Proceed</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

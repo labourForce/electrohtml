@@ -27,9 +27,7 @@ export default class MainVM {
         this.currentState = ko.observable(null);
         this.router = new Router(this);
         this.router.start();
-        this.go = (navigation, query, seoUrl) => {
-			this.router.notify(navigation, query, seoUrl);
-		};
+
 
         // this.logout = (plogout) => {
 		// 	$.ajax("/rest/model/atg/userprofiling/ProfileActor/logout", {

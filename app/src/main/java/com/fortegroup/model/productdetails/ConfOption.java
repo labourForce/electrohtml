@@ -1,15 +1,11 @@
 package com.fortegroup.model.productdetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fortegroup.dao.productdetails.StringJsonUserType;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "electro.conf_option")
-@TypeDefs( {@TypeDef( name= "StringJsonObject", typeClass = StringJsonUserType.class)})
 public class ConfOption {
 
     private Long id;
