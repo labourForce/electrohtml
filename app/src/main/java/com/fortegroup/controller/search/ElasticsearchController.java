@@ -1,9 +1,12 @@
 package com.fortegroup.controller.search;
 
 import com.fortegroup.model.search.Products;
+import com.fortegroup.model.search.SearchResult;
 import com.fortegroup.service.search.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,9 +26,12 @@ public class ElasticsearchController {
     private ProductsService productsService;
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public List<Products> findByCategory(@RequestParam("searchTerm") String searchTerm,
-                                         @RequestParam("category") String category, Pageable pageRequest) {
+    public ResponseEntity<?> findByCategory(@RequestParam("searchTerm") String searchTerm,
+                                            @RequestParam("category") String category, Pageable pageRequest) {
 
-        return productsService.findByCategory(searchTerm, category, pageRequest).getContent();
+        Page<Products> products = productsService.findByCategory(searchTerm, category, pageRequest);
+        int pageCount = products.getTotalPages();
+
+        return ResponseEntity.ok(new SearchResult(pageCount, products.getContent()));
     }
 }
