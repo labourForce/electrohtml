@@ -1,6 +1,10 @@
 package com.fortegroup.config;
 
+import com.fortegroup.dao.accounts.TokenDao;
+import com.fortegroup.dao.accounts.TokenDaoImpl;
 import com.fortegroup.filters.AuthenticationTokenFilter;
+import com.fortegroup.service.accounts.TokenService;
+import com.fortegroup.service.accounts.TokenServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +44,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         authenticationManagerBuilder
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
+    }
+
+    @Bean
+    public TokenService tokenService(){
+        return new TokenServiceImpl();
+    }
+
+    @Bean
+    public TokenDao tokenDao(){
+        return new TokenDaoImpl();
     }
 
     @Bean

@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -64,15 +66,13 @@ public class AuthenticationController {
             // Reload password post-authentication so we can generate token
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
             String token = this.tokenUtils.generateToken(userDetails);
+            User user = userService.loadUserByUsername(authenticationRequest.getUsername());
 
 
             // Return the token
-            Cookie cookie = new Cookie("token",token);
-            cookie.setHttpOnly(true);
-            response.addCookie(cookie);
-            return ResponseEntity.ok(MessageFactory.getMessage("All success",false));
+            return ResponseEntity.ok(MessageFactory.getMessage("All success",false,user,token));
         }catch (BadCredentialsException e){
-            return ResponseEntity.ok(MessageFactory.getMessage("Incorrect email or password",true));
+            return ResponseEntity.ok(MessageFactory.getMessage("Incorrect email or password",true,null,null));
         }
     }
 
@@ -81,12 +81,12 @@ public class AuthenticationController {
     public ResponseEntity<?> registerRequest(@RequestBody User user){
         try {
             if(!Validator.validateEmail(user.getUsername()) || !Validator.validatePassword(user.getPassword()))
-                return ResponseEntity.ok(MessageFactory.getMessage("Your fields not valid",true));
+                return ResponseEntity.ok(MessageFactory.getMessage("Your fields not valid",true,null,null));
             User registeredUser = userService.saveUser(user);
 
-            return ResponseEntity.ok(MessageFactory.getMessage("User successfully registered",false));
+            return ResponseEntity.ok(MessageFactory.getMessage("User successfully registered",false,null,null));
         }catch (Throwable e){
-            return ResponseEntity.ok(MessageFactory.getMessage("Something wrong",true));
+            return ResponseEntity.ok(MessageFactory.getMessage("Something wrong",true,null,null));
 
         }
     }
@@ -98,26 +98,28 @@ public class AuthenticationController {
             Message msg;
             if(daoUser != null){
                 msg = MessageFactory.getMessage
-                        ("This is email exist",true);
+                        ("This is email exist",true,null,null);
             }else {
                 msg = MessageFactory.getMessage
-                        ("This email not exist",false);
+                        ("This email not exist",false,null,null);
             }
             return ResponseEntity.ok(msg);
 
         }
         else
             return ResponseEntity.ok(MessageFactory.getMessage
-                    ("Email must be not null",true));
+                    ("Email must be not null",true,null,null));
 
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.POST)
-    public ResponseEntity<?> logout(HttpServletResponse response){
-        Cookie cookie = new Cookie("token","");
-        cookie.setHttpOnly(true);
-        response.addCookie(cookie);
-        return ResponseEntity.ok(MessageFactory.getMessage("User successfully logout",false));
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public ResponseEntity<?> logout(HttpServletResponse response, HttpServletRequest request){
+        try {
+            request.logout();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(MessageFactory.getMessage("User successfully logout",false,null,null));
     }
 
 }
