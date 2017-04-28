@@ -143,7 +143,7 @@ public class CatalogServiceImpl implements CatalogService {
     private Category getRootCategory(String seoName){
         Category category = categoryDAO.getByDisplayName(seoName);
 
-        if (category.getRootCategory() != null){
+        if (category != null && category.getRootCategory() != null){
             return null;
         }
 
