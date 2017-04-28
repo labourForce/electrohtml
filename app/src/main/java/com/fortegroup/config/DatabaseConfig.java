@@ -1,11 +1,17 @@
 package com.fortegroup.config;
 
+import com.fortegroup.dao.category.CategoryDAO;
+import com.fortegroup.dao.category.CategoryDAOImpl;
 import com.fortegroup.dao.productdetails.ProductDetailDao;
 import com.fortegroup.dao.accounts.UserDao;
 import com.fortegroup.dao.productdetails.ProductDetailDaoImpl;
 import com.fortegroup.dao.accounts.UserDaoImpl;
 
+import com.fortegroup.dao.shorturl.ShortUrlDAO;
+import com.fortegroup.dao.shorturl.ShortUrlDAOImpl;
 import com.fortegroup.service.accounts.UserDetailsServiceImpl;
+import com.fortegroup.service.catalog.CatalogService;
+import com.fortegroup.service.catalog.CatalogServiceImpl;
 import com.fortegroup.service.search.ProductsService;
 import com.fortegroup.service.search.ProductsServiceImpl;
 import com.fortegroup.service.productdetails.ProductDetailService;
@@ -91,5 +97,14 @@ public class DatabaseConfig {
 
     @Bean
     public ProductDetailDao productDetailDao(){return new ProductDetailDaoImpl();}
+
+    @Bean
+    public CategoryDAO categoryDAO(){return new CategoryDAOImpl();}
+
+    @Bean
+    public CatalogService catalogService(){return new CatalogServiceImpl();}
+
+    @Bean
+    public ShortUrlDAO shortUrlDAO(){return new ShortUrlDAOImpl();}
 
 }

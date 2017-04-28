@@ -1,15 +1,11 @@
-package com.fortegroup.model.productdetails;
+package com.fortegroup.model.dto;
 
-import com.fortegroup.model.category.Category;
-
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-
-@Entity
-@Table(name = "electro.product")
-public class Product implements java.io.Serializable {
-
+/**
+ *
+ * @author Artyom Kazakov
+ * @version 1.0
+ */
+public class ProductDTO {
     private Long id;
     private String name;
     private String displayName;
@@ -26,35 +22,7 @@ public class Product implements java.io.Serializable {
     private double salePrice;
     private String image;
     private int rootCategoryId;
-    private Set<BaseSKU> baseSKUs = new HashSet<>(0);
-    private Set<Category> categories = new HashSet<>(0);
 
-
-    public Product() {
-    }
-
-    public Product(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, String image, int rootCategoryId, Set<BaseSKU> baseSKUs) {
-        this.name = name;
-        this.displayName = displayName;
-        this.rating = rating;
-        this.availability = availability;
-        this.displayFlag = displayFlag;
-        this.longDescription = longDescription;
-        this.shortDescription = shortDescription;
-        this.brand = brand;
-        this.techline = techline;
-        this.onSale = onSale;
-        this.upSale = upSale;
-        this.listPrice = listPrice;
-        this.salePrice = salePrice;
-        this.image = image;
-        this.rootCategoryId = rootCategoryId;
-        this.baseSKUs = baseSKUs;
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
     public Long getId() {
         return id;
     }
@@ -63,7 +31,6 @@ public class Product implements java.io.Serializable {
         this.id = id;
     }
 
-    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -72,7 +39,6 @@ public class Product implements java.io.Serializable {
         this.name = name;
     }
 
-    @Column(name = "display_name", nullable = false)
     public String getDisplayName() {
         return displayName;
     }
@@ -81,7 +47,6 @@ public class Product implements java.io.Serializable {
         this.displayName = displayName;
     }
 
-    @Column(name = "rating", nullable = false)
     public int getRating() {
         return rating;
     }
@@ -90,7 +55,6 @@ public class Product implements java.io.Serializable {
         this.rating = rating;
     }
 
-    @Column(name = "availability", nullable = false)
     public boolean isAvailability() {
         return availability;
     }
@@ -99,7 +63,6 @@ public class Product implements java.io.Serializable {
         this.availability = availability;
     }
 
-    @Column(name = "display_flag", nullable = false)
     public boolean isDisplayFlag() {
         return displayFlag;
     }
@@ -108,7 +71,6 @@ public class Product implements java.io.Serializable {
         this.displayFlag = displayFlag;
     }
 
-    @Column(name = "long_description", nullable = false)
     public String getLongDescription() {
         return longDescription;
     }
@@ -117,7 +79,6 @@ public class Product implements java.io.Serializable {
         this.longDescription = longDescription;
     }
 
-    @Column(name = "short_description", nullable = false)
     public String getShortDescription() {
         return shortDescription;
     }
@@ -126,7 +87,6 @@ public class Product implements java.io.Serializable {
         this.shortDescription = shortDescription;
     }
 
-    @Column(name = "brand", nullable = false)
     public String getBrand() {
         return brand;
     }
@@ -135,7 +95,6 @@ public class Product implements java.io.Serializable {
         this.brand = brand;
     }
 
-    @Column(name = "techline", nullable = false)
     public String getTechline() {
         return techline;
     }
@@ -144,7 +103,6 @@ public class Product implements java.io.Serializable {
         this.techline = techline;
     }
 
-    @Column(name = "on_sale", nullable = false)
     public boolean isOnSale() {
         return onSale;
     }
@@ -153,7 +111,6 @@ public class Product implements java.io.Serializable {
         this.onSale = onSale;
     }
 
-    @Column(name = "upsale", nullable = false)
     public boolean isUpSale() {
         return upSale;
     }
@@ -162,7 +119,6 @@ public class Product implements java.io.Serializable {
         this.upSale = upSale;
     }
 
-    @Column(name = "list_price", nullable = false)
     public double getListPrice() {
         return listPrice;
     }
@@ -171,7 +127,6 @@ public class Product implements java.io.Serializable {
         this.listPrice = listPrice;
     }
 
-    @Column(name = "sale_price", nullable = false)
     public double getSalePrice() {
         return salePrice;
     }
@@ -180,7 +135,6 @@ public class Product implements java.io.Serializable {
         this.salePrice = salePrice;
     }
 
-    @Column(name = "image", nullable = false)
     public String getImage() {
         return image;
     }
@@ -189,34 +143,11 @@ public class Product implements java.io.Serializable {
         this.image = image;
     }
 
-    @Column(name = "root_category_id", nullable = false)
     public int getRootCategoryId() {
         return rootCategoryId;
     }
 
     public void setRootCategoryId(int rootCategoryId) {
         this.rootCategoryId = rootCategoryId;
-    }
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-    public Set<BaseSKU> getBaseSKUs() {
-        return this.baseSKUs;
-    }
-
-    public void setBaseSKUs(Set<BaseSKU> baseSKUs) {
-        this.baseSKUs = baseSKUs;
-    }
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "electro.category_product", joinColumns = {
-            @JoinColumn(name = "product_id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "parent_category_id",
-                    nullable = false, updatable = false) })
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
     }
 }
