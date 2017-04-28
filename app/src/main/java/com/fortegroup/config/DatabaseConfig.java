@@ -6,6 +6,8 @@ import com.fortegroup.dao.productdetails.ProductDetailDaoImpl;
 import com.fortegroup.dao.accounts.UserDaoImpl;
 
 import com.fortegroup.service.accounts.UserDetailsServiceImpl;
+import com.fortegroup.service.checkInformation.ShippingBillingService;
+import com.fortegroup.service.checkInformation.ShippingBillingServiceImpl;
 import com.fortegroup.service.search.ProductsService;
 import com.fortegroup.service.search.ProductsServiceImpl;
 import com.fortegroup.service.productdetails.ProductDetailService;
@@ -46,8 +48,8 @@ public class DatabaseConfig {
 
         dataSource.addDataSourceProperty("databaseName", "postgres");
         dataSource.addDataSourceProperty("portNumber", "5432");
-        dataSource.addDataSourceProperty("serverName", "localhost");
-//        dataSource.addDataSourceProperty("serverName","192.168.1.207");
+       // dataSource.addDataSourceProperty("serverName", "localhost");
+        dataSource.addDataSourceProperty("serverName","192.168.1.207");
         dataSource.addDataSourceProperty("user", "postgres");
         dataSource.addDataSourceProperty("password", "postgres");
         return dataSource;
@@ -91,5 +93,8 @@ public class DatabaseConfig {
 
     @Bean
     public ProductDetailDao productDetailDao(){return new ProductDetailDaoImpl();}
+
+    @Bean
+    public ShippingBillingService checkInformationSB(){return new ShippingBillingServiceImpl();}
 
 }
