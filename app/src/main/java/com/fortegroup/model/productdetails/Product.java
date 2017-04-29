@@ -1,5 +1,7 @@
 package com.fortegroup.model.productdetails;
 
+import com.fortegroup.model.category.Category;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,6 +27,8 @@ public class Product implements java.io.Serializable {
     private String image;
     private int rootCategoryId;
     private Set<BaseSKU> baseSKUs = new HashSet<>(0);
+    private Set<Category> categories = new HashSet<>(0);
+
 
     public Product() {
     }
@@ -201,5 +205,18 @@ public class Product implements java.io.Serializable {
 
     public void setBaseSKUs(Set<BaseSKU> baseSKUs) {
         this.baseSKUs = baseSKUs;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "electro.category_product", joinColumns = {
+            @JoinColumn(name = "product_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "parent_category_id",
+                    nullable = false, updatable = false) })
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }

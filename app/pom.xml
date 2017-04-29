@@ -159,7 +159,16 @@
             <artifactId>elasticsearch</artifactId>
             <version>${elasticsearch.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.litle</groupId>
+            <artifactId>litle-sdk-for-java</artifactId>
+            <version>8.29.0</version>
+        </dependency>
     </dependencies>
 
 </project>

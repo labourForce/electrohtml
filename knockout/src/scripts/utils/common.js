@@ -464,3 +464,15 @@ export function getErrorMessages(formExceptions, self, errors, inputErrors, inpu
 		}
 	}
 }
+
+export function sendRequest (config) {
+	const token = window.localStorage.getItem('auth_token');
+
+	config.headers = config.headers ? Object.assign(config.headers, { authorization: token }) : { authorization: token };
+
+	$.ajax(config);
+}
+
+export function setAuthToken (token) {
+    window.localStorage.setItem('auth_token', token)
+}

@@ -7,6 +7,8 @@
 
 package com.fortegroup.filters;
 
+import com.fortegroup.service.accounts.TokenService;
+import com.fortegroup.service.accounts.TokenServiceImpl;
 import com.fortegroup.utill.Constant;
 import com.fortegroup.utill.TokenUtils;
 import com.fortegroup.model.accounts.SpringSecurityUser;
@@ -36,6 +38,8 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
     @Autowired
     private UserDetailsService userDetailsService;
 
+    @Autowired
+    TokenService tokenService;
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -45,7 +49,8 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
         userDetailsService = WebApplicationContextUtils
                 .getRequiredWebApplicationContext(this.getServletContext())
                 .getBean(UserDetailsService.class);
-
+        tokenService = WebApplicationContextUtils.getRequiredWebApplicationContext
+                (this.getServletContext()).getBean(TokenServiceImpl.class);
         HttpServletResponse resp = (HttpServletResponse) response;
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
@@ -54,15 +59,8 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        Cookie[] cookies = httpRequest.getCookies();
-        Cookie cookie = new Cookie("token","");
-        if(cookies != null){
-            for(Cookie current : cookies){
-                if(current.getName().equals("token"))
-                    cookie = current;
-            }
-        }
-        String authToken = cookie.getValue();
+
+        String authToken = httpRequest.getHeader(Constant.tokenHeader);
         String username = this.tokenUtils.getUsernameFromToken(authToken);
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -78,20 +76,6 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 
         chain.doFilter(request, response);
     }
-
-    public String authenticationRequest(String token) {
-
-        String username = this.tokenUtils.getUsernameFromToken(token);
-        SpringSecurityUser user = (SpringSecurityUser) this.userDetailsService.loadUserByUsername(username);
-        if (this.tokenUtils.canTokenBeRefreshed(token, user.getLastPasswordReset())) {
-            String refreshedToken = this.tokenUtils.refreshToken(token);
-            return refreshedToken;
-        } else {
-            return null;
-        }
-    }
-
-
 
 }
 
