@@ -1,0 +1,112 @@
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="breadcrumbs">
+					<nav>
+						<ul class="breadcrumbs__wrap">
+							<li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Home</a></li>
+							<li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link-active">Laptops &amp; Computers</a></li>
+							<li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Laptops &amp; Computers Categories</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<form id="checkoutPay"  novalidate>
+					<div class="form-block">
+						<div class="row">
+							<div class="col-lg-6 col-md-6">
+								<div class="row">
+									<div class="col-lg-12 col-md-12">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Name or Card</span>
+												<input type="text" placeholder="Enter your name here" class="form-element__input" data-validation="text" data-bind="value: name">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Credit Card Number</span>
+												<input type="text" placeholder="Enter number here" class="form-element__input" data-validation="number" data-bind="value: cartNumber">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">CVV</span>
+												<input type="text" placeholder="Enter CVV here" class="form-element__input" data-validation="cvv" data-bind="value: cvv">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Expiration Date</span>
+												<span class="row">
+													<span class="col-lg-6 col-md-6 row">
+														<input type="text" placeholder="MM" class="form-element__input" data-validation="mm" data-bind="value: date.month">
+													</span>
+													<span class="col-lg-6 col-md-6">
+														<input type="text" placeholder="YYYY" class="form-element__input" data-validation="yyyy" data-bind="value: date.year">
+													</span>
+												</span>
+
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="main-title__wrapper">
+					<h3 class="main-title__text title--big">Your Order</h3>
+					<hr>
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12">
+				<div class="cart">
+					<div class="cart-row">
+						<div class="cart-header__thumbnail"></div>
+						<div class="cart-header__product">Product</div>
+						<div class="cart-header__price">Price</div>
+						<div class="cart-header__total"> Total</div>
+					</div>
+					<div class="cart-body">
+						<div class="cart-body__item__wrapper">
+							<div class="cart-body__item">
+								<div class="cart-body__thumbnail"><img src="/images/Laptop-600x600.jpg" alt="Picture"></div>
+								<div class="cart-body__product"><a href="#">
+									<h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5></a></div>
+								<div data-title="Price:" class="cart-body__price"><span class="cart-body__hidden-text">Price:</span> $1,999.00</div>
+								<div data-title="Total:" class="cart-body__total"><span class="cart-body__hidden-text">Total:</span>$1,999.00</div>
+							</div>
+							<div class="cart-body__variable">
+								<div class="cart-body__variable-item" style="margin-left: 10%;">
+									<div class="cart-body__variable-thumbnail"><img src="/images/Laptop-600x600.jpg" alt="Picture"></div>
+									<div class="cart-body__variable-product" style="width: 52%;"><a href="#">
+										<h5>Nerocool EN52377 Dead Silence Gaming Cube Case</h5></a></div>
+									<div class="cart-body__variable-price">$1.90</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="account__sign-in-button" style="margin-bottom: 80px; text-align: left;">
+			<button class="form-button" type="submit" data-bind="click: pay">Pay</button>
+		</div>
+
+	</div>
+</main>
