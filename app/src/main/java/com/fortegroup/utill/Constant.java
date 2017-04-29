@@ -8,6 +8,6 @@ public final class Constant {
     private  Constant() {
     }
 
-    public static final String tokenHeader = "X-Auth-Token";
+    public static final String tokenHeader = "authorization";
 
 }

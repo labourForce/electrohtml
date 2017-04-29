@@ -21,6 +21,7 @@ public class User {
     @Column(name = "authorities")
     private String authorities;
 
+
     public User() {
     }
 
@@ -61,6 +62,5 @@ public class User {
     public void setAuthorities(String authorities) {
         this.authorities = authorities;
     }
-
 
 }

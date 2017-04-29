@@ -4,3 +4,5 @@
 
 /knockout/node_modules/
 /knockout/bower_components/
+/app/target
+/app/.idea

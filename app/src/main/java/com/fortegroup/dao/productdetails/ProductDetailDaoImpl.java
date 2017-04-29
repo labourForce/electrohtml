@@ -4,10 +4,7 @@ import com.fortegroup.model.productdetails.BaseSKU;
 import com.fortegroup.model.productdetails.ConfOption;
 import com.fortegroup.model.productdetails.ConfProperty;
 import com.fortegroup.model.productdetails.Product;
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +24,7 @@ public class ProductDetailDaoImpl implements ProductDetailDao {
         transaction = session.beginTransaction();
         Product product = session.get(Product.class, id);
         Set<BaseSKU> baseSKUs = product.getBaseSKUs();
+        Hibernate.initialize(product.getCategories());
         for (BaseSKU baseSKU : baseSKUs) {
             Set<ConfProperty> confProperties = baseSKU.getConfProperties();
             for(ConfProperty confProperty:confProperties) {
@@ -37,6 +35,16 @@ public class ProductDetailDaoImpl implements ProductDetailDao {
             }
         }
         session.close();
+        return product;
+    }
+
+    @Override
+    public Product getByDisplayNameAndCategoryId(String displayName, Long categoryId){
+        Query query= sessionFactory.getCurrentSession().
+                createQuery("select p from Product p join p.categories c where c.id=:categoryId and p.displayName=:displayName");
+        query.setParameter("displayName", displayName);
+        query.setParameter("categoryId", categoryId);
+        Product product = (Product) query.uniqueResult();
         return product;
     }
 

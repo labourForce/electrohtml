@@ -1,13 +1,18 @@
 package com.fortegroup.config;
 
+import com.fortegroup.dao.category.CategoryDAO;
+import com.fortegroup.dao.category.CategoryDAOImpl;
 import com.fortegroup.dao.productdetails.ProductDetailDao;
 import com.fortegroup.dao.accounts.UserDao;
 import com.fortegroup.dao.productdetails.ProductDetailDaoImpl;
 import com.fortegroup.dao.accounts.UserDaoImpl;
 
-import com.fortegroup.service.accounts.UserDetailsServiceImpl;
-import com.fortegroup.service.search.ProductsService;
-import com.fortegroup.service.search.ProductsServiceImpl;
+import com.fortegroup.dao.shorturl.ShortUrlDAO;
+import com.fortegroup.dao.shorturl.ShortUrlDAOImpl;
+import com.fortegroup.service.catalog.CatalogService;
+import com.fortegroup.service.catalog.CatalogServiceImpl;
+import com.fortegroup.service.checkInformation.ShippingBillingService;
+import com.fortegroup.service.checkInformation.ShippingBillingServiceImpl;
 import com.fortegroup.service.productdetails.ProductDetailService;
 import com.fortegroup.service.accounts.UserService;
 import com.fortegroup.service.accounts.UserServiceImpl;
@@ -19,7 +24,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -46,8 +51,10 @@ public class DatabaseConfig {
 
         dataSource.addDataSourceProperty("databaseName", "postgres");
         dataSource.addDataSourceProperty("portNumber", "5432");
-        dataSource.addDataSourceProperty("serverName", "localhost");
-//        dataSource.addDataSourceProperty("serverName","192.168.1.207");
+
+        //dataSource.addDataSourceProperty("serverName", "localhost");
+        dataSource.addDataSourceProperty("serverName","192.168.1.207");
+
         dataSource.addDataSourceProperty("user", "postgres");
         dataSource.addDataSourceProperty("password", "postgres");
         return dataSource;
@@ -77,7 +84,12 @@ public class DatabaseConfig {
     }
 
     @Bean
-    public UserService appUserService(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public UserService userService(){
         return new UserServiceImpl();
     }
 
@@ -91,5 +103,18 @@ public class DatabaseConfig {
 
     @Bean
     public ProductDetailDao productDetailDao(){return new ProductDetailDaoImpl();}
+
+    @Bean
+
+    public ShippingBillingService checkInformationSB(){return new ShippingBillingServiceImpl();}
+
+    @Bean
+    public CategoryDAO categoryDAO(){return new CategoryDAOImpl();}
+
+    @Bean
+    public CatalogService catalogService(){return new CatalogServiceImpl();}
+
+    @Bean
+    public ShortUrlDAO shortUrlDAO(){return new ShortUrlDAOImpl();}
 
 }

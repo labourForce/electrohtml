@@ -7,6 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * Implementation for {@link UserDao} interface for {@link User}
  * @author Alexey Burov
@@ -30,12 +34,14 @@ public class UserDaoImpl implements UserDao{
         return user;
     }
 
+
     @Override
     public long saveUser(User user) {
         user.setAuthorities("ROLE_USER");
         long id = (long) sessionFactory.getCurrentSession().save(user);
         logger.info("User has been saved successfully. User info: " + user);
         return id;
+
     }
 
     @Override
@@ -43,5 +49,7 @@ public class UserDaoImpl implements UserDao{
         User user = sessionFactory.getCurrentSession().get(User.class, id);
         logger.info("User has been loaded successfully. User info: " + user);
         return user;
+
     }
+
 }
