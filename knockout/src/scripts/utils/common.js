@@ -465,10 +465,12 @@ export function getErrorMessages(formExceptions, self, errors, inputErrors, inpu
 	}
 }
 
-export function sendRequest (config) {
+export function sendRequest (config, noAuth) {
 	const token = window.localStorage.getItem('auth_token');
 
-	config.headers = config.headers ? Object.assign(config.headers, { authorization: token }) : { authorization: token };
+	if (!noAuth) {
+        config.headers = config.headers ? Object.assign(config.headers, { authorization: token }) : { authorization: token };
+	}
 
 	$.ajax(config);
 }

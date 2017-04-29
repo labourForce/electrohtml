@@ -114,9 +114,21 @@ export default class paymentVM{
                     year: this.date.year()
                 }
             };
+
             this.state.result['pay'] = request;
+            let result = ko.toJSON(this.state.result);
+            console.log(result);
+            $.ajax({
+                url: '/rest/checkout/billing',
+                contentType: 'application/json',
+                type: 'post',
+                data: result ,
+                success: function(response){
+                    console.log(response);
+                }
+            });
             this.state.nextStep();
-            console.log(this.state.result);
+
         } else {
             console.log('Error');
         }

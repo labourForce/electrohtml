@@ -5,6 +5,7 @@ import {Router} from '../../scripts/utils/router';
 import SiteModel from '../../scripts/models/site';
 import ProfileModel from '../../scripts/models/profile';
 import OrderModel from '../../scripts/models/order';
+import { sendRequest } from '../../scripts/utils/common';
 // import '../../scripts/utils/bindings';
 
 export default class MainVM {
@@ -17,9 +18,24 @@ export default class MainVM {
         this.router.start();
 
         this.footer = new State('footer', this);
+        this.getUser();
     }
 
-    logout () {
+    getUser () {
 
+        let result = ko.toJSON(window.localStorage.getItem('auth_token'));
+        sendRequest({
+            url: '/rest/account/info ',
+            contentType: 'application/json',
+            type: 'GET',
+            data: result ,
+            success: function(res){
+                let data = res;
+                console.log(data);
+                this.header.data.isLogin(true);
+                this.header.data.userName(data.username);
+                this.header.data.toPage('');
+            }.bind(this)
+        }, false);
     }
 }

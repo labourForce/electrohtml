@@ -33,8 +33,12 @@ export default class CheckoutVM{
         };
 
         this.result = {};
+        this.json = ko.toJSON(this.result);
+
+
 
     }
+
 
 
 }
