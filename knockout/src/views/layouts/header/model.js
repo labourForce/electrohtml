@@ -9,6 +9,10 @@ export default class HeaderVM{
         this.state = state;
 
 
+        this.isLogin = ko.observable(false);
+        this.userName = ko.observable('');
+        this.toPage = ko.observable('login');
+
         // this.contentItem = ko.observable();
         console.log(this.state);
         setTimeout(function(){
@@ -39,6 +43,13 @@ export default class HeaderVM{
             });
 
         }, 0);
+    }
+    logout(){
+
+        this.isLogin(false);
+        this.userName('');
+        this.toPage('login');
+        window.localStorage.removeItem('auth_token');
     }
 
 }

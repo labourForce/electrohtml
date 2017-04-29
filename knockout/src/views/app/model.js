@@ -54,5 +54,7 @@ export default class MainVM {
         // this.profile.getProfile();
         // this.order.getOrder();
         this.footer = new State('footer', this);
+
+
     }
 }
