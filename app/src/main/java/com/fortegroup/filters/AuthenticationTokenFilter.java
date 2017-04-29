@@ -7,50 +7,44 @@
 
 package com.fortegroup.filters;
 
-import com.fortegroup.service.accounts.TokenService;
-import com.fortegroup.service.accounts.TokenServiceImpl;
+
+import com.fortegroup.model.accounts.User;
+import com.fortegroup.service.accounts.UserService;
 import com.fortegroup.utill.Constant;
 import com.fortegroup.utill.TokenUtils;
-import com.fortegroup.model.accounts.SpringSecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFilter {
+@WebFilter("/**")
+public class AuthenticationTokenFilter extends GenericFilterBean {
 
     @Autowired
     private TokenUtils tokenUtils;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserService userService;
 
-    @Autowired
-    TokenService tokenService;
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         tokenUtils = WebApplicationContextUtils
                 .getRequiredWebApplicationContext(this.getServletContext())
                 .getBean(TokenUtils.class);
-        userDetailsService = WebApplicationContextUtils
+        userService = WebApplicationContextUtils
                 .getRequiredWebApplicationContext(this.getServletContext())
-                .getBean(UserDetailsService.class);
-        tokenService = WebApplicationContextUtils.getRequiredWebApplicationContext
-                (this.getServletContext()).getBean(TokenServiceImpl.class);
+                .getBean(UserService.class);
+
         HttpServletResponse resp = (HttpServletResponse) response;
         resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
@@ -61,21 +55,21 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
         HttpServletRequest httpRequest = (HttpServletRequest) request;
 
         String authToken = httpRequest.getHeader(Constant.tokenHeader);
-        String username = this.tokenUtils.getUsernameFromToken(authToken);
+        String userName = tokenUtils.getUsernameFromToken(authToken);
+        User user = this.userService.loadUserByUsername(userName);
+        if(tokenUtils.isTokenExpired(authToken)) {
 
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
-            if (this.tokenUtils.validateToken(authToken, userDetails)) {
-                UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
+        }else if(user == null){
 
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }
+        }else {
+            httpRequest.setAttribute("id", user.getId());
+            httpRequest.setAttribute("role", user.getAuthorities());
         }
-
         chain.doFilter(request, response);
     }
+
+
+
 
 }
 

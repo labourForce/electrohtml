@@ -5,10 +5,11 @@ import 'selectpicker';
 
 
 export default class HeaderVM{
-    constructor(state){
-        this.state = state;
+    constructor(app){
+        this.app = app;
 
-
+        this.searchString = ko.observable();
+        this.searchCategory = ko.observable('');
         // this.contentItem = ko.observable();
         console.log(this.state);
         setTimeout(function(){
@@ -39,6 +40,10 @@ export default class HeaderVM{
             });
 
         }, 0);
+    }
+
+    doSearch() {
+        this.app.router.notify('/search', ['searchTerm=' + this.searchString() + '&category=' + this.searchCategory()]);
     }
 
 }

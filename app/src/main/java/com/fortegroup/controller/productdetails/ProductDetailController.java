@@ -26,6 +26,7 @@ public class ProductDetailController {
             try {
                 Product product = productDetailService.getProductById(Integer.parseInt(id));
                 product.setBaseSKUs(null);
+                product.setCategories(null);
                 return ResponseEntity.ok(product);
             } catch (NullPointerException e) {
             }

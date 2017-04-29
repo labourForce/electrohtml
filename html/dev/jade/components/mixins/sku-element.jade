@@ -1,0 +1,32 @@
+mixin sku-element(tag, title, imgSize, rating, details, code, price, oldPrice, basket, hidden, cart, aviability)
+
+
+    li(class="sku-item")
+        div(class="sku-item__image")
+                    img(src="/img/#{imgSize}.png", alt="item")
+            div(class="sku-item__content")
+                div(class="sku-item__content-body")
+
+                    div(class="sku-item__header")
+                        a(href="#")
+                            h3 Smartphone 6S 32GB LTE
+                        ul(class="shop-item__details")
+                            li 4.5 inch HD Screen
+                            li 1.4 GHz Quad Core™ Processor
+                            li 3GB Ram
+                            li Android 4.4 KitKat OS
+
+                    div(class="single-product__choose-parts-total")
+                                    div(class="single-product__price-old") $2 229,00
+                                    div(class="single-product__choose-parts-new") $1 424,00
+                                    +form-button('Add to Cart')
+                div(class="single-product__choose-parts-checkboxes")
+                    strong Additional:
+                    ul(class="complectation")
+                        li(class="complectation__item")
+                            h5(class="complectation__item-name") Monitor
+                            select(class="complectation__item-props")
+                                option(value="")
+                                option(value="1") Typical
+                                option(value="2") For play
+                            span(class="form-element__checkbox-price complectation__item-price") $1 215,00

@@ -473,6 +473,9 @@ export function sendRequest (config) {
 	$.ajax(config);
 }
 
-export function setAuthToken (token) {
-    window.localStorage.setItem('auth_token', token)
+export function setAuthToken (token, res) {
+    window.localStorage.setItem('auth_token', token);
+
 }
+
+

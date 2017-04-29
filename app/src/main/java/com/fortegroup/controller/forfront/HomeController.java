@@ -1,8 +1,10 @@
 package com.fortegroup.controller.forfront;
 
 import com.fortegroup.service.catalog.CatalogService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,25 +22,28 @@ public class HomeController {
     private CatalogService catalogService;
 
     @RequestMapping(value = "/category/**", method = RequestMethod.GET)
-    public String seo(HttpServletRequest request){
+    public String seo(HttpServletRequest request, Model model){
         String uri = request.getRequestURI();
         String[] parameters = uri.substring(uri.indexOf("category/") + 9).split("/");
 
-        List<Object> entities = catalogService.getSeo(parameters, false);
+        List<Object> entities = catalogService.getSeo(parameters, true);
+        Gson gson = new Gson();
 
-        //  request.setAttribute("entities", entities);
+        model.addAttribute("catalog", gson.toJson(entities));
 
-        return "index";
+        return "catalog";
     }
 
     @RequestMapping(value = "/c/*", method = RequestMethod.GET)
-    public String categoryShortUrl(HttpServletRequest request){
+    public String categoryShortUrl(HttpServletRequest request, Model model){
         String uri = request.getRequestURI();
         String shortUrl = uri.substring(uri.indexOf("c/") + 2);
 
-        List<Object> entities = catalogService.getSeoByShortUrl(shortUrl, false);
+        List<Object> entities = catalogService.getSeoByShortUrl(shortUrl, true);
 
-        //  request.setAttribute("entities", entities);
+        Gson gson = new Gson();
+
+        model.addAttribute("catalog", gson.toJson(entities));
 
         return "index";
     }
