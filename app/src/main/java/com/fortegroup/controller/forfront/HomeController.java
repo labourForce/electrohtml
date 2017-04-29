@@ -45,7 +45,7 @@ public class HomeController {
 
         model.addAttribute("catalog", gson.toJson(entities));
 
-        return "index";
+        return "catalog";
     }
 
     @RequestMapping(value = "/*",method = RequestMethod.GET)
