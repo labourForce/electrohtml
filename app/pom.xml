@@ -164,6 +164,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.3.2</version>
         </dependency>
+<<<<<<< HEAD
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
@@ -174,6 +175,8 @@
             <artifactId>gson</artifactId>
             <version>2.8.0</version>
         </dependency>
+=======
+>>>>>>> 398c5e32fa11c57e14ba19c028cd25678925510a
 
     </dependencies>
 
