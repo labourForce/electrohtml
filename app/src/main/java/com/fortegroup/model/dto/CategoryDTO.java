@@ -1,11 +1,13 @@
 package com.fortegroup.model.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Artyom Kazakov
  * @version 1.0
  */
-public class CategoryDTO {
+public class CategoryDTO implements Serializable {
     private Long id;
     private String name;
     private String displayName;
