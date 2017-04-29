@@ -24,6 +24,7 @@ public class ProductDetailDaoImpl implements ProductDetailDao {
         transaction = session.beginTransaction();
         Product product = session.get(Product.class, id);
         Set<BaseSKU> baseSKUs = product.getBaseSKUs();
+        Hibernate.initialize(product.getCategories());
         for (BaseSKU baseSKU : baseSKUs) {
             Set<ConfProperty> confProperties = baseSKU.getConfProperties();
             for(ConfProperty confProperty:confProperties) {
