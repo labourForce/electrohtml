@@ -1,0 +1,141 @@
+****    URL TAXONOMY DOCUMENTATION   ****
+
+** API **
+
+# Note: objectType: 0 - catalog, 1 - product
+
+# Get catalog information by ajax
+
+	* url: rest/catalog/**
+	* example: rest/catalog/category_name1/category_name2/product_name
+	* param(not required): fullInformation - true/false
+	* response: 
+	
+	1)case - fullInformartion == false or not set
+		
+		[
+			{
+				"objectType": ,
+				"id": 
+			}
+			{
+				"objectType": ,
+				"id": 
+			 }
+		]
+			
+	2) case - fullInformation == true
+	
+	[
+		{
+			"objectType": 0,
+			"object": 
+				{
+					"id": ,
+					"name": ,
+					"displayName": ,
+					"availability": ,
+					"shortDescription": ,
+					"longDescription": 
+				}
+		},
+		{
+			"objectType": 1,
+			"object": 
+				{
+					  "id": ,
+					  "name": ,
+					  "displayName": ,
+					  "rating": ,
+					  "availability": ,
+					  "displayFlag": ,
+					  "longDescription": ,
+					  "shortDescription": ,
+					  "brand": ,
+					  "techline": ,
+					  "onSale": ,
+					  "upSale": ,
+					  "listPrice": ,
+					  "salePrice": ,
+					  "image": ,
+					  "rootCategoryId": 
+				}
+		}
+	]
+
+
+# Get catalog information by first load page 
+
+	* url: /catalog/**
+	* example: catalog/category_name1/category_name2/product_name
+	* response: Simple page with block <div id="json></div> in body tag. 
+		This block stores information about the requested catalog data in json format.
+		
+		<div id="json>
+		[
+			{
+				"objectType": 0,
+				"object": 
+					{
+						"id": ,
+						"name": ,
+						"displayName": ,
+						"availability": ,
+						"shortDescription": ,
+						"longDescription": 
+					}
+			},
+			{
+				"objectType": 1,
+				"object": 
+					{
+						  "id": ,
+						  "name": ,
+						  "displayName": ,
+						  "rating": ,
+						  "availability": ,
+						  "displayFlag": ,
+						  "longDescription": ,
+						  "shortDescription": ,
+						  "brand": ,
+						  "techline": ,
+						  "onSale": ,
+						  "upSale": ,
+						  "listPrice": ,
+						  "salePrice": ,
+						  "image": ,
+						  "rootCategoryId": 
+					}
+			}
+		]
+	</div>
+	
+	
+	
+# Get catalog information by short url
+
+	* url: /c/**
+	* example: c/fsgGs6
+	* response: Analog with full url request.
+	
+
+	
+# Get short URL by full URL
+
+	* url: rest/getShortUrl
+	* example: rest/getShortUrl?fullUrl=catalog/category_name1/category_name2/product_name
+	* param(not required): fullUrl - full url of category or product
+	* response: string containing short URL: gj3gj
+	
+# Create short URL by full URL
+
+	* url: rest/createShortUrl
+	* example: rest/createShortUrl?fullUrl=catalog/category_name1/category_name2/product_name
+	* param(not required): fullUrl - full url of category or product
+	* response: string containing short URL: gj3gj
+	
+	
+
+	
+	
+** SERVICE API **
