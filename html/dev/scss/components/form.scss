@@ -66,6 +66,14 @@
       outline: none;
       border: 1px solid #66afe9;
     }
+    &:focus.success {
+      outline: none;
+      border: 1px solid #66afe9;
+    }
+    &:focus.error {
+      outline: none;
+      border: 1px solid #d9534f;
+    }
   }
   &__textarea {
     width: 100%;
@@ -76,9 +84,24 @@
     padding: 26px;
     resize: none;
     margin-bottom: 22px;
+    transition: .25s all linear;
     &:focus {
       outline: none;
       border: 1px solid #66afe9;
+    }
+    &.error {
+      border: 1px solid #d9534f;
+    }
+    &.success {
+      border: 1px solid #4fd95e;
+    }
+    &:focus.success {
+      outline: none;
+      border: 1px solid #66afe9;
+    }
+    &:focus.error {
+      outline: none;
+      border: 1px solid #d9534f;
     }
   }
 

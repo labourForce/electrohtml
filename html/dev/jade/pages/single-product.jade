@@ -1,6 +1,7 @@
 include ../components/mixins/_simple-miniatures
 include ../components/category-filter/category-filter
 include ../components/mixins/_full-element
+include ../components/mixins/sku-element
 include ../components/form/form
 doctype html
 html(lang='ru', class="no-js")
@@ -142,56 +143,19 @@ html(lang='ru', class="no-js")
 							.single-product__tabs-navigation
 								ul.nav.nav-tabs(role='tablist')
 									li.active
-										a(href='#Accesories', aria-controls='Accesories', role='tab', data-toggle='tab') Accesories
+										a(href='#choose-parts', aria-controls='Choose parts', role='tab', data-toggle='tab') Choose Parts
 									li
 										a(href='#Description', aria-controls='Description', role='tab', data-toggle='tab') Description
 									li
 										a(href='#Specification', aria-controls='Specification', role='tab', data-toggle='tab') Specification
-									li
-										a(href='#Reviews', aria-controls='Reviews', role='tab', data-toggle='tab') Reviews
 
 							.single-product__tabs-content.tab-content
-									#Accesories.tab-pane.active(role='tabpanel')
-										.single-product__accesories
-											ul.single-product__accesories-list
-												+shop-element(true, true, '191x177', false, false, false, true)
-												+shop-element(true, true, '191x177', false, false, false, true)
-												+shop-element(true, true, '191x177', false, false, false, true)
-											.single-product__accesories-total
-												.single-product__price-old $2 229,00
-												.single-product__accesories-new $1 424,00
-												.single-product__accesories-text
-													span For all Three items
-												+form-button('Add all to Cart')
-										.single-product__accesories-checkboxes
-											.form-element__wrapper
-												label.form-element__label.checkbox-label
-													input(type='checkbox', disabled).form-element__hidden-checkbox
-													.form-element__checkbox
-														include ../../../img/svg/checked.svg
-													span.form-element__name
-														strong This product:&nbsp;
-														span Ultra Wireless S50 Headphones S50 with Bluetooth  -&nbsp;
-														span.form-element__checkbox-price $1 215,00
-											.form-element__wrapper
-												label.form-element__label.checkbox-label
-													input(type='checkbox').form-element__hidden-checkbox
-													.form-element__checkbox
-														include ../../../img/svg/checked.svg
-													span.form-element__name
-														a(href="#") Uniwersal Headphones Case in Black&nbsp
-														span -&nbsp;
-														span.form-element__checkbox-price $1 215,00
-											.form-element__wrapper
-												label.form-element__label.checkbox-label
-													input(type='checkbox').form-element__hidden-checkbox
-													.form-element__checkbox
-														include ../../../img/svg/checked.svg
-													span.form-element__name
-														a(href="#") Headphones USB Wires&nbsp
-														span -&nbsp;
-														span.form-element__checkbox-price $1 215,00
-
+									#choose-parts.tab-pane.active(role='tabpanel')
+										.single-product__choose-parts
+											ul.single-product__choose-parts-list
+												+sku-element(true, true, '191x177', false, false, false, true)
+												+sku-element(true, true, '191x177', false, false, false, true)
+												+sku-element(true, true, '191x177', false, false, false, true)
 
 									#Description.tab-pane(role='tabpanel')
 										.row

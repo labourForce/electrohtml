@@ -1,5 +1,6 @@
 import ko from 'knockout';
 import $ from 'jquery';
+import { setAuthToken } from '../../../scripts/utils/common';
 
 
 
@@ -179,34 +180,40 @@ export default class LoginVM{
                contentType: 'application/json',
                type: 'post',
                data: jsonData ,
-               success: function(response){
-                   console.log(response);
-
-                   let data = response,
-                      errorWrapper = $('.form__validation-state'),
-                      errorText = errorWrapper.find('span'),
-                      errorType = errorWrapper.find('strong');
-
-                    if(!data.error){
-
-                        errorWrapper.removeClass('error');
-
-                        errorWrapper.addClass('success');
-                        errorType.text('Success.');
-                        setTimeout(function(){
-                            errorWrapper.removeClass('success');
-                        },2000);
-                    } else {
-
-                        errorWrapper.removeClass('success');
-                        errorWrapper.addClass('error');
-                        errorType.text('Error.');
-                    }
-
-
-               }
+               success: this.getData.bind(this)
            });
        }
+
+    }
+    getData(response){
+        console.log(response);
+
+        let data = response,
+            errorWrapper = $('.form__validation-state'),
+            errorText = errorWrapper.find('span'),
+            errorType = errorWrapper.find('strong');
+
+        if(!data.error){
+            this.state.header.data.isLogin(true);
+            this.state.header.data.userName(data.user.username);
+            this.state.header.data.toPage('');
+            console.log(response.token);
+            setAuthToken(response.token);
+
+        } else {
+
+            errorWrapper.removeClass('success');
+            errorWrapper.addClass('error');
+            errorType.text('Error.');
+        }
+
+    }
+
+
+
+
+
+    setHeaderInfo(){
 
     }
 

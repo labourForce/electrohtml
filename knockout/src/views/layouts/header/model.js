@@ -5,11 +5,16 @@ import 'selectpicker';
 
 
 export default class HeaderVM{
-    constructor(state){
-        this.state = state;
+    constructor(app){
+        this.app = app;
 
-
+        this.searchString = ko.observable();
+        this.searchCategory = ko.observable('');
         // this.contentItem = ko.observable();
+        this.isLogin = ko.observable(false);
+        this.userName = ko.observable('');
+        this.toPage = ko.observable('login');
+
         console.log(this.state);
         setTimeout(function(){
 
@@ -40,5 +45,18 @@ export default class HeaderVM{
 
         }, 0);
     }
+
+    doSearch() {
+        this.app.router.notify('/search', ['searchTerm=' + this.searchString() + '&category=' + this.searchCategory()]);
+    }
+
+    logout(){
+
+        this.isLogin(false);
+        this.userName('');
+        this.toPage('login');
+        window.localStorage.removeItem('auth_token');
+    }
+
 
 }

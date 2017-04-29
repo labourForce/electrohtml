@@ -15,27 +15,28 @@ import java.io.IOException;
  * Created by PC on 28.04.2017.
  */
 @RestController
-@RequestMapping(value = "/rest/product")
+@RequestMapping(value = "/rest/checkout")
 public class BillingShipping {
     @Autowired
     private ShippingBillingService shippingBillingService;
 
     @RequestMapping(value = "/billing", method = RequestMethod.POST)
     public ResponseEntity<?> getDetails(@RequestBody String body) {
-        ObjectMapper mapper = new ObjectMapper();
-        ResponseError name = null;
-        try {
-            ShippingBilling sb = mapper.readValue(body, ShippingBilling.class);
-            name = shippingBillingService.validateInputData(sb);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String jsonString = "";
-        try {
-            jsonString = mapper.writeValueAsString(name);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return ResponseEntity.ok(jsonString);
+//        ObjectMapper mapper = new ObjectMapper();
+//        ResponseError name = null;
+//        try {
+//            ShippingBilling sb = mapper.readValue(body, ShippingBilling.class);
+//            name = shippingBillingService.validateInputData(sb);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        String jsonString = "";
+//        try {
+//            jsonString = mapper.writeValueAsString(name);
+//        } catch (JsonProcessingException e) {
+//            e.printStackTrace();
+//        }
+        String s= "{\"access\":true}";
+        return ResponseEntity.ok(s);
     }
 }

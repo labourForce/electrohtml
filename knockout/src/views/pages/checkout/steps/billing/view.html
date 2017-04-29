@@ -1,0 +1,232 @@
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="breadcrumbs">
+					<nav>
+						<ul class="breadcrumbs__wrap">
+							<li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Home</a></li>
+							<li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link-active">Laptops &amp; Computers</a></li>
+							<li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Laptops &amp; Computers Categories</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="main-title__wrapper">
+					<h3 class="main-title__text title--big">Billing Address</h3>
+					<hr>
+				</div>
+				<form data-bind="event: {'keyup': formValidation}" id="firstStepBilling" novalidate>
+					<div class="form-block">
+						<div class="row">
+							<div class="col-lg-6 col-md-6">
+								<div class="row">
+									<div class="col-lg-6 col-md-6">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">First name *</span>
+												<input type="text" placeholder="" class="form-element__input" data-validation="text"  data-bind="value: billingFirstName">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text" >Lastname*</span>
+												<input type="text" placeholder="" class="form-element__input" data-validation="text" data-bind="value: billingLastName">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Company Name</span>
+												<input type="text" placeholder="" class="form-element__input" data-validation="text"  data-bind="value: billingCompanyName">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Email Address*</span>
+												<input type="email" placeholder="" class="form-element__input" data-validation="email"  data-bind="value: billingEmail">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Phone Number*</span>
+												<input type="tel" placeholder="" class="form-element__input" data-validation="number"  data-bind="value: billingPhone">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Country</span>
+												<input type="text" placeholder="" class="form-element__input" data-validation="text"  data-bind="value: billingCountry">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Address</span>
+												<input type="text" placeholder="" class="form-element__input" data-validation="text"  data-bind="value: billingAddress">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Post code / Zip*</span>
+												<input type="text" placeholder="" class="form-element__input" data-validation="text"  data-bind="value: billingZip">
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name bold--text">Town / City*</span>
+												<input type="text" placeholder="" class="form-element__input" data-validation="text"  data-bind="value: billingCity">
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6">
+								<div class="row">
+									<div class="col-lg-12 col-md-12">
+										<div class="form-element__wrapper">
+											<label class="form-element__label"><span class="form-element__name  bold--text">Order Notes*</span>
+												<textarea class="form-element__textarea" data-validation="text"  data-bind="value: billingNotes"></textarea>
+											</label>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12">
+										<!--<div class="form-element__wrapper">-->
+											<!--<label class="form-element__label checkbox-label ">-->
+												<!--<input type="checkbox" class="form-element__hidden-checkbox ">-->
+												<!--<div class="form-element__checkbox ">-->
+													<!--<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 26 26">-->
+														<!--<path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"></path>-->
+													<!--</svg>-->
+												<!--</div>-->
+												<!--<span class="form-element__name">Create an account?</span>-->
+											<!--</label>-->
+										<!--</div>-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-block">
+						<div class="main-title__wrapper">
+							<h3 class="main-title__text title--big">Shipping Details</h3>
+							<hr>
+						</div>
+						<div class="row">
+							<div class="col-lg-12 col-md-12">
+								<div class="form-element__wrapper">
+									<label class="form-element__label checkbox-label differBillingAddress">
+										<input type="checkbox" class="form-element__hidden-checkbox"  data-bind="checked: shippingDetails">
+										<div class="form-element__checkbox">
+											<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 26 26">
+												<path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"></path>
+											</svg>
+										</div>
+										<span class="form-element__name">Ship to Different Address?</span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+		<!-- ko if: shippingDetails -->
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="checkout">
+					<div class="main-title__wrapper">
+						<h3 class="main-title__text title--big">Billing Address</h3>
+						<hr>
+					</div>
+					<form data-bind="event: {'keyup': formValidation}" id="differStepBilling" novalidate>
+						<div class="form-block">
+							<div class="row">
+								<div class="col-lg-6 col-md-6">
+									<div class="row">
+										<div class="col-lg-6 col-md-6">
+											<div class="form-element__wrapper">
+												<label class="form-element__label"><span class="form-element__name bold--text">Phone Number*</span>
+													<input type="tel" placeholder="" class="form-element__input" data-validation="text" data-bind="value: shippingNumber">
+												</label>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12">
+											<div class="form-element__wrapper">
+												<label class="form-element__label"><span class="form-element__name bold--text">Country</span>
+													<input type="text" placeholder="" class="form-element__input" data-validation="text" data-bind="value: shippingCountry">
+												</label>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12">
+											<div class="form-element__wrapper">
+												<label class="form-element__label"><span class="form-element__name bold--text">Address</span>
+													<input type="text" placeholder="" class="form-element__input" data-validation="text" data-bind="value: shippingAddress">
+												</label>
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6">
+											<div class="form-element__wrapper">
+												<label class="form-element__label"><span class="form-element__name bold--text">Post code / Zip*</span>
+													<input type="text" placeholder="" class="form-element__input" data-validation="text" data-bind="value: shippingZip">
+												</label>
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6">
+											<div class="form-element__wrapper">
+												<label class="form-element__label"><span class="form-element__name bold--text">Town / City*</span>
+													<input type="text" placeholder="" class="form-element__input" data-validation="text" data-bind="value: shippingCity">
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6">
+									<div class="row">
+										<div class="col-lg-12 col-md-12">
+											<div class="form-element__wrapper">
+												<label class="form-element__label"><span class="form-element__name bold--text">Order Notes*</span>
+													<textarea class="form-element__textarea " data-validation="text" data-bind="value: shippingOrder"></textarea>
+												</label>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12">
+											<!--<div class="form-element__wrapper">-->
+												<!--<label class="form-element__label checkbox-label">-->
+													<!--<input type="checkbox" class="form-element__hidden-checkbox">-->
+													<!--<div class="form-element__checkbox">-->
+														<!--<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 26 26">-->
+															<!--<path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"></path>-->
+														<!--</svg>-->
+													<!--</div>-->
+													<!--<span class="form-element__name">Create an account?</span>-->
+												<!--</label>-->
+											<!--</div>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /ko -->
+
+		<!-- ko if: next -->
+		<div class="account__sign-in-button" style="margin-bottom: 80px; text-align: right;">
+			<button class="form-button" type="submit" data-bind="click: nextStep">Next</button>
+		</div>
+		<!-- /ko -->
+	</div>
+</main>

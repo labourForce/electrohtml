@@ -40,6 +40,7 @@ public class Message {
         this.message = message;
     }
 
+
     public User getUser() {
         return user;
     }
@@ -47,6 +48,7 @@ public class Message {
     public void setUser(User user) {
         this.user = user;
     }
+
 
     public String getToken() {
         return token;

@@ -24,6 +24,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -51,8 +52,8 @@ public class DatabaseConfig {
         dataSource.addDataSourceProperty("databaseName", "postgres");
         dataSource.addDataSourceProperty("portNumber", "5432");
 
-        dataSource.addDataSourceProperty("serverName", "localhost");
-        //dataSource.addDataSourceProperty("serverName","192.168.1.207");
+        //dataSource.addDataSourceProperty("serverName", "localhost");
+        dataSource.addDataSourceProperty("serverName","192.168.1.207");
 
         dataSource.addDataSourceProperty("user", "postgres");
         dataSource.addDataSourceProperty("password", "postgres");
@@ -83,7 +84,12 @@ public class DatabaseConfig {
     }
 
     @Bean
-    public UserService appUserService(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public UserService userService(){
         return new UserServiceImpl();
     }
 

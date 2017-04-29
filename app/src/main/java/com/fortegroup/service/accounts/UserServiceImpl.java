@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Alexey Burov
  * @version 1.0
  */
-@Service(value = "appUserService")
+@Service(value = "userService")
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -42,5 +42,6 @@ public class UserServiceImpl implements UserService {
     public User get(long id) {
         return userDao.get(id);
     }
+
 
 }
