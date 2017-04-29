@@ -1,11 +1,13 @@
 package com.fortegroup.model.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Artyom Kazakov
  * @version 1.0
  */
-public class FullEntityDTO {
+public class FullEntityDTO implements Serializable {
     private int objectType;
     private Object object;
 
