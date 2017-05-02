@@ -1,6 +1,7 @@
 package com.fortegroup.model.productdetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.persistence.*;
 import java.util.HashSet;

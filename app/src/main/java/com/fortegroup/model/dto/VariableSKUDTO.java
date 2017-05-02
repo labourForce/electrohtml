@@ -1,33 +1,22 @@
 package com.fortegroup.model.dto;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
- *
- * @author Artyom Kazakov
- * @version 1.0
+ * Created by PC on 02.05.2017.
  */
-public class ProductDTO implements Serializable {
+public class VariableSKUDTO {
     private Long id;
     private String name;
     private String displayName;
-    private int rating;
     private boolean availability;
     private boolean displayFlag;
     private String longDescription;
     private String shortDescription;
     private String brand;
     private String techline;
-    private boolean onSale;
-    private boolean upSale;
     private double listPrice;
     private double salePrice;
-    private String image;
-    private int rootCategoryId;
-    private Set<BaseSKUDTO> baseSKUs = new HashSet<>(0);
-    private Set<CategoryDTO> categories = new HashSet<>(0);
+    private int confOptionId;
+    private ConfOptionDTO confOption;
 
     public Long getId() {
         return id;
@@ -51,14 +40,6 @@ public class ProductDTO implements Serializable {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     public boolean isAvailability() {
@@ -109,22 +90,6 @@ public class ProductDTO implements Serializable {
         this.techline = techline;
     }
 
-    public boolean isOnSale() {
-        return onSale;
-    }
-
-    public void setOnSale(boolean onSale) {
-        this.onSale = onSale;
-    }
-
-    public boolean isUpSale() {
-        return upSale;
-    }
-
-    public void setUpSale(boolean upSale) {
-        this.upSale = upSale;
-    }
-
     public double getListPrice() {
         return listPrice;
     }
@@ -141,35 +106,19 @@ public class ProductDTO implements Serializable {
         this.salePrice = salePrice;
     }
 
-    public String getImage() {
-        return image;
+    public int getConfOptionId() {
+        return confOptionId;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setConfOptionId(int confOptionId) {
+        this.confOptionId = confOptionId;
     }
 
-    public int getRootCategoryId() {
-        return rootCategoryId;
+    public ConfOptionDTO getConfOption() {
+        return confOption;
     }
 
-    public void setRootCategoryId(int rootCategoryId) {
-        this.rootCategoryId = rootCategoryId;
-    }
-
-    public Set<BaseSKUDTO> getBaseSKUs() {
-        return baseSKUs;
-    }
-
-    public void setBaseSKUs(Set<BaseSKUDTO> baseSKUs) {
-        this.baseSKUs = baseSKUs;
-    }
-
-    public Set<CategoryDTO> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<CategoryDTO> categories) {
-        this.categories = categories;
+    public void setConfOption(ConfOptionDTO confOption) {
+        this.confOption = confOption;
     }
 }

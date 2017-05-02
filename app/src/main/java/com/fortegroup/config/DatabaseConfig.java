@@ -105,7 +105,6 @@ public class DatabaseConfig {
     public ProductDetailDao productDetailDao(){return new ProductDetailDaoImpl();}
 
     @Bean
-
     public ShippingBillingService checkInformationSB(){return new ShippingBillingServiceImpl();}
 
     @Bean

@@ -2,9 +2,6 @@ package com.fortegroup.service.checkInformation;
 
 import com.fortegroup.model.checkInformation.ResponseError;
 import com.fortegroup.model.checkInformation.ShippingBilling;
-
-import java.io.*;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -56,27 +53,7 @@ public class ShippingBillingServiceImpl implements ShippingBillingService {
         if (mAddress.matches()) {
             responseError.setAddressError(true);
         }
-        File file = new File("PostCodes.txt");
-        BufferedReader bf;
-        try {
-            bf = new BufferedReader(new FileReader(file.getAbsoluteFile()));
-            String s;
-            Set<Integer> set = new HashSet<>();
 
-            while ((s = bf.readLine()) != null) {
-                set.add(Integer.parseInt(s));
-            }
-            for(Integer i:set){
-                if(i.equals(sb.getZipCode())) {
-                    responseError.setZipCodeError(true);
-                    break;
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return responseError;
     }
 }

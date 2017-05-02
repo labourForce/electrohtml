@@ -1,15 +1,13 @@
 package com.fortegroup.model.dto;
 
-import java.io.Serializable;
+import com.fortegroup.model.productdetails.Product;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
- * @author Artyom Kazakov
- * @version 1.0
+ * Created by PC on 02.05.2017.
  */
-public class ProductDTO implements Serializable {
+public class BaseSKUDTO {
     private Long id;
     private String name;
     private String displayName;
@@ -24,10 +22,11 @@ public class ProductDTO implements Serializable {
     private boolean upSale;
     private double listPrice;
     private double salePrice;
+    private int quantity;
     private String image;
-    private int rootCategoryId;
-    private Set<BaseSKUDTO> baseSKUs = new HashSet<>(0);
-    private Set<CategoryDTO> categories = new HashSet<>(0);
+    private int productId;
+    private Product product;
+    private Set<ConfPropertyDTO> confPropertiesDTO = new HashSet<>(0);
 
     public Long getId() {
         return id;
@@ -141,6 +140,14 @@ public class ProductDTO implements Serializable {
         this.salePrice = salePrice;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public String getImage() {
         return image;
     }
@@ -149,27 +156,27 @@ public class ProductDTO implements Serializable {
         this.image = image;
     }
 
-    public int getRootCategoryId() {
-        return rootCategoryId;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setRootCategoryId(int rootCategoryId) {
-        this.rootCategoryId = rootCategoryId;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    public Set<BaseSKUDTO> getBaseSKUs() {
-        return baseSKUs;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setBaseSKUs(Set<BaseSKUDTO> baseSKUs) {
-        this.baseSKUs = baseSKUs;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
-    public Set<CategoryDTO> getCategories() {
-        return categories;
+    public Set<ConfPropertyDTO> getConfPropertiesDTO() {
+        return confPropertiesDTO;
     }
 
-    public void setCategories(Set<CategoryDTO> categories) {
-        this.categories = categories;
+    public void setConfPropertiesDTO(Set<ConfPropertyDTO> confPropertiesDTO) {
+        this.confPropertiesDTO = confPropertiesDTO;
     }
 }
