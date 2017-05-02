@@ -3,7 +3,8 @@ package com.fortegroup.model.search;
 import java.util.List;
 
 /**
- * Created by ux501 on 27.04.2017.
+ * @author Eugene Pankov
+ * @version 1.0
  */
 public class SearchResult {
     private int pageCount;
