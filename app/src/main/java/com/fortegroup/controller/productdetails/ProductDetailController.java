@@ -98,7 +98,7 @@ public class ProductDetailController {
                     }
                     SKUsDTO.add(baseSKUDTO);
                 }*/
-                return  SKUs;
+//                return  SKUs;
             } catch (NullPointerException e) {}
         }
         return ResponseEntity.badRequest().header("NetworkError: 400 Bad Request - http://192.168.1.207:8181/rest/product/getProduct/" + id).body("400 Bad Request");
