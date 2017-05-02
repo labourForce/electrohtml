@@ -16,7 +16,8 @@ public class ShippingBillingServiceImpl implements ShippingBillingService {
     private final String regEmail = "^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{2,6})$";
     private final String regNumber = "^\\+\\d{3}\\(\\d{2}\\)\\d{3}-\\d{2}-\\d{2}$";
     private final String regAddress = "^([a-zA-Z]{2,30})\\s([0-9]{1,4})$";
-    private final Set<Enum> listPostCode = new HashSet<>();
+    private final String regPostCode = "[a-zA-Z0-9]{1,20}$";
+    private final String regCityCounty = "[a-zA-Z\\ -]+";
 
     public ShippingBillingServiceImpl() {
     }
@@ -53,7 +54,21 @@ public class ShippingBillingServiceImpl implements ShippingBillingService {
         if (mAddress.matches()) {
             responseError.setAddressError(true);
         }
-
+        Pattern pPostCode = Pattern.compile(regPostCode);
+        Matcher mPostCode = pPostCode.matcher(sb.getZipCode());
+        if (mPostCode.matches()) {
+            responseError.setZipCodeError(true);
+        }
+        Pattern pCity = Pattern.compile(regCityCounty);
+        Matcher mCity = pCity.matcher(sb.getCity());
+        if (mCity.matches()) {
+            responseError.setCityError(true);
+        }
+        Pattern pCounty = Pattern.compile(regCityCounty);
+        Matcher mCountry = pCounty.matcher(sb.getCountry());
+        if (mCountry.matches()) {
+            responseError.setCountryError(true);
+        }
         return responseError;
     }
 }
