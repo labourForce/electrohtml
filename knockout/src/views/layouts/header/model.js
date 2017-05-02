@@ -47,7 +47,13 @@ export default class HeaderVM{
     }
 
     doSearch() {
-        this.app.router.notify('/search', ['searchTerm=' + this.searchString() + '&category=' + this.searchCategory()]);
+        this.app.router.notify('search', {
+            query: [
+                { key: 'searchTerm', value: this.searchString() },
+                { key: 'category', value: this.searchCategory() },
+
+            ]
+        });
     }
 
     logout(){

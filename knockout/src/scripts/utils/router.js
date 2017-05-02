@@ -6,125 +6,86 @@ import hasher from 'hasher';
 import {replaceState, pushState, changeUrl, scrollToTop} from 'common';
 import meta from './meta';
 
+const createRouteObject = (url, state) => { return { url, state } };
+
+const routing = {
+    homepage: createRouteObject('', 'homepage'),
+    search: createRouteObject('/search{?query}', 'search'),
+    searchDefault: createRouteObject('/search', 'search'),
+    pdp: createRouteObject('/pdp/{id}', 'pdp'),
+    checkout: createRouteObject('/checkout', 'checkout'),
+    login: createRouteObject('/login', 'login')
+};
+
 export class Router {
+
     constructor(app) {
-		this.app = app;
-		this.menu = app.menu;
+        this.app = app;
 
-		this.init = false;
-		this.hash = '';
+        window.onpopstate = () => {
+            this.start();
+        };
 
-		this.notify = function(n, query, seoUrl) {
-            process(n, query, seoUrl, pushState);
-		};
-
-		this.replace = function(n, query, seoUrl){
-			process(n, query, seoUrl, replaceState);
-		};
-
-		this.replaceKeepUrl = function(n, query, seoUrl){
-			process(n, query, seoUrl, replaceAndKeep)
-		};
-
-		const processMeta = (nav) => {
-			if ( meta.pagesWithTitle.indexOf(nav) === -1){
-				document.title = meta.defaultTitle;
-			}
-			meta.titleSet = false;
-		};
-
-		const process = (n, query, seoUrl, funcToProcessUrl) => {
-			this.init = true;
-			var nav = n;
-			if (window.nav) {
-				var data = getUriAndQuery(window.nav);
-				nav = data.nav;
-				query = getUrlVars(data.query);
-				var q = window.location.search;
-				seoUrl = window.location.pathname + q;
-				window.nav = '';
-			}
-			if ( this.hash && seoUrl){
-				var indexOfHash = seoUrl.indexOf('#');
-				if ( indexOfHash < 0) {
-					seoUrl += this.hash;
-				} else {
-					seoUrl = seoUrl.substr(0, indexOfHash ) + this.hash;
-				}
-			}
-			this.hash = '';
-			if ( nav == ''){
-				seoUrl = '';
-			}
-			window.navigation = nav;
-			window.query = query;
-			go(n, query, seoUrl, funcToProcessUrl);
-		}
-
-		const go = (nav, query, seoUrl, funcToProcessUrl) => {
-			if (!seoUrl) {
-				changeUrl(nav, query);
-			} else {
-				funcToProcessUrl(nav, query, seoUrl);
-			}
-			if (nav == '' || nav == '/') {
-				nav = 'landing';
-			}
-			if (nav && nav.endsWith('/')) {
-				nav = nav.substr(0, nav.length - 1);
-			}
-			processMeta(nav);
-			this.app.nav(nav);
-			if(nav.charAt(0) == '/'){
-				nav = nav.replace(/^\//, '');
-			}
-			var newState = new State(nav, this.app);
-			this.app.currentState(newState);
-			scrollToTop();
-		};
-
-		window.onpopstate = (event) => {
-			console.log('onpopstate', event.state);
-
-			if (event.state && event.state.url) {
-				this.notify(event.state.view, event.state.params, event.state.url);
-				return false;
-			} else {
-				history.back();
-			}
-		};
-
-        crossroads.addRoute('/pdp/{id}', (id) => {
-            this.app.currentState(new State('pdp', this.app, { id }));
-        });
-
-		crossroads.addRoute('/{name}', (name) => {
-			if (name) {
-                this.app.currentState(new State(name, this.app));
-			}
-		});
-		crossroads.addRoute('/{?query}', (name) => {
-			if (name) {
-				this.replace('', name['?query']);
-			}
-		});
-		crossroads.addRoute('', () => {
-			console.log(1);
-            this.app.currentState(new State( 'homepage', this.app));
-		});
-    }
-
-    start() {
         const parseHash = (newHash, oldHash) => {
             if (newHash) {
                 this.hash = '#' + newHash;
             }
         };
-        crossroads.parse(window.location.pathname);
-        crossroads.normalizeFn = crossroads.NORM_AS_OBJECT;
         hasher.initialized.add(parseHash);
         hasher.changed.add(parseHash);
         hasher.init();
+
+        for (let key in routing) {
+            crossroads.addRoute(routing[key].url, (...params) => {
+                let index = 0;
+                let data = {};
+                const regexr = /\{\??([\w\d]+)\}/g;
+                let match;
+                while (match = regexr.exec(routing[key].url)) {
+                    data[match[1]] = params[index++];
+                }
+                console.log(data);
+                this.app.currentState(new State(routing[key].state, this.app, data));
+            });
+        }
+
+        crossroads.bypassed.add(() => {
+            console.log('BYPASS', arguments);
+        });
+    }
+
+    start() {
+        crossroads.parse(window.location.pathname + window.location.search);
+    }
+
+    go(url, params, funcToProcessUrl) {
+        window.history.pushState({
+            url : url,
+            prevState : history.state
+        }, window.document.title, url);
+        this.start();
+        scrollToTop();
+    };
+
+    process(pageName, params, funcToProcessUrl) {
+
+        const url = routing[pageName].url.replace(/\{(\?)?([\w\d]+)\}/g, (string, isQuery, param) => {
+            return (isQuery ? '?' + params[param].map((v) => v.key + '=' + v.value).join('&') : params[param]);
+        });
+
+        this.go(url, params, funcToProcessUrl);
+    }
+
+    notify(pageName, params) {
+        this.process(pageName, params, pushState);
+    };
+
+    replace(pageName, params) {
+        this.process(pageName, params, replaceState);
+    };
+
+    replaceKeepUrl(pageName, params) {
+        this.process(pageName, params, replaceAndKeep)
     };
 }
 
