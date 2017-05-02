@@ -1,6 +1,7 @@
 import ko from 'knockout';
 import $ from 'jquery';
 import { setAuthToken } from '../../../scripts/utils/common';
+import { sendRequest } from '../../../scripts/utils/common';
 
 
 
@@ -175,13 +176,13 @@ export default class LoginVM{
         let jsonData = ko.toJSON(signInData);
 
        if( this.formValidate(event) ) {
-           $.ajax({
+           sendRequest({
                url: '/rest/account/signIn',
                contentType: 'application/json',
                type: 'post',
                data: jsonData ,
                success: this.getData.bind(this)
-           });
+           }, true);
        }
 
     }
@@ -199,6 +200,7 @@ export default class LoginVM{
             this.state.header.data.toPage('');
             console.log(response.token);
             setAuthToken(response.token);
+            window.location.pathname = '';
 
         } else {
 

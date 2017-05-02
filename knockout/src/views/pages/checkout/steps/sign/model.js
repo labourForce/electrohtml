@@ -26,7 +26,22 @@ export default class checkoutStepVM{
             password: ko.observable()
         });
 
+        this.checkUserAuth();
 
+
+    }
+
+    checkUserAuth(){
+
+
+        if( window.localStorage.getItem('auth_token') ){
+            console.log(3123123213);
+                setTimeout(function(){
+                    this.state.nextStep();
+                }.bind(this),0);
+
+
+        }
     }
 
     confirmPassword(data, event){
@@ -171,7 +186,7 @@ export default class checkoutStepVM{
                     }
 
                 }.bind(this)
-            });
+            }, true);
         }
 
     }
