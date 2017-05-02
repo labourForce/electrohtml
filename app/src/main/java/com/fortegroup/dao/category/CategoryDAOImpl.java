@@ -35,21 +35,21 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
-    public Category getByDisplayName(String displayName) {
+    public Category getByName(String name) {
         Category category = (Category) sessionFactory.getCurrentSession()
                 .createCriteria(Category.class)
-                .add(Restrictions.eq("displayName", displayName))
+                .add(Restrictions.eq("name", name))
                 .uniqueResult();
         logger.info("Category has been loaded successfully. Category info: " + category);
         return category;
     }
 
     @Override
-    public Category getByDisplayNameAndParentCategoryId(String displayName, Long parentCategoryId) {
+    public Category getByNameAndParentCategoryId(String name, Long parentCategoryId) {
         Query query= sessionFactory.getCurrentSession().
                 createQuery("select c from Category c join c.childCategories cc " +
-                        "where cc.id=:parentCategoryId and c.displayName=:displayName");
-        query.setParameter("displayName", displayName);
+                        "where cc.id=:parentCategoryId and c.name=:name");
+        query.setParameter("name", name);
         query.setParameter("parentCategoryId", parentCategoryId);
         Category category = (Category) query.uniqueResult();
         return category;

@@ -141,7 +141,7 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     private Category getRootCategory(String seoName){
-        Category category = categoryDAO.getByDisplayName(seoName);
+        Category category = categoryDAO.getByName(seoName);
 
         if (category != null && category.getRootCategory() != null){
             return null;
@@ -176,7 +176,7 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     private boolean tryGetProduct(String seoName, boolean fullInformation, Category category, List<Object> entities){
-        Product product = productDAO.getByDisplayNameAndCategoryId(seoName, category.getId());
+        Product product = productDAO.getByNameAndCategoryId(seoName, category.getId());
 
         if (product == null) {
             return false;
@@ -188,7 +188,7 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     private Category getCategory(String seoName, Long parentCategoryId){
-        return categoryDAO.getByDisplayNameAndParentCategoryId(seoName, parentCategoryId);
+        return categoryDAO.getByNameAndParentCategoryId(seoName, parentCategoryId);
     }
 
     private void addCategoryToEntityList(List<Object> entities, boolean fullInformation, Category category){

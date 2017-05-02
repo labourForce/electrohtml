@@ -6,7 +6,7 @@ public interface ProductDetailDao {
 
     Product getProductById(long id);
 
-    Product getByDisplayNameAndCategoryId(String displayName, Long categoryId);
+    Product getByNameAndCategoryId(String name, Long categoryId);
 
 
 }
