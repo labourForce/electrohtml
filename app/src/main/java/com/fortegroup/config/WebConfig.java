@@ -2,6 +2,7 @@ package com.fortegroup.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
  * @author Alexey Burov
  * @version 1.0
  */
+@Configuration
 @EnableWebMvc
 @ComponentScan("com.fortegroup")
 public class WebConfig extends WebMvcConfigurerAdapter{
