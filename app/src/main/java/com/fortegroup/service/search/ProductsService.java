@@ -6,8 +6,10 @@ import org.springframework.data.domain.Pageable;
 
 /**
  * @author Eugene Pankov
+ * @version 1.0
  */
 public interface ProductsService {
 
-    Page<Products> findByCategory(String searchTerm, String category, Pageable pageable);
+    Page<Products> findByCategory(String searchTerm, String categories, Pageable pageable);
+
 }

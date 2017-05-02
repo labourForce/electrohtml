@@ -2,9 +2,6 @@ package com.fortegroup.service.checkInformation;
 
 import com.fortegroup.model.checkInformation.ResponseError;
 import com.fortegroup.model.checkInformation.ShippingBilling;
-
-import java.io.*;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -19,7 +16,8 @@ public class ShippingBillingServiceImpl implements ShippingBillingService {
     private final String regEmail = "^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{2,6})$";
     private final String regNumber = "^\\+\\d{3}\\(\\d{2}\\)\\d{3}-\\d{2}-\\d{2}$";
     private final String regAddress = "^([a-zA-Z]{2,30})\\s([0-9]{1,4})$";
-    private final Set<Enum> listPostCode = new HashSet<>();
+    private final String regPostCode = "[a-zA-Z0-9]{1,20}$";
+    private final String regCityCounty = "[a-zA-Z\\ -]+";
 
     public ShippingBillingServiceImpl() {
     }
@@ -56,26 +54,20 @@ public class ShippingBillingServiceImpl implements ShippingBillingService {
         if (mAddress.matches()) {
             responseError.setAddressError(true);
         }
-        File file = new File("PostCodes.txt");
-        BufferedReader bf;
-        try {
-            bf = new BufferedReader(new FileReader(file.getAbsoluteFile()));
-            String s;
-            Set<Integer> set = new HashSet<>();
-
-            while ((s = bf.readLine()) != null) {
-                set.add(Integer.parseInt(s));
-            }
-            for(Integer i:set){
-                if(i.equals(sb.getZipCode())) {
-                    responseError.setZipCodeError(true);
-                    break;
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        Pattern pPostCode = Pattern.compile(regPostCode);
+        Matcher mPostCode = pPostCode.matcher(sb.getZipCode());
+        if (mPostCode.matches()) {
+            responseError.setZipCodeError(true);
+        }
+        Pattern pCity = Pattern.compile(regCityCounty);
+        Matcher mCity = pCity.matcher(sb.getCity());
+        if (mCity.matches()) {
+            responseError.setCityError(true);
+        }
+        Pattern pCounty = Pattern.compile(regCityCounty);
+        Matcher mCountry = pCounty.matcher(sb.getCountry());
+        if (mCountry.matches()) {
+            responseError.setCountryError(true);
         }
         return responseError;
     }

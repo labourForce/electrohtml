@@ -52,7 +52,7 @@ public class DatabaseConfig {
         dataSource.addDataSourceProperty("databaseName", "postgres");
         dataSource.addDataSourceProperty("portNumber", "5432");
 
-        //dataSource.addDataSourceProperty("serverName", "localhost");
+//        dataSource.addDataSourceProperty("serverName", "localhost");
         dataSource.addDataSourceProperty("serverName","192.168.1.207");
 
         dataSource.addDataSourceProperty("user", "postgres");
@@ -105,7 +105,6 @@ public class DatabaseConfig {
     public ProductDetailDao productDetailDao(){return new ProductDetailDaoImpl();}
 
     @Bean
-
     public ShippingBillingService checkInformationSB(){return new ShippingBillingServiceImpl();}
 
     @Bean
