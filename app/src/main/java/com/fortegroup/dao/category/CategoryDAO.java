@@ -12,7 +12,7 @@ public interface CategoryDAO {
 
     Category get(Long id);
 
-    Category getByDisplayName(String displayName);
+    Category getByName(String name);
 
-    Category getByDisplayNameAndParentCategoryId(String displayName, Long parentCategoryId);
+    Category getByNameAndParentCategoryId(String name, Long parentCategoryId);
 }

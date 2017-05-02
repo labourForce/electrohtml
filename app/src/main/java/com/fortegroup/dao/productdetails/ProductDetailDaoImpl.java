@@ -6,7 +6,6 @@ import com.fortegroup.model.productdetails.ConfProperty;
 import com.fortegroup.model.productdetails.Product;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
@@ -39,10 +38,10 @@ public class ProductDetailDaoImpl implements ProductDetailDao {
     }
 
     @Override
-    public Product getByDisplayNameAndCategoryId(String displayName, Long categoryId){
+    public Product getByNameAndCategoryId(String name, Long categoryId){
         Query query= sessionFactory.getCurrentSession().
-                createQuery("select p from Product p join p.categories c where c.id=:categoryId and p.displayName=:displayName");
-        query.setParameter("displayName", displayName);
+                createQuery("select p from Product p join p.categories c where c.id=:categoryId and p.name=:name");
+        query.setParameter("name", name);
         query.setParameter("categoryId", categoryId);
         Product product = (Product) query.uniqueResult();
         return product;

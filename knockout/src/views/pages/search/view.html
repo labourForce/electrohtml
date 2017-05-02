@@ -66,19 +66,21 @@
                 <hr/>
             </div>
             <div class="items-row">
-                <div class="row">
+                <div class="row" data-bind="foreach: $data.products">
                     <div class="col-lg-4 col-md-6">
                         <div class="simple-element columnBig">
                             <div class="simple-element__wrap columnBig">
                                 <div class="simple-element__img">
-                                    <div class="simple-element__background"><img src="../../../images/270x240.png"/></div>
+                                    <div class="simple-element__background">
+                                        <img data-bind="click: $parent.goToPDP.bind($parent), attr: { src: $data.image || '/assets/images/270x240.png' }"/>
+                                    </div>
                                 </div>
                                 <div class="simple-element__text columnBig">
                                     <div class="simple-element__header">
-                                        <h5>Ribka Lorem</h5>
+                                        <h5 data-bind="text: $data.display_name"></h5>
                                     </div>
                                     <div class="simple-element__footer">
-                                        <div class="simple-element__price">
+                                        <div class="simple-element__price" data-bind="text: '$' + $data.sale_price">
                                         </div>
                                     </div>
                                 </div>
@@ -86,6 +88,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <button data-bind="click: $data.pageNavigation.bind($data, 'prev')">Prev</button>
+                <span><span data-bind="text: $data.currentPage"></span> / <span data-bind="text: $data.pageCount"></span></span>
+                <button data-bind="click: $data.pageNavigation.bind($data, 'next')">Next</button>
             </div>
         </div>
     </div>

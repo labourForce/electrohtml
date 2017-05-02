@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 /**
  * @author Eugene Pankov
+ * @version 1.0
  */
 
 
@@ -90,6 +91,7 @@ public class Products {
     public void setImage(String image) {
         this.image = image;
     }
+
 
     @Override
     public String toString() {
