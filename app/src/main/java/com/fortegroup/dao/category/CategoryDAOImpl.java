@@ -47,7 +47,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     @Override
     public Category getByNameAndParentCategoryId(String name, Long parentCategoryId) {
         Query query= sessionFactory.getCurrentSession().
-                createQuery("select c from Category c join c.childCategories cc " +
+                createQuery("select c from Category c join c.parentCategories cc " +
                         "where cc.id=:parentCategoryId and c.name=:name");
         query.setParameter("name", name);
         query.setParameter("parentCategoryId", parentCategoryId);

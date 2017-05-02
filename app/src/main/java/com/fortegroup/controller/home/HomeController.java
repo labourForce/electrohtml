@@ -1,4 +1,4 @@
-package com.fortegroup.controller.forfront;
+package com.fortegroup.controller.home;
 
 import com.fortegroup.service.catalog.CatalogService;
 import com.google.gson.Gson;

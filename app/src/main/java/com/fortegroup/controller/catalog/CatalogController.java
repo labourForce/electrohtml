@@ -4,10 +4,7 @@ import com.fortegroup.model.dto.EntityDTO;
 import com.fortegroup.service.catalog.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -34,21 +31,31 @@ public class CatalogController {
 
         List<Object> entities = catalogService.getSeo(parameters, fullInformation);
 
+        if (entities == null || entities.size() == 0){
+            return ResponseEntity.badRequest().body("Nothing was found");
+        }
         return ResponseEntity.ok(entities);
     }
 
     @RequestMapping(value = "/getShortUrl", method = RequestMethod.GET)
     public ResponseEntity<?> getShortUrl(@RequestParam String fullUrl) {
-        return ResponseEntity.ok(catalogService.getShortUrlByFullUrl(fullUrl));
+        String shortUrl = catalogService.getShortUrlByFullUrl(fullUrl);
+        if (shortUrl == null){
+            return ResponseEntity.badRequest().body("Nothing was found");
+        }
+        return ResponseEntity.ok(shortUrl);
     }
 
-    @RequestMapping(value = "/createShortUrl", method = RequestMethod.GET)
-    public ResponseEntity<?> createShortUrl(@RequestParam String fullUrl) {
-
+    @RequestMapping(value = "/createShortUrl", method = RequestMethod.POST)
+    public ResponseEntity<?> createShortUrl(@RequestBody String fullUrl) {
         List<EntityDTO> entities = catalogService.getSeo(fullUrl.split("/"), false)
                 .stream()
                 .map(e -> (EntityDTO) e)
                 .collect(Collectors.toList());
-        return ResponseEntity.ok(catalogService.createShortUrl(entities, fullUrl));
+        String shortUrl = catalogService.createShortUrl(entities, fullUrl);
+        if (shortUrl == null){
+            return ResponseEntity.badRequest().body("Error during created");
+        }
+        return ResponseEntity.ok(shortUrl);
     }
 }
