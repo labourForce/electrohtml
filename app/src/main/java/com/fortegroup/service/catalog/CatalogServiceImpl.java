@@ -4,6 +4,7 @@ import com.fortegroup.dao.category.CategoryDAO;
 import com.fortegroup.dao.productdetails.ProductDetailDao;
 import com.fortegroup.dao.shorturl.ShortUrlDAO;
 import com.fortegroup.model.category.Category;
+import com.fortegroup.model.dto.CategoryDTO;
 import com.fortegroup.model.dto.EntityDTO;
 import com.fortegroup.model.dto.FullEntityDTO;
 import com.fortegroup.model.productdetails.Product;
@@ -142,8 +143,15 @@ public class CatalogServiceImpl implements CatalogService {
 
     @Override
     @Transactional
-    public List<Category> getRootCategories() {
-        return categoryDAO.getRootCategories();
+    public List<CategoryDTO> getRootCategories() {
+        List<CategoryDTO> rootCategories = new ArrayList<>();
+
+        for (Category category : categoryDAO.getRootCategories()) {
+            rootCategories.add(CategoryMapper.toDtoCategory(category));
+        }
+
+
+        return rootCategories;
     }
 
     private Category getRootCategory(String seoName){

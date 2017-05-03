@@ -26,7 +26,7 @@ public class Category {
     private String longDescription;
 
     @JoinColumn(name = "root_category")
-    @ManyToOne(optional = true, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
     private Category rootCategory;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

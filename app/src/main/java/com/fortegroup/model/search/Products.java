@@ -23,7 +23,7 @@ public class Products {
     private String list_price;
     private String sale_price;
     private String image;
-    private String[] path;
+    private String[] name_path;
 
 
     public Products() {
@@ -51,14 +51,6 @@ public class Products {
 
     public void setLong_description(String long_description) {
         this.long_description = long_description;
-    }
-
-    public String[] getPath() {
-        return path;
-    }
-
-    public void setPath(String[] path) {
-        this.path = path;
     }
 
     public String getShort_description() {
@@ -101,6 +93,14 @@ public class Products {
         this.name = name;
     }
 
+    public String[] getName_path() {
+        return name_path;
+    }
+
+    public void setName_path(String[] name_path) {
+        this.name_path = name_path;
+    }
+
     @Override
     public String toString() {
         return "Products{" +
@@ -112,7 +112,7 @@ public class Products {
                 ", list_price='" + list_price + '\'' +
                 ", sale_price='" + sale_price + '\'' +
                 ", image='" + image + '\'' +
-                ", path=" + Arrays.toString(path) +
+                ", name_path=" + Arrays.toString(name_path) +
                 '}';
     }
 }
