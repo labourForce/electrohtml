@@ -8,6 +8,9 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 /**
  *
  * @author Artyom Kazakov
@@ -53,5 +56,11 @@ public class CategoryDAOImpl implements CategoryDAO {
         query.setParameter("parentCategoryId", parentCategoryId);
         Category category = (Category) query.uniqueResult();
         return category;
+    }
+
+    @Override
+    public List<Category> getRootCategories() {
+        return sessionFactory.getCurrentSession().
+                createQuery("select c from Category c where c.rootCategory=null").list();
     }
 }

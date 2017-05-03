@@ -1,6 +1,9 @@
 package com.fortegroup.dao.category;
 
 import com.fortegroup.model.category.Category;
+
+import java.util.List;
+
 /**
  *
  * @author Artyom Kazakov
@@ -15,4 +18,6 @@ public interface CategoryDAO {
     Category getByName(String name);
 
     Category getByNameAndParentCategoryId(String name, Long parentCategoryId);
+
+    List<Category> getRootCategories();
 }

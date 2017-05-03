@@ -140,6 +140,12 @@ public class CatalogServiceImpl implements CatalogService {
         return shortUrl;
     }
 
+    @Override
+    @Transactional
+    public List<Category> getRootCategories() {
+        return categoryDAO.getRootCategories();
+    }
+
     private Category getRootCategory(String seoName){
         Category category = categoryDAO.getByName(seoName);
 

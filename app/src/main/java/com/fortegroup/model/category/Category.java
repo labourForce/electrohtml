@@ -9,7 +9,7 @@ import java.util.Set;
  * @version 1.0
  */
 @Entity
-@Table(name = "electro.category")
+@Table(name = "category", schema = "electro", catalog = "postgres")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,18 +26,18 @@ public class Category {
     private String longDescription;
 
     @JoinColumn(name = "root_category")
-    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     private Category rootCategory;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "electro.category_subcategory", joinColumns = {
+    @JoinTable(name = "category_subcategory", schema = "electro", catalog = "postgres", joinColumns = {
             @JoinColumn(name = "category_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "parent_category_id",
                     nullable = false, updatable = false) })
     private Set<Category> parentCategories = new HashSet<>(0);
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "electro.category_subcategory", joinColumns = {
+    @JoinTable(name = "category_subcategory", schema = "electro", catalog = "postgres", joinColumns = {
             @JoinColumn(name = "parent_category_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "category_id",
                     nullable = false, updatable = false) })

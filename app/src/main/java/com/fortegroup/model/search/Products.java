@@ -16,6 +16,7 @@ public class Products {
     @Id
     private String id;
     private String product_id;
+    private String name;
     private String display_name;
     private String short_description;
     private String long_description;
@@ -92,11 +93,19 @@ public class Products {
         this.image = image;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public String toString() {
         return "Products{" +
                 "product_id='" + product_id + '\'' +
+                ", name='" + name + '\'' +
                 ", display_name='" + display_name + '\'' +
                 ", short_description='" + short_description + '\'' +
                 ", long_description='" + long_description + '\'' +

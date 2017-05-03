@@ -58,4 +58,9 @@ public class CatalogController {
         }
         return ResponseEntity.ok(shortUrl);
     }
+
+    @RequestMapping(value = "/rootCategories", method = RequestMethod.GET)
+    public ResponseEntity<?> getRootCategories() {
+        return ResponseEntity.ok(catalogService.getRootCategories());
+    }
 }

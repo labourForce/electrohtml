@@ -1,6 +1,7 @@
 package com.fortegroup.service.catalog;
 
 
+import com.fortegroup.model.category.Category;
 import com.fortegroup.model.dto.EntityDTO;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface CatalogService {
     String getShortUrlByFullUrl(String fullUrl);
 
     String createShortUrl(List<EntityDTO> entities, String fullUrl);
+
+    List<Category> getRootCategories();
 }
