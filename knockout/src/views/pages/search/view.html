@@ -62,7 +62,7 @@
         </div>
         <div class="col-lg-9 col-md-9">
             <div class="main-title__wrapper">
-                <h3 class="main-title__text title--big">Search results</h3>
+                <h3 class="main-title__text title--big">Search results for "<span data-bind="text: $data.props.query.searchTerm"></span>"</h3>
                 <hr/>
             </div>
             <div class="items-row">
@@ -72,7 +72,7 @@
                             <div class="simple-element__wrap columnBig">
                                 <div class="simple-element__img">
                                     <div class="simple-element__background">
-                                        <img data-bind="click: $parent.goToPDP.bind($parent), attr: { src: $data.image || '/assets/images/270x240.png' }"/>
+                                        <img data-bind="click: $parent.goToPDP.bind($parent), attr: { src: $data.image || '/assets/images/270x240.png' }" onerror="this.src = '/assets/images/270x240.png'" />
                                     </div>
                                 </div>
                                 <div class="simple-element__text columnBig">

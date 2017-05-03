@@ -7,7 +7,7 @@ export default class SearchVM {
         props.query =  Object.assign({
             searchTerm: '',
             category: '',
-            page: 1,
+            page: 0,
             size: 18
         }, props.query);
         this.currentPage = ko.observable(props.query.page);
@@ -19,7 +19,7 @@ export default class SearchVM {
     }
 
     goToPDP (product) {
-        this.app.router.notify('pdp', { id: product.product_id });
+        this.app.router.notify('catalog', { path: product.path.join('/') + '/' + product.name });
     }
 
     getSearchProducts() {
@@ -33,39 +33,39 @@ export default class SearchVM {
                 this.pageCount(data.pageCount);
                 this.products(data.products);
             }
-        }, true);
+        });
     }
 
     pageNavigation (type, page) {
         console.log(this, type, page);
         switch (type) {
             case 'prev':
-                if (this.props.query.page > 1) {
+                if (this.props.query.page > 0) {
                     this.props.query.page--;
-                    this.currentPage(this.props.query.page);
+                    this.currentPage(this.props.query.page + 1);
                 } else {
-                    if (this.props.query.page === 1) {
+                    if (this.props.query.page === 0) {
                         return;
                     }
-                    this.props.query.page = 1;
+                    this.props.query.page = 0;
                 }
                 break;
             case 'next':
                 if (this.props.query.page < this.pageCount()) {
                     this.props.query.page++;
-                    this.currentPage(this.props.query.page);
+                    this.currentPage(this.props.query.page + 1);
                 } else {
-                    if (this.props.query.page === this.pageCount()) {
+                    if (this.props.query.page === this.pageCount() - 1) {
                         return;
                     }
-                    this.props.query.page = this.pageCount();
+                    this.props.query.page = this.pageCount() -1;
                 }
                 break;
             case 'go':
                 if (this.props.query.page === page) {
                     return;
                 }
-                this.currentPage(this.props.query.page = page < 1 ? 1 : page > this.pageCount() ? this.pageCount() : page);
+                this.currentPage(this.props.query.page = page < 0 ? 0 : page > this.pageCount() - 1 ? this.pageCount() - 1 : page);
                 break;
         }
 
