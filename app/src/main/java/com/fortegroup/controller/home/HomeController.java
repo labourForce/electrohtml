@@ -21,10 +21,10 @@ public class HomeController {
     @Autowired
     private CatalogService catalogService;
 
-    @RequestMapping(value = "/category/**", method = RequestMethod.GET)
+    @RequestMapping(value = "/catalog/**", method = RequestMethod.GET)
     public String seo(HttpServletRequest request, Model model){
         String uri = request.getRequestURI();
-        String[] parameters = uri.substring(uri.indexOf("category/") + 9).split("/");
+        String[] parameters = uri.substring(uri.indexOf("catalog/") + 9).split("/");
 
         List<Object> entities = catalogService.getSeo(parameters, true);
         Gson gson = new Gson();
@@ -34,7 +34,7 @@ public class HomeController {
         return "catalog";
     }
 
-    @RequestMapping(value = "/c/*", method = RequestMethod.GET)
+    @RequestMapping(value = "/c/**", method = RequestMethod.GET)
     public String categoryShortUrl(HttpServletRequest request, Model model){
         String uri = request.getRequestURI();
         String shortUrl = uri.substring(uri.indexOf("c/") + 2);
@@ -48,7 +48,7 @@ public class HomeController {
         return "catalog";
     }
 
-    @RequestMapping(value = "/*",method = RequestMethod.GET)
+    @RequestMapping(value = "/**",method = RequestMethod.GET)
     public String home() {
         return "index";
     }

@@ -20,10 +20,10 @@ public class CatalogController {
     @Autowired
     private CatalogService catalogService;
 
-    @RequestMapping(value = "/category/**", method = RequestMethod.GET)
+    @RequestMapping(value = "/catalog/**", method = RequestMethod.GET)
     public ResponseEntity<?> seo(HttpServletRequest request, @RequestParam(required = false) Boolean fullInformation){
         String uri = request.getRequestURI();
-        String[] parameters = uri.substring(uri.indexOf("category/") + 9).split("/");
+        String[] parameters = uri.substring(uri.indexOf("catalog/") + 9).split("/");
 
         if (fullInformation == null){
             fullInformation = false;
