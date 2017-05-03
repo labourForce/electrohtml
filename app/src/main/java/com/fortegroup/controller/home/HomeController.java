@@ -34,7 +34,7 @@ public class HomeController {
         return "catalog";
     }
 
-    @RequestMapping(value = "/c/*", method = RequestMethod.GET)
+    @RequestMapping(value = "/c/**", method = RequestMethod.GET)
     public String categoryShortUrl(HttpServletRequest request, Model model){
         String uri = request.getRequestURI();
         String shortUrl = uri.substring(uri.indexOf("c/") + 2);
@@ -48,7 +48,7 @@ public class HomeController {
         return "catalog";
     }
 
-    @RequestMapping(value = "/*",method = RequestMethod.GET)
+    @RequestMapping(value = "/**",method = RequestMethod.GET)
     public String home() {
         return "index";
     }
