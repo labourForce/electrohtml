@@ -63,4 +63,10 @@ public class CatalogController {
     public ResponseEntity<?> getRootCategories() {
         return ResponseEntity.ok(catalogService.getRootCategories());
     }
+
+    @RequestMapping(value = "/childCategories", method = RequestMethod.GET)
+    public ResponseEntity<?> getChildCategories(@RequestParam Long id) {
+        return ResponseEntity.ok(catalogService.getChildCategories(id));
+    }
+
 }

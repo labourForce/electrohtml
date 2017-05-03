@@ -20,4 +20,6 @@ public interface CategoryDAO {
     Category getByNameAndParentCategoryId(String name, Long parentCategoryId);
 
     List<Category> getRootCategories();
+
+    List<Category> getChildCategories(Long id);
 }

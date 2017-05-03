@@ -19,6 +19,15 @@ public class ProductsServiceImpl implements ProductsService {
     @Autowired
     private ProductsRepository productsRepository;
 
+    /**
+     * Get page with Products for specified search term
+     * Search order: id (equality), display_name (like), long_description (full search)
+     * If id is found, results are immediately provided; the same for display_name
+     * @param searchTerm    Term for search
+     * @param categories    List of categories to search among (can be empty)
+     * @param pageable      Pageable parameter for pagination support
+     * @return              Page with Products
+     */
     @Override
     public Page<Products> findByCategory(String searchTerm, String categories, Pageable pageable) {
         Page<Products> products;
@@ -27,7 +36,7 @@ public class ProductsServiceImpl implements ProductsService {
             String[] categoryArray = categories.toLowerCase().split(";");
             StringBuilder sb = new StringBuilder();
             for (String category : categoryArray) {
-                sb.append("\"" + category + "\", ");
+                sb.append("\"").append(category).append("\", ");
             }
 
             String tCategory = sb.toString();

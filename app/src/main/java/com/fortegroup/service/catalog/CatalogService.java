@@ -21,4 +21,6 @@ public interface CatalogService {
     String createShortUrl(List<EntityDTO> entities, String fullUrl);
 
     List<CategoryDTO> getRootCategories();
+
+    List<CategoryDTO> getChildCategories(Long id);
 }

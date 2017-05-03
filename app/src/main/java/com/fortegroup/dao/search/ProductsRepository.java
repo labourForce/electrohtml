@@ -8,6 +8,7 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 import org.springframework.stereotype.Repository;
 
 /**
+ * Repository class for ElasticSearch
  * @author Eugene Pankov
  * @version 1.0
  */
@@ -36,9 +37,6 @@ public interface ProductsRepository extends ElasticsearchRepository<Products, St
 
     @Query("{\"match\": {\"long_description\": \"?0\"}}")
     Page<Products> customFindByLongDescriptionAllCategories(String id, Pageable pageable);
-
-
-
 
 }
 

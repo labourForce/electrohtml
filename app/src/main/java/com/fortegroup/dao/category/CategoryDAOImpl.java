@@ -58,9 +58,27 @@ public class CategoryDAOImpl implements CategoryDAO {
         return category;
     }
 
+    /**
+     * Get all root categories (those that have parent id set to null
+     * @return  List with root categories
+     */
     @Override
+    @SuppressWarnings("unchecked")
     public List<Category> getRootCategories() {
         return sessionFactory.getCurrentSession().
                 createQuery("select c from Category c where c.rootCategory=null").list();
+    }
+
+    /**
+     * Get all child categories for given category id
+     * @param id  Id number of given category
+     * @return  List with child categories
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Category> getChildCategories(Long id) {
+        return sessionFactory.getCurrentSession().
+                createQuery("select cc from Category c join c.childCategories cc " +
+                "where c.id=:id").setParameter("id", id).list();
     }
 }

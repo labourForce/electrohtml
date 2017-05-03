@@ -3,6 +3,7 @@ package com.fortegroup.model.search;
 import java.util.List;
 
 /**
+ * Class-wrapper for elasticsearch result and number of pages returned.
  * @author Eugene Pankov
  * @version 1.0
  */
