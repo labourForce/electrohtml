@@ -48,7 +48,7 @@ public class HomeController {
         return "catalog";
     }
 
-    @RequestMapping(value = "/*",method = RequestMethod.GET)
+    @RequestMapping(value = "/**",method = RequestMethod.GET)
     public String home() {
         return "index";
     }
