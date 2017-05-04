@@ -24,8 +24,6 @@ public class BaseSKUDTO {
     private double salePrice;
     private int quantity;
     private String image;
-    private int productId;
-    private Product product;
     private Set<ConfPropertyDTO> confPropertiesDTO = new HashSet<>(0);
 
     public Long getId() {
@@ -154,22 +152,6 @@ public class BaseSKUDTO {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 
     public Set<ConfPropertyDTO> getConfPropertiesDTO() {

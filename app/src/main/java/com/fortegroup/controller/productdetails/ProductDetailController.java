@@ -46,7 +46,7 @@ public class ProductDetailController {
             try {
                 Product product = productDetailService.getProductById(Integer.parseInt(id));
                 Set<BaseSKU> SKUs = product.getBaseSKUs();
-                /*Set<BaseSKUDTO> SKUsDTO = new HashSet<>();
+                Set<BaseSKUDTO> SKUsDTO = new HashSet<>();
                 for (BaseSKU line : SKUs) {
                     BaseSKUDTO baseSKUDTO = new BaseSKUDTO();
                     baseSKUDTO.setId(line.getId());
@@ -97,8 +97,8 @@ public class ProductDetailController {
                         baseSKUDTO.setConfPropertiesDTO(confPropertyDTOS);
                     }
                     SKUsDTO.add(baseSKUDTO);
-                }*/
-                return  ResponseEntity.ok(SKUs);
+                }
+                return  ResponseEntity.ok(SKUsDTO);
             } catch (NullPointerException e) {}
         }
         return ResponseEntity.badRequest().header("NetworkError: 400 Bad Request - http://192.168.1.207:8181/rest/product/getProduct/" + id).body("400 Bad Request");
