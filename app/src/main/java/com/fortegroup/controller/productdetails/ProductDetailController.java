@@ -29,9 +29,25 @@ public class ProductDetailController {
         if (m.matches()) {
             try {
                 Product product = productDetailService.getProductById(Integer.parseInt(id));
-                product.setBaseSKUs(null);
-                product.setCategories(null);
-                return ResponseEntity.ok(product);
+
+                ProductDTO productDTO = new ProductDTO();
+                productDTO.setId(product.getId());
+                productDTO.setName(product.getName());
+                productDTO.setDisplayName(product.getDisplayName());
+                productDTO.setRating(product.getRating());
+                productDTO.setAvailability(product.isAvailability());
+                productDTO.setDisplayFlag(product.isDisplayFlag());
+                productDTO.setLongDescription(product.getLongDescription());
+                productDTO.setShortDescription(product.getShortDescription());
+                productDTO.setBrand(product.getBrand());
+                productDTO.setTechline(product.getTechline());
+                productDTO.setOnSale(product.isOnSale());
+                productDTO.setUpSale(product.isUpSale());
+                productDTO.setListPrice(product.getListPrice());
+                productDTO.setSalePrice(product.getSalePrice());
+                productDTO.setImage(product.getImage());
+                productDTO.setRootCategoryId(product.getRootCategoryId());
+                return ResponseEntity.ok(productDTO);
             } catch (NullPointerException e) {
             }
         }
