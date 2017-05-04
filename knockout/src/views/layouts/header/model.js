@@ -2,18 +2,21 @@ import $ from 'jquery';
 import 'bootstrap';
 import ko from 'knockout';
 import 'selectpicker';
+import { sendRequest }  from '../../../scripts/utils/common';
+
 
 
 export default class HeaderVM{
     constructor(app){
         this.app = app;
 
-        this.searchString = ko.observable();
+        this.searchString = ko.observable('');
         this.searchCategory = ko.observable('');
         // this.contentItem = ko.observable();
         this.isLogin = ko.observable(false);
         this.userName = ko.observable('');
         this.toPage = ko.observable('login');
+        this.categories = ko.observableArray([]);
 
         console.log(this.state);
         setTimeout(function(){
@@ -44,6 +47,18 @@ export default class HeaderVM{
             });
 
         }, 0);
+
+        this.getRootCategoties();
+    }
+
+    getRootCategoties () {
+        sendRequest({
+            method: 'GET',
+            url: '/rest/rootCategories',
+            success: (data) => {
+                this.categories(data);
+            }
+        });
     }
 
     doSearch() {
