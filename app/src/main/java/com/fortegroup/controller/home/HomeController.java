@@ -24,7 +24,7 @@ public class HomeController {
     @RequestMapping(value = "/catalog/**", method = RequestMethod.GET)
     public String seo(HttpServletRequest request, Model model){
         String uri = request.getRequestURI();
-        String[] parameters = uri.substring(uri.indexOf("catalog/") + 9).split("/");
+        String[] parameters = uri.substring(uri.indexOf("catalog/") + 8).split("/");
 
         List<Object> entities = catalogService.getSeo(parameters, true);
         Gson gson = new Gson();
