@@ -15,5 +15,5 @@ public interface ShoppingCartDao {
     BaseSKU getBaseSkuById(Long id);
     CommerceItem addItemToShoppingCart(Long[] varSkusId, Long userId, Long baseSkuId, int quantity);
     Long createNewShoppingCart (User user);
-    CommerceItem updateCommerceItemQuantity(CommerceItem item, int quantity);
+    void updateCommerceItemQuantity(CommerceItem item, int quantity);
 }

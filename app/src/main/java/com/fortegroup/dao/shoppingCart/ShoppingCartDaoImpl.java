@@ -40,6 +40,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 }
             }
         }
+        logger.info("Shopping cart has been loaded successfully. Shopping cart : " + cart);
         return cart;
     }
 
@@ -51,7 +52,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 .setFetchMode("commerceItems", FetchMode.JOIN)
                 .add(Restrictions.eq("id", varSkuId))
                 .uniqueResult();
-
+        logger.info("Variable SKU has been loaded successfully. Variable SKU : " + variableSKU);
         return variableSKU;
     }
 
@@ -63,6 +64,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 .uniqueResult();
         Hibernate.initialize(item.getSku().getProduct());
         Hibernate.initialize(item.getCartProperties());
+        logger.info("Commerce item  has been loaded successfully. Commerce item : " + item);
         return item;
     }
 
@@ -78,6 +80,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
             }
         }
         Hibernate.initialize(baseSKU.getProduct());
+        logger.info("Base sku has been loaded successfully. Base SKU info: " + baseSKU);
         return baseSKU;
     }
 
@@ -107,7 +110,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         shoppingCartProperties.setShoppingCartId(cart.getId());
         item.getCartProperties().add(shoppingCartProperties);
         sessionFactory.getCurrentSession().save(shoppingCartProperties);
-
+        logger.info("Commerce item has been saved successfully added to shopping cart . Commerce item: " + item);
         return item;
     }
 
@@ -118,6 +121,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         shoppingCart.setUserId(user.getId());
         shoppingCart.setUser(user);
         Long id = (Long) sessionFactory.getCurrentSession().save(shoppingCart);
+        logger.info("Shopping cart has been created successfully. Shopping cart id: " + id);
         return id;
     }
 
@@ -125,13 +129,14 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     public CommerceItem deleteCommerceItemById(Long id) {
         CommerceItem item = getCommerceItemById(id);
         sessionFactory.getCurrentSession().delete(item);
+        logger.info("Commerce item has been deleted successfully. Commerce item : " + item);
         return item;
     }
 
     @Override
-    public CommerceItem updateCommerceItemQuantity(CommerceItem commerceItem, int quantity) {
+    public void updateCommerceItemQuantity(CommerceItem commerceItem, int quantity) {
         commerceItem.setQuantity(quantity);
         sessionFactory.getCurrentSession().saveOrUpdate(commerceItem);
-        return null;
+        logger.info("Commerce item quantity has been updated successfully");
     }
 }

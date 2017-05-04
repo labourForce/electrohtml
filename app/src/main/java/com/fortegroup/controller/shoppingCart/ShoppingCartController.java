@@ -20,28 +20,44 @@ public class ShoppingCartController {
 
     @RequestMapping (value = "/cart", method = RequestMethod.GET)
     public ResponseEntity<?> getCartByUserId (HttpServletRequest request){
-        ShoppingCartDTO shoppingCart = service.getShoppingCartById((Long)(request.getAttribute("id")));
-        return ResponseEntity.ok(shoppingCart);
+        try {
+            ShoppingCartDTO shoppingCart = service.getShoppingCartById((Long) (request.getAttribute("id")));
+            return ResponseEntity.ok(shoppingCart);
+        }catch (NullPointerException exception){
+            return ResponseEntity.ok("Current user doesn't exist");
+        }
     }
 
     @RequestMapping (value = "/cart", method = RequestMethod.PUT)
     public  ResponseEntity<?> addNewItemToShoppingCart(@RequestBody ItemInsertDTO itemInsertDTO,HttpServletRequest servletRequest){
-        Long userId = Long.parseLong(servletRequest.getAttribute("id").toString());
-        CommerceItem item = service.addItemToShoppingCart(userId, itemInsertDTO.getVarSkus(), itemInsertDTO.getBaseSkuId(), itemInsertDTO.getQuantity());
-        return ResponseEntity.ok(item);
+        try {
+            Long userId = Long.parseLong(servletRequest.getAttribute("id").toString());
+            CommerceItem item = service.addItemToShoppingCart(userId, itemInsertDTO.getVarSkus(), itemInsertDTO.getBaseSkuId(), itemInsertDTO.getQuantity());
+            return ResponseEntity.ok(item);
+        }catch (Throwable ex){
+            return ResponseEntity.ok("Addition failed");
+        }
     }
 
     @RequestMapping (value = "/cart", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteItemById(@RequestParam("id") String id){
-        CommerceItem item = service.deleteItemById(Long.parseLong(id));
-        return ResponseEntity.ok(item);
+        try {
+            CommerceItem item = service.deleteItemById(Long.parseLong(id));
+            return ResponseEntity.ok(item);
+        }catch (NullPointerException exception){
+            return ResponseEntity.ok("Item with id " + id + " doesn't exist");
+        }
     }
 
     @RequestMapping (value = "/cart", method = RequestMethod.POST)
     public ResponseEntity<?> updateItemQuantity (@RequestBody ItemInsertDTO itemDTO,HttpServletRequest servletRequest){
-        Long userId = Long.parseLong(servletRequest.getAttribute("id").toString());
-        ShoppingCartDTO cart = service.updateQuantityById(itemDTO.getItemId(),itemDTO.getQuantity(),userId);
-        return ResponseEntity.ok(cart);
+        try {
+            Long userId = Long.parseLong(servletRequest.getAttribute("id").toString());
+            ShoppingCartDTO cart = service.updateQuantityById(itemDTO.getItemId(), itemDTO.getQuantity(), userId);
+            return ResponseEntity.ok(cart);
+        }catch (Throwable exeption){
+            return ResponseEntity.ok("Update quantity failed");
+        }
     }
 
 //    @RequestMapping (value = "/vs", method = RequestMethod.GET)
