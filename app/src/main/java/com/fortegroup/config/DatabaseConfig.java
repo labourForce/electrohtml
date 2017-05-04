@@ -9,6 +9,8 @@ import com.fortegroup.dao.accounts.UserDao;
 import com.fortegroup.dao.productdetails.ProductDetailDaoImpl;
 import com.fortegroup.dao.accounts.UserDaoImpl;
 
+import com.fortegroup.dao.shoppingCart.ShoppingCartDao;
+import com.fortegroup.dao.shoppingCart.ShoppingCartDaoImpl;
 import com.fortegroup.dao.shorturl.ShortUrlDAO;
 import com.fortegroup.dao.shorturl.ShortUrlDAOImpl;
 import com.fortegroup.service.catalog.CatalogService;
@@ -21,6 +23,8 @@ import com.fortegroup.service.productdetails.ProductDetailService;
 import com.fortegroup.service.accounts.UserService;
 import com.fortegroup.service.accounts.UserServiceImpl;
 import com.fortegroup.service.productdetails.ProductDetailServiceImpl;
+import com.fortegroup.service.shoppingCart.ShoppingCartService;
+import com.fortegroup.service.shoppingCart.ShoppingCartServiceImpl;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -130,4 +134,10 @@ public class DatabaseConfig {
         return new TextServiceImpl();
     }
 
+    @Bean
+    public ShoppingCartService appShoppingCartService(){return new ShoppingCartServiceImpl();}
+
+    @Bean
+    public ShoppingCartDao shoppingCartDao(){return new ShoppingCartDaoImpl();}
 }
+
