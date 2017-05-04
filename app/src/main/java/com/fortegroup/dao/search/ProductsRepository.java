@@ -17,15 +17,15 @@ import org.springframework.stereotype.Repository;
 public interface ProductsRepository extends ElasticsearchRepository<Products, String> {
 
     @Query("{\"filtered\": {\"query\": {\"match\": {\"product_id\": \"?0\"}}, " +
-            "\"filter\": {\"terms\": {\"path\": [?1]}}}}")
+            "\"filter\": {\"terms\": {\"name_path\": [?1]}}}}")
     Page<Products> customFindById(String id, String categories, Pageable pageable);
 
     @Query("{\"filtered\": {\"query\": {\"wildcard\": {\"display_name\": \"*?0*\"}}, " +
-            "\"filter\": {\"terms\": {\"path\": [?1]}}}}")
+            "\"filter\": {\"terms\": {\"name_path\": [?1]}}}}")
     Page<Products> customFindByDisplayName(String name, String categories, Pageable pageable);
 
     @Query("{\"filtered\": {\"query\": {\"match\": {\"long_description\": \"?0\"}}, " +
-            "\"filter\": {\"terms\": {\"path\": [?1]}}}}")
+            "\"filter\": {\"terms\": {\"name_path\": [?1]}}}}")
     Page<Products> customFindByLongDescription(String description, String categories, Pageable pageable);
 
 
