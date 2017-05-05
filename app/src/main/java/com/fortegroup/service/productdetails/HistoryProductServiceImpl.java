@@ -7,6 +7,7 @@ import com.fortegroup.model.productdetails.HistoryProduct;
 import com.fortegroup.model.productdetails.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class HistoryProductServiceImpl implements HistoryProductService {
     private ProductDetailDao productDetailDao;
 
     @Override
+    @Transactional
     public void addProductToHistory(Long userId, Long productId) {
         List<Product> products = historyProductDAO.getUserProducts(userId);
         products.forEach(product -> {
