@@ -1,16 +1,15 @@
 package com.fortegroup.service.checkInformation;
-
 import com.fortegroup.model.checkInformation.ResponseError;
-import com.fortegroup.model.checkInformation.ShippingBilling;
-import java.util.HashSet;
-import java.util.Set;
+import org.springframework.stereotype.Service;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Created by PC on 28.04.2017.
  */
-public class ShippingBillingServiceImpl implements ShippingBillingService {
+@Service(value = "checkInformationSB")
+public class ShippinggetBillingServiceImpl implements ShippinggetBillingService {
     private final String regName = "[a-zA-Z]{2,10}$";
     private final String regNameCompany = "^([a-zA-Z0-9_\\ -]+)";
     private final String regEmail = "^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{2,6})$";
@@ -19,55 +18,73 @@ public class ShippingBillingServiceImpl implements ShippingBillingService {
     private final String regPostCode = "[a-zA-Z0-9]{1,20}$";
     private final String regCityCounty = "[a-zA-Z\\ -]+";
 
-    public ShippingBillingServiceImpl() {
+    public ShippinggetBillingServiceImpl() {
     }
 
     @Override
-    public ResponseError validateInputData(ShippingBilling sb) {
+    public ResponseError validateInputData(RequestShippinggetBilling sb) {
         ResponseError responseError = new ResponseError();
         Pattern pFirstName = Pattern.compile(regName);
-        Matcher mFirstName = pFirstName.matcher(sb.getFirstName());
-        if (mFirstName.matches()) {
-            responseError.setFirstNameError(true);
+        if(sb.getBilling().getFirstName() != null) {
+            Matcher mFirstName = pFirstName.matcher(sb.getBilling().getFirstName());
+            if (mFirstName.matches()) {
+                responseError.setFirstNameError(true);
+            }
         }
-        Matcher mLastName = pFirstName.matcher(sb.getLastName());
-        if (mLastName.matches()) {
-            responseError.setLastNameError(true);
+        if(sb.getBilling().getLastName() != null) {
+            Matcher mLastName = pFirstName.matcher(sb.getBilling().getLastName());
+            if (mLastName.matches()) {
+                responseError.setLastNameError(true);
+            }
         }
         Pattern pCompanyName = Pattern.compile(regNameCompany);
-        Matcher mCompanyName = pCompanyName.matcher(sb.getCompanyName());
-        if (mCompanyName.matches()) {
-            responseError.setCompanyNameError(true);
+        if(sb.getBilling().getCompanyName() != null) {
+            Matcher mCompanyName = pCompanyName.matcher(sb.getBilling().getCompanyName());
+            if (mCompanyName.matches()) {
+                responseError.setCompanyNameError(true);
+            }
         }
         Pattern pEmail = Pattern.compile(regEmail);
-        Matcher mEmail = pEmail.matcher(sb.getEmail());
-        if (mEmail.matches()) {
-            responseError.setEmailError(true);
+        if(sb.getBilling().getEmail() != null) {
+            Matcher mEmail = pEmail.matcher(sb.getBilling().getEmail());
+            if (mEmail.matches()) {
+                responseError.setEmailError(true);
+            }
         }
         Pattern pNumber = Pattern.compile(regNumber);
-        Matcher mNumber = pNumber.matcher(sb.getPhoneNumber());
-        if (mNumber.matches()) {
-            responseError.setPhoneNumberError(true);
+        if(sb.getBilling().getPhone() != null) {
+            Matcher mNumber = pNumber.matcher(sb.getBilling().getPhone());
+            if (mNumber.matches()) {
+                responseError.setPhoneNumberError(true);
+            }
         }
         Pattern pAddress = Pattern.compile(regAddress);
-        Matcher mAddress = pAddress.matcher(sb.getAddress());
-        if (mAddress.matches()) {
-            responseError.setAddressError(true);
+        if(sb.getBilling().getAddress() != null) {
+            Matcher mAddress = pAddress.matcher(sb.getBilling().getAddress());
+            if (mAddress.matches()) {
+                responseError.setAddressError(true);
+            }
         }
         Pattern pPostCode = Pattern.compile(regPostCode);
-        Matcher mPostCode = pPostCode.matcher(sb.getZipCode());
-        if (mPostCode.matches()) {
-            responseError.setZipCodeError(true);
+        if(sb.getBilling().getZip() != null) {
+            Matcher mPostCode = pPostCode.matcher(sb.getBilling().getZip());
+            if (mPostCode.matches()) {
+                responseError.setZipCodeError(true);
+            }
         }
         Pattern pCity = Pattern.compile(regCityCounty);
-        Matcher mCity = pCity.matcher(sb.getCity());
-        if (mCity.matches()) {
-            responseError.setCityError(true);
+        if(sb.getBilling().getCity() != null) {
+            Matcher mCity = pCity.matcher(sb.getBilling().getCity());
+            if (mCity.matches()) {
+                responseError.setCityError(true);
+            }
         }
         Pattern pCounty = Pattern.compile(regCityCounty);
-        Matcher mCountry = pCounty.matcher(sb.getCountry());
-        if (mCountry.matches()) {
-            responseError.setCountryError(true);
+        if(sb.getBilling().getCountry() != null) {
+            Matcher mCountry = pCounty.matcher(sb.getBilling().getCountry());
+            if (mCountry.matches()) {
+                responseError.setCountryError(true);
+            }
         }
         return responseError;
     }

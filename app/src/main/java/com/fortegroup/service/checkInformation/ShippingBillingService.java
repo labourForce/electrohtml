@@ -1,6 +1,7 @@
 package com.fortegroup.service.checkInformation;
 
 
+import com.fortegroup.model.checkInformation.RequestShippingBilling;
 import com.fortegroup.model.checkInformation.ResponseError;
 import com.fortegroup.model.checkInformation.ShippingBilling;
 
@@ -9,5 +10,5 @@ import com.fortegroup.model.checkInformation.ShippingBilling;
  */
 public interface ShippingBillingService {
 
-    ResponseError validateInputData(ShippingBilling sb);
+    ResponseError validateInputData(RequestShippingBilling sb);
 }
