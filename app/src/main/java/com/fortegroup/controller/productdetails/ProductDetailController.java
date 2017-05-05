@@ -7,7 +7,6 @@ import com.fortegroup.model.productdetails.ConfProperty;
 import com.fortegroup.model.productdetails.Product;
 import com.fortegroup.service.productdetails.ProductDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -110,7 +109,7 @@ public class ProductDetailController {
                             confPropertyDTO.setConfOptions(confOptionDTOS);
                             confPropertyDTOS.add(confPropertyDTO);
                         }
-                        baseSKUDTO.setConfPropertiesDTO(confPropertyDTOS);
+                        baseSKUDTO.setConfProperties(confPropertyDTOS);
                     }
                     SKUsDTO.add(baseSKUDTO);
                 }
