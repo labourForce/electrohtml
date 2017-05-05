@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
-/**
- * Created by PC on 28.04.2017.
- */
 @RestController
 @RequestMapping(value = "/rest/checkout")
 public class BillingShipping {

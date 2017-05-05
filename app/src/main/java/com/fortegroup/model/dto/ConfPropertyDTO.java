@@ -8,9 +8,7 @@ import java.util.Set;
  */
 public class ConfPropertyDTO {
     private Long id;
-    private Long baseSKUId;
     private String propertyName;
-    private BaseSKUDTO baseSKU;
     private Set<ConfOptionDTO> confOptions = new HashSet<>(0);
 
     public Long getId() {
@@ -21,28 +19,12 @@ public class ConfPropertyDTO {
         this.id = id;
     }
 
-    public Long getBaseSKUId() {
-        return baseSKUId;
-    }
-
-    public void setBaseSKUId(Long baseSKUId) {
-        this.baseSKUId = baseSKUId;
-    }
-
     public String getPropertyName() {
         return propertyName;
     }
 
     public void setPropertyName(String propertyName) {
         this.propertyName = propertyName;
-    }
-
-    public BaseSKUDTO getBaseSKU() {
-        return baseSKU;
-    }
-
-    public void setBaseSKU(BaseSKUDTO baseSKU) {
-        this.baseSKU = baseSKU;
     }
 
     public Set<ConfOptionDTO> getConfOptions() {

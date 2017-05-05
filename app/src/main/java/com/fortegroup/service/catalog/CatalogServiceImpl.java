@@ -183,7 +183,7 @@ public class CatalogServiceImpl implements CatalogService {
 
     private Category getPenultimateCategory(String[] parameters, boolean fullInformation,
                                             Category category, List<Object> entities){
-        for (int i = 1; i < parameters.length - 2; i++){
+        for (int i = 1; i < parameters.length - 1; i++){
             category = getCategory(parameters[i], category.getId());
             if (category == null){
                 return null;

@@ -26,8 +26,6 @@ public class ProductDTO implements Serializable {
     private double salePrice;
     private String image;
     private int rootCategoryId;
-    private Set<BaseSKUDTO> baseSKUs = new HashSet<>(0);
-    private Set<CategoryDTO> categories = new HashSet<>(0);
 
     public Long getId() {
         return id;
@@ -155,21 +153,5 @@ public class ProductDTO implements Serializable {
 
     public void setRootCategoryId(int rootCategoryId) {
         this.rootCategoryId = rootCategoryId;
-    }
-
-    public Set<BaseSKUDTO> getBaseSKUs() {
-        return baseSKUs;
-    }
-
-    public void setBaseSKUs(Set<BaseSKUDTO> baseSKUs) {
-        this.baseSKUs = baseSKUs;
-    }
-
-    public Set<CategoryDTO> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<CategoryDTO> categories) {
-        this.categories = categories;
     }
 }

@@ -2,8 +2,11 @@ package com.fortegroup.model.productdetails;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fortegroup.model.shoppingCart.CommerceItemProperties;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "electro.variable_sku")
@@ -22,6 +25,8 @@ public class VariableSKU {
     private double salePrice;
     private int confOptionId;
     private ConfOption confOption;
+    private Set<CommerceItemProperties> commerceItemProperties = new HashSet<>();
+
 
     public VariableSKU() {
     }
@@ -159,5 +164,15 @@ public class VariableSKU {
 
     public void setConfOption(ConfOption confOption) {
         this.confOption = confOption;
+    }
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "variableSKU")
+    public Set<CommerceItemProperties> getCommerceItemProperties() {
+        return commerceItemProperties;
+    }
+
+    public void setCommerceItemProperties(Set<CommerceItemProperties> commerceItemProperties) {
+        this.commerceItemProperties = commerceItemProperties;
     }
 }

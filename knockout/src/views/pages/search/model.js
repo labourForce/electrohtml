@@ -10,6 +10,7 @@ export default class SearchVM {
             page: 0,
             size: 18
         }, props.query);
+        props.breadcrumbs = props.breadcrumbs || [];
         this.currentPage = ko.observable(props.query.page);
         this.pageCount = ko.observable(1);
         this.app = app;
@@ -19,7 +20,7 @@ export default class SearchVM {
     }
 
     goToPDP (product) {
-        this.app.router.notify('catalog', { path: product.path.join('/') + '/' + product.name });
+        this.app.router.notify('catalog', { path: product.name_path.join('/') + '/' + product.name });
     }
 
     getSearchProducts() {
