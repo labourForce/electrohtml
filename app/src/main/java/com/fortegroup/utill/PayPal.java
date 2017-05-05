@@ -1,5 +1,6 @@
 package com.fortegroup.utill;
 
+import com.fortegroup.model.checkout.Response;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -115,13 +116,18 @@ public class PayPal {
         return result;
     }
 
-    public static String getResponseCode(String inputAmount, String cardName, String cardNumber, String cardValidationNumber, String expirationData) throws IOException, TransformerException, ParserConfigurationException {
+    public static Response getResponseCode(String inputAmount, String cardName, String cardNumber, String cardValidationNumber, String expirationData) throws IOException, TransformerException, ParserConfigurationException {
         String responseXML = getResponseXML(inputAmount, cardName, cardNumber, cardValidationNumber, expirationData);
         if(responseXML.contains("message='Error")) {
-            return "bad";
+            return new Response("Data is not valid");
         }
-        int index = responseXML.indexOf("<response>");
-        return responseXML.substring(index+10, index+13);
+        if(responseXML.contains("<response>")) {
+            int beginIndexMessage = responseXML.indexOf("<message>");
+            int endIndexMessage = responseXML.indexOf("</message>");
+            String message = responseXML.substring(beginIndexMessage+9, endIndexMessage);
+            return new Response(message);
+        }
+        return new Response("Unknown error");
     }
 
 }
