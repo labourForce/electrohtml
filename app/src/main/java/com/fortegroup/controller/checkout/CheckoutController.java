@@ -14,9 +14,7 @@ public class CheckoutController {
     public ResponseEntity<?> getPaymentDetails(@RequestBody Request request) {
 
         Response response = new Response("Unknown error");
-
         try {
-
             String amount = request.getPay().get("amount");
             String cardName = request.getPay().get("name");
             String cardNumber = request.getPay().get("cardNumber");
