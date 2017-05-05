@@ -29,7 +29,7 @@ public class ShoppingCartController {
     }
 
     @RequestMapping (value = "/cart", method = RequestMethod.PUT)
-    public  ResponseEntity<?> addNewItemToShoppingCart(@RequestBody ItemInsertDTO itemInsertDTO,HttpServletRequest servletRequest){
+    public  ResponseEntity<?> addNewItemToShoppingCart(@RequestBody ItemInsertDTO itemInsertDTO, HttpServletRequest servletRequest){
         try {
             Long userId = Long.parseLong(servletRequest.getAttribute("id").toString());
             CommerceItem item = service.addItemToShoppingCart(userId, itemInsertDTO.getVarSkus(), itemInsertDTO.getBaseSkuId(), itemInsertDTO.getQuantity());
@@ -40,17 +40,19 @@ public class ShoppingCartController {
     }
 
     @RequestMapping (value = "/cart", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteItemById(@RequestParam("id") String id){
+    public ResponseEntity<?> deleteItemById(@RequestParam("id") String id,HttpServletRequest request){
         try {
-            CommerceItem item = service.deleteItemById(Long.parseLong(id));
-            return ResponseEntity.ok(item);
+            Long userId = (Long) request.getAttribute("id");
+            service.deleteItemById(Long.parseLong(id),userId);
+            ShoppingCartDTO cartDTO = service.getShoppingCartById(userId);
+            return ResponseEntity.ok(cartDTO);
         }catch (NullPointerException exception){
             return ResponseEntity.ok("Item with id " + id + " doesn't exist");
         }
     }
 
     @RequestMapping (value = "/cart", method = RequestMethod.POST)
-    public ResponseEntity<?> updateItemQuantity (@RequestBody ItemInsertDTO itemDTO,HttpServletRequest servletRequest){
+    public ResponseEntity<?> updateItemQuantity (@RequestBody ItemInsertDTO itemDTO, HttpServletRequest servletRequest){
         try {
             Long userId = Long.parseLong(servletRequest.getAttribute("id").toString());
             ShoppingCartDTO cart = service.updateQuantityById(itemDTO.getItemId(), itemDTO.getQuantity(), userId);
@@ -66,12 +68,12 @@ public class ShoppingCartController {
 //        return ResponseEntity.ok(variableSKU);
 //    }
 
-//    @RequestMapping (value = "/ci", method = RequestMethod.GET)
-//    public ResponseEntity <?> getCommerceItemByID (@RequestParam("id") String id){
-//        CommerceItem item = service.getCommerceItemById(Long.parseLong(id));
-//        return ResponseEntity.ok(item);
-//    }
-//
+    @RequestMapping (value = "/ci", method = RequestMethod.GET)
+    public ResponseEntity <?> getCommerceItemByID (@RequestParam("id") String id){
+        CommerceItem item = service.getCommerceItemById(Long.parseLong(id));
+        return ResponseEntity.ok(item);
+    }
+
 //    @RequestMapping (value = "/bs", method = RequestMethod.GET)
 //    public ResponseEntity<?> getBaseSkuById (@RequestParam("id") String id){
 //        BaseSKU baseSKU = service.getBaseSkuById(Long.parseLong(id));

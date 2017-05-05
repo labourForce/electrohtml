@@ -79,9 +79,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     @Transactional
-    public CommerceItem deleteItemById(Long id) {
-        CommerceItem commerceItem = shoppingCartDao.deleteCommerceItemById(id);
-        return commerceItem;
+    public CommerceItem deleteItemById(Long itemId, Long userId) {
+        CommerceItem item = shoppingCartDao.getCommerceItemById(itemId);
+        shoppingCartDao.deleteCommerceItemById(itemId);
+        return item;
     }
 
     @Override

@@ -126,11 +126,11 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     @Override
-    public CommerceItem deleteCommerceItemById(Long id) {
-        CommerceItem item = getCommerceItemById(id);
+    public void deleteCommerceItemById(Long itemId) {
+        CommerceItem item = getCommerceItemById(itemId);
         sessionFactory.getCurrentSession().delete(item);
         logger.info("Commerce item has been deleted successfully. Commerce item : " + item);
-        return item;
+
     }
 
     @Override

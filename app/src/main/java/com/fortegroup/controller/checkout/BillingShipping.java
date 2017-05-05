@@ -1,15 +1,11 @@
 package com.fortegroup.controller.checkout;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fortegroup.model.checkInformation.ResponseError;
-import com.fortegroup.model.checkInformation.ShippingBilling;
+import com.fortegroup.model.checkout.ShippingBilling;
+import com.fortegroup.model.checkout.Request;
 import com.fortegroup.service.checkInformation.ShippingBillingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 
 @RestController
 @RequestMapping(value = "/rest/checkout")
@@ -18,22 +14,23 @@ public class BillingShipping {
     private ShippingBillingService shippingBillingService;
 
     @RequestMapping(value = "/billing", method = RequestMethod.POST)
-    public ResponseEntity<?> getDetails(@RequestBody String body) {
-//        ObjectMapper mapper = new ObjectMapper();
-//        ResponseError name = null;
-//        try {
-//            ShippingBilling sb = mapper.readValue(body, ShippingBilling.class);
-//            name = shippingBillingService.validateInputData(sb);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        String jsonString = "";
-//        try {
-//            jsonString = mapper.writeValueAsString(name);
-//        } catch (JsonProcessingException e) {
-//            e.printStackTrace();
-//        }
-        String s= "{\"access\":true}";
-        return ResponseEntity.ok(s);
+    public ResponseEntity<?> getDetails(@RequestBody Request request) {
+        ShippingBilling sb = new ShippingBilling();
+
+        sb.setLastName(request.getBilling().get("firstName"));
+        sb.setFirstName(request.getBilling().get("lastName"));
+        sb.setCompanyName(request.getBilling().get("companyName"));
+        sb.setEmail(request.getBilling().get("email"));
+        sb.setPhone(request.getBilling().get("phone"));
+        sb.setCountry(request.getBilling().get("country"));
+        sb.setAddress(request.getBilling().get("address"));
+        sb.setZip(request.getBilling().get("zip"));
+        sb.setCity(request.getBilling().get("city"));
+
+        String error = "Errors:{";
+        error = error + shippingBillingService.validateInputData(sb);
+        error = error + "}";
+
+        return ResponseEntity.ok(error);
     }
 }
