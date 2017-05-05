@@ -119,7 +119,10 @@ public class PayPal {
     public static Response getResponseCode(String inputAmount, String cardName, String cardNumber, String cardValidationNumber, String expirationData) throws IOException, TransformerException, ParserConfigurationException {
         String responseXML = getResponseXML(inputAmount, cardName, cardNumber, cardValidationNumber, expirationData);
         if(responseXML.contains("message='Error")) {
-            return new Response("Data is not valid");
+            int beginError = responseXML.indexOf("message='");
+            int endError = responseXML.indexOf(" xmlns='http://www.litle.com/schema'");
+            String message = responseXML.substring(beginError+9, endError);
+            return new Response(message);
         }
         if(responseXML.contains("<response>")) {
             int beginIndexMessage = responseXML.indexOf("<message>");
