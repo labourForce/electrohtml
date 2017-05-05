@@ -122,15 +122,15 @@ public class PayPal {
             int beginError = responseXML.indexOf("message='");
             int endError = responseXML.indexOf(" xmlns='http://www.litle.com/schema'");
             String message = responseXML.substring(beginError+9, endError);
-            return new Response(message);
+            return new Response(message, false);
         }
         if(responseXML.contains("<response>")) {
             int beginIndexMessage = responseXML.indexOf("<message>");
             int endIndexMessage = responseXML.indexOf("</message>");
             String message = responseXML.substring(beginIndexMessage+9, endIndexMessage);
-            return new Response(message);
+            return new Response(message, true);
         }
-        return new Response("Unknown error");
+        return new Response("Unknown error", false);
     }
 
 }
