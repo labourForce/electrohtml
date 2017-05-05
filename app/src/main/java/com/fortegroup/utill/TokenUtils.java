@@ -80,7 +80,7 @@ public class TokenUtils {
     }
 
     private Date generateExpirationDate() {
-        Long expiration = 1800L;
+        Long expiration = 24 * 3600L;
         return new Date(System.currentTimeMillis() + expiration * 1000);
     }
 

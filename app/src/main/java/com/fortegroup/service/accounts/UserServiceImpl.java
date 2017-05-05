@@ -30,11 +30,11 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public User saveUser(User user) {
+    public Long saveUser(User user) {
         user.setAuthorities("ROLE_USER");
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Long id =  userDao.saveUser(user);
-        return get(id);
+        if(user.getPassword() != null)
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        return  userDao.saveUser(user);
     }
 
     @Transactional
