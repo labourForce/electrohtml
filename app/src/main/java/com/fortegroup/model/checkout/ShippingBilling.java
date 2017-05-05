@@ -1,4 +1,4 @@
-package com.fortegroup.model.checkInformation;
+package com.fortegroup.model.checkout;
 
 /**
  * Created by PC on 28.04.2017.
@@ -13,8 +13,6 @@ public class ShippingBilling {
     private String address;
     private String zip;
     private String city;
-    private String notes;
-    private String order;
 
     public ShippingBilling() {
     }
@@ -89,21 +87,5 @@ public class ShippingBilling {
 
     public void setZip(String zip) {
         this.zip = zip;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public String getOrder() {
-        return order;
-    }
-
-    public void setOrder(String order) {
-        this.order = order;
     }
 }
