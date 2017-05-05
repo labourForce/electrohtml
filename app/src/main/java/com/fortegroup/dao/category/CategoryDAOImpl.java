@@ -81,4 +81,15 @@ public class CategoryDAOImpl implements CategoryDAO {
                 createQuery("select cc from Category c join c.childCategories cc " +
                 "where c.id=:id").setParameter("id", id).list();
     }
+
+    /**
+     * Get all categories ordered by id
+     * @return List with all categories
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Category> getAllCategories() {
+        return sessionFactory.getCurrentSession().
+                createQuery("select c from Category c order by c.id").list();
+    }
 }

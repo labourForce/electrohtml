@@ -1,17 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div class="breadcrumbs">
-                <nav>
-                    <ul class="breadcrumbs__wrap">
-                        <li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Home</a></li>
-                        <li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link-active">Laptops &
-                            Computers</a></li>
-                        <li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Laptops & Computers
-                            Categories</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <!--ko component: { name: 'breadcrumbs', params: { breadcrumbs: $data.props.breadcrumbs, app: $data.app } } --><!--/ko-->
         </div>
     </div>
     <div class="row">
@@ -62,7 +52,10 @@
         </div>
         <div class="col-lg-9 col-md-9">
             <div class="main-title__wrapper">
-                <h3 class="main-title__text title--big">Search results for "<span data-bind="text: $data.props.query.searchTerm"></span>"</h3>
+                <h3 class="main-title__text title--big">
+                    <span data-bind="text: "></span>
+                    Search results for "<span data-bind="text: $data.props.query.searchTerm"></span>"
+                </h3>
                 <hr/>
             </div>
             <div class="items-row">

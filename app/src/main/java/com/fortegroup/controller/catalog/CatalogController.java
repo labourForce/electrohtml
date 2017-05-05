@@ -69,4 +69,9 @@ public class CatalogController {
         return ResponseEntity.ok(catalogService.getChildCategories(id));
     }
 
+    @RequestMapping(value = "/allCategories", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllCategories() {
+        return ResponseEntity.ok(catalogService.getAllCategories());
+    }
+
 }

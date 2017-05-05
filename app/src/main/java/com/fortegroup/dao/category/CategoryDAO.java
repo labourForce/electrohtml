@@ -22,4 +22,6 @@ public interface CategoryDAO {
     List<Category> getRootCategories();
 
     List<Category> getChildCategories(Long id);
+
+    List<Category> getAllCategories();
 }

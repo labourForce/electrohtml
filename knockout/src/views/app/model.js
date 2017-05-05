@@ -6,7 +6,7 @@ import SiteModel from '../../scripts/models/site';
 import ProfileModel from '../../scripts/models/profile';
 import OrderModel from '../../scripts/models/order';
 import { sendRequest } from '../../scripts/utils/common';
-// import '../../scripts/utils/bindings';
+import '../layouts/breadcrumbs';
 
 export default class MainVM {
     constructor(){

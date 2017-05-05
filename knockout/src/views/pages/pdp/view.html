@@ -1,17 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <div class="breadcrumbs">
-                <nav>
-                    <ul class="breadcrumbs__wrap">
-                        <li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Home</a></li>
-                        <li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link-active">Laptops &
-                            Computers</a></li>
-                        <li class="breadcrumbs__list"><a href="#" class="breadcrumbs__link">Laptops & Computers
-                            Categories</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <!--ko component: { name: 'breadcrumbs', params: { breadcrumbs: $data.props.breadcrumbs, app: $data.app } } --><!--/ko-->
         </div>
     </div>
     <div class="row">
@@ -99,7 +89,7 @@
                         </div>
                         <div class="single-product__detail">
                             <ul class="shop-item__details" data-bind="foreach: $data.product.techline">
-                                <li data-bind="text: $data.data"></li>
+                                <li><strong data-bind="text: $data.key + ':'"></strong> <span data-bind="text: $data.data"></span></li>
                             </ul>
                             <div class="single-product__text">
                                 <p data-bind="text: $data.longDescription"></p>
@@ -168,7 +158,7 @@
                                                         <h3 data-bind="text: $data.displayName"></h3>
                                                     </a>
                                                     <ul class="shop-item__details" data-bind="foreach: $data.techline">
-                                                        <li data-bind="text: $data.data"></li>
+                                                        <li><strong data-bind="text: $data.key + ':'"></strong> <span data-bind="text: $data.data"></span></li>
                                                     </ul>
                                                 </div>
                                                 <div class="single-product__choose-parts-total">

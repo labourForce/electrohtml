@@ -1,5 +1,6 @@
 package com.fortegroup.dao.search;
 
+import com.fortegroup.model.productdetails.Product;
 import com.fortegroup.model.search.Products;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +38,9 @@ public interface ProductsRepository extends ElasticsearchRepository<Products, St
 
     @Query("{\"match\": {\"long_description\": \"?0\"}}")
     Page<Products> customFindByLongDescriptionAllCategories(String id, Pageable pageable);
+
+    @Query("{\"match\": {\"product_id\": \"?0\"}}")
+    Products customFindById(String id);
 
 }
 
