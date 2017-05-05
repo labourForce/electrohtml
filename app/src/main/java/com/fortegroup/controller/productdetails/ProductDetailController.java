@@ -5,12 +5,15 @@ import com.fortegroup.model.productdetails.BaseSKU;
 import com.fortegroup.model.productdetails.ConfOption;
 import com.fortegroup.model.productdetails.ConfProperty;
 import com.fortegroup.model.productdetails.Product;
+import com.fortegroup.model.shoppingCart.dto.ShoppingCartDTO;
+import com.fortegroup.service.productdetails.HistoryProductService;
 import com.fortegroup.service.productdetails.ProductDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -22,8 +25,11 @@ public class ProductDetailController {
     @Autowired
     private ProductDetailService productDetailService;
 
+    @Autowired
+    private HistoryProductService historyProductService;
+
     @RequestMapping(value = "/getProduct", params = "id", method = RequestMethod.GET)
-    public ResponseEntity<?> getDetails(@RequestParam("id") String id) {
+    public ResponseEntity<?> getDetails(HttpServletRequest req, @RequestParam("id") String id) {
         Pattern p = Pattern.compile("[\\d]+");
         Matcher m = p.matcher(id);
         if (m.matches()) {
@@ -47,6 +53,13 @@ public class ProductDetailController {
                 productDTO.setSalePrice(product.getSalePrice());
                 productDTO.setImage(product.getImage());
                 productDTO.setRootCategoryId(product.getRootCategoryId());
+
+                // Add product to user's product history
+                Long userId = (Long) req.getAttribute("id");
+                if (userId != null) {
+                    historyProductService.addProductToHistory(userId, productDTO.getId());
+                }
+
                 return ResponseEntity.ok(productDTO);
             } catch (NullPointerException e) {
             }

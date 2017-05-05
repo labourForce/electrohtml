@@ -74,4 +74,8 @@ public class CatalogController {
         return ResponseEntity.ok(catalogService.getAllCategories());
     }
 
+    @RequestMapping(value = "/categoryHierarchy", method = RequestMethod.GET)
+    public ResponseEntity<?> getCategoryHierarchy() {
+        return ResponseEntity.ok(catalogService.getCategoryHierarchy());
+    }
 }

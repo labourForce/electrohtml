@@ -63,8 +63,8 @@ public class DatabaseConfig {
         dataSource.addDataSourceProperty("databaseName", "postgres");
         dataSource.addDataSourceProperty("portNumber", "5432");
 
-//        dataSource.addDataSourceProperty("serverName", "localhost");
-        dataSource.addDataSourceProperty("serverName", "192.168.1.207");
+        dataSource.addDataSourceProperty("serverName", "localhost");
+//        dataSource.addDataSourceProperty("serverName", "192.168.1.207");
 
         dataSource.addDataSourceProperty("user", "postgres");
         dataSource.addDataSourceProperty("password", "postgres");
@@ -164,6 +164,11 @@ public class DatabaseConfig {
 
     @Bean
     public ShoppingCartDao shoppingCartDao(){return new ShoppingCartDaoImpl();}
+
+    @Bean
+    public CategoriesService categoriesService() {
+        return new CategoriesServiceImpl();
+    }
 }
 
 

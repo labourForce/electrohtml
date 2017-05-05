@@ -1,6 +1,5 @@
 package com.fortegroup.dao.search;
 
-import com.fortegroup.model.productdetails.Product;
 import com.fortegroup.model.search.Products;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
