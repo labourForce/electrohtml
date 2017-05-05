@@ -1,17 +1,17 @@
 package com.fortegroup.controller.productdetails;
 
-import com.fortegroup.model.dto.*;
 import com.fortegroup.model.productdetails.BaseSKU;
-import com.fortegroup.model.productdetails.ConfOption;
-import com.fortegroup.model.productdetails.ConfProperty;
 import com.fortegroup.model.productdetails.Product;
+import com.fortegroup.service.accounts.UserService;
+import com.fortegroup.service.productdetails.HistoryProductService;
 import com.fortegroup.service.productdetails.ProductDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +22,12 @@ public class ProductDetailController {
     @Autowired
     private ProductDetailService productDetailService;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private HistoryProductService historyProductService;
+
     @RequestMapping(value = "/getProduct", params = "id", method = RequestMethod.GET)
     public ResponseEntity<?> getDetails(@RequestParam("id") String id) {
         Pattern p = Pattern.compile("[\\d]+");
@@ -31,11 +37,17 @@ public class ProductDetailController {
                 Product product = productDetailService.getProductById(Integer.parseInt(id));
                 product.setBaseSKUs(null);
                 product.setCategories(null);
+
+                //Add product to user history
+
+//                historyProductService.addProductToHistory();
+
                 return ResponseEntity.ok(product);
             } catch (NullPointerException e) {
             }
         }
-        return ResponseEntity.badRequest().header("NetworkError: 400 Bad Request - http://192.168.1.207:8181/rest/product/getProduct/" + id).body("400 Bad Request");
+        return ResponseEntity.badRequest().header("NetworkError: 400 Bad Request -" +
+                " http://192.168.1.207:8181/rest/product/getProduct/" + id).body("400 Bad Request");
     }
 
     @RequestMapping(value = "/getAdditionalInfo", params = "id", method = RequestMethod.GET)
@@ -101,6 +113,7 @@ public class ProductDetailController {
                 return  ResponseEntity.ok(SKUs);
             } catch (NullPointerException e) {}
         }
-        return ResponseEntity.badRequest().header("NetworkError: 400 Bad Request - http://192.168.1.207:8181/rest/product/getProduct/" + id).body("400 Bad Request");
+        return ResponseEntity.badRequest().header("NetworkError: 400 Bad Request - " +
+                "http://192.168.1.207:8181/rest/product/getProduct/" + id).body("400 Bad Request");
     }
 }

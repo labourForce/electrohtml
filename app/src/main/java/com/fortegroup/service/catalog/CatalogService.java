@@ -23,4 +23,6 @@ public interface CatalogService {
     List<CategoryDTO> getRootCategories();
 
     List<CategoryDTO> getChildCategories(Long id);
+
+    List<CategoryDTO> getAllCategories();
 }

@@ -161,6 +161,16 @@ public class CatalogServiceImpl implements CatalogService {
         return childCategories;
     }
 
+    @Override
+    @Transactional
+    public List<CategoryDTO> getAllCategories() {
+        List<CategoryDTO> allCategories = new ArrayList<>();
+
+        categoryDAO.getAllCategories().forEach(category ->
+                allCategories.add(CategoryMapper.toDtoCategory(category)));
+        return allCategories;
+    }
+
     private Category getRootCategory(String seoName){
         Category category = categoryDAO.getByName(seoName);
 

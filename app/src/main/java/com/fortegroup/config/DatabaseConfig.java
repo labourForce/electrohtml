@@ -2,6 +2,8 @@ package com.fortegroup.config;
 
 import com.fortegroup.dao.category.CategoryDAO;
 import com.fortegroup.dao.category.CategoryDAOImpl;
+import com.fortegroup.dao.productdetails.HistoryProductDAO;
+import com.fortegroup.dao.productdetails.HistoryProductDAOImpl;
 import com.fortegroup.dao.productdetails.ProductDetailDao;
 import com.fortegroup.dao.accounts.UserDao;
 import com.fortegroup.dao.productdetails.ProductDetailDaoImpl;
@@ -9,10 +11,13 @@ import com.fortegroup.dao.accounts.UserDaoImpl;
 
 import com.fortegroup.dao.shorturl.ShortUrlDAO;
 import com.fortegroup.dao.shorturl.ShortUrlDAOImpl;
+import com.fortegroup.model.productdetails.HistoryProduct;
 import com.fortegroup.service.catalog.CatalogService;
 import com.fortegroup.service.catalog.CatalogServiceImpl;
 import com.fortegroup.service.checkInformation.ShippingBillingService;
 import com.fortegroup.service.checkInformation.ShippingBillingServiceImpl;
+import com.fortegroup.service.productdetails.HistoryProductService;
+import com.fortegroup.service.productdetails.HistoryProductServiceImpl;
 import com.fortegroup.service.productdetails.ProductDetailService;
 import com.fortegroup.service.accounts.UserService;
 import com.fortegroup.service.accounts.UserServiceImpl;
@@ -115,5 +120,15 @@ public class DatabaseConfig {
 
     @Bean
     public ShortUrlDAO shortUrlDAO(){return new ShortUrlDAOImpl();}
+
+    @Bean
+    public HistoryProductDAO historyProductDAO() {
+        return new HistoryProductDAOImpl();
+    }
+
+    @Bean
+    public HistoryProductService historyProductService() {
+        return new HistoryProductServiceImpl();
+    }
 
 }
