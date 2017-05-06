@@ -1,9 +1,11 @@
 package com.fortegroup.model.accounts;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fortegroup.model.checkout.Order;
 import com.fortegroup.model.shoppingCart.ShoppingCart;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Base entity for spring hibernate it explain User model
@@ -25,9 +27,12 @@ public class User {
     private String authorities;
 
     @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Order> orders;
+
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private ShoppingCart shoppingCart;
-
 
     public User() {
     }
@@ -78,4 +83,11 @@ public class User {
         this.shoppingCart = shoppingCart;
     }
 
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 }

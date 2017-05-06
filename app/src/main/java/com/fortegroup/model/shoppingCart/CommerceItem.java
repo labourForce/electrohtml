@@ -1,6 +1,7 @@
 package com.fortegroup.model.shoppingCart;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fortegroup.model.checkout.Order;
 import com.fortegroup.model.productdetails.BaseSKU;
 
 import javax.persistence.*;
@@ -17,6 +18,8 @@ public class CommerceItem {
     private BaseSKU sku;
     private Set<CommerceItemProperties> commerceItemProperties = new HashSet<>();
     private Set<ShoppingCartProperties> cartProperties = new HashSet<>();
+    private String order_id;
+    private Order order;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,5 +75,25 @@ public class CommerceItem {
     }
     public void setCommerceItemProperties(Set<CommerceItemProperties> properties) {
         this.commerceItemProperties = properties;
+    }
+
+    @Column(name = "order_id", nullable = false, insertable = false, updatable = false)
+    public String getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(String order_id) {
+        this.order_id = order_id;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JoinColumn(name = "order_id", nullable = false)
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

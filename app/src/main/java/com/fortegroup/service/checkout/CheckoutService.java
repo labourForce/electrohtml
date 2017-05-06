@@ -7,6 +7,6 @@ public interface CheckoutService {
 
     public Response checkout(Request request);
 
-    public void makeOrder();
+    public void makeOrder(Request request, Long userId);
 
 }
