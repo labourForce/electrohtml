@@ -40,16 +40,16 @@ public class ShoppingCartController {
     }
 
     @RequestMapping (value = "/cart", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteItemById(@RequestParam("id") String id,HttpServletRequest request){
-        try {
-            Long userId = (Long) request.getAttribute("id");
-            service.deleteItemById(Long.parseLong(id),userId);
-            ShoppingCartDTO cartDTO = service.getShoppingCartById(userId);
-            return ResponseEntity.ok(cartDTO);
-        }catch (NullPointerException exception){
-            return ResponseEntity.ok("Item with id " + id + " doesn't exist");
-        }
+    public ResponseEntity<?> deleteItemById(@RequestParam("itemId") String id,HttpServletRequest request) {
+
+        Long userId = (Long) request.getAttribute("id");
+        service.deleteItemById(Long.parseLong(id), userId);
+        ShoppingCartDTO cartDTO = service.getShoppingCartById(userId);
+        return ResponseEntity.ok(cartDTO);
+
+//        return ResponseEntity.ok("Item with id " + id + " doesn't exist");
     }
+
 
     @RequestMapping (value = "/cart", method = RequestMethod.POST)
     public ResponseEntity<?> updateItemQuantity (@RequestBody ItemInsertDTO itemDTO, HttpServletRequest servletRequest){
