@@ -11,6 +11,7 @@ export default class SearchVM {
             size: 18
         }, props.query);
         props.breadcrumbs = props.breadcrumbs || [];
+        this.title = props._pageType === 'search' ? `Search results for "${props.query.searchTerm}"` : props.breadcrumbs[props.breadcrumbs.length - 1].name;
         this.currentPage = ko.observable(props.query.page);
         this.pageCount = ko.observable(1);
         this.app = app;

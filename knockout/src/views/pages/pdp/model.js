@@ -106,13 +106,13 @@ export default class PDPVM {
                     } catch (e) {
                         sku.techline = [];
                     }
-                    sku.confProperties = sku.confProperties.map((prop) => {
+                    sku.confPropertiesDTO = sku.confPropertiesDTO.map((prop) => {
                         prop._selectedOption = ko.observable();
                         return prop;
                     });
                     sku._totalListPrice = ko.pureComputed(function () {
                         return sku.listPrice +
-                            sku.confProperties.reduce((accum, prop) => {
+                            sku.confPropertiesDTO.reduce((accum, prop) => {
                                 return accum + (
                                     prop._selectedOption() || prop._selectedOption() === 0 ?
                                         prop.confOptions[prop._selectedOption()].variableSKU.listPrice :
@@ -123,7 +123,7 @@ export default class PDPVM {
                     });
                     sku._totalSalePrice = ko.pureComputed(function () {
                         return sku.salePrice +
-                            sku.confProperties.reduce((accum, prop) => {
+                            sku.confPropertiesDTO.reduce((accum, prop) => {
                                 return accum + (
                                         prop._selectedOption() || prop._selectedOption() === 0 ?
                                             prop.confOptions[prop._selectedOption()].variableSKU.salePrice :

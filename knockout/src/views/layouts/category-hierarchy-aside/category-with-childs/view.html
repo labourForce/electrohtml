@@ -1,0 +1,20 @@
+<li
+    data-bind="css: {'category-filter__underItem': !$data.parent, 'category-filter__subItem': $data.parent}"
+>
+    <a
+       data-bind="text: $data.category.categoryDTO.displayName, attr: { href: '#subcategory-' + $data.category.categoryDTO.id }, css: { 'category-filter__subLink': $data.parent, 'category-filter__underLink': !$data.parent, 'category-filter__subLink-empty': !$data.category.list.length }"
+       data-toggle="collapse"
+       aria-expanded="true"
+    >
+    </a>
+    <!--ko if: $data.category.list && $data.category.list.length-->
+    <ul class="category-filter__subWrap collapse in"
+        data-bind="attr: { id: 'subcategory-' + $data.category.categoryDTO.id }"
+    >
+        <!--ko foreach: $data.category.list-->
+            <!--ko component: { name: 'category-with-children', params: { category: $data, parent: true } }-->
+            <!--/ko-->
+        <!--/ko-->
+    </ul>
+    <!--/ko-->
+</li>

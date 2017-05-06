@@ -7,6 +7,7 @@ import ProfileModel from '../../scripts/models/profile';
 import OrderModel from '../../scripts/models/order';
 import { sendRequest } from '../../scripts/utils/common';
 import '../layouts/breadcrumbs';
+import '../layouts/category-hierarchy-aside';
 
 export default class MainVM {
     constructor(){
@@ -25,7 +26,7 @@ export default class MainVM {
 
         let result = ko.toJSON(window.localStorage.getItem('auth_token'));
         sendRequest({
-            url: '/rest/account/info ',
+            url: '/rest/account/info',
             contentType: 'application/json',
             type: 'GET',
             data: result ,

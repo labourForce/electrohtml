@@ -59,8 +59,11 @@
   }
   &__underItem {
     margin: 0 14px;
+    &>ul {
+      border-bottom: 1px solid #ddd;
+    }
     &:last-child {
-      a {
+      &>ul {
         border-bottom: 0;
       }
     }
@@ -108,6 +111,12 @@
       color: $black;
 
     }
+    &-empty {
+      &::before {
+        content: "" !important;
+        padding-left: 9px;
+      }
+    }
     &::before {
       content: "\f107";
       font-family: FontAwesome;
@@ -126,8 +135,7 @@
 
   }
   &__subItem {
-    padding: 20px 0;
-    padding-left: 12px;
+    padding: 20px 0 0 12px;
     & ul {
 
       & li {

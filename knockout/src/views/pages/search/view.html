@@ -6,55 +6,12 @@
     </div>
     <div class="row">
         <div class="col-lg-3 col-md-3">
-            <aside>
-                <div class="category-filter">
-                    <ul class="category-filter__wrapper">
-                        <li class="category-filter__item"><a data-toggle="collapse" href="#CategoryMainList"
-                                                             aria-expanded="true" aria-controls="CategoryMainList"
-                                                             class="category-filter__link">Show All Categories</a>
-                            <ul id="CategoryMainList" class="category-filter__underWrap collapse in">
-                                <li class="category-filter__underItem"><a href="#"
-                                                                          class="category-filter__underLink-active">Laptops
-                                    & Computers<span class="category-filter__counterItem">2079</span></a>
-                                    <ul class="category-filter__subWrap">
-                                        <li class="category-filter__subItem"><a data-toggle="collapse"
-                                                                                href="#CategoryOne" aria-expanded="true"
-                                                                                aria-controls="CategoryOne"
-                                                                                class="category-filter__subLink">Laptops<span
-                                                class="category-filter__counterItem">800</span></a>
-                                            <ul id="CategoryOne" class="collapse in">
-                                                <li><a href="#">11.6 "</a><span
-                                                        class="category-filter__counterItem">345</span></li>
-                                                <li><a href="#">11.6 "</a><span
-                                                        class="category-filter__counterItem">345</span></li>
-                                                <li><a href="#">11.6 "</a><span
-                                                        class="category-filter__counterItem">345</span></li>
-                                                <li><a href="#">11.6 "</a><span
-                                                        class="category-filter__counterItem">345</span></li>
-                                                <li><a href="#">11.6 "</a><span
-                                                        class="category-filter__counterItem">345</span></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="category-filter__underItem"><a href="#" class="category-filter__underLink">Laptops
-                                    & Computers<span class="category-filter__counterItem">3222</span></a></li>
-                                <li class="category-filter__underItem"><a href="#" class="category-filter__underLink">Laptops
-                                    & Computers<span class="category-filter__counterItem">4333</span></a></li>
-                                <li class="category-filter__underItem"><a href="#" class="category-filter__underLink">Laptops
-                                    & Computers<span class="category-filter__counterItem">5555</span></a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="banner-img"><a href="#"><img src="../../../images/ad-banner2.jpg" alt="Image"></a></div>
-            </aside>
+            <!--ko component: { name: 'category-hierarchy-aside', params: { app: $data.app } } --><!--/ko-->
         </div>
         <div class="col-lg-9 col-md-9">
             <div class="main-title__wrapper">
                 <h3 class="main-title__text title--big">
-                    <span data-bind="text: "></span>
-                    Search results for "<span data-bind="text: $data.props.query.searchTerm"></span>"
+                    <span data-bind='text: $data.title'></span>
                 </h3>
                 <hr/>
             </div>

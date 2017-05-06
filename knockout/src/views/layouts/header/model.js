@@ -12,7 +12,6 @@ export default class HeaderVM{
 
         this.searchString = ko.observable('');
         this.searchCategory = ko.observable('');
-        // this.contentItem = ko.observable();
         this.isLogin = ko.observable(false);
         this.userName = ko.observable('');
         this.toPage = ko.observable('login');
@@ -54,7 +53,7 @@ export default class HeaderVM{
     getRootCategoties () {
         sendRequest({
             method: 'GET',
-            url: '/rest/rootCategories',
+            url: '/rest/allCategories',
             success: (data) => {
                 this.categories(data);
             }

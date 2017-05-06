@@ -1,0 +1,20 @@
+<aside>
+    <div class="category-filter">
+        <ul class="category-filter__wrapper">
+            <li class="category-filter__item">
+                <a data-toggle="collapse" href="#CategoryMainList" aria-expanded="true" aria-controls="CategoryMainList" class="category-filter__link">
+                    Show All Categories
+                </a>
+                <ul id="CategoryMainList" class="category-filter__underWrap collapse in">
+                    <!--ko foreach: $data.categories-->
+                        <!--ko component: { name: 'category-with-children', params: { category: $data } }-->
+                        <!--/ko-->
+                    <!--/ko-->
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="banner-img">
+        <a href="#"><img src="../../../images/ad-banner2.jpg" alt="Image"></a>
+    </div>
+</aside>

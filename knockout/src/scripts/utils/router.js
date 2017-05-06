@@ -52,7 +52,8 @@ export class Router {
                             if (routes[routes.length - 1].objectType === 1) {
                                 let params = {
                                     id: routes[routes.length - 1].object.id,
-                                    breadcrumbs: breadcrumbs
+                                    breadcrumbs: breadcrumbs,
+                                    _pageType: 'pdp'
                                 };
                                 this.app.currentState(new State('pdp', this.app, params));
                             } else {
@@ -61,7 +62,8 @@ export class Router {
                                         searchTerm: '',
                                         category: routes[routes.length - 1].object.name
                                     },
-                                    breadcrumbs: breadcrumbs
+                                    breadcrumbs: breadcrumbs,
+                                    _pageType: 'catalog'
                                 };
                                 this.app.currentState(new State('search', this.app, params));
                             }

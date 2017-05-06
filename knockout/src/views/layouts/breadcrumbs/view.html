@@ -3,7 +3,7 @@
     <nav>
         <ul class="breadcrumbs__wrap" data-bind="foreach: $data.breadcrumbs">
             <li class="breadcrumbs__list">
-                <a data-bind="text: $data.name, attr: { class: 'breadcrumbs__link' + ($index() === $parent.breadcrumbs.length - 1 ? '-active' : '') }, click: $parent.goTo.bind($parent)"></a>
+                <a href="javascript:void(0)" data-bind="text: $data.name, attr: { class: 'breadcrumbs__link' + ($index() === $parent.breadcrumbs.length - 1 ? '-active' : '') }, click: $parent.goTo.bind($parent)"></a>
             </li>
         </ul>
     </nav>
