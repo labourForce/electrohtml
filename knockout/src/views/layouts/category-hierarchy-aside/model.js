@@ -3,13 +3,12 @@ import { sendRequest } from '../../../scripts/utils/common';
 
 export default class CategoryHierarchyAside {
     constructor (params) {
-        console.log('HIERARCHY CONSTRUCTOR');
+        this.onClick = params.onClick || (() => {});
         this.categories = ko.observableArray([]);
         this.getCategoryHierarchy();
     }
 
     getCategoryHierarchy () {
-        console.log('GET HIERARCHY');
         sendRequest({
             method: 'GET',
             url: '/rest/categoryHierarchy',

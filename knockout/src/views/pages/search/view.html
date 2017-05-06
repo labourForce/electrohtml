@@ -1,12 +1,14 @@
 <div class="container">
+    <!--ko if: $data.breadcrumbs-->
     <div class="row">
         <div class="col-lg-12">
-            <!--ko component: { name: 'breadcrumbs', params: { breadcrumbs: $data.props.breadcrumbs, app: $data.app } } --><!--/ko-->
+            <!--ko component: { name: 'breadcrumbs', params: { breadcrumbs: $data.breadcrumbs(), app: $data.app } } --><!--/ko-->
         </div>
     </div>
+    <!--/ko-->
     <div class="row">
         <div class="col-lg-3 col-md-3">
-            <!--ko component: { name: 'category-hierarchy-aside', params: { app: $data.app } } --><!--/ko-->
+            <!--ko component: { name: 'category-hierarchy-aside', params: { app: $data.app, onClick: $data.categorySelect.bind($data) } } --><!--/ko-->
         </div>
         <div class="col-lg-9 col-md-9">
             <div class="main-title__wrapper">

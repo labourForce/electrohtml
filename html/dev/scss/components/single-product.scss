@@ -191,12 +191,13 @@
 
         .sku-item__image {
           display: flex;
-          padding-right: 10px;
+          margin-right: 10px;
           align-items: center;
-          img {
-            width: 191px;
-            height: 171px;
-          }
+          width: 191px;
+          height: 171px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
         }
 
         .sku-item__content {

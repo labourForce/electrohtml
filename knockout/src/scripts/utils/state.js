@@ -19,7 +19,8 @@ let stateList = {
     cart: cart,
     pdp: pdp,
     checkout: checkout,
-    search: search
+    search: search,
+    catalog: search
 };
 
 export default class State {

@@ -7,7 +7,7 @@
                 </a>
                 <ul id="CategoryMainList" class="category-filter__underWrap collapse in">
                     <!--ko foreach: $data.categories-->
-                        <!--ko component: { name: 'category-with-children', params: { category: $data } }-->
+                        <!--ko component: { name: 'category-with-children', params: { category: $data, onClick: $parent.onClick } }-->
                         <!--/ko-->
                     <!--/ko-->
                 </ul>

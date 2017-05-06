@@ -12,7 +12,6 @@ const routing = {
     homepage: createRouteObject('/', 'homepage'),
     search: createRouteObject('/search{?query}', 'search'),
     searchDefault: createRouteObject('/search', 'search'),
-    pdp: createRouteObject('/pdp/{id}', 'pdp'),
     checkout: createRouteObject('/checkout', 'checkout'),
     login: createRouteObject('/login', 'login'),
     catalog: createRouteObject('/catalog/{path*}', '?')
@@ -55,7 +54,7 @@ export class Router {
                                     breadcrumbs: breadcrumbs,
                                     _pageType: 'pdp'
                                 };
-                                this.app.currentState(new State('pdp', this.app, params));
+                                this.goToRoute('pdp', params);
                             } else {
                                 let params = {
                                     query: {
@@ -65,7 +64,7 @@ export class Router {
                                     breadcrumbs: breadcrumbs,
                                     _pageType: 'catalog'
                                 };
-                                this.app.currentState(new State('search', this.app, params));
+                                this.goToRoute('catalog', params);
                             }
                         },
                         error: () => {
@@ -82,8 +81,8 @@ export class Router {
                         data[match[1]] = params[index++];
                     }
                     data._pageType = key;
-                    console.log(data);
-                    this.app.currentState(new State(routing[key].state, this.app, data));
+
+                    this.goToRoute(routing[key].state, data);
                 }
             });
         }
@@ -91,6 +90,16 @@ export class Router {
         crossroads.bypassed.add(() => {
             console.log('BYPASS', arguments);
         });
+    }
+
+    goToRoute (state, props) {
+        if (this.app.currentState() && this.app.currentState().data && this.app.currentState().data.props && this.app.currentState().data.props._pageType === state) {
+            if (this.app.currentState().data.reload) {
+                this.app.currentState().data.reload(this.app, props);
+            }
+        } else {
+            this.app.currentState(new State(state, this.app, props));
+        }
     }
 
     createBreadcrumbs(routes, type) {

@@ -1,18 +1,20 @@
 <li
     data-bind="css: {'category-filter__underItem': !$data.parent, 'category-filter__subItem': $data.parent}"
 >
+    <!--ko with: $data.category-->
     <a
-       data-bind="text: $data.category.categoryDTO.displayName, attr: { href: '#subcategory-' + $data.category.categoryDTO.id }, css: { 'category-filter__subLink': $data.parent, 'category-filter__underLink': !$data.parent, 'category-filter__subLink-empty': !$data.category.list.length }"
+       data-bind="text: $data.categoryDTO.displayName, attr: { href: '#subcategory-' + $data.categoryDTO.id }, css: { 'category-filter__subLink': $parent.parent, 'category-filter__underLink': !$parent.parent, 'category-filter__subLink-empty': !$data.list.length }, click: $parent.onClick"
        data-toggle="collapse"
        aria-expanded="true"
     >
     </a>
+    <!--/ko-->
     <!--ko if: $data.category.list && $data.category.list.length-->
     <ul class="category-filter__subWrap collapse in"
         data-bind="attr: { id: 'subcategory-' + $data.category.categoryDTO.id }"
     >
         <!--ko foreach: $data.category.list-->
-            <!--ko component: { name: 'category-with-children', params: { category: $data, parent: true } }-->
+            <!--ko component: { name: 'category-with-children', params: { category: $data, parent: true, onClick: $parent.onClick } }-->
             <!--/ko-->
         <!--/ko-->
     </ul>

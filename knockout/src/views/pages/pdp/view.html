@@ -57,13 +57,13 @@
                         <div class="single-product__carousel">
                             <div class="single-product__carousel-item">
                                 <img src="../../../images/Ultrabooks-600x600.jpg"
-                                     data-bind="attr: { src: 'http://192.168.1.207:8181/' + $data.product.image() }"
+                                     data-bind="attr: { src: $data.product.image() }"
                                      alt="product"/>
                             </div>
                         </div>
                         <div class="single-product__gallery" style="display: none;">
-                            <div class="single-product__gallery-item"><img src="../../../images/Ultrabooks-600x600.jpg"
-                                                                           alt="product"></div>
+                            <div class="single-product__gallery-item"
+                            ><img src="../../../images/Ultrabooks-600x600.jpg" alt="product"></div>
                         </div>
                     </div>
                     <div class="single-product__descr">
@@ -145,12 +145,7 @@
                             <div class="single-product__choose-parts">
                                 <ul class="single-product__choose-parts-list" data-bind="foreach: $data.skus">
                                     <li class="sku-item">
-                                        <div class="sku-item__image">
-                                            <img
-                                                    data-bind="attr: { src: 'http://192.168.1.207:8181/' + $data.image }"
-                                                    alt="item"
-                                            />
-                                        </div>
+                                        <div class="sku-item__image" data-bind="style: { backgroundImage: 'url(' + $data.image + ')' }"></div>
                                         <div class="sku-item__content">
                                             <div class="sku-item__content-body">
                                                 <div class="sku-item__header">
