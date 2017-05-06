@@ -23,7 +23,7 @@ public class BaseSKUDTO {
     private double salePrice;
     private int quantity;
     private String image;
-    private Set<ConfPropertyDTO> confProperties = new HashSet<>(0);
+    private Set<ConfPropertyDTO> confPropertiesDTO = new HashSet<>(0);
 
     public Long getId() {
         return id;
@@ -153,11 +153,11 @@ public class BaseSKUDTO {
         this.image = image;
     }
 
-    public Set<ConfPropertyDTO> getConfProperties() {
-        return confProperties;
+    public Set<ConfPropertyDTO> getConfPropertiesDTO() {
+        return confPropertiesDTO;
     }
 
-    public void setConfProperties(Set<ConfPropertyDTO> confProperties) {
-        this.confProperties = confProperties;
+    public void setConfPropertiesDTO(Set<ConfPropertyDTO> confPropertiesDTO) {
+        this.confPropertiesDTO = confPropertiesDTO;
     }
 }
