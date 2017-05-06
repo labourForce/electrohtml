@@ -37,6 +37,23 @@ public class CatalogController {
         return ResponseEntity.ok(entities);
     }
 
+    @RequestMapping(value = "/с/**", method = RequestMethod.GET)
+    public ResponseEntity<?> seoShortUrl(HttpServletRequest request, @RequestParam(required = false) Boolean fullInformation){
+        String uri = request.getRequestURI();
+        String shortUrl = uri.substring(uri.indexOf("catalog/") + 2);
+
+        if (fullInformation == null){
+            fullInformation = false;
+        }
+
+        List<Object> entities = catalogService.getSeoByShortUrl(shortUrl, fullInformation);
+
+        if (entities == null || entities.size() == 0){
+            return ResponseEntity.badRequest().body("Nothing was found");
+        }
+        return ResponseEntity.ok(entities);
+    }
+
     @RequestMapping(value = "/getShortUrl", method = RequestMethod.GET)
     public ResponseEntity<?> getShortUrl(@RequestParam String fullUrl) {
         String shortUrl = catalogService.getShortUrlByFullUrl(fullUrl);
@@ -54,7 +71,7 @@ public class CatalogController {
                 .collect(Collectors.toList());
         String shortUrl = catalogService.createShortUrl(entities, fullUrl);
         if (shortUrl == null){
-            return ResponseEntity.badRequest().body("Error during created");
+            return ResponseEntity.badRequest().body("Error during creating short url.");
         }
         return ResponseEntity.ok(shortUrl);
     }
