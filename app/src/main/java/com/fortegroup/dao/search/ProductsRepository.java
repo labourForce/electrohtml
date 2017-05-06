@@ -38,6 +38,9 @@ public interface ProductsRepository extends ElasticsearchRepository<Products, St
     @Query("{\"match\": {\"long_description\": \"?0\"}}")
     Page<Products> customFindByLongDescriptionAllCategories(String id, Pageable pageable);
 
+    @Query("{\"match\": {\"product_id\": \"?0\"}}")
+    Products customFindById(String id);
+
 }
 
 

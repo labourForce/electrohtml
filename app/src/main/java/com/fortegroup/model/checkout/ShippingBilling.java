@@ -1,4 +1,4 @@
-package com.fortegroup.model.checkInformation;
+package com.fortegroup.model.checkout;
 
 /**
  * Created by PC on 28.04.2017.
@@ -8,10 +8,10 @@ public class ShippingBilling {
     private String lastName;
     private String companyName;
     private String email;
-    private String phoneNumber;
+    private String phone;
     private String country;
     private String address;
-    private String zipCode;
+    private String zip;
     private String city;
 
     public ShippingBilling() {
@@ -49,14 +49,6 @@ public class ShippingBilling {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public String getCountry() {
         return country;
     }
@@ -73,19 +65,27 @@ public class ShippingBilling {
         this.address = address;
     }
 
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
     public String getCity() {
         return city;
     }
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 }

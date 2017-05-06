@@ -14,6 +14,7 @@ export default class PDPVM {
 
     constructor (app, props) {
         this.props = props;
+        this.app = app;
         $(() => {
             $('.single-product__carousel').slick({
                 slidesToShow: 1,

@@ -5,12 +5,14 @@ import com.fortegroup.model.productdetails.BaseSKU;
 import com.fortegroup.model.productdetails.ConfOption;
 import com.fortegroup.model.productdetails.ConfProperty;
 import com.fortegroup.model.productdetails.Product;
+import com.fortegroup.model.shoppingCart.dto.ShoppingCartDTO;
+import com.fortegroup.service.productdetails.HistoryProductService;
 import com.fortegroup.service.productdetails.ProductDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -22,16 +24,42 @@ public class ProductDetailController {
     @Autowired
     private ProductDetailService productDetailService;
 
+    @Autowired
+    private HistoryProductService historyProductService;
+
     @RequestMapping(value = "/getProduct", params = "id", method = RequestMethod.GET)
-    public ResponseEntity<?> getDetails(@RequestParam("id") String id) {
+    public ResponseEntity<?> getDetails(HttpServletRequest req, @RequestParam("id") String id) {
         Pattern p = Pattern.compile("[\\d]+");
         Matcher m = p.matcher(id);
         if (m.matches()) {
             try {
                 Product product = productDetailService.getProductById(Integer.parseInt(id));
-                product.setBaseSKUs(null);
-                product.setCategories(null);
-                return ResponseEntity.ok(product);
+
+                ProductDTO productDTO = new ProductDTO();
+                productDTO.setId(product.getId());
+                productDTO.setName(product.getName());
+                productDTO.setDisplayName(product.getDisplayName());
+                productDTO.setRating(product.getRating());
+                productDTO.setAvailability(product.isAvailability());
+                productDTO.setDisplayFlag(product.isDisplayFlag());
+                productDTO.setLongDescription(product.getLongDescription());
+                productDTO.setShortDescription(product.getShortDescription());
+                productDTO.setBrand(product.getBrand());
+                productDTO.setTechline(product.getTechline());
+                productDTO.setOnSale(product.isOnSale());
+                productDTO.setUpSale(product.isUpSale());
+                productDTO.setListPrice(product.getListPrice());
+                productDTO.setSalePrice(product.getSalePrice());
+                productDTO.setImage(product.getImage());
+                productDTO.setRootCategoryId(product.getRootCategoryId());
+
+                // Add product to user's product history
+                Long userId = (Long) req.getAttribute("id");
+                if (userId != null) {
+                    historyProductService.addProductToHistory(userId, productDTO.getId());
+                }
+
+                return ResponseEntity.ok(productDTO);
             } catch (NullPointerException e) {
             }
         }
@@ -46,7 +74,7 @@ public class ProductDetailController {
             try {
                 Product product = productDetailService.getProductById(Integer.parseInt(id));
                 Set<BaseSKU> SKUs = product.getBaseSKUs();
-                /*Set<BaseSKUDTO> SKUsDTO = new HashSet<>();
+                Set<BaseSKUDTO> SKUsDTO = new HashSet<>();
                 for (BaseSKU line : SKUs) {
                     BaseSKUDTO baseSKUDTO = new BaseSKUDTO();
                     baseSKUDTO.setId(line.getId());
@@ -94,11 +122,11 @@ public class ProductDetailController {
                             confPropertyDTO.setConfOptions(confOptionDTOS);
                             confPropertyDTOS.add(confPropertyDTO);
                         }
-                        baseSKUDTO.setConfPropertiesDTO(confPropertyDTOS);
+                        baseSKUDTO.setConfProperties(confPropertyDTOS);
                     }
                     SKUsDTO.add(baseSKUDTO);
-                }*/
-                return  ResponseEntity.ok(SKUs);
+                }
+                return  ResponseEntity.ok(SKUsDTO);
             } catch (NullPointerException e) {}
         }
         return ResponseEntity.badRequest().header("NetworkError: 400 Bad Request - http://192.168.1.207:8181/rest/product/getProduct/" + id).body("400 Bad Request");

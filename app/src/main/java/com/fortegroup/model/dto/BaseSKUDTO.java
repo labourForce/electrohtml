@@ -1,6 +1,5 @@
 package com.fortegroup.model.dto;
 
-import com.fortegroup.model.productdetails.Product;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,9 +23,7 @@ public class BaseSKUDTO {
     private double salePrice;
     private int quantity;
     private String image;
-    private int productId;
-    private Product product;
-    private Set<ConfPropertyDTO> confPropertiesDTO = new HashSet<>(0);
+    private Set<ConfPropertyDTO> confProperties = new HashSet<>(0);
 
     public Long getId() {
         return id;
@@ -156,27 +153,11 @@ public class BaseSKUDTO {
         this.image = image;
     }
 
-    public int getProductId() {
-        return productId;
+    public Set<ConfPropertyDTO> getConfProperties() {
+        return confProperties;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public Set<ConfPropertyDTO> getConfPropertiesDTO() {
-        return confPropertiesDTO;
-    }
-
-    public void setConfPropertiesDTO(Set<ConfPropertyDTO> confPropertiesDTO) {
-        this.confPropertiesDTO = confPropertiesDTO;
+    public void setConfProperties(Set<ConfPropertyDTO> confProperties) {
+        this.confProperties = confProperties;
     }
 }

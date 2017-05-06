@@ -10,14 +10,16 @@ public class AuthenticationRequest {
 
     private String username;
     private String password;
+    private boolean remember;
 
     public AuthenticationRequest() {
 
     }
 
-    public AuthenticationRequest(String username, String password) {
+    public AuthenticationRequest(String username, String password,boolean remember) {
         this.setUsername(username);
         this.setPassword(password);
+        this.setRemember(remember);
     }
 
     public String getUsername() {
@@ -36,4 +38,11 @@ public class AuthenticationRequest {
         this.password = password;
     }
 
+    public boolean getRemember() {
+        return remember;
+    }
+
+    public void setRemember(boolean remember) {
+        this.remember = remember;
+    }
 }

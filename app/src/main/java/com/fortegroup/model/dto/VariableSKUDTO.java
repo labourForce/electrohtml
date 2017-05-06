@@ -15,8 +15,6 @@ public class VariableSKUDTO {
     private String techline;
     private double listPrice;
     private double salePrice;
-    private int confOptionId;
-    private ConfOptionDTO confOption;
 
     public Long getId() {
         return id;
@@ -104,21 +102,5 @@ public class VariableSKUDTO {
 
     public void setSalePrice(double salePrice) {
         this.salePrice = salePrice;
-    }
-
-    public int getConfOptionId() {
-        return confOptionId;
-    }
-
-    public void setConfOptionId(int confOptionId) {
-        this.confOptionId = confOptionId;
-    }
-
-    public ConfOptionDTO getConfOption() {
-        return confOption;
-    }
-
-    public void setConfOption(ConfOptionDTO confOption) {
-        this.confOption = confOption;
     }
 }

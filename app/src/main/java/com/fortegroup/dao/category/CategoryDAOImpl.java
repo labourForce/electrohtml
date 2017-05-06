@@ -66,7 +66,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     @SuppressWarnings("unchecked")
     public List<Category> getRootCategories() {
         return sessionFactory.getCurrentSession().
-                createQuery("select c from Category c where c.rootCategory=null").list();
+                createQuery("select c from Category c where c.rootCategory=null order by c.id").list();
     }
 
     /**
@@ -79,6 +79,19 @@ public class CategoryDAOImpl implements CategoryDAO {
     public List<Category> getChildCategories(Long id) {
         return sessionFactory.getCurrentSession().
                 createQuery("select cc from Category c join c.childCategories cc " +
-                "where c.id=:id").setParameter("id", id).list();
+                "where c.id=:id order by cc.id").setParameter("id", id).list();
     }
+
+    /**
+     * Get all categories ordered by id
+     * @return List with all categories
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Category> getAllCategories() {
+        return sessionFactory.getCurrentSession().
+                createQuery("select c from Category c order by c.id").list();
+    }
+
+
 }

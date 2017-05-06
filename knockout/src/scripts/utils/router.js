@@ -38,13 +38,33 @@ export class Router {
 
         for (let key in routing) {
             crossroads.addRoute(routing[key].url, (...params) => {
-                console.log(window.location.pathname, window.location.search, routing[key].url);
-                if (routing[key].state === '?') {
+                if (routing[key].state === '?' && key === 'catalog') {
                     sendRequest({
                         method: 'GET',
                         url: '/rest' + window.location.pathname,
-                        success: () => {
-                            console.log(arguments);
+                        data: {
+                            fullInformation: true
+                        },
+                        success: (routes) => {
+
+                            const breadcrumbs = this.createBreadcrumbs(routes, 'catalog');
+
+                            if (routes[routes.length - 1].objectType === 1) {
+                                let params = {
+                                    id: routes[routes.length - 1].object.id,
+                                    breadcrumbs: breadcrumbs
+                                };
+                                this.app.currentState(new State('pdp', this.app, params));
+                            } else {
+                                let params = {
+                                    query: {
+                                        searchTerm: '',
+                                        category: routes[routes.length - 1].object.name
+                                    },
+                                    breadcrumbs: breadcrumbs
+                                };
+                                this.app.currentState(new State('search', this.app, params));
+                            }
                         },
                         error: () => {
                             console.error('GET PAGE TYPE ERROR');
@@ -59,6 +79,7 @@ export class Router {
                     while (match = regexr.exec(routing[key].url)) {
                         data[match[1]] = params[index++];
                     }
+                    data._pageType = key;
                     console.log(data);
                     this.app.currentState(new State(routing[key].state, this.app, data));
                 }
@@ -68,6 +89,21 @@ export class Router {
         crossroads.bypassed.add(() => {
             console.log('BYPASS', arguments);
         });
+    }
+
+    createBreadcrumbs(routes, type) {
+        return [{ name: 'Home', type: 'homepage' }].concat(routes.map((route, index, routes) => {
+            let breadcrumbObj = {
+                name: route.object.displayName,
+                data: { path: [] },
+                type
+            };
+            for (let i = 0; i <= index; i++) {
+                breadcrumbObj.data.path.push(routes[i].objectType === 1 ? routes[i].object.name : routes[i].object.name);
+            }
+            breadcrumbObj.data.path = breadcrumbObj.data.path.join('/');
+            return breadcrumbObj;
+        }));
     }
 
     start() {

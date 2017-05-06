@@ -1,74 +1,115 @@
 package com.fortegroup.service.checkInformation;
+import com.fortegroup.model.checkout.ShippingBilling;
+import org.springframework.stereotype.Service;
 
-import com.fortegroup.model.checkInformation.ResponseError;
-import com.fortegroup.model.checkInformation.ShippingBilling;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Created by PC on 28.04.2017.
  */
+@Service(value = "checkInformationSB")
 public class ShippingBillingServiceImpl implements ShippingBillingService {
     private final String regName = "[a-zA-Z]{2,10}$";
-    private final String regNameCompany = "^([a-zA-Z0-9_\\ -]+)";
+    private final String regNameCompany = "^([a-zA-Z0-9]+)";
     private final String regEmail = "^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{2,6})$";
-    private final String regNumber = "^\\+\\d{3}\\(\\d{2}\\)\\d{3}-\\d{2}-\\d{2}$";
-    private final String regAddress = "^([a-zA-Z]{2,30})\\s([0-9]{1,4})$";
+    private final String regNumber = "^\\d{3}\\d{2}\\d{3}\\d{2}\\d{2}$";
+    private final String regAddress = "^[a-zA-Z]{2,30}$";
     private final String regPostCode = "[a-zA-Z0-9]{1,20}$";
-    private final String regCityCounty = "[a-zA-Z\\ -]+";
+    private final String regCityCounty = "[a-zA-Z]+";
 
     public ShippingBillingServiceImpl() {
     }
 
     @Override
-    public ResponseError validateInputData(ShippingBilling sb) {
-        ResponseError responseError = new ResponseError();
+    public String validateInputData(ShippingBilling sb) {
         Pattern pFirstName = Pattern.compile(regName);
-        Matcher mFirstName = pFirstName.matcher(sb.getFirstName());
-        if (mFirstName.matches()) {
-            responseError.setFirstNameError(true);
+        StringBuffer error = new StringBuffer();
+        if(sb.getFirstName() != null) {
+            Matcher mFirstName = pFirstName.matcher(sb.getFirstName());
+            if (!mFirstName.matches()) {
+                error = error.append("firstName");
+            }
         }
-        Matcher mLastName = pFirstName.matcher(sb.getLastName());
-        if (mLastName.matches()) {
-            responseError.setLastNameError(true);
+        if(sb.getLastName() != null) {
+            Matcher mLastName = pFirstName.matcher(sb.getLastName());
+            if (!mLastName.matches()) {
+                if(!error.toString().isEmpty()){
+                    error = error.append(",");
+                }
+                error = error.append("lastName");
+            }
         }
         Pattern pCompanyName = Pattern.compile(regNameCompany);
-        Matcher mCompanyName = pCompanyName.matcher(sb.getCompanyName());
-        if (mCompanyName.matches()) {
-            responseError.setCompanyNameError(true);
+        if(sb.getCompanyName() != null) {
+            Matcher mCompanyName = pCompanyName.matcher(sb.getCompanyName());
+            if (!mCompanyName.matches()) {
+                if(!error.toString().isEmpty()){
+                    error = error.append(",");
+                }
+                error = error.append("companyName");
+            }
         }
         Pattern pEmail = Pattern.compile(regEmail);
-        Matcher mEmail = pEmail.matcher(sb.getEmail());
-        if (mEmail.matches()) {
-            responseError.setEmailError(true);
+        if(sb.getEmail() != null) {
+            Matcher mEmail = pEmail.matcher(sb.getEmail());
+            if (!mEmail.matches()) {
+                if(!error.toString().isEmpty()){
+                    error = error.append(",");
+                }
+                error = error.append("email");
+            }
         }
         Pattern pNumber = Pattern.compile(regNumber);
-        Matcher mNumber = pNumber.matcher(sb.getPhoneNumber());
-        if (mNumber.matches()) {
-            responseError.setPhoneNumberError(true);
+        if(sb.getPhone() != null) {
+            Matcher mNumber = pNumber.matcher(sb.getPhone());
+            if (!mNumber.matches()) {
+                if(!error.toString().isEmpty()){
+                    error = error.append(",");
+                }
+                error = error.append("number");
+            }
         }
         Pattern pAddress = Pattern.compile(regAddress);
-        Matcher mAddress = pAddress.matcher(sb.getAddress());
-        if (mAddress.matches()) {
-            responseError.setAddressError(true);
+        if(sb.getAddress() != null) {
+            Matcher mAddress = pAddress.matcher(sb.getAddress());
+            if (!mAddress.matches()) {
+                if(!error.toString().isEmpty()){
+                    error = error.append(",");
+                }
+                error = error.append("address");
+            }
         }
         Pattern pPostCode = Pattern.compile(regPostCode);
-        Matcher mPostCode = pPostCode.matcher(sb.getZipCode());
-        if (mPostCode.matches()) {
-            responseError.setZipCodeError(true);
+        if(sb.getZip() != null) {
+            Matcher mPostCode = pPostCode.matcher(sb.getZip());
+            if (!mPostCode.matches()) {
+                if(!error.toString().isEmpty()){
+                    error = error.append(",");
+                }
+                error = error.append("zip");
+            }
         }
         Pattern pCity = Pattern.compile(regCityCounty);
-        Matcher mCity = pCity.matcher(sb.getCity());
-        if (mCity.matches()) {
-            responseError.setCityError(true);
+        if(sb.getCity() != null) {
+            Matcher mCity = pCity.matcher(sb.getCity());
+            if (!mCity.matches()) {
+                if(!error.toString().isEmpty()){
+                    error = error.append(",");
+                }
+                error = error.append("city");
+            }
         }
         Pattern pCounty = Pattern.compile(regCityCounty);
-        Matcher mCountry = pCounty.matcher(sb.getCountry());
-        if (mCountry.matches()) {
-            responseError.setCountryError(true);
+        if(sb.getCountry() != null) {
+            Matcher mCountry = pCounty.matcher(sb.getCountry());
+            if (!mCountry.matches()) {
+                if(!error.toString().isEmpty()){
+                    error = error.append(",");
+                }
+                error = error.append("country");
+            }
         }
-        return responseError;
+        return error.toString();
     }
 }

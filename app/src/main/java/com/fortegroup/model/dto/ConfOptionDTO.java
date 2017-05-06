@@ -6,9 +6,6 @@ package com.fortegroup.model.dto;
 public class ConfOptionDTO {
     private Long id;
     private String optionName;
-    private Long propertyId;
-
-    private ConfPropertyDTO confProperty;
     private VariableSKUDTO variableSKU;
 
     public Long getId() {
@@ -25,22 +22,6 @@ public class ConfOptionDTO {
 
     public void setOptionName(String optionName) {
         this.optionName = optionName;
-    }
-
-    public Long getPropertyId() {
-        return propertyId;
-    }
-
-    public void setPropertyId(Long propertyId) {
-        this.propertyId = propertyId;
-    }
-
-    public ConfPropertyDTO getConfProperty() {
-        return confProperty;
-    }
-
-    public void setConfProperty(ConfPropertyDTO confProperty) {
-        this.confProperty = confProperty;
     }
 
     public VariableSKUDTO getVariableSKU() {

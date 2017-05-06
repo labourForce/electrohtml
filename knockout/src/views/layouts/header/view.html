@@ -203,6 +203,9 @@
                                     <div class="header-search__selectButton">
                                         <select id="header-search" data-bind="value: searchCategory">
                                             <option value="">All Categories</option>
+                                            <!--ko foreach: $data.categories-->
+                                            <option data-bind="text: $data.displayName, value: $data.name"></option>
+                                            <!--/ko-->
                                         </select>
                                     </div>
                                 </div>

@@ -65,4 +65,15 @@ public class ProductsServiceImpl implements ProductsService {
 
         return products;
     }
+
+
+    /**
+     * Get product by id (for internal use).
+     * @param id    product id
+     * @return  Product
+     */
+    @Override
+    public Products findById(String id) {
+        return productsRepository.customFindById(id);
+    }
 }

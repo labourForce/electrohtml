@@ -10,7 +10,7 @@ import com.fortegroup.model.accounts.User;
 public interface UserService {
     User loadUserByUsername(String username);
 
-    User  saveUser(User user);
+    Long saveUser(User user);
 
     User get(long id);
 

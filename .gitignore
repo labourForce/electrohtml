@@ -8,3 +8,4 @@
 /app/.idea
 /html/node_modules/
 /html/css/
+*.iml

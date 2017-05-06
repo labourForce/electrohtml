@@ -1,5 +1,8 @@
 package com.fortegroup.model.accounts;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fortegroup.model.shoppingCart.ShoppingCart;
+
 import javax.persistence.*;
 
 /**
@@ -14,12 +17,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "username", unique = true, nullable = false)
+    @Column(name = "username", unique = true)
     private String username;
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
     @Column(name = "authorities")
     private String authorities;
+
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private ShoppingCart shoppingCart;
 
 
     public User() {
@@ -61,6 +68,14 @@ public class User {
 
     public void setAuthorities(String authorities) {
         this.authorities = authorities;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 
 }
