@@ -27,9 +27,14 @@ public class BillingShipping {
         sb.setZip(request.getBilling().get("zip"));
         sb.setCity(request.getBilling().get("city"));
 
-        String error = "Errors:{";
-        error = error + shippingBillingService.validateInputData(sb);
-        error = error + "}";
+        String error = "";
+        if(shippingBillingService.validateInputData(sb).isEmpty()){
+            error = error +"false";
+        }else{
+            error = error + "Errors:{";
+            error = error + shippingBillingService.validateInputData(sb);
+            error = error + "}";
+        }
 
         return ResponseEntity.ok(error);
     }

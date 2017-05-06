@@ -30,6 +30,7 @@ import com.fortegroup.service.productdetails.ProductDetailServiceImpl;
 import com.fortegroup.service.shoppingCart.ShoppingCartService;
 import com.fortegroup.service.shoppingCart.ShoppingCartServiceImpl;
 import com.zaxxer.hikari.HikariDataSource;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -164,6 +165,11 @@ public class DatabaseConfig {
 
     @Bean
     public ShoppingCartDao shoppingCartDao(){return new ShoppingCartDaoImpl();}
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 }
 
 

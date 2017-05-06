@@ -1,8 +1,8 @@
 package com.fortegroup.service.productdetails;
 
-import com.fortegroup.model.productdetails.Product;
+import com.fortegroup.model.dto.ProductDTO;
 
 public interface ProductDetailService {
-    Product getProductById(long id);
+    ProductDTO getProductById(long id);
 
 }
