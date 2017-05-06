@@ -26,14 +26,14 @@ public class ProductDTO implements Serializable {
     private double salePrice;
     private String image;
     private int rootCategoryId;
-    private Set<BaseSKUDTO> baseSKUDTOS;
+    private Set<BaseSKUDTO> baseSKU;
 
-    public Set<BaseSKUDTO> getBaseSKUDTOS() {
-        return baseSKUDTOS;
+    public Set<BaseSKUDTO> getBaseSKU() {
+        return baseSKU;
     }
 
-    public void setBaseSKUDTOS(Set<BaseSKUDTO> baseSKUDTOS) {
-        this.baseSKUDTOS = baseSKUDTOS;
+    public void setBaseSKU(Set<BaseSKUDTO> baseSKU) {
+        this.baseSKU = baseSKU;
     }
 
     public Long getId() {

@@ -38,7 +38,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
             return convertToDto(baseSKU);
         }).collect(Collectors.toSet());
         ProductDTO productDTO = convertToDto(product);
-        productDTO.setBaseSKUDTOS(SKUsDTO);
+        productDTO.setBaseSKU(SKUsDTO);
         return productDTO;
     }
 

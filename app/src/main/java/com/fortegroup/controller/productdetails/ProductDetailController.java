@@ -27,7 +27,7 @@ public class ProductDetailController {
         if (m.matches()) {
             try {
                 ProductDTO product = productDetailService.getProductById(Integer.parseInt(id));
-
+                product.setBaseSKU(null);
                 // Add product to user's product history
                 Long userId = (Long)req.getAttribute("id");
                 if (userId != null) {
@@ -48,7 +48,7 @@ public class ProductDetailController {
         if (m.matches()) {
             try {
                 ProductDTO product = productDetailService.getProductById(Integer.parseInt(id));
-                Set<BaseSKUDTO> SKUs = product.getBaseSKUDTOS();
+                Set<BaseSKUDTO> SKUs = product.getBaseSKU();
                 return  ResponseEntity.ok(SKUs);
             } catch (NullPointerException e) {}
         }
