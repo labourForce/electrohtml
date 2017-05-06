@@ -18,7 +18,7 @@ public class CommerceItem {
     private BaseSKU sku;
     private Set<CommerceItemProperties> commerceItemProperties = new HashSet<>();
     private Set<ShoppingCartProperties> cartProperties = new HashSet<>();
-    private String order_id;
+    private Long orderId;
     private Order order;
 
     @Id
@@ -78,12 +78,12 @@ public class CommerceItem {
     }
 
     @Column(name = "order_id", nullable = false, insertable = false, updatable = false)
-    public String getOrder_id() {
-        return order_id;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(String order_id) {
-        this.order_id = order_id;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
