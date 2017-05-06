@@ -13,7 +13,7 @@ public class Product implements java.io.Serializable {
     private Long id;
     private String name;
     private String displayName;
-    private int rating;
+    private Integer rating;
     private boolean availability;
     private boolean displayFlag;
     private String longDescription;
@@ -25,7 +25,7 @@ public class Product implements java.io.Serializable {
     private double listPrice;
     private double salePrice;
     private String image;
-    private int rootCategoryId;
+    private Integer rootCategoryId;
     private Set<BaseSKU> baseSKUs = new HashSet<>(0);
     private Set<Category> categories = new HashSet<>(0);
 
@@ -33,7 +33,7 @@ public class Product implements java.io.Serializable {
     public Product() {
     }
 
-    public Product(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, String image, int rootCategoryId, Set<BaseSKU> baseSKUs) {
+    public Product(String name, String displayName, Integer rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, String image, Integer rootCategoryId, Set<BaseSKU> baseSKUs) {
         this.name = name;
         this.displayName = displayName;
         this.rating = rating;
@@ -82,11 +82,11 @@ public class Product implements java.io.Serializable {
     }
 
     @Column(name = "rating", nullable = false)
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
@@ -190,11 +190,11 @@ public class Product implements java.io.Serializable {
     }
 
     @Column(name = "root_category_id", nullable = false)
-    public int getRootCategoryId() {
+    public Integer getRootCategoryId() {
         return rootCategoryId;
     }
 
-    public void setRootCategoryId(int rootCategoryId) {
+    public void setRootCategoryId(Integer rootCategoryId) {
         this.rootCategoryId = rootCategoryId;
     }
 

@@ -4,6 +4,7 @@ import com.fortegroup.dao.category.CategoryDAO;
 import com.fortegroup.dao.productdetails.ProductDetailDao;
 import com.fortegroup.dao.shorturl.ShortUrlDAO;
 import com.fortegroup.model.category.Category;
+import com.fortegroup.model.category.CategoryHierarchy;
 import com.fortegroup.model.dto.CategoryDTO;
 import com.fortegroup.model.dto.EntityDTO;
 import com.fortegroup.model.dto.FullEntityDTO;
@@ -164,12 +165,57 @@ public class CatalogServiceImpl implements CatalogService {
     @Override
     @Transactional
     public List<CategoryDTO> getAllCategories() {
+
         List<CategoryDTO> allCategories = new ArrayList<>();
 
         categoryDAO.getAllCategories().forEach(category ->
                 allCategories.add(CategoryMapper.toDtoCategory(category)));
+
         return allCategories;
     }
+
+    @Override
+    @Transactional
+    public List<CategoryHierarchy> getCategoryHierarchy() {
+
+        List<CategoryHierarchy> hierarchy = new ArrayList<>();
+        getRootCategories().forEach(categoryDTO -> {
+            CategoryHierarchy item = new CategoryHierarchy(categoryDTO);
+            hierarchy.add(item);
+        });
+
+        addItemsToHierarchy(hierarchy, "");
+
+        return hierarchy;
+    }
+
+    /**
+     * method for recursive construction of category hierarchy
+     * @param hierarchy list of hierarchical items
+     * @param pathPart part of item path in hierarchy
+     */
+    private void addItemsToHierarchy(List<CategoryHierarchy> hierarchy, String pathPart) {
+
+        if (hierarchy.isEmpty()) {
+            return;
+        }
+
+        for (CategoryHierarchy item : hierarchy) {
+            List<CategoryHierarchy> localHierarchy = new ArrayList<>();
+            for (CategoryDTO categoryDTO : getChildCategories(item.getCategoryDTO().getId())) {
+                CategoryHierarchy localItem = new CategoryHierarchy(categoryDTO);
+                localHierarchy.add(localItem);
+            }
+            item.setList(localHierarchy);
+            if (!pathPart.isEmpty()) {
+                item.setPath(item.getPath().append(pathPart).append(",").append(item.getCategoryDTO().getName()));
+            } else {
+                item.setPath(item.getPath().append(item.getCategoryDTO().getName()));
+            }
+            addItemsToHierarchy(item.getList(), item.getPath().toString());
+        }
+    }
+
 
     private Category getRootCategory(String seoName){
         Category category = categoryDAO.getByName(seoName);

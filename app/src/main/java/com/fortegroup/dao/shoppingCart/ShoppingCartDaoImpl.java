@@ -31,10 +31,12 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 .createCriteria(ShoppingCart.class)
                 .add(Restrictions.eq("userId", id))
                 .uniqueResult();
+//        Set <CommerceItem> items = new HashSet<>();
         if(cart!=null) {
             for (ShoppingCartProperties property : cart.getCartProperties()) {
                 CommerceItem item = property.getItem();
                 Hibernate.initialize(item.getSku().getProduct());
+//                items.add(item);
                 for (CommerceItemProperties commerceItemProperties : item.getCommerceItemProperties()){
                     Hibernate.initialize(commerceItemProperties.getVariableSKU());
                 }

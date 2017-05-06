@@ -15,7 +15,7 @@ public class BaseSKU implements java.io.Serializable {
     private Long id;
     private String name;
     private String displayName;
-    private int rating;
+    private Integer rating;
     private boolean availability;
     private boolean displayFlag;
     private String longDescription;
@@ -26,9 +26,9 @@ public class BaseSKU implements java.io.Serializable {
     private boolean upSale;
     private double listPrice;
     private double salePrice;
-    private int quantity;
+    private Integer quantity;
     private String image;
-    private int productId;
+    private Long productId;
     private Product product;
 
     private Set<ConfProperty> confProperties = new HashSet<>(0);
@@ -38,7 +38,7 @@ public class BaseSKU implements java.io.Serializable {
     public BaseSKU() {
     }
 
-    public BaseSKU(String name, String displayName, int rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, int quantity, String image, int productId, Product product, Set<ConfProperty> confProperties) {
+    public BaseSKU(String name, String displayName, Integer rating, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, boolean onSale, boolean upSale, double listPrice, double salePrice, int quantity, String image, Long productId, Product product, Set<ConfProperty> confProperties) {
         this.name = name;
         this.displayName = displayName;
         this.rating = rating;
@@ -207,11 +207,11 @@ public class BaseSKU implements java.io.Serializable {
     }
 
     @Column(name = "product_id", nullable = false, insertable = false, updatable = false)
-    public int getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 

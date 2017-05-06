@@ -22,9 +22,11 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
 @WebFilter("/**")
 public class AuthenticationTokenFilter extends GenericFilterBean {
@@ -57,10 +59,35 @@ public class AuthenticationTokenFilter extends GenericFilterBean {
         String authToken = httpRequest.getHeader(Constant.tokenHeader);
         String userName = tokenUtils.getUsernameFromToken(authToken);
         User user = this.userService.loadUserByUsername(userName);
-        if(tokenUtils.isTokenExpired(authToken)) {
+        if(authToken == null) {
+            Cookie[] cookies = httpRequest.getCookies();
+            Cookie anonimId = null;
+             try {
+                 anonimId = Arrays.stream(cookies).
+                         filter(cookie -> cookie.getName().equals("anonim"))
+                         .findFirst().
+                         get();
+             }catch (Throwable e){
+                 logger.error(e.toString(),e);
+             }
+            if(anonimId == null){
+                Long id =
+                        userService.saveUser(new User(null,null,"ROLE_ANONIM"));
+                Cookie cookie = new Cookie("anonim",String.valueOf(id));
+                cookie.setHttpOnly(true);
+                resp.addCookie(cookie);
+                httpRequest.setAttribute("id",id);
+                httpRequest.setAttribute("role","ROLE_ANONIM");
+            }else {
+                User daoUser = userService.get(Long.valueOf(anonimId.getValue()));
+                if(user!= null){
+                    httpRequest.setAttribute("id",daoUser.getId());
+                    httpRequest.setAttribute("role",daoUser.getAuthorities());
+                }
+            }
 
-        }else if(user == null){
-
+        }else if(user == null || tokenUtils.isTokenExpired(authToken)){
+            resp.sendError(401);
         }else {
             httpRequest.setAttribute("id", user.getId());
             httpRequest.setAttribute("role", user.getAuthorities());

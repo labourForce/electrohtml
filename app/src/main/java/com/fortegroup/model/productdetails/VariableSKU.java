@@ -23,7 +23,7 @@ public class VariableSKU {
     private String techline;
     private double listPrice;
     private double salePrice;
-    private int confOptionId;
+    private Long confOptionId;
     private ConfOption confOption;
     private Set<CommerceItemProperties> commerceItemProperties = new HashSet<>();
 
@@ -31,7 +31,7 @@ public class VariableSKU {
     public VariableSKU() {
     }
 
-    public VariableSKU(String name, String displayName, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, double listPrice, double salePrice, int confOptionId, ConfOption confOption) {
+    public VariableSKU(String name, String displayName, boolean availability, boolean displayFlag, String longDescription, String shortDescription, String brand, String techline, double listPrice, double salePrice, Long confOptionId, ConfOption confOption) {
         this.name = name;
         this.displayName = displayName;
         this.availability = availability;
@@ -147,11 +147,11 @@ public class VariableSKU {
     }
 
     @Column(name = "conf_option_id", nullable = false)
-    public int getConfOptionId() {
+    public Long getConfOptionId() {
         return confOptionId;
     }
 
-    public void setConfOptionId(int confOptionId) {
+    public void setConfOptionId(Long confOptionId) {
         this.confOptionId = confOptionId;
     }
 

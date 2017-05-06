@@ -67,7 +67,7 @@ public class AuthenticationController {
         try {
             if(!Validator.validateEmail(user.getUsername()) || !Validator.validatePassword(user.getPassword()))
                 return ResponseEntity.ok(MessageFactory.getMessage("Your fields not valid",true,null,null));
-            User registeredUser = userService.saveUser(user);
+            userService.saveUser(user);
 
             return ResponseEntity.ok(MessageFactory.getMessage("User successfully registered",false, null,null));
         }catch (Throwable e){

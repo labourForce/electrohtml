@@ -35,7 +35,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/c/**", method = RequestMethod.GET)
-    public String categoryShortUrl(HttpServletRequest request, Model model){
+    public String seoShortUrl(HttpServletRequest request, Model model){
         String uri = request.getRequestURI();
         String shortUrl = uri.substring(uri.indexOf("c/") + 2);
 

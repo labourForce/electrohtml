@@ -3,9 +3,7 @@ package com.fortegroup.model.shoppingCart.dto;
 public class ProductDTO {
 
     private Long uid;
-    private String productLink;
-    private String parentCategory;
-    private String parentSubcategory;
+    private String [] categoryPath;
     private String featuredImage;
     private String displayName;
     private double listPrice;
@@ -13,6 +11,14 @@ public class ProductDTO {
     private int quantity;
     private double totalPrice;
     private SkuDTO nestedSKUs;
+
+    public String[] getCategoryPath() {
+        return categoryPath;
+    }
+
+    public void setCategoryPath(String[] categoryPath) {
+        this.categoryPath = categoryPath;
+    }
 
     public Long getUid() {
         return uid;
@@ -22,36 +28,12 @@ public class ProductDTO {
         this.uid = uid;
     }
 
-    public String getProductLink() {
-        return productLink;
-    }
-
     public String getDisplayName() {
         return displayName;
     }
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
-    }
-
-    public void setProductLink(String productLink) {
-        this.productLink = productLink;
-    }
-
-    public String getParentCategory() {
-        return parentCategory;
-    }
-
-    public void setParentCategory(String parentCategory) {
-        this.parentCategory = parentCategory;
-    }
-
-    public String getParentSubcategory() {
-        return parentSubcategory;
-    }
-
-    public void setParentSubcategory(String parentSubcategory) {
-        this.parentSubcategory = parentSubcategory;
     }
 
     public String getFeaturedImage() {

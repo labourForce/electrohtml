@@ -3,14 +3,14 @@ package com.fortegroup.model.checkout;
 public class Response {
 
     private String message;
-//    private String code;
+    private boolean good;
 
     public Response() {
     }
 
-    public Response(String message) {
+    public Response(String message, boolean good) {
         this.message = message;
-//        this.code = code;
+        this.good = good;
     }
 
     public String getMessage() {
@@ -21,11 +21,11 @@ public class Response {
         this.message = message;
     }
 
-//    public String getCode() {
-//        return code;
-//    }
-//
-//    public void setCode(String code) {
-//        this.code = code;
-//    }
+    public boolean isGood() {
+        return good;
+    }
+
+    public void setGood(boolean good) {
+        this.good = good;
+    }
 }

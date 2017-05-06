@@ -44,6 +44,7 @@ public class UserDaoImpl implements UserDao{
 
     }
 
+
     @Override
     public User get(long id) {
         User user = sessionFactory.getCurrentSession().get(User.class, id);
@@ -51,5 +52,6 @@ public class UserDaoImpl implements UserDao{
         return user;
 
     }
+
 
 }
