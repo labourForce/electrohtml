@@ -7,4 +7,6 @@ public interface CheckoutService {
 
     public Response checkout(Request request);
 
+    public void makeOrder();
+
 }

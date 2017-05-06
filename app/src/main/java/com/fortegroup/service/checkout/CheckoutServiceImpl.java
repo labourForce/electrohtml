@@ -26,4 +26,10 @@ public class CheckoutServiceImpl implements CheckoutService{
         return response;
     }
 
+    @Override
+    @Transactional
+    public void makeOrder() {
+
+    }
+
 }

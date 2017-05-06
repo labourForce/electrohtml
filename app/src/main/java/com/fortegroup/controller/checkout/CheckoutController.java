@@ -27,10 +27,11 @@ public class CheckoutController {
     public ResponseEntity<?> getConfirmationDetails(@RequestBody Request request) {
 
         Response response = checkoutService.checkout(request);
-
         if(!response.isGood()) {
             return ResponseEntity.ok(response);
         }
+
+
 
         return ResponseEntity.ok("");
     }
