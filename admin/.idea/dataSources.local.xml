@@ -5,7 +5,7 @@
       <secret-storage>memory</secret-storage>
     </data-source>
     <data-source name="PostgreSQL - postgres@localhost" uuid="74f1d29d-a6ef-46e2-a9df-847d7bb61e34">
-      <secret-storage>memory</secret-storage>
+      <secret-storage>master_key</secret-storage>
       <user-name>postgres</user-name>
       <schema-pattern>postgres.electro</schema-pattern>
       <default-schemas>postgres.public</default-schemas>

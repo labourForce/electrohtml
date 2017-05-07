@@ -14,7 +14,7 @@ public class HomeController {
         if (session.getAttribute("userId") == null){
             return "login";
         } else {
-            return "redirect:/admin";
+            return "admin";
         }
     }
 }
