@@ -35,18 +35,6 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = {"/login", "/admin"}, method = RequestMethod.GET)
-    public String mainPage(Model model, HttpSession session) {
-        if (session.getAttribute("userId") != null){
-            User user = userService.get((Integer)session.getAttribute("userId"));
-            model.addAttribute("user", user);
-            return "admin";
-        } else {
-            return "login";
-        }
-
-    }
-
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public String logout(HttpSession session) {
         if (session.getAttribute("userId") != null){
