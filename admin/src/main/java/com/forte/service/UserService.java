@@ -1,10 +1,12 @@
 package com.forte.service;
 
 
+import com.forte.dto.UserDTO;
 import com.forte.model.User;
 
 public interface UserService {
-    void save(User user);
 
-    User findByUsername(String username);
+    User getByUsername(String username);
+
+    User get(Integer userId);
 }

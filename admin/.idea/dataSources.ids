@@ -1,0 +1,1182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="admin_db@localhost" uuid="61dba853-e1a3-4263-bf22-b792896de8f3">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="PostgreSQL - postgres@localhost" uuid="74f1d29d-a6ef-46e2-a9df-847d7bb61e34">
+    <database-info product="PostgreSQL" version="9.6.2" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="POSTGRES" format-version="2.4">
+      <database id="1" name="postgres"/>
+      <schema id="2" parent="1" name="public">
+        <object-id>2200</object-id>
+        <comment>standard public schema</comment>
+        <introspection-state-number>668</introspection-state-number>
+        <introspection-timestamp>2017-05-07.00:19:06.351</introspection-timestamp>
+      </schema>
+      <schema id="3" parent="1" name="electro">
+        <object-id>16393</object-id>
+        <introspection-state-number>717</introspection-state-number>
+        <introspection-timestamp>2017-05-07.00:20:22.114</introspection-timestamp>
+      </schema>
+      <sequence id="4" parent="2" name="kinesis_id_seq">
+        <object-id>16504</object-id>
+        <state-number>590</state-number>
+      </sequence>
+      <sequence id="5" parent="2" name="test_tbl_id_seq">
+        <object-id>16513</object-id>
+        <state-number>593</state-number>
+      </sequence>
+      <object-type id="6" parent="2" name="order_status_type">
+        <object-id>16395</object-id>
+        <state-number>547</state-number>
+        <sub-kind>ENUM</sub-kind>
+        <sub-category>ENUM</sub-category>
+        <labels>OPEN,PENDING,CLOSED</labels>
+      </object-type>
+      <object-type id="7" parent="2" name="user_role_type">
+        <object-id>16402</object-id>
+        <state-number>548</state-number>
+        <sub-kind>ENUM</sub-kind>
+        <sub-category>ENUM</sub-category>
+        <labels>USER,ADMIN,GUEST</labels>
+      </object-type>
+      <table id="8" parent="2" name="kinesis">
+        <object-id>16497</object-id>
+        <state-number>589</state-number>
+      </table>
+      <table id="9" parent="2" name="test_tbl">
+        <object-id>16506</object-id>
+        <state-number>592</state-number>
+      </table>
+      <routine id="10" parent="2" name="get_all_children_array">
+        <object-id>16409</object-id>
+        <state-number>549</state-number>
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <sequence id="11" parent="3" name="admin_id_seq">
+        <object-id>16705</object-id>
+        <state-number>715</state-number>
+      </sequence>
+      <sequence id="12" parent="3" name="appuser_id_seq">
+        <object-id>16416</object-id>
+        <state-number>551</state-number>
+      </sequence>
+      <sequence id="13" parent="3" name="base_sku_bundle_item_id_seq">
+        <object-id>16427</object-id>
+        <state-number>555</state-number>
+      </sequence>
+      <sequence id="14" parent="3" name="base_sku_id_seq">
+        <object-id>16429</object-id>
+        <state-number>557</state-number>
+      </sequence>
+      <sequence id="15" parent="3" name="category_id_seq">
+        <object-id>16437</object-id>
+        <state-number>560</state-number>
+      </sequence>
+      <sequence id="16" parent="3" name="commerce_item_id_seq">
+        <object-id>16448</object-id>
+        <state-number>565</state-number>
+      </sequence>
+      <sequence id="17" parent="3" name="conf_options_id_seq">
+        <object-id>16453</object-id>
+        <state-number>568</state-number>
+      </sequence>
+      <sequence id="18" parent="3" name="conf_sku_bundle_item_id_seq">
+        <object-id>16467</object-id>
+        <state-number>573</state-number>
+      </sequence>
+      <sequence id="19" parent="3" name="conf_sku_id_seq">
+        <object-id>16469</object-id>
+        <state-number>575</state-number>
+      </sequence>
+      <sequence id="20" parent="3" name="product_bundle_id_seq">
+        <object-id>16480</object-id>
+        <state-number>579</state-number>
+      </sequence>
+      <sequence id="21" parent="3" name="product_id_seq">
+        <object-id>16482</object-id>
+        <state-number>581</state-number>
+      </sequence>
+      <sequence id="22" parent="3" name="short_url_id_seq">
+        <object-id>16683</object-id>
+        <state-number>702</state-number>
+      </sequence>
+      <sequence id="23" parent="3" name="short_url_object_id_seq">
+        <object-id>16691</object-id>
+        <state-number>703</state-number>
+      </sequence>
+      <sequence id="24" parent="3" name="user_id_seq">
+        <object-id>16487</object-id>
+        <state-number>584</state-number>
+      </sequence>
+      <sequence id="25" parent="3" name="variable_sku_id_seq">
+        <object-id>16495</object-id>
+        <state-number>587</state-number>
+      </sequence>
+      <table id="26" parent="3" name="admin">
+        <object-id>16707</object-id>
+        <state-number>715</state-number>
+      </table>
+      <table id="27" parent="3" name="appuser">
+        <object-id>16410</object-id>
+        <state-number>550</state-number>
+      </table>
+      <table id="28" parent="3" name="base_sku">
+        <object-id>16418</object-id>
+        <state-number>684</state-number>
+      </table>
+      <table id="29" parent="3" name="base_sku_bundle_item">
+        <object-id>16424</object-id>
+        <state-number>684</state-number>
+      </table>
+      <table id="30" parent="3" name="category">
+        <object-id>16431</object-id>
+        <state-number>682</state-number>
+      </table>
+      <table id="31" parent="3" name="category_product">
+        <object-id>16439</object-id>
+        <state-number>681</state-number>
+      </table>
+      <table id="32" parent="3" name="category_subcategory">
+        <object-id>16442</object-id>
+        <state-number>672</state-number>
+      </table>
+      <table id="33" parent="3" name="commerce_item">
+        <object-id>16445</object-id>
+        <state-number>564</state-number>
+      </table>
+      <table id="34" parent="3" name="conf_options">
+        <object-id>16450</object-id>
+        <state-number>685</state-number>
+      </table>
+      <table id="35" parent="3" name="conf_properties">
+        <object-id>16455</object-id>
+        <state-number>676</state-number>
+      </table>
+      <table id="36" parent="3" name="conf_sku">
+        <object-id>16458</object-id>
+        <state-number>680</state-number>
+      </table>
+      <table id="37" parent="3" name="conf_sku_bundle_item">
+        <object-id>16464</object-id>
+        <state-number>679</state-number>
+      </table>
+      <table id="38" parent="3" name="product">
+        <object-id>16471</object-id>
+        <state-number>682</state-number>
+      </table>
+      <table id="39" parent="3" name="product_bundle">
+        <object-id>16477</object-id>
+        <state-number>683</state-number>
+      </table>
+      <table id="40" parent="3" name="short_url">
+        <object-id>16685</object-id>
+        <state-number>705</state-number>
+      </table>
+      <table id="41" parent="3" name="short_url_object">
+        <object-id>16693</object-id>
+        <state-number>705</state-number>
+      </table>
+      <table id="42" parent="3" name="user">
+        <object-id>16484</object-id>
+        <state-number>583</state-number>
+      </table>
+      <table id="43" parent="3" name="variable_sku">
+        <object-id>16489</object-id>
+        <state-number>685</state-number>
+      </table>
+      <column id="44" parent="8" name="id">
+        <state-number>607</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;kinesis_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="45" parent="8" name="index_a">
+        <state-number>589</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="46" parent="8" name="index_b">
+        <state-number>589</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="47" parent="8" name="alias">
+        <state-number>589</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="48" parent="8" name="source">
+        <state-number>589</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="49" parent="8" name="mode">
+        <state-number>589</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+        <default-expression>true</default-expression>
+      </column>
+      <column id="50" parent="8" name="hasn">
+        <state-number>589</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="51" parent="8" name="kinesis_id_uindex">
+        <object-id>16579</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="52" parent="8" name="kinesis_pkey">
+        <object-id>16558</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="53" parent="8" name="kinesis_index_a_uindex">
+        <object-id>16580</object-id>
+        <columns>index_a</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="54" parent="8" name="kinesis_index_b_uindex">
+        <object-id>16581</object-id>
+        <columns>index_b</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="55" parent="8" name="kinesis_alias_uindex">
+        <object-id>16578</object-id>
+        <columns>alias</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="56" parent="8" name="kinesis_source_uindex">
+        <object-id>16582</object-id>
+        <columns>source</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="57" parent="8" name="kinesis_pkey">
+        <columns>id</columns>
+        <underlying-index>kinesis_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="58" parent="9" name="id">
+        <state-number>608</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;test_tbl_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="59" parent="9" name="val1">
+        <state-number>592</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="60" parent="9" name="val2">
+        <state-number>592</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="61" parent="9" name="val3">
+        <state-number>592</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="62" parent="9" name="val4">
+        <state-number>592</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="63" parent="9" name="val5">
+        <state-number>592</state-number>
+        <data-type>boolean</data-type>
+        <default-expression>true</default-expression>
+      </column>
+      <index id="64" parent="9" name="test_tbl_id_uindex">
+        <object-id>16583</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="65" parent="9" name="test_tbl_pkey">
+        <object-id>16560</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="66" parent="9" name="test_tbl_pkey">
+        <columns>id</columns>
+        <underlying-index>test_tbl_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <argument id="67" parent="10" name="use_parent">
+        <direction>IN</direction>
+        <data-type>integer</data-type>
+      </argument>
+      <argument id="68" parent="10">
+        <direction>RETURN</direction>
+        <data-type>integer[]</data-type>
+      </argument>
+      <column id="69" parent="26" name="id">
+        <state-number>715</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;admin_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="70" parent="26" name="username">
+        <state-number>715</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="71" parent="26" name="password">
+        <state-number>715</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="72" parent="26" name="admin_id_uindex">
+        <object-id>16716</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="73" parent="26" name="admin_pkey">
+        <object-id>16714</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="74" parent="26" name="admin_username_uindex">
+        <object-id>16717</object-id>
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="75" parent="26" name="admin_pkey">
+        <columns>id</columns>
+        <underlying-index>admin_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="76" parent="27" name="id">
+        <state-number>595</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;appuser_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="77" parent="27" name="username">
+        <state-number>550</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="78" parent="27" name="password">
+        <state-number>550</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="79" parent="27" name="authorities">
+        <state-number>550</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="80" parent="27" name="pk_appuser">
+        <object-id>16532</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="81" parent="27" name="uk_username">
+        <object-id>16556</object-id>
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="82" parent="27" name="pk_appuser">
+        <columns>id</columns>
+        <underlying-index>pk_appuser</underlying-index>
+        <primary>1</primary>
+      </key>
+      <key id="83" parent="27" name="uk_username">
+        <columns>username</columns>
+        <underlying-index>uk_username</underlying-index>
+      </key>
+      <column id="84" parent="28" name="id">
+        <state-number>596</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;base_sku_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="85" parent="28" name="name">
+        <state-number>553</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="86" parent="28" name="display_name">
+        <state-number>553</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="87" parent="28" name="rating">
+        <state-number>553</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="88" parent="28" name="availability">
+        <state-number>553</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="89" parent="28" name="display_flag">
+        <state-number>553</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="90" parent="28" name="long_description">
+        <state-number>553</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="91" parent="28" name="short_description">
+        <state-number>553</state-number>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="92" parent="28" name="brand">
+        <state-number>553</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="93" parent="28" name="techline">
+        <state-number>553</state-number>
+        <data-type>json</data-type>
+      </column>
+      <column id="94" parent="28" name="on_sale">
+        <state-number>553</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="95" parent="28" name="upsale">
+        <state-number>553</state-number>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="96" parent="28" name="list_price">
+        <state-number>553</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="97" parent="28" name="sale_price">
+        <state-number>553</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="98" parent="28" name="quantity">
+        <state-number>553</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="99" parent="28" name="image">
+        <state-number>553</state-number>
+        <data-type>bytea</data-type>
+      </column>
+      <column id="100" parent="28" name="product_id">
+        <state-number>553</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <index id="101" parent="28" name="pk_product_0">
+        <object-id>16542</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="102" parent="28" name="idx_product_0">
+        <object-id>16572</object-id>
+        <columns>product_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="103" parent="28" name="pk_product_0">
+        <columns>id</columns>
+        <underlying-index>pk_product_0</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="104" parent="28" name="fk_base_sku_product">
+        <columns>product_id</columns>
+        <ref-key>~.product.pk_product</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="105" parent="29" name="id">
+        <state-number>597</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;base_sku_bundle_item_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="106" parent="29" name="quantity">
+        <state-number>554</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="107" parent="29" name="item_sale_price">
+        <state-number>554</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="108" parent="29" name="base_sku_id">
+        <state-number>554</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="109" parent="29" name="bundle_id">
+        <state-number>554</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <index id="110" parent="29" name="pk_sku_bundle_item">
+        <object-id>16550</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="111" parent="29" name="idx_sku_bundle_item_0">
+        <object-id>16575</object-id>
+        <columns>base_sku_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="112" parent="29" name="idx_sku_bundle_item">
+        <object-id>16574</object-id>
+        <columns>bundle_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="113" parent="29" name="pk_sku_bundle_item">
+        <columns>id</columns>
+        <underlying-index>pk_sku_bundle_item</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="114" parent="29" name="fk_sku_bundle_item_base_sku">
+        <columns>base_sku_id</columns>
+        <ref-key>~.base_sku.pk_product_0</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="115" parent="29" name="fk_sku_bundle_item">
+        <columns>bundle_id</columns>
+        <ref-key>~.product_bundle.pk_product_bundle</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="116" parent="30" name="id">
+        <state-number>598</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;category_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="117" parent="30" name="name">
+        <state-number>559</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="118" parent="30" name="display_name">
+        <state-number>559</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="119" parent="30" name="availability">
+        <state-number>559</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="120" parent="30" name="short_description">
+        <state-number>559</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="121" parent="30" name="long_description">
+        <state-number>559</state-number>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="122" parent="30" name="root_category">
+        <state-number>559</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <index id="123" parent="30" name="pk_category">
+        <object-id>16534</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="124" parent="30" name="idx_category">
+        <object-id>16562</object-id>
+        <columns>root_category</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="125" parent="30" name="pk_category">
+        <columns>id</columns>
+        <underlying-index>pk_category</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="126" parent="30" name="fk_category_category">
+        <columns>root_category</columns>
+        <ref-key>pk_category</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="127" parent="31" name="product_id">
+        <state-number>562</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="128" parent="31" name="parent_category_id">
+        <state-number>562</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <index id="129" parent="31" name="idx_category_product_0">
+        <object-id>16530</object-id>
+        <columns>product_id
+parent_category_id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="130" parent="31" name="idx_prod_parent_category">
+        <object-id>16570</object-id>
+        <columns>product_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="131" parent="31" name="idx_category_product">
+        <object-id>16563</object-id>
+        <columns>parent_category_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="132" parent="31" name="idx_category_product_0">
+        <columns>product_id
+parent_category_id</columns>
+        <underlying-index>idx_category_product_0</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="133" parent="31" name="fk_prod_parent_category">
+        <columns>product_id</columns>
+        <ref-key>~.product.pk_product</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="134" parent="31" name="fk_category_product_category">
+        <columns>parent_category_id</columns>
+        <ref-key>~.category.pk_category</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="135" parent="32" name="category_id">
+        <state-number>563</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="136" parent="32" name="parent_category_id">
+        <state-number>563</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <index id="137" parent="32" name="idx_entity">
+        <object-id>16569</object-id>
+        <columns>category_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="138" parent="32" name="idx_category_subcategory_0">
+        <object-id>16564</object-id>
+        <columns>parent_category_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="139" parent="32" name="fk_cat_parent_category">
+        <columns>category_id</columns>
+        <ref-key>~.category.pk_category</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="140" parent="33" name="id">
+        <state-number>599</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;commerce_item_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="141" parent="33" name="price">
+        <state-number>564</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="142" parent="33" name="order_status">
+        <state-number>564</state-number>
+        <mandatory>1</mandatory>
+        <data-type>order_status_type</data-type>
+      </column>
+      <index id="143" parent="33" name="pk_commerce_item">
+        <object-id>16536</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="144" parent="33" name="pk_commerce_item">
+        <columns>id</columns>
+        <underlying-index>pk_commerce_item</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="145" parent="34" name="id">
+        <state-number>600</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;conf_options_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="146" parent="34" name="name">
+        <state-number>567</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="147" parent="34" name="conf_sku_id">
+        <state-number>567</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <index id="148" parent="34" name="pk_conf_properties">
+        <object-id>16538</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="149" parent="34" name="idx_conf_option_1">
+        <object-id>16567</object-id>
+        <columns>conf_sku_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="150" parent="34" name="pk_conf_properties">
+        <columns>id</columns>
+        <underlying-index>pk_conf_properties</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="151" parent="34" name="fk_conf_option_conf_sku">
+        <columns>conf_sku_id</columns>
+        <ref-key>~.conf_sku.pk_product_2</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="152" parent="35" name="base_sku_id">
+        <state-number>570</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="153" parent="35" name="conf_option_id">
+        <state-number>570</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <index id="154" parent="35" name="idx_conf_option_0">
+        <object-id>16566</object-id>
+        <columns>base_sku_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="155" parent="35" name="idx_conf_option">
+        <object-id>16565</object-id>
+        <columns>conf_option_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="156" parent="35" name="fk_conf_option_base_sku">
+        <columns>base_sku_id</columns>
+        <ref-key>~.base_sku.pk_product_0</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="157" parent="35" name="fk_conf_option_conf_properties">
+        <columns>conf_option_id</columns>
+        <ref-key>~.conf_options.pk_conf_properties</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="158" parent="36" name="id">
+        <state-number>601</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;conf_sku_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="159" parent="36" name="name">
+        <state-number>571</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="160" parent="36" name="display_name">
+        <state-number>571</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bytea</data-type>
+      </column>
+      <column id="161" parent="36" name="techline">
+        <state-number>571</state-number>
+        <data-type>json</data-type>
+      </column>
+      <column id="162" parent="36" name="product_id">
+        <state-number>571</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <index id="163" parent="36" name="pk_product_2">
+        <object-id>16546</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="164" parent="36" name="idx_conf_sku">
+        <object-id>16568</object-id>
+        <columns>product_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="165" parent="36" name="pk_product_2">
+        <columns>id</columns>
+        <underlying-index>pk_product_2</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="166" parent="36" name="fk_conf_sku_product">
+        <columns>product_id</columns>
+        <ref-key>~.product.pk_product</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="167" parent="37" name="id">
+        <state-number>602</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;conf_sku_bundle_item_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="168" parent="37" name="quantity">
+        <state-number>572</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="169" parent="37" name="item_sale_price">
+        <state-number>572</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="170" parent="37" name="conf_sku_id">
+        <state-number>572</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="171" parent="37" name="bundle_id">
+        <state-number>572</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <index id="172" parent="37" name="pk_sku_bundle_item_0">
+        <object-id>16552</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="173" parent="37" name="idx_sku_bundle_item_2">
+        <object-id>16577</object-id>
+        <columns>conf_sku_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="174" parent="37" name="idx_sku_bundle_item_1">
+        <object-id>16576</object-id>
+        <columns>bundle_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="175" parent="37" name="pk_sku_bundle_item_0">
+        <columns>id</columns>
+        <underlying-index>pk_sku_bundle_item_0</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="176" parent="37" name="fk_conf_sku_bundle_item">
+        <columns>conf_sku_id</columns>
+        <ref-key>~.conf_sku.pk_product_2</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="177" parent="37" name="fk_conf_sku_bundle">
+        <columns>bundle_id</columns>
+        <ref-key>~.product_bundle.pk_product_bundle</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="178" parent="38" name="id">
+        <state-number>603</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;product_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="179" parent="38" name="name">
+        <state-number>577</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="180" parent="38" name="display_name">
+        <state-number>577</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="181" parent="38" name="rating">
+        <state-number>577</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="182" parent="38" name="availability">
+        <state-number>577</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="183" parent="38" name="display_flag">
+        <state-number>577</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="184" parent="38" name="long_description">
+        <state-number>577</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="185" parent="38" name="short_description">
+        <state-number>577</state-number>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="186" parent="38" name="brand">
+        <state-number>577</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="187" parent="38" name="techline">
+        <state-number>577</state-number>
+        <data-type>json</data-type>
+      </column>
+      <column id="188" parent="38" name="on_sale">
+        <state-number>577</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="189" parent="38" name="upsale">
+        <state-number>577</state-number>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="190" parent="38" name="list_price">
+        <state-number>577</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="191" parent="38" name="sale_price">
+        <state-number>577</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="192" parent="38" name="image">
+        <state-number>577</state-number>
+        <data-type>bytea</data-type>
+      </column>
+      <column id="193" parent="38" name="root_category_id">
+        <state-number>577</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <index id="194" parent="38" name="pk_product">
+        <object-id>16540</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="195" parent="38" name="idx_product">
+        <object-id>16571</object-id>
+        <columns>root_category_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="196" parent="38" name="pk_product">
+        <columns>id</columns>
+        <underlying-index>pk_product</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="197" parent="38" name="fk_product_category">
+        <columns>root_category_id</columns>
+        <ref-key>~.category.pk_category</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="198" parent="39" name="id">
+        <state-number>604</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;product_bundle_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="199" parent="39" name="bundle_promotable">
+        <state-number>578</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <index id="200" parent="39" name="pk_product_bundle">
+        <object-id>16548</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="201" parent="39" name="pk_product_bundle">
+        <columns>id</columns>
+        <underlying-index>pk_product_bundle</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="202" parent="40" name="id">
+        <state-number>702</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bigint</data-type>
+        <default-expression>nextval(&apos;electro.short_url_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="203" parent="40" name="url">
+        <state-number>702</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="204" parent="40" name="full_url">
+        <state-number>702</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(120)</data-type>
+      </column>
+      <index id="205" parent="40" name="pk_short_url">
+        <object-id>16689</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="206" parent="40" name="pk_short_url">
+        <columns>id</columns>
+        <underlying-index>pk_short_url</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="207" parent="41" name="id">
+        <state-number>703</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bigint</data-type>
+        <default-expression>nextval(&apos;electro.short_url_object_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="208" parent="41" name="short_url_id">
+        <state-number>703</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bigint</data-type>
+      </column>
+      <column id="209" parent="41" name="object_type">
+        <state-number>703</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="210" parent="41" name="object_id">
+        <state-number>703</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bigint</data-type>
+      </column>
+      <index id="211" parent="41" name="pk_short_url_object">
+        <object-id>16697</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="212" parent="41" name="idx_short_url">
+        <object-id>16699</object-id>
+        <columns>short_url_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="213" parent="41" name="pk_short_url_object">
+        <columns>id</columns>
+        <underlying-index>pk_short_url_object</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="214" parent="41" name="fk_short_url_object_short_url">
+        <columns>short_url_id</columns>
+        <ref-key>~.short_url.pk_short_url</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="215" parent="42" name="id">
+        <state-number>605</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;user_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="216" parent="42" name="email">
+        <state-number>583</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="217" parent="42" name="pass">
+        <state-number>583</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <column id="218" parent="42" name="user_role">
+        <state-number>583</state-number>
+        <mandatory>1</mandatory>
+        <data-type>user_role_type</data-type>
+      </column>
+      <index id="219" parent="42" name="pk_user">
+        <object-id>16554</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="220" parent="42" name="pk_user">
+        <columns>id</columns>
+        <underlying-index>pk_user</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="221" parent="43" name="id">
+        <state-number>606</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+        <default-expression>nextval(&apos;variable_sku_id_seq&apos;::regclass)</default-expression>
+      </column>
+      <column id="222" parent="43" name="name">
+        <state-number>586</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="223" parent="43" name="display_name">
+        <state-number>586</state-number>
+        <mandatory>1</mandatory>
+        <data-type>bytea</data-type>
+      </column>
+      <column id="224" parent="43" name="availability">
+        <state-number>586</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="225" parent="43" name="display_flag">
+        <state-number>586</state-number>
+        <mandatory>1</mandatory>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="226" parent="43" name="long_description">
+        <state-number>586</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="227" parent="43" name="short_description">
+        <state-number>586</state-number>
+        <data-type>varchar(2000)</data-type>
+      </column>
+      <column id="228" parent="43" name="brand">
+        <state-number>586</state-number>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="229" parent="43" name="techline">
+        <state-number>586</state-number>
+        <data-type>json</data-type>
+      </column>
+      <column id="230" parent="43" name="list_price">
+        <state-number>586</state-number>
+        <data-type>integer</data-type>
+      </column>
+      <column id="231" parent="43" name="sale_price">
+        <state-number>586</state-number>
+        <data-type>boolean</data-type>
+      </column>
+      <column id="232" parent="43" name="conf_option_id">
+        <state-number>586</state-number>
+        <mandatory>1</mandatory>
+        <data-type>integer</data-type>
+      </column>
+      <index id="233" parent="43" name="pk_product_1">
+        <object-id>16544</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="234" parent="43" name="idx_product_1">
+        <object-id>16573</object-id>
+        <columns>conf_option_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="235" parent="43" name="pk_product_1">
+        <columns>id</columns>
+        <underlying-index>pk_product_1</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="236" parent="43" name="fk_variable_sku_conf_option">
+        <columns>conf_option_id</columns>
+        <ref-key>~.conf_options.pk_conf_properties</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>

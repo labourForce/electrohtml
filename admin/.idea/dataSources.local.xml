@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="admin_db@localhost" uuid="61dba853-e1a3-4263-bf22-b792896de8f3">
+      <secret-storage>memory</secret-storage>
+    </data-source>
+    <data-source name="PostgreSQL - postgres@localhost" uuid="74f1d29d-a6ef-46e2-a9df-847d7bb61e34">
+      <secret-storage>memory</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-pattern>postgres.electro</schema-pattern>
+      <default-schemas>postgres.public</default-schemas>
+    </data-source>
+  </component>
+</project>

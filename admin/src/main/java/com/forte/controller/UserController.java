@@ -1,63 +1,59 @@
 package com.forte.controller;
 
+import com.forte.dto.UserDTO;
 import com.forte.model.User;
-import com.forte.service.SecurityService;
 import com.forte.service.UserService;
-import com.forte.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
     @Autowired
     private UserService userService;
-
     @Autowired
-    private SecurityService securityService;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Autowired
-    private UserValidator userValidator;
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(Model model, UserDTO userDto, HttpSession session) {
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        model.addAttribute("userForm", new User());
+        User user = userService.getByUsername(userDto.getUsername());
 
-        return "registration";
-    }
-
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
-        userValidator.validate(userForm, bindingResult);
-
-        if (bindingResult.hasErrors()) {
-            return "registration";
+        if (user != null && bCryptPasswordEncoder.matches(userDto.getPassword(), user.getPassword())){
+            model.addAttribute("user", user);
+            session.setAttribute("userId", user.getId());
+            return "admin";
+        } else {
+            model.addAttribute("error", "Wrong login or password.");
+            return "login";
         }
 
-        userService.save(userForm);
-
-        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
-
-        return "redirect:/welcome";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+    @RequestMapping(value = {"/login", "/admin"}, method = RequestMethod.GET)
+    public String mainPage(Model model, HttpSession session) {
+        if (session.getAttribute("userId") != null){
+            User user = userService.get((Integer)session.getAttribute("userId"));
+            model.addAttribute("user", user);
+            return "admin";
+        } else {
+            return "login";
+        }
 
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public String logout(HttpSession session) {
+        if (session.getAttribute("userId") != null){
+            session.removeAttribute("userId");
+        }
 
         return "login";
     }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String admin(Model model) {
-        return "admin";
-    }
 }
