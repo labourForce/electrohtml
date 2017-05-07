@@ -14,7 +14,7 @@ public class Order {
     private Long id;
     private Long userId;
     private String status;
-    private String Amount;
+    private Integer Amount;
     private String firstName;
     private String lastName;
     private String companyName;
@@ -43,7 +43,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, Long userId, String status, String amount, String firstName, String lastName, String companyName, String email, String billingPhoneNumber, String billingCountry, String billingAddress, Integer billingZIP, String billingCity, String billingNotes, String shippingPhoneNumber, String shippingCountry, String shippingAddress, Integer shippingZIP, String shippingCity, String cardName, String cardNumber, Integer CVV) {
+    public Order(Long id, Long userId, String status, Integer amount, String firstName, String lastName, String companyName, String email, String billingPhoneNumber, String billingCountry, String billingAddress, Integer billingZIP, String billingCity, String billingNotes, String shippingPhoneNumber, String shippingCountry, String shippingAddress, Integer shippingZIP, String shippingCity, String cardName, String cardNumber, Integer CVV) {
         this.id = id;
         this.userId = userId;
         this.status = status;
@@ -98,11 +98,11 @@ public class Order {
     }
 
     @Column(name = "amount", nullable = false)
-    public String getAmount() {
+    public Integer getAmount() {
         return Amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(Integer amount) {
         Amount = amount;
     }
 

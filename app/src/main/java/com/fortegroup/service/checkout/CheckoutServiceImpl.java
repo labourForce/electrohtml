@@ -51,7 +51,7 @@ public class CheckoutServiceImpl implements CheckoutService{
 
         order.setUserId(userId);
         order.setStatus("Approved");
-        order.setAmount(request.getPay().get("amount"));
+        order.setAmount(Integer.parseInt(request.getPay().get("amount")));
 
         order.setFirstName(request.getBilling().get("firstName"));
         order.setLastName(request.getBilling().get("lastName"));
