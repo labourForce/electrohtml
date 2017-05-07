@@ -1,7 +1,6 @@
 package com.forte.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fortegroup.model.shoppingCart.CommerceItem;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -31,7 +30,6 @@ public class BaseSKU implements java.io.Serializable {
     private Product product;
 
     private Set<ConfProperty> confProperties = new HashSet<>(0);
-    private Set<CommerceItem> commerceItems = new HashSet<>(0);
 
 
     public BaseSKU() {
@@ -235,13 +233,4 @@ public class BaseSKU implements java.io.Serializable {
         this.confProperties = confProperties;
     }
 
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sku")
-    public Set<CommerceItem> getCommerceItems() {
-        return commerceItems;
-    }
-
-    public void setCommerceItems(Set<CommerceItem> commerceItems) {
-        this.commerceItems = commerceItems;
-    }
 }
