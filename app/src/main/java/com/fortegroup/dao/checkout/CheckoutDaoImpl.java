@@ -27,9 +27,10 @@ public class CheckoutDaoImpl implements CheckoutDao{
         return order;
     }
 
-    public void createOrder(Order order) {
+    public Long createOrder(Order order) {
         Long id = (Long) sessionFactory.getCurrentSession().save(order);
         logger.info("Order has been created successfully. Order id: " + id);
+        return id;
     }
 
 }

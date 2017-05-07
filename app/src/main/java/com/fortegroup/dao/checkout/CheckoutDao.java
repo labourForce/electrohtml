@@ -5,6 +5,6 @@ import com.fortegroup.model.checkout.Order;
 public interface CheckoutDao {
 
     Order getOrderById(Long id);
-    public void createOrder(Order order);
+    Long createOrder(Order order);
 
 }

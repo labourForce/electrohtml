@@ -78,11 +78,11 @@ public class CheckoutServiceImpl implements CheckoutService{
         order.setUser(userDao.get(userId));
         order.setCommerceItems(commerceItems);
 
-        checkoutDao.createOrder(order);
+        Long orderId = checkoutDao.createOrder(order);
 
         for(CommerceItem item :commerceItems) {
             item.setShoppingCartId(null);
-            item.setOrderId(checkoutDao.getOrderById(userId).getId());
+            item.setOrderId(orderId);
         }
         shoppingCartDao.deleteAllItemsFromShoppingCart(userId);
 
