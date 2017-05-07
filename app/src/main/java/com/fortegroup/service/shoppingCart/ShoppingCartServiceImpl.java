@@ -8,7 +8,6 @@ import com.fortegroup.model.productdetails.BaseSKU;
 import com.fortegroup.model.productdetails.VariableSKU;
 import com.fortegroup.model.shoppingCart.CommerceItem;
 import com.fortegroup.model.shoppingCart.ShoppingCart;
-import com.fortegroup.model.shoppingCart.ShoppingCartProperties;
 import com.fortegroup.model.shoppingCart.dto.CommerceItemDTO;
 import com.fortegroup.model.shoppingCart.dto.ShoppingCartDTO;
 import com.fortegroup.service.search.ProductsService;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Service(value = "appShoppingCartService")
 public class ShoppingCartServiceImpl implements ShoppingCartService {
@@ -35,26 +33,25 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     @Transactional
-    public ShoppingCartDTO getShoppingCartById(Long userId) {
-
-        ShoppingCart shoppingCart = shoppingCartDao.getShoppingCartByUserId(userId);
+    public ShoppingCartDTO getShoppingCartByUserId(Long userId) {
+        ShoppingCart cart = shoppingCartDao.getShoppingCartByUserId(userId);
         List<CommerceItemDTO> dtoList = new ArrayList<>();
-        if (shoppingCart == null) {
+        if (cart == null) {
             shoppingCartDao.createNewShoppingCart(userDao.get(userId));
         }else{
-            Set<ShoppingCartProperties> properties = shoppingCart.getCartProperties();
-            for (ShoppingCartProperties property : properties){
-                CommerceItem item = property.getItem();
+            for (CommerceItem item : cart.getItems()){
+
                 Long productId = item.getSku().getId();
                 String [] path = productsService.findById(productId.toString()).getName_path();
 //                String [] path = {"temp"};
                 dtoList.add(new CommerceItemDTO(item,path));
             }
         }
-         ShoppingCartDTO shoppingCartDTO = ShoppingCartMapper.createShoppingCartDto(dtoList);
+        ShoppingCartDTO shoppingCartDTO = ShoppingCartMapper.createShoppingCartDto(dtoList);
+
         return shoppingCartDTO;
     }
-    
+
     @Override
     @Transactional
     public VariableSKU getVariableSkuById(Long varSkuId) {
@@ -93,7 +90,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             User user = userDao.get(userId);
             shoppingCartDao.createNewShoppingCart(user);
         }
-        CommerceItem item = shoppingCartDao.addItemToShoppingCart(varSkus, userId, baseSkuId, quantity);
+        CommerceItem item = shoppingCartDao.addItemToShoppingCart(userId, varSkus, baseSkuId, quantity);
         return item;
     }
 
@@ -110,7 +107,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public ShoppingCartDTO updateQuantityById(Long itemId, int quantity, Long userId) {
         CommerceItem item = shoppingCartDao.getCommerceItemById(itemId);
         shoppingCartDao.updateCommerceItemQuantity(item, quantity);
-        ShoppingCartDTO cart = getShoppingCartById(userId);
+        ShoppingCartDTO cart = getShoppingCartByUserId(userId);
         return cart;
     }
+
 }

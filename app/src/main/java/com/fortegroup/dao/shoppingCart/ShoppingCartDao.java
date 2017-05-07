@@ -8,12 +8,14 @@ import com.fortegroup.model.shoppingCart.ShoppingCart;
 
 public interface ShoppingCartDao {
 
-    ShoppingCart getShoppingCartByUserId(Long id);
+    ShoppingCart getShoppingCartByUserId(Long userID);
     VariableSKU getVariableSkuById(Long varSkuId);
     CommerceItem getCommerceItemById(Long id);
     void deleteCommerceItemById(Long itemId);
     BaseSKU getBaseSkuById(Long id);
-    CommerceItem addItemToShoppingCart(Long[] varSkusId, Long userId, Long baseSkuId, int quantity);
+    CommerceItem addItemToShoppingCart(Long userId,Long[] varSkus, Long baseSkuId, int quantity);
     Long createNewShoppingCart (User user);
     void updateCommerceItemQuantity(CommerceItem item, int quantity);
+
+
 }
