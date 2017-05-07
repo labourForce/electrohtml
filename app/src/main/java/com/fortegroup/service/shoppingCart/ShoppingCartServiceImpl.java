@@ -43,7 +43,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
                 Long productId = item.getSku().getId();
                 String [] path = productsService.findById(productId.toString()).getName_path();
-//                String [] path = {"temp"};
+ //               String [] path = {"temp"};
                 dtoList.add(new CommerceItemDTO(item,path));
             }
         }
@@ -98,7 +98,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Transactional
     public CommerceItem deleteItemById(Long itemId, Long userId) {
         CommerceItem item = shoppingCartDao.getCommerceItemById(itemId);
-        shoppingCartDao.deleteCommerceItemById(itemId);
+        if (!shoppingCartDao.deleteCommerceItemById(itemId,userId)){
+            throw new RuntimeException("Reject deleting");
+        }
         return item;
     }
 

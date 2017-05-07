@@ -37,14 +37,16 @@ public class ShoppingCartController {
 
     @RequestMapping(value = "/cart", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteItemById(@RequestParam("itemId") String id, HttpServletRequest request) {
-
-        Long userId = (Long) request.getAttribute("id");
-        service.deleteItemById(Long.parseLong(id), userId);
-        ShoppingCartDTO cartDTO = service.getShoppingCartByUserId(userId);
-        return ResponseEntity.ok(cartDTO);
+        try {
+            Long userId = (Long) request.getAttribute("id");
+            service.deleteItemById(Long.parseLong(id), userId);
+            ShoppingCartDTO cartDTO = service.getShoppingCartByUserId(userId);
+            return ResponseEntity.ok(cartDTO);
+        }catch (RuntimeException ex){
+            return ResponseEntity.ok(ex.getMessage());
+        }
 
     }
-
 
     @RequestMapping(value = "/cart", method = RequestMethod.POST)
     public ResponseEntity<?> updateItemQuantity(@RequestBody ItemInsertDTO itemDTO, HttpServletRequest servletRequest) {
