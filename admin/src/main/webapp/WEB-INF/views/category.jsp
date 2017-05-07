@@ -88,6 +88,44 @@
                 </ul>
             </div>
         </c:if>
+        <c:if test="${parent != null}">
+            <div class="col-md-6">
+                <h2>Category: ${parent.displayName} </h2>
+                <ul class="list-group">
+                    <li class="list-group-item-info">
+                        <strong>ID: </strong>${parent.id}
+                    </li>
+                    <li class="list-group-item-info">
+                        <strong>Seo name: </strong>${parent.name}
+                    </li>
+                    <li class="list-group-item-info">
+                        <strong>Display name: </strong>${parent.displayName}
+                    </li>
+                    <li class="list-group-item-info">
+                        <strong>Availability: </strong>${parent.availability}
+                    </li>
+                    <li class="list-group-item-info">
+                        <strong>Short description: </strong>${parent.shortDescription}
+                    </li>
+                    <li class="list-group-item-info">
+                        <strong>Long description: </strong>${parent.longDescription}
+                    </li>
+
+                </ul>
+                <h2>Child categories</h2>
+                <ul class="list-group">
+                    <c:forEach var="category" items="${childCategories}">
+                        <li class="list-group-item">
+                            <strong>
+                                <a href="${contextPath}/childCategories?id=${category.id}">
+                                        ${category.displayName}
+                                </a>:
+                            </strong> Seo name: ${category.name}, ID: ${category.id}
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </c:if>
     </div>
 </div>
 

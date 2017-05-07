@@ -31,7 +31,7 @@ public class CategoryController {
         List<CategoryDTO> categories = categoryService.getChildCategories(id);
         CategoryDTO parent = categoryService.getCategory(id);
         model.addAttribute("parent", parent);
-        model.addAttribute("rootCategories", categories);
+        model.addAttribute("childCategories", categories);
         return "category";
     }
 }
