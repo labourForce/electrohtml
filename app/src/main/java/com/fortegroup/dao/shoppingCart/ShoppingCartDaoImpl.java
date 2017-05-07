@@ -8,7 +8,6 @@ import com.fortegroup.model.productdetails.VariableSKU;
 import com.fortegroup.model.shoppingCart.CommerceItem;
 import com.fortegroup.model.shoppingCart.CommerceItemProperties;
 import com.fortegroup.model.shoppingCart.ShoppingCart;
-import com.fortegroup.model.shoppingCart.ShoppingCartProperties;
 import org.hibernate.FetchMode;
 import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
@@ -25,24 +24,20 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     private static final Logger logger = LoggerFactory.getLogger(ShoppingCartDaoImpl.class);
 
     @Override
-    public ShoppingCart getShoppingCartByUserId(Long id) {
+    public ShoppingCart getShoppingCartByUserId(Long userId) {
 
         ShoppingCart cart = (ShoppingCart) sessionFactory.getCurrentSession()
                 .createCriteria(ShoppingCart.class)
-                .add(Restrictions.eq("userId", id))
+                .add(Restrictions.eq("userId", userId))
                 .uniqueResult();
-//        Set <CommerceItem> items = new HashSet<>();
         if(cart!=null) {
-            for (ShoppingCartProperties property : cart.getCartProperties()) {
-                CommerceItem item = property.getItem();
-                Hibernate.initialize(item.getSku().getProduct());
-//                items.add(item);
-                for (CommerceItemProperties commerceItemProperties : item.getCommerceItemProperties()){
-                    Hibernate.initialize(commerceItemProperties.getVariableSKU());
+            for (CommerceItem item : cart.getItems()) {
+                Hibernate.initialize(item.getSku());
+                for (CommerceItemProperties propeprty : item.getCommerceItemProperties()) {
+                    Hibernate.initialize(propeprty.getVariableSKU());
                 }
             }
         }
-        logger.info("Shopping cart has been loaded successfully. Shopping cart : " + cart);
         return cart;
     }
 
@@ -54,7 +49,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 .setFetchMode("commerceItems", FetchMode.JOIN)
                 .add(Restrictions.eq("id", varSkuId))
                 .uniqueResult();
-        logger.info("Variable SKU has been loaded successfully. Variable SKU : " + variableSKU);
+        logger.info("Variable SKU has been loaded successfully. Variable SKU : " + variableSKU.getId());
         return variableSKU;
     }
 
@@ -65,8 +60,10 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
                 .add(Restrictions.eq("id", id))
                 .uniqueResult();
         Hibernate.initialize(item.getSku().getProduct());
-        Hibernate.initialize(item.getCartProperties());
-        logger.info("Commerce item  has been loaded successfully. Commerce item : " + item);
+        for (CommerceItemProperties property : item.getCommerceItemProperties()){
+            Hibernate.initialize(property.getVariableSKU());
+        }
+//        logger.info("Commerce item  has been loaded successfully. Commerce item : " + item);
         return item;
     }
 
@@ -87,31 +84,26 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     @Override
-    public CommerceItem addItemToShoppingCart(Long[] varSkusId, Long  userId, Long baseSkuId, int quantity) {
+    public CommerceItem addItemToShoppingCart(Long  userId, Long[] varSkus, Long baseSkuId, int quantity) {
 
         ShoppingCart cart = getShoppingCartByUserId(userId);
         CommerceItem item = new CommerceItem();
         item.setQuantity(quantity);
         item.setBaseSkuId(baseSkuId);
         item.setSku(getBaseSkuById(baseSkuId));
+        item.setShoppingCart(cart);
+        item.setShoppingCartId(cart.getId());
         sessionFactory.getCurrentSession().save(item);
-        ShoppingCartProperties shoppingCartProperties = new ShoppingCartProperties();
-        for (int i = 0; i < varSkusId.length; i++) {
+        for (int i = 0; i < varSkus.length; i++) {
             CommerceItemProperties commerceItemProperties = new CommerceItemProperties();
-            VariableSKU variableSKU = getVariableSkuById(varSkusId[i]);
-            commerceItemProperties.setVarialbeSkuId(varSkusId[i]);
+            VariableSKU variableSKU = getVariableSkuById(varSkus[i]);
+            commerceItemProperties.setVarialbeSkuId(varSkus[i]);
             commerceItemProperties.setVariableSKU(variableSKU);
             commerceItemProperties.setCommerceItem(item);
             commerceItemProperties.setCommerceItemId(item.getId());
             item.getCommerceItemProperties().add(commerceItemProperties);
             sessionFactory.getCurrentSession().save(commerceItemProperties);
         }
-        shoppingCartProperties.setItem(item);
-        shoppingCartProperties.setCommerceItemId(item.getId());
-        shoppingCartProperties.setShoppingCart(cart);
-        shoppingCartProperties.setShoppingCartId(cart.getId());
-        item.getCartProperties().add(shoppingCartProperties);
-        sessionFactory.getCurrentSession().save(shoppingCartProperties);
         logger.info("Commerce item has been saved successfully added to shopping cart . Commerce item: " + item);
         return item;
     }
@@ -132,7 +124,6 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         CommerceItem item = getCommerceItemById(itemId);
         sessionFactory.getCurrentSession().delete(item);
         logger.info("Commerce item has been deleted successfully. Commerce item : " + item);
-
     }
 
     @Override

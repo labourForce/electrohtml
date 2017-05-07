@@ -1,6 +1,7 @@
 package com.fortegroup.model.shoppingCart;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fortegroup.model.productdetails.VariableSKU;
 
 import javax.persistence.*;
@@ -49,6 +50,7 @@ public class CommerceItemProperties {
 
 
 //    @JsonManagedReference(value = "commerceitemproperties-commerceitem")
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "commerce_item_id", nullable = false)
     public CommerceItem getCommerceItem() {

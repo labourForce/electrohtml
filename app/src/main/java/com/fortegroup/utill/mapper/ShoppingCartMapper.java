@@ -64,7 +64,6 @@ public class ShoppingCartMapper {
             orderTotalPrice+=totalProductPrice*commerceItem.getQuantity();
             productDTO.setTotalPrice(totalProductPrice*commerceItem.getQuantity());
             productList.add(productDTO);
-
         }
         orderDTO.setOrderTotalPrice(orderTotalPrice);
         orderDTO.setOrderTotalQuantity(orderTotalQuantity);

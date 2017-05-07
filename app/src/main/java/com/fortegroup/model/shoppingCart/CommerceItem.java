@@ -3,6 +3,7 @@ package com.fortegroup.model.shoppingCart;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fortegroup.model.checkout.Order;
 import com.fortegroup.model.productdetails.BaseSKU;
+import com.fortegroup.model.productdetails.VariableSKU;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -17,7 +18,11 @@ public class CommerceItem {
     private Long baseSkuId;
     private BaseSKU sku;
     private Set<CommerceItemProperties> commerceItemProperties = new HashSet<>();
-    private Set<ShoppingCartProperties> cartProperties = new HashSet<>();
+//    private Set<ShoppingCartProperties> cartProperties = new HashSet<>();
+//    private Set<VariableSKU> variableSKUS = new HashSet<>();
+    private Long shoppingCartId;
+    private ShoppingCart shoppingCart;
+
     private Long orderId;
     private Order order;
 
@@ -57,18 +62,40 @@ public class CommerceItem {
         this.sku = sku;
     }
 
-//    @JsonManagedReference(value = "commerceitem-shoppingcartproperties")
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "item")
-    public Set<ShoppingCartProperties> getCartProperties() {
-        return cartProperties;
-    }
-
-    public void setCartProperties(Set<ShoppingCartProperties> cartProperties) {
-        this.cartProperties = cartProperties;
-    }
-
-//    @JsonBackReference(value = "commerceitemproperties-commerceitem")
     @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shopping_cart_id", nullable = false)
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+
+    @Column(name = "shopping_cart_id", nullable = false, insertable = false, updatable = false)
+    public Long getShoppingCartId() {
+        return shoppingCartId;
+    }
+
+    public void setShoppingCartId(Long shoppingCartId) {
+        this.shoppingCartId = shoppingCartId;
+    }
+
+
+    //    @JsonManagedReference(value = "commerceitem-shoppingcartproperties")
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "item")
+//    public Set<ShoppingCartProperties> getCartProperties() {
+//        return cartProperties;
+//    }
+//
+//    public void setCartProperties(Set<ShoppingCartProperties> cartProperties) {
+//        this.cartProperties = cartProperties;
+//    }
+//
+////    @JsonBackReference(value = "commerceitemproperties-commerceitem")
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "commerceItem")
     public Set<CommerceItemProperties> getCommerceItemProperties() {
         return commerceItemProperties;
@@ -96,4 +123,19 @@ public class CommerceItem {
     public void setOrder(Order order) {
         this.order = order;
     }
+
+
+
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(name = "electro.commerce_item_properties", joinColumns = {
+//            @JoinColumn(name = "commerce_item_id", nullable = false, updatable = false) },
+//            inverseJoinColumns = { @JoinColumn(name = "variable_sku_id",
+//                    nullable = false, updatable = false) })
+//    public Set<VariableSKU> getVariableSKUS() {
+//        return variableSKUS;
+//    }
+//
+//    public void setVariableSKUS(Set<VariableSKU> variableSKUS) {
+//        this.variableSKUS = variableSKUS;
+//    }
 }

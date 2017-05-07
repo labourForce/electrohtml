@@ -14,7 +14,19 @@ public class ShoppingCart {
     private Long id;
     private Long userId;
     private User user;
-    private Set<ShoppingCartProperties>cartProperties = new HashSet<>();
+//    private Set<ShoppingCartProperties>cartProperties = new HashSet<>();
+    private Set<CommerceItem> items = new HashSet<>();
+
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "shoppingCart")
+    public Set<CommerceItem> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<CommerceItem> items) {
+        this.items = items;
+    }
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -45,12 +57,12 @@ public class ShoppingCart {
     }
 
 //    @JsonManagedReference(value = "shoppingcart-shoppingcartproperties")
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "shoppingCart")
-    public Set<ShoppingCartProperties> getCartProperties() {
-        return cartProperties;
-    }
-
-    public void setCartProperties(Set<ShoppingCartProperties> cartProperties) {
-        this.cartProperties = cartProperties;
-    }
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "shoppingCart")
+//    public Set<ShoppingCartProperties> getCartProperties() {
+//        return cartProperties;
+//    }
+//
+//    public void setCartProperties(Set<ShoppingCartProperties> cartProperties) {
+//        this.cartProperties = cartProperties;
+//    }
 }
