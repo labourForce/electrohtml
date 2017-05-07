@@ -120,10 +120,19 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     }
 
     @Override
-    public void deleteCommerceItemById(Long itemId) {
+    public boolean deleteCommerceItemById(Long itemId,Long userId) {
         CommerceItem item = getCommerceItemById(itemId);
-        sessionFactory.getCurrentSession().delete(item);
-        logger.info("Commerce item has been deleted successfully. Commerce item : " + item);
+        ShoppingCart cart = getShoppingCartByUserId(userId);
+        boolean result = false;
+        for (CommerceItem items : cart.getItems()){
+            if(items.getId().equals(item.getId())){
+                cart.getItems().remove(item);
+                sessionFactory.getCurrentSession().delete(item);
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 
     @Override
