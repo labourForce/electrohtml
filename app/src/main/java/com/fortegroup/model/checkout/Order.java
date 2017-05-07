@@ -1,11 +1,20 @@
 package com.fortegroup.model.checkout;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fortegroup.model.accounts.User;
+import com.fortegroup.model.shoppingCart.CommerceItem;
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name = "electro.order")
 public class Order {
 
     private Long id;
     private Long userId;
     private String status;
-    private int Amount;
+    private String Amount;
     private String firstName;
     private String lastName;
     private String companyName;
@@ -25,13 +34,16 @@ public class Order {
     private String shippingCity;
 
     private String cardName;
-    private Integer cardNumber;
+    private String cardNumber;
     private Integer CVV;
+
+    private User user;
+    private Set<CommerceItem> commerceItems;
 
     public Order() {
     }
 
-    public Order(Long id, Long userId, String status, int amount, String firstName, String lastName, String companyName, String email, String billingPhoneNumber, String billingCountry, String billingAddress, Integer billingZIP, String billingCity, String billingNotes, String shippingPhoneNumber, String shippingCountry, String shippingAddress, Integer shippingZIP, String shippingCity, String cardName, Integer cardNumber, Integer CVV) {
+    public Order(Long id, Long userId, String status, String amount, String firstName, String lastName, String companyName, String email, String billingPhoneNumber, String billingCountry, String billingAddress, Integer billingZIP, String billingCity, String billingNotes, String shippingPhoneNumber, String shippingCountry, String shippingAddress, Integer shippingZIP, String shippingCity, String cardName, String cardNumber, Integer CVV) {
         this.id = id;
         this.userId = userId;
         this.status = status;
@@ -56,6 +68,9 @@ public class Order {
         this.CVV = CVV;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     public Long getId() {
         return id;
     }
@@ -64,6 +79,7 @@ public class Order {
         this.id = id;
     }
 
+    @Column(name = "user_id", nullable = false)
     public Long getUserId() {
         return userId;
     }
@@ -72,6 +88,7 @@ public class Order {
         this.userId = userId;
     }
 
+    @Column(name = "status", nullable = false)
     public String getStatus() {
         return status;
     }
@@ -80,14 +97,16 @@ public class Order {
         this.status = status;
     }
 
-    public int getAmount() {
+    @Column(name = "amount", nullable = false)
+    public String getAmount() {
         return Amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(String amount) {
         Amount = amount;
     }
 
+    @Column(name = "fname", nullable = false)
     public String getFirstName() {
         return firstName;
     }
@@ -96,6 +115,7 @@ public class Order {
         this.firstName = firstName;
     }
 
+    @Column(name = "lname", nullable = false)
     public String getLastName() {
         return lastName;
     }
@@ -104,6 +124,7 @@ public class Order {
         this.lastName = lastName;
     }
 
+    @Column(name = "company_name", nullable = false)
     public String getCompanyName() {
         return companyName;
     }
@@ -112,6 +133,7 @@ public class Order {
         this.companyName = companyName;
     }
 
+    @Column(name = "email", nullable = false)
     public String getEmail() {
         return email;
     }
@@ -120,6 +142,7 @@ public class Order {
         this.email = email;
     }
 
+    @Column(name = "b_phone_number", nullable = false)
     public String getBillingPhoneNumber() {
         return billingPhoneNumber;
     }
@@ -128,6 +151,7 @@ public class Order {
         this.billingPhoneNumber = billingPhoneNumber;
     }
 
+    @Column(name = "b_country", nullable = false)
     public String getBillingCountry() {
         return billingCountry;
     }
@@ -136,6 +160,7 @@ public class Order {
         this.billingCountry = billingCountry;
     }
 
+    @Column(name = "b_address", nullable = false)
     public String getBillingAddress() {
         return billingAddress;
     }
@@ -144,6 +169,7 @@ public class Order {
         this.billingAddress = billingAddress;
     }
 
+    @Column(name = "b_zip", nullable = false)
     public Integer getBillingZIP() {
         return billingZIP;
     }
@@ -152,6 +178,7 @@ public class Order {
         this.billingZIP = billingZIP;
     }
 
+    @Column(name = "b_city", nullable = false)
     public String getBillingCity() {
         return billingCity;
     }
@@ -160,6 +187,7 @@ public class Order {
         this.billingCity = billingCity;
     }
 
+    @Column(name = "b_notes", nullable = false)
     public String getBillingNotes() {
         return billingNotes;
     }
@@ -168,6 +196,7 @@ public class Order {
         this.billingNotes = billingNotes;
     }
 
+    @Column(name = "s_phone_number", nullable = false)
     public String getShippingPhoneNumber() {
         return shippingPhoneNumber;
     }
@@ -176,6 +205,7 @@ public class Order {
         this.shippingPhoneNumber = shippingPhoneNumber;
     }
 
+    @Column(name = "s_country", nullable = false)
     public String getShippingCountry() {
         return shippingCountry;
     }
@@ -184,6 +214,7 @@ public class Order {
         this.shippingCountry = shippingCountry;
     }
 
+    @Column(name = "s_address", nullable = false)
     public String getShippingAddress() {
         return shippingAddress;
     }
@@ -192,6 +223,7 @@ public class Order {
         this.shippingAddress = shippingAddress;
     }
 
+    @Column(name = "s_zip", nullable = false)
     public Integer getShippingZIP() {
         return shippingZIP;
     }
@@ -200,6 +232,7 @@ public class Order {
         this.shippingZIP = shippingZIP;
     }
 
+    @Column(name = "s_city", nullable = false)
     public String getShippingCity() {
         return shippingCity;
     }
@@ -208,6 +241,7 @@ public class Order {
         this.shippingCity = shippingCity;
     }
 
+    @Column(name = "card_name", nullable = false)
     public String getCardName() {
         return cardName;
     }
@@ -216,19 +250,49 @@ public class Order {
         this.cardName = cardName;
     }
 
-    public Integer getCardNumber() {
+    @Column(name = "card_number", nullable = false)
+    public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(Integer cardNumber) {
+    public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
+    @Column(name = "cvv", nullable = false)
     public Integer getCVV() {
         return CVV;
     }
 
     public void setCVV(Integer CVV) {
         this.CVV = CVV;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    public Set<CommerceItem> getCommerceItems() {
+        return commerceItems;
+    }
+
+    public void setCommerceItems(Set<CommerceItem> commerceItems) {
+        this.commerceItems = commerceItems;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", status='" + status + '\'' +
+                ", Amount=" + Amount;
     }
 }
