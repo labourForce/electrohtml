@@ -5,6 +5,7 @@
 /knockout/node_modules/
 /knockout/bower_components/
 /app/target
+/admin/target
 /app/.idea
 /html/node_modules/
 /html/css/
