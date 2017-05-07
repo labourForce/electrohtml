@@ -30,7 +30,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Autowired
     private ProductsService productsService;
-
+    
     @Override
     @Transactional
     public ShoppingCartDTO getShoppingCartByUserId(Long userId) {
@@ -113,4 +113,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         return cart;
     }
 
+    @Override
+    @Transactional
+    public void deleteAllItemsFromShoppingCart(Long userId) {
+        shoppingCartDao.deleteAllItemsFromShoppingCart(userId);
+    }
 }

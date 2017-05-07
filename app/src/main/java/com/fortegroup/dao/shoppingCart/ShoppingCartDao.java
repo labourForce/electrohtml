@@ -12,6 +12,7 @@ public interface ShoppingCartDao {
     VariableSKU getVariableSkuById(Long varSkuId);
     CommerceItem getCommerceItemById(Long id);
     boolean deleteCommerceItemById(Long itemId,Long userId);
+    void deleteAllItemsFromShoppingCart(Long userId);
     BaseSKU getBaseSkuById(Long id);
     CommerceItem addItemToShoppingCart(Long userId,Long[] varSkus, Long baseSkuId, int quantity);
     Long createNewShoppingCart (User user);

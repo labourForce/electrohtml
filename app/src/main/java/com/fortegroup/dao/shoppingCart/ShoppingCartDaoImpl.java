@@ -16,6 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Iterator;
+
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
 
     @Autowired
@@ -140,5 +142,16 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
         commerceItem.setQuantity(quantity);
         sessionFactory.getCurrentSession().saveOrUpdate(commerceItem);
         logger.info("Commerce item quantity has been updated successfully");
+    }
+
+    @Override
+    public void deleteAllItemsFromShoppingCart(Long userId) {
+        ShoppingCart shoppingCart = getShoppingCartByUserId(userId);
+        Iterator<CommerceItem> itemIterator = shoppingCart.getItems().iterator();
+        while (itemIterator.hasNext()){
+            CommerceItem item = itemIterator.next();
+            itemIterator.remove();
+            sessionFactory.getCurrentSession().delete(item);
+        }
     }
 }

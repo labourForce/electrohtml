@@ -92,4 +92,12 @@ public class ShoppingCartController {
 //        ShoppingCartDTO cartDTO = service.getShoppingCartByUserId(userId);
 //        return ResponseEntity.ok(cartDTO);
 //    }
+//    @RequestMapping(value = "/deleteall",method = RequestMethod.DELETE)
+//    public void deleteAllItemsFromShoppingCart(HttpServletRequest request){
+//
+//            Long userId = (Long)request.getAttribute("id");
+//            service.deleteAllItemsFromShoppingCart(userId);
+//
+//
+//    }
 }

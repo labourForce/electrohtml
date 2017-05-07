@@ -11,6 +11,7 @@ public interface ShoppingCartService {
     CommerceItem addItemToShoppingCart(Long userId, Long[] varSkus, Long baseSkuId, int quantity);
     CommerceItem deleteItemById(Long id, Long userId);
     ShoppingCartDTO updateQuantityById(Long itemId, int quantity, Long userId);
+    void deleteAllItemsFromShoppingCart(Long userId);
     VariableSKU getVariableSkuById(Long varSkuId);
     CommerceItem getCommerceItemById(Long commerceItemId);
     BaseSKU getBaseSkuById(Long baseSkuId);
