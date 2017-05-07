@@ -18,10 +18,10 @@ public class CheckoutDaoImpl implements CheckoutDao{
     private static final Logger logger = LoggerFactory.getLogger(ShoppingCartDaoImpl.class);
 
     @Override
-    public Order getOrderById(Long id) {
+    public Order getOrderById(Long userId) {
         Order order = (Order) sessionFactory.getCurrentSession()
                 .createCriteria(Order.class)
-                .add(Restrictions.eq("userId", id))
+                .add(Restrictions.eq("userId", userId))
                 .uniqueResult();
         logger.info("Order has been loaded successfully. Order : " + order);
         return order;

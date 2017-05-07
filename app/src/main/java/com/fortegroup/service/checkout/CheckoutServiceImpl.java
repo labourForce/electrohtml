@@ -6,10 +6,13 @@ import com.fortegroup.dao.shoppingCart.ShoppingCartDao;
 import com.fortegroup.model.checkout.Order;
 import com.fortegroup.model.checkout.Request;
 import com.fortegroup.model.checkout.Response;
+import com.fortegroup.model.shoppingCart.CommerceItem;
 import com.fortegroup.utill.PayPal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Set;
 
 @Service
 public class CheckoutServiceImpl implements CheckoutService{
@@ -44,6 +47,7 @@ public class CheckoutServiceImpl implements CheckoutService{
     @Transactional
     public void makeOrder(Request request, Long userId) {
         Order order = new Order();
+        Set<CommerceItem> commerceItems = shoppingCartDao.getShoppingCartByUserId(userId).getItems();
 
         order.setUserId(userId);
         order.setStatus("Approved");
@@ -72,10 +76,15 @@ public class CheckoutServiceImpl implements CheckoutService{
         order.setCVV(Integer.parseInt(request.getPay().get("cvv")));
 
         order.setUser(userDao.get(userId));
+        order.setCommerceItems(commerceItems);
 
-//        Set<Com>
-//
-//        order.setCommerceItems(shoppingCartDao.getShoppingCartByUserId(userId).getCartProperties());
+        checkoutDao.createOrder(order);
+
+        for(CommerceItem item :commerceItems) {
+            item.setShoppingCartId(null);
+            item.setOrderId(checkoutDao.getOrderById(userId).getId());
+        }
+        shoppingCartDao.deleteAllItemsFromShoppingCart(userId);
 
     }
 

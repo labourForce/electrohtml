@@ -40,7 +40,7 @@ public class CheckoutController {
 
         checkoutService.makeOrder(request, userId);
 
-        return ResponseEntity.ok("kek");
+        return ResponseEntity.ok(new Response("Approved", true));
     }
     
 }
